@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/singleclinic/android/app/src/debug/debug.iml" filepath="$PROJECT_DIR$/singleclinic/android/app/src/debug/debug.iml" />
+      <module fileurl="file://$PROJECT_DIR$/singleclinic/android/app/src/main/java/main.iml" filepath="$PROJECT_DIR$/singleclinic/android/app/src/main/java/main.iml" />
+      <module fileurl="file://$PROJECT_DIR$/singleclinic/android/app/src/main/main1.iml" filepath="$PROJECT_DIR$/singleclinic/android/app/src/main/main1.iml" />
+      <module fileurl="file://$PROJECT_DIR$/singleclinic/android/app/src/profile/profile.iml" filepath="$PROJECT_DIR$/singleclinic/android/app/src/profile/profile.iml" />
+      <module fileurl="file://$PROJECT_DIR$/singleclinic/singleclinic.iml" filepath="$PROJECT_DIR$/singleclinic/singleclinic.iml" />
+      <module fileurl="file://$PROJECT_DIR$/singleclinic/android/singleclinic_android.iml" filepath="$PROJECT_DIR$/singleclinic/android/singleclinic_android.iml" />
+    </modules>
+  </component>
+</project>

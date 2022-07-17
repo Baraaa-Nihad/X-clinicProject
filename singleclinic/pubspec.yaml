@@ -1,0 +1,150 @@
+name: singleclinic
+description: A new Flutter application.
+
+# The following line prevents the package from being accidentally published to
+# pub.dev using `pub publish`. This is preferred for private packages.
+publish_to: 'none' # Remove this line if you wish to publish to pub.dev
+
+# The following defines the version and build number for your application.
+# A version number is three numbers separated by dots, like 1.2.43
+# followed by an optional build number separated by a +.
+# Both the version and the builder number may be overridden in flutter
+# build by specifying --build-name and --build-number, respectively.
+# In Android, build-name is used as versionName while build-number used as versionCode.
+# Read more about Android versioning at https://developer.android.com/studio/publish/versioning
+# In iOS, build-name is used as CFBundleShortVersionString while build-number used as CFBundleVersion.
+# Read more about iOS versioning at
+# https://developer.apple.com/library/archive/documentation/General/Reference/InfoPlistKeyReference/Articles/CoreFoundationKeys.html
+version: 4.0.0+4
+
+environment:
+  sdk: ">=2.7.0 <3.0.0"
+
+dependencies:
+  flutter:
+    sdk: flutter
+  flutter_localizations:
+    sdk: flutter
+  intl:
+  scoped_model:
+  cupertino_icons:
+  cached_network_image:
+  email_validator:
+  image_picker: 0.8.3
+  http: 0.12.2
+  dio:
+  firebase_core: 1.6.0
+  shared_preferences:
+  google_sign_in:
+  #rxdart:
+  #sign_in_with_apple:
+  flutter_staggered_grid_view:
+  flutter_svg:
+  cloud_firestore:
+  toast:
+  flutter_local_notifications:
+  #awesome_notifications:
+  #flutter_image_compress:
+  firebase_database:
+  image_cropper:
+  path_provider:
+  video_player: 2.2.0
+  #video_trimmer:
+  google_fonts:
+  file_picker: 4.1.1
+  chewie:
+  photo_view:
+  #flare_flutter:
+  string_validator:
+  video_thumbnail:
+#  fcm_config:
+  firebase_messaging:
+  #flutter_uploader:
+  flutter_uploader: 3.0.0-beta.3
+  url_launcher:
+#  hive:
+#  hive_flutter:
+  flutter_braintree: 2.0.0+1
+  flutter_html:
+  ntp:
+  flutter_login_facebook:
+  change_app_package_name: ^1.0.0
+
+dev_dependencies:
+#  flutter_test:
+#    sdk: flutter
+#  flutter_localizations:
+#    sdk: flutter
+  #hive_generator:
+#  intl:
+  #scoped_model:
+  #build_runner:
+  flutter_launcher_icons:
+
+
+dependency_overrides:
+  image_picker_platform_interface: ^2.3.0
+  http: ^0.13.0
+  platform: ^3.1.0
+  #video_thumbnail: 0.4.3
+#  image_picker_platform_interface: ^1.1.0
+
+flutter_icons:
+  android: true
+  ios: true
+  image_path: "assets/appicon.png"
+
+
+# For information on the generic Dart part of this file, see the
+# following page: https://dart.dev/tools/pub/pubspec
+
+# The following section is specific to Flutter.
+flutter:
+
+  # The following line ensures that the Material Icons font is
+  # included with your application, so that you can use the icons in
+  # the material Icons class.
+  uses-material-design: true
+
+  # To add assets to your application, add an assets section, like this:
+  assets:
+    - assets/
+    - assets/homescreen/
+    - assets/doctordetails/
+    - assets/bookappointment/
+    - assets/loginregister/
+    - assets/subscriptionList/
+    - assets/departmentDetails/
+    - assets/departmentScreen/
+    - assets/chatScreen/
+    - assets/tabBar/
+    - assets/splashScreen/
+    - assets/subscriptionScreen/
+    - assets/placeholders/
+  #   - images/a_dot_ham.jpeg
+
+  # An image asset can refer to one or more resolution-specific "variants", see
+  # https://flutter.dev/assets-and-images/#resolution-aware.
+
+  # For details regarding adding assets from package dependencies, see
+  # https://flutter.dev/assets-and-images/#from-packages
+
+  # To add custom fonts to your application, add a fonts section here,
+  # in this "flutter" section. Each entry in this list should have a
+  # "family" key with the font family name, and a "fonts" key with a
+  # list giving the asset and other descriptors for the font. For
+  # example:
+  fonts:
+    - family: Avir
+      fonts:
+        - asset: fonts/AvenirLTStd-Book.otf
+        - asset: fonts/AvenirLTStd-Medium.otf
+        - asset: fonts/AvenirLTStd-Roman.otf
+  #   - family: Trajan Pro
+  #     fonts:
+  #       - asset: fonts/TrajanPro.ttf
+  #       - asset: fonts/TrajanPro_Bold.ttf
+  #         weight: 700
+  #
+  # For details regarding fonts from package dependencies,
+  # see https://flutter.dev/custom-fonts/#from-packages

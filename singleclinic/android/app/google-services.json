@@ -1,0 +1,56 @@
+{
+  "project_info": {
+    "project_number": "281525467646",
+    "firebase_url": "https://x-clinic-90fb7-default-rtdb.asia-southeast1.firebasedatabase.app",
+    "project_id": "x-clinic-90fb7",
+    "storage_bucket": "x-clinic-90fb7.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:281525467646:android:30a74995e0cb12ad56a8af",
+        "android_client_info": {
+          "package_name": "com.doctorclicnic.userapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "281525467646-g9jrnu7hbrfmqe7419iq4qoofkj0ticf.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.doctorclicnic.userapp",
+            "certificate_hash": "87370d0e722b1d4697089c1914c3cfafb6af206a"
+          }
+        },
+        {
+          "client_id": "281525467646-qivjffj0p17gngfd7vcgcnbm9ldsskab.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.doctorclicnic.userapp",
+            "certificate_hash": "7ac88bf1a2acf8a28696133575525a13742fcc5e"
+          }
+        },
+        {
+          "client_id": "281525467646-bdkdst34v6h65vquhse5k7n3p9fko3k9.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA1nWXn-9hkzCyqPyGVqGpFZfheQGwu29c"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "281525467646-bdkdst34v6h65vquhse5k7n3p9fko3k9.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
