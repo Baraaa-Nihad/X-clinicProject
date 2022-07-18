@@ -361,7 +361,9 @@ class _DoctorDetailsState extends State<DoctorDetails> {
   }
 
   workingTimeAndServiceCard() {
-    return Container(
+    return Directionality(
+        textDirection: TextDirection.rtl,
+      child:Container(
       color: WHITE,
       width: MediaQuery.of(context).size.width,
       padding: EdgeInsets.all(16),
@@ -448,6 +450,7 @@ class _DoctorDetailsState extends State<DoctorDetails> {
           ),
         ],
       ),
+      )
     );
   }
 

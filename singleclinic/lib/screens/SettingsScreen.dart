@@ -40,17 +40,15 @@ class _SettingsScreenState extends State<SettingsScreen> {
         email = value.getString("email");
       });
     });
-    list.add(OptionsList(
-        MY_SUBCRIPTIONS,
-        [MY_SUBCRIPTIONS, APPOINTMENT_HISTORY, SUBSCRIPTION_PLANS],
-        [SubcriptionList(), AppointmentScreen(), SubscriptionPlansScreen()]));
-    list.add(OptionsList(MORE, [DEPARTMENTS, FACILITIES, GALLERY],
-        [DepartmentScreen(), FacilitiesScreen(), GalleryScreen()]));
+
+    list.add(OptionsList(MORE, [ GALLERY],
+        [GalleryScreen()]));
     list.add(OptionsList(
         CONTACT_DETAILS,
         [TERM_AND_CONDITION, ABOUT_US, CONTACT_US],
         [TermAndConditions(), AboutUs(), ContactUsScreen()]));
   }
+
 
   @override
   Widget build(BuildContext context) {
@@ -245,7 +243,9 @@ class _SettingsScreenState extends State<SettingsScreen> {
   }
 
   optionsList() {
-    return ListView.builder(
+    return Directionality(
+        textDirection: TextDirection.rtl,
+        child : ListView.builder(
       shrinkWrap: true,
       physics: ClampingScrollPhysics(),
       itemCount: list.length,
@@ -255,16 +255,9 @@ class _SettingsScreenState extends State<SettingsScreen> {
             SizedBox(
               height: 20,
             ),
-            Row(
-              children: [
-                Text(
-                  list[index].title,
-                  style: TextStyle(fontSize: 19, fontWeight: FontWeight.w700),
-                ),
-              ],
-            ),
+
             Divider(
-              color: LIGHT_GREY_TEXT,
+              color: Colors.black,
             ),
             ListView.builder(
               shrinkWrap: true,
@@ -281,7 +274,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
                   child: Column(
                     children: [
                       SizedBox(
-                        height: 6,
+                        height: 18,
                       ),
                       Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -289,9 +282,10 @@ class _SettingsScreenState extends State<SettingsScreen> {
                           Text(
                             list[index].options[i].toString(),
                             style: TextStyle(
-                                fontSize: 17,
-                                color: LIGHT_GREY_TEXT,
-                                fontWeight: FontWeight.w500),
+                                fontSize: 15,
+                                color: Colors.black,
+                                fontStyle: FontStyle.italic,
+                                fontWeight: FontWeight.w700),
                           ),
                           Icon(
                             Icons.arrow_forward_ios,
@@ -301,8 +295,9 @@ class _SettingsScreenState extends State<SettingsScreen> {
                         ],
                       ),
                       SizedBox(
-                        height: 12,
+                        height: 22,
                       ),
+
                     ],
                   ),
                 );
@@ -311,6 +306,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
           ],
         );
       },
+    )
     );
   }
 

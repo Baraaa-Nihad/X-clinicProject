@@ -133,7 +133,9 @@ class _AutoselectBookAppointmentState extends State<AutoselectBookAppointment> {
   }
 
   body() {
-    return Column(
+    return Directionality(
+        textDirection: TextDirection.rtl,
+      child:Column(
       children: [
         Expanded(
           child: SingleChildScrollView(
@@ -163,7 +165,7 @@ class _AutoselectBookAppointmentState extends State<AutoselectBookAppointment> {
                     child: TextField(
 
                       controller:
-                          TextEditingController(text:"Dr. "+ widget.doctorName ),
+                          TextEditingController(text: widget.doctorName ),
                       decoration: InputDecoration(
                           contentPadding: EdgeInsets.fromLTRB(0, 0, 0, 10),
                           isCollapsed: true),
@@ -333,8 +335,9 @@ class _AutoselectBookAppointmentState extends State<AutoselectBookAppointment> {
                     height: 15,
                   ),
                   Text(
-                    "مدة التأخير القصوى المتوقعة",
+                    "المدة القصوى المتوقعة للتأخير",
                     style: TextStyle(fontSize: 15, fontWeight: FontWeight.w700),
+
                   ),
 
 
@@ -399,6 +402,7 @@ class _AutoselectBookAppointmentState extends State<AutoselectBookAppointment> {
         ),
         bottomButtons(),
       ],
+    )
     );
   }
 
