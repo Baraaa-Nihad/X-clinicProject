@@ -87,15 +87,15 @@ class _FacilitiesScreenState extends State<FacilitiesScreen> {
       itemCount: list.length,
       padding: EdgeInsets.all(15),
       itemBuilder: (BuildContext context, int index) => new Container(
-        color: Colors.white70,
-        height: index % 2 - 1 == 0 ? 200 : 210,
+        color: LIGHT_GREY,
+        height: index % 2 - 1 == 0 ? 120 : 220,
         child: Stack(
           children: [
             Align(
               alignment: Alignment.topCenter,
               child: CachedNetworkImage(
-                height: index % 2 - 1 == 0 ? 200 : 150,
-                width: 200,
+                height: index % 2 - 1 == 0 ? 120 : 180,
+                width: 100,
                 fit: BoxFit.contain,
                 imageUrl: index % 2 == 0 ? list[index].icon : list[index].icon,
                 progressIndicatorBuilder: (context, url, downloadProgress) =>

@@ -46,9 +46,7 @@ class _ContactUsScreenState extends State<ContactUsScreen> {
   }
 
   header() {
-    return Directionality(
-        textDirection: TextDirection.rtl,
-        child :SafeArea(
+    return SafeArea(
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
@@ -80,14 +78,11 @@ class _ContactUsScreenState extends State<ContactUsScreen> {
           ),
         ],
       ),
-        )
     );
   }
 
   body() {
-    return Directionality(
-        textDirection: TextDirection.rtl,
-        child : Padding(
+    return Padding(
       padding: const EdgeInsets.fromLTRB(20, 20, 20, 0),
       child: Column(
         children: [
@@ -366,14 +361,11 @@ class _ContactUsScreenState extends State<ContactUsScreen> {
           button(),
         ],
       ),
-        ),
     );
   }
 
   button() {
-    return Directionality(
-        textDirection: TextDirection.rtl,
-        child : Row(
+    return Row(
       children: [
         Expanded(
           child: InkWell(
@@ -401,7 +393,6 @@ class _ContactUsScreenState extends State<ContactUsScreen> {
           ),
         )
       ],
-        ),
     );
   }
 

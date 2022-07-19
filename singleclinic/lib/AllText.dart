@@ -46,12 +46,12 @@ const String SETTING = "الإعدادات";
 const String APPOINTMENT_HISTORY = "المواعيد الخاصة بي";
 const String SUBSCRIPTION_PLANS = "خطط الاشتراك";
 const String DEPARTMENTS = "الاقسام";
-const String FACILITIES = "المنشورات";
+const String FACILITIES = "المواهب";
 const String GALLERY = "الصور";
 const String CONTACT_DETAILS = "تفاصيل الإتصال";
 const String TERM_AND_CONDITION = "الشروط و الأحكام";
 const String ABOUT_US = "معلومات عنا";
-const String CONTACT_US = "تواصل معنا ";
+const String CONTACT_US = "اتصل بنا";
 const String MORE = "المزيد";
 const String ALL = "الكل";
 const String HTML = "Html";
@@ -62,7 +62,7 @@ const String ENTER_THE_EMAIL_ADDRESS_ASSOCIATED_WITH_YOUR_ACCOUNT =
 const String WE_WILL_EMAIL_YOU_A_LINK_TO_RESET_YOUR_PASSWORD =
     "سنرسل لك رابطًا عبر البريد الإلكتروني لإعادة تعيين \n  كلمة المرور الخاصة بك";
 const String SEND = "ارسل";
-const String TREATMENTS = "الخدمات";
+const String TREATMENTS = "العلاجات";
 const String VIEW_DETAIL = "عرض التفاصيل";
 const String WRITE_YOUR_MESSAGE = "... اكتب رسالتك  ";
 const String CHAT = "المحادثة";
@@ -121,9 +121,9 @@ const String YOUR_SUBSCRIPTIONS_WILL_BE_DISPLAYED_HERE =
     "Your subscriptions will be displayed here";
 const String NO_APPOINTMENT_FOUND = "لا يوجد مواعيد";
 const String YOUR_UPCOMING_APPOINTMENTS_WILL_BE_DISPLAYED_HERE =
-    "ليس لديك أي موعد حتى الآن ؟ ابدأ بالحجز مع الأطباء";
+    "ليس لديك أي موعد حتى الآن ؟ ابدأ بالتحدث مع الأطباء";
 const String YOUR_PAST_APPOINTMENTS_WILL_BE_DISPLAYED_HERE =
-    "ليس لديك أي موعد حتى الآن ؟ ابدأ بالحجز مع الأطباء";
+    "ليس لديك أي موعد حتى الآن ؟ ابدأ بالتحدث مع الأطباء";
 const String NO_REVIEWS = "لا يوجد تقييمات";
 const String NO_CHATS = "لا يوجد محادثات";
 const String YOUR_CHATS_WILL_BE_DISPLAYED_HERE =

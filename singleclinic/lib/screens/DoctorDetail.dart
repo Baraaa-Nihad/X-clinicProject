@@ -70,9 +70,7 @@ class _DoctorDetailsState extends State<DoctorDetails> {
   }
 
   header() {
-    return Directionality(
-        textDirection: TextDirection.rtl,
-        child : SafeArea(
+    return SafeArea(
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
@@ -138,7 +136,6 @@ class _DoctorDetailsState extends State<DoctorDetails> {
           ),
         ],
       ),
-    )
     );
   }
 
@@ -161,9 +158,7 @@ class _DoctorDetailsState extends State<DoctorDetails> {
   }
 
   doctorProfileCard() {
-    return Directionality(
-        textDirection: TextDirection.rtl,
-        child :Container(
+    return Container(
       margin: EdgeInsets.all(16),
       padding: EdgeInsets.all(10),
       decoration: BoxDecoration(
@@ -239,7 +234,6 @@ class _DoctorDetailsState extends State<DoctorDetails> {
                                     : "assets/doctordetails/star_unactive.png",
                                 height: 12,
                                 width: 12,
-
                               ),
                               SizedBox(
                                 width: 5,
@@ -362,14 +356,11 @@ class _DoctorDetailsState extends State<DoctorDetails> {
           ),
         ],
       ),
-        )
     );
   }
 
   workingTimeAndServiceCard() {
-    return Directionality(
-        textDirection: TextDirection.rtl,
-      child:Container(
+    return Container(
       color: WHITE,
       width: MediaQuery.of(context).size.width,
       padding: EdgeInsets.all(16),
@@ -390,50 +381,54 @@ class _DoctorDetailsState extends State<DoctorDetails> {
                 mainAxisSpacing: 5),
             itemCount: doctorDetail.data.timeTabledata.length,
             itemBuilder: (context, index) {
-              return Row(
-                children: [
-                  Container(
-                    height: 40,
-                    width: 40,
-                    decoration: BoxDecoration(
-                      color: Colors.grey.shade300,
-                      borderRadius: BorderRadius.circular(5),
-                    ),
-                    child: Center(
-                      child: Image.asset("assets/doctordetails/free-time.png"),
-                    ),
-                  ),
-                  SizedBox(
-                    width: 10,
-                  ),
-                  Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Text(
-                        weekDaysList[
-                            doctorDetail.data.timeTabledata[index].day - 1],
-                        style: TextStyle(
-                            color: NAVY_BLUE,
-                            fontSize: 12,
-                            fontWeight: FontWeight.w700),
-                      ),
-                      SizedBox(
-                        height: 5,
-                      ),
-                      Text(
-                        doctorDetail.data.timeTabledata[index].from +
-                            " to " +
-                            doctorDetail.data.timeTabledata[index].to,
-                        style: TextStyle(
-                          color: LIGHT_GREY_TEXT,
-                          fontSize: 9,
+              return doctorDetail.data.timeTabledata[index].from != null
+                  ? Row(
+                      children: [
+                        Container(
+                          height: 40,
+                          width: 40,
+                          decoration: BoxDecoration(
+                            color: Colors.grey.shade300,
+                            borderRadius: BorderRadius.circular(5),
+                          ),
+                          child: Center(
+                            child: Image.asset(
+                                "assets/doctordetails/free-time.png"),
+                          ),
                         ),
-                      ),
-                    ],
-                  )
-                ],
-              );
+                        SizedBox(
+                          width: 10,
+                        ),
+                        Column(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Text(
+                              weekDaysList[
+                                  doctorDetail.data.timeTabledata[index].day -
+                                      1],
+                              style: TextStyle(
+                                  color: NAVY_BLUE,
+                                  fontSize: 12,
+                                  fontWeight: FontWeight.w700),
+                            ),
+                            SizedBox(
+                              height: 5,
+                            ),
+                            Text(
+                              doctorDetail.data.timeTabledata[index].from +
+                                  " to " +
+                                  doctorDetail.data.timeTabledata[index].to,
+                              style: TextStyle(
+                                color: LIGHT_GREY_TEXT,
+                                fontSize: 9,
+                              ),
+                            ),
+                          ],
+                        )
+                      ],
+                    )
+                  : Container();
             },
           ),
           SizedBox(
@@ -456,7 +451,6 @@ class _DoctorDetailsState extends State<DoctorDetails> {
           ),
         ],
       ),
-      )
     );
   }
 
@@ -516,7 +510,10 @@ class _DoctorDetailsState extends State<DoctorDetails> {
                 child: Center(
                   child: Text(
                     isLoggedIn ? BOOK_APPOINTMENT : LOGIN_TO_BOOK_APPOINTMENT,
-                    style: TextStyle(fontWeight: FontWeight.w700, fontSize: 17, color: WHITE),
+                    style: TextStyle(
+                        fontWeight: FontWeight.w700,
+                        fontSize: 17,
+                        color: WHITE),
                   ),
                 ),
               ),

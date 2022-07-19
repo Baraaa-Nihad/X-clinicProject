@@ -61,9 +61,7 @@ class _AppointmentScreenState extends State<AppointmentScreen>
 
   @override
   Widget build(BuildContext context) {
-    return
-      Directionality(
-        textDirection: TextDirection.rtl, child: SafeArea(
+    return SafeArea(
       child: Scaffold(
         backgroundColor: LIGHT_GREY_SCREEN_BG,
         appBar: AppBar(
@@ -162,7 +160,6 @@ class _AppointmentScreenState extends State<AppointmentScreen>
                         ),
                 ],
               ),
-      ),
       ),
     );
   }

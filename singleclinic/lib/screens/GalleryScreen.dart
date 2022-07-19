@@ -70,9 +70,7 @@ class _GalleryScreenState extends State<GalleryScreen>
               ),
             ),
           )
-        : Directionality(
-        textDirection: TextDirection.rtl,
-        child :SafeArea(
+        : SafeArea(
             child: Scaffold(
               backgroundColor: LIGHT_GREY_SCREEN_BG,
               appBar: AppBar(
@@ -107,14 +105,11 @@ class _GalleryScreenState extends State<GalleryScreen>
               ),
               body: body(),
             ),
-        ),
           );
   }
 
   header() {
-    return  Directionality(
-        textDirection: TextDirection.rtl,
-        child : SafeArea(
+    return SafeArea(
       child: Container(
         height: 80,
         child: Column(
@@ -153,7 +148,6 @@ class _GalleryScreenState extends State<GalleryScreen>
           ],
         ),
       ),
-        )
     );
   }
 
@@ -164,9 +158,7 @@ class _GalleryScreenState extends State<GalleryScreen>
               strokeWidth: 2,
             ),
           )
-        : Directionality(
-        textDirection: TextDirection.rtl,
-        child :TabBarView(
+        : TabBarView(
             controller: tabController,
             children: List.generate(tabController.length, (index) {
               return tabController.index == index
@@ -228,7 +220,7 @@ class _GalleryScreenState extends State<GalleryScreen>
                         strokeWidth: 2,
                       ),
                     );
-            }),)
+            }),
           );
   }
 

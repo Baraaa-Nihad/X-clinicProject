@@ -203,8 +203,9 @@ class _LoginScreenState extends State<LoginScreen> {
                           child: Text(
                             LOGIN,
                             style: TextStyle(
-                              color: WHITE,
-                                fontWeight: FontWeight.w700, fontSize: 17),
+                                color: WHITE,
+                                fontWeight: FontWeight.w700,
+                                fontSize: 17),
                           ),
                         ),
                       ),
@@ -572,12 +573,12 @@ class _LoginScreenState extends State<LoginScreen> {
       if (result is String) {
         errorDialog('${result}');
       } else if (result is Map) {
+        print(result);
         setState(() {
           name = result['name'];
           email = result['email'] ?? "null";
           image = result['profile'] ?? " ";
         });
-
         loginIntoAccount(3);
       } else {
         errorDialog('Something went wrong with the login process');

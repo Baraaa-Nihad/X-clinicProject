@@ -69,9 +69,7 @@ class _DoctorListState extends State<DoctorList> {
   }
 
   header() {
-    return Directionality(
-        textDirection: TextDirection.rtl,
-        child :SafeArea(
+    return SafeArea(
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
@@ -124,14 +122,12 @@ class _DoctorListState extends State<DoctorList> {
             ),
           ),
         ],
-      ),)
+      ),
     );
   }
 
   body() {
-    return Directionality(
-        textDirection: TextDirection.rtl,
-        child : SingleChildScrollView(
+    return SingleChildScrollView(
       controller: scrollController,
       key: listLength,
       child: Column(
@@ -172,7 +168,6 @@ class _DoctorListState extends State<DoctorList> {
           ),
         ],
       ),
-        )
     );
   }
 
@@ -182,9 +177,7 @@ class _DoctorListState extends State<DoctorList> {
       String department,
       String aboutUs,
       int id}) {
-    return Directionality(
-        textDirection: TextDirection.rtl,
-        child : InkWell(
+    return InkWell(
       onTap: () {
         Navigator.push(context,
             MaterialPageRoute(builder: (context) => DoctorDetails(id)));
@@ -271,7 +264,6 @@ class _DoctorListState extends State<DoctorList> {
         ),
         margin: EdgeInsets.fromLTRB(16, 8, 16, 8),
       ),
-        )
     );
   }
 

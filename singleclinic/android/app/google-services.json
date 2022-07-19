@@ -23,6 +23,14 @@
           }
         },
         {
+          "client_id": "281525467646-h1ee5ddvbp199u7g69ig1hkodbv9eele.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.doctorclicnic.userapp",
+            "certificate_hash": "e583e9f12f74da9dbdcd551e175d172e45e83573"
+          }
+        },
+        {
           "client_id": "281525467646-qivjffj0p17gngfd7vcgcnbm9ldsskab.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {

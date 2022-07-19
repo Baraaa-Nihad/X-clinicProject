@@ -38,8 +38,7 @@ class _DepartmentScreenState extends State<DepartmentScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return
-      SafeArea(
+    return SafeArea(
       child: Scaffold(
         backgroundColor: LIGHT_GREY,
         appBar: AppBar(
@@ -53,9 +52,7 @@ class _DepartmentScreenState extends State<DepartmentScreen> {
   }
 
   header() {
-    return Directionality(
-        textDirection: TextDirection.rtl,
-        child :SafeArea(
+    return SafeArea(
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
@@ -63,18 +60,18 @@ class _DepartmentScreenState extends State<DepartmentScreen> {
             padding: const EdgeInsets.fromLTRB(15, 0, 15, 0),
             child: Row(
               children: [
-                // IconButton(
-                //   icon: Icon(
-                //     Icons.arrow_back_ios,
-                //     size: 18,
-                //     color: BLACK,
-                //   ),
-                //   constraints: BoxConstraints(maxWidth: 30, minWidth: 10),
-                //   padding: EdgeInsets.zero,
-                //   onPressed: () {
-                //     Navigator.pop(context);
-                //   },
-                // ),
+                IconButton(
+                  icon: Icon(
+                    Icons.arrow_back_ios,
+                    size: 18,
+                    color: BLACK,
+                  ),
+                  constraints: BoxConstraints(maxWidth: 30, minWidth: 10),
+                  padding: EdgeInsets.zero,
+                  onPressed: () {
+                    Navigator.pop(context);
+                  },
+                ),
                 SizedBox(
                   width: 10,
                 ),
@@ -87,7 +84,6 @@ class _DepartmentScreenState extends State<DepartmentScreen> {
           ),
         ],
       ),
-        ),
     );
   }
 
@@ -98,9 +94,7 @@ class _DepartmentScreenState extends State<DepartmentScreen> {
               strokeWidth: 2,
             ),
           )
-        : Directionality(
-        textDirection: TextDirection.rtl,
-        child :SingleChildScrollView(
+        : SingleChildScrollView(
             controller: scrollController,
             child: Column(
               children: [
@@ -217,7 +211,6 @@ class _DepartmentScreenState extends State<DepartmentScreen> {
                       )
               ],
             ),
-        ),
           );
   }
 

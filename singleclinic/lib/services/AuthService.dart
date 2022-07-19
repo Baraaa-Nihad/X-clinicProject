@@ -9,23 +9,20 @@ class AuthService {
     final res = await fb.logIn(permissions: [
       FacebookPermission.publicProfile,
       FacebookPermission.email,
+      FacebookPermission.userFriends,
     ]);
-
+ print(res.status);
     switch (res.status) {
       case FacebookLoginStatus.success:
         final FacebookAccessToken accessToken = res.accessToken;
         print('Access token: ${accessToken.token}');
-
         final profile = await fb.getUserProfile();
         print('Hello, ${profile.name}! You ID: ${profile.userId}');
         userDetails.putIfAbsent('name', () => profile.name.toString());
-
         final imageUrl = await fb.getProfileImageUrl(width: 100);
         print('Your profile image: $imageUrl');
         userDetails.putIfAbsent('image', () => imageUrl.toString());
-
         final email = await fb.getUserEmail();
-
         if (email != null) {
           print('And your email is $email');
           userDetails.putIfAbsent('email', () => email.toString());

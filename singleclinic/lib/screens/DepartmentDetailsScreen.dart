@@ -30,9 +30,7 @@ class _DepartmentDetailsScreenState extends State<DepartmentDetailsScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return Directionality(
-        textDirection: TextDirection.rtl,
-        child :SafeArea(
+    return SafeArea(
       child: Scaffold(
         body: departmentDetails == null
             ? Center(
@@ -246,7 +244,7 @@ class _DepartmentDetailsScreenState extends State<DepartmentDetailsScreen> {
                                 ),
                                 Center(
                                   child: Text(
-                                    "كل الأطباء",
+                                    "All Doctors",
                                     style: TextStyle(
                                         color: WHITE,
                                         fontWeight: FontWeight.w700,
@@ -263,7 +261,6 @@ class _DepartmentDetailsScreenState extends State<DepartmentDetailsScreen> {
                 ),
               ),
       ),
-        ),
     );
   }
 

@@ -88,9 +88,7 @@ class _BookAppointmentState extends State<BookAppointment> {
   }
 
   header() {
-    return
-      Directionality(
-        textDirection: TextDirection.rtl, child :SafeArea(
+    return SafeArea(
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
@@ -124,7 +122,6 @@ class _BookAppointmentState extends State<BookAppointment> {
           ),
         ],
       ),
-      ),
     );
   }
 
@@ -135,10 +132,7 @@ class _BookAppointmentState extends State<BookAppointment> {
               strokeWidth: 2,
             ),
           )
-        : Directionality(
-        textDirection: TextDirection.rtl,
-    child:
-    Column(
+        : Column(
             children: [
               Expanded(
                 child: SingleChildScrollView(
@@ -412,7 +406,6 @@ class _BookAppointmentState extends State<BookAppointment> {
               ),
               bottomButtons(),
             ],
-    ),
           );
   }
 
