@@ -56,7 +56,9 @@ class _DoctorsCategoryScreenState extends State<DoctorsCategoryScreen>
   }
 
   header() {
-    return SafeArea(
+    return Directionality(
+        textDirection: TextDirection.rtl,
+        child :SafeArea(
       child: Container(
         height: 80,
         child: Column(
@@ -90,12 +92,14 @@ class _DoctorsCategoryScreenState extends State<DoctorsCategoryScreen>
             ),
           ],
         ),
-      ),
+      ),)
     );
   }
 
   body() {
-    return SingleChildScrollView(
+    return Directionality(
+        textDirection: TextDirection.rtl,
+        child : SingleChildScrollView(
       controller: scrollController,
       child: Column(
         children: [
@@ -254,7 +258,7 @@ class _DoctorsCategoryScreenState extends State<DoctorsCategoryScreen>
                 )
               : Container()
         ],
-      ),
+      ),)
     );
   }
 

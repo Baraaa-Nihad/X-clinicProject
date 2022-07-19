@@ -70,7 +70,9 @@ class _DoctorDetailsState extends State<DoctorDetails> {
   }
 
   header() {
-    return SafeArea(
+    return Directionality(
+        textDirection: TextDirection.rtl,
+        child : SafeArea(
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
@@ -136,6 +138,7 @@ class _DoctorDetailsState extends State<DoctorDetails> {
           ),
         ],
       ),
+    )
     );
   }
 
@@ -158,7 +161,9 @@ class _DoctorDetailsState extends State<DoctorDetails> {
   }
 
   doctorProfileCard() {
-    return Container(
+    return Directionality(
+        textDirection: TextDirection.rtl,
+        child :Container(
       margin: EdgeInsets.all(16),
       padding: EdgeInsets.all(10),
       decoration: BoxDecoration(
@@ -357,6 +362,7 @@ class _DoctorDetailsState extends State<DoctorDetails> {
           ),
         ],
       ),
+        )
     );
   }
 

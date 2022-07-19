@@ -121,9 +121,9 @@ const String YOUR_SUBSCRIPTIONS_WILL_BE_DISPLAYED_HERE =
     "Your subscriptions will be displayed here";
 const String NO_APPOINTMENT_FOUND = "لا يوجد مواعيد";
 const String YOUR_UPCOMING_APPOINTMENTS_WILL_BE_DISPLAYED_HERE =
-    "ليس لديك أي موعد حتى الآن ؟ ابدأ بالتحدث مع الأطباء";
+    "ليس لديك أي موعد حتى الآن ؟ ابدأ بالحجز مع الأطباء";
 const String YOUR_PAST_APPOINTMENTS_WILL_BE_DISPLAYED_HERE =
-    "ليس لديك أي موعد حتى الآن ؟ ابدأ بالتحدث مع الأطباء";
+    "ليس لديك أي موعد حتى الآن ؟ ابدأ بالحجز مع الأطباء";
 const String NO_REVIEWS = "لا يوجد تقييمات";
 const String NO_CHATS = "لا يوجد محادثات";
 const String YOUR_CHATS_WILL_BE_DISPLAYED_HERE =

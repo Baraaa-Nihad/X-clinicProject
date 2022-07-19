@@ -21,7 +21,9 @@ class _AboutUsState extends State<AboutUs> {
 
   @override
   Widget build(BuildContext context) {
-    return SafeArea(
+    return Directionality(
+        textDirection: TextDirection.rtl,
+        child :SafeArea(
       child: Scaffold(
           backgroundColor: LIGHT_GREY_SCREEN_BG,
           body: SafeArea(
@@ -66,6 +68,7 @@ class _AboutUsState extends State<AboutUs> {
               ],
             ),
           )),
+    )
     );
   }
 

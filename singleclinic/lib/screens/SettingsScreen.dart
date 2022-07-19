@@ -65,7 +65,9 @@ class _SettingsScreenState extends State<SettingsScreen> {
   }
 
   header() {
-    return SafeArea(
+    return Directionality(
+        textDirection: TextDirection.rtl,
+        child : SafeArea(
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
@@ -84,6 +86,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
           ),
         ],
       ),
+        )
     );
   }
 
@@ -99,7 +102,9 @@ class _SettingsScreenState extends State<SettingsScreen> {
   }
 
   profileCard() {
-    return InkWell(
+    return Directionality(
+        textDirection: TextDirection.rtl,
+        child :InkWell(
       borderRadius: BorderRadius.circular(20),
       onTap: () {
         if (name == null) {
@@ -239,6 +244,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
           )
         ],
       ),
+    )
     );
   }
 
