@@ -128,7 +128,9 @@ class _HomeScreenState extends State<HomeScreen> with WidgetsBindingObserver {
   }
 
   header() {
-    return SafeArea(
+    return Directionality(
+        textDirection: TextDirection.rtl,
+        child : SafeArea(
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
@@ -161,11 +163,14 @@ class _HomeScreenState extends State<HomeScreen> with WidgetsBindingObserver {
           ),
         ],
       ),
+        )
     );
   }
 
   body() {
-    return SingleChildScrollView(
+    return Directionality(
+        textDirection: TextDirection.rtl,
+        child : SingleChildScrollView(
       controller: scrollController,
       child: Column(
         children: [
@@ -320,6 +325,7 @@ class _HomeScreenState extends State<HomeScreen> with WidgetsBindingObserver {
               : Container(),
         ],
       ),
+        )
     );
   }
 

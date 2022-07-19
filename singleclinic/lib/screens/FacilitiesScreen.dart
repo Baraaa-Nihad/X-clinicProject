@@ -26,7 +26,9 @@ class _FacilitiesScreenState extends State<FacilitiesScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return SafeArea(
+    return Directionality(
+        textDirection: TextDirection.rtl,
+        child : SafeArea(
       child: Scaffold(
         backgroundColor: LIGHT_GREY_SCREEN_BG,
         appBar: AppBar(
@@ -42,11 +44,14 @@ class _FacilitiesScreenState extends State<FacilitiesScreen> {
               )
             : body(),
       ),
+        )
     );
   }
 
   header() {
-    return SafeArea(
+    return Directionality(
+        textDirection: TextDirection.rtl,
+        child : SafeArea(
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
@@ -54,21 +59,21 @@ class _FacilitiesScreenState extends State<FacilitiesScreen> {
             padding: const EdgeInsets.fromLTRB(15, 0, 15, 0),
             child: Row(
               children: [
-                IconButton(
-                  icon: Icon(
-                    Icons.arrow_back_ios,
-                    size: 18,
-                    color: BLACK,
-                  ),
-                  constraints: BoxConstraints(maxWidth: 30, minWidth: 10),
-                  padding: EdgeInsets.zero,
-                  onPressed: () {
-                    Navigator.pop(context);
-                  },
-                ),
-                SizedBox(
-                  width: 10,
-                ),
+                // IconButton(
+                //   icon: Icon(
+                //     Icons.arrow_back_ios,
+                //     size: 18,
+                //     color: BLACK,
+                //   ),
+                //   constraints: BoxConstraints(maxWidth: 30, minWidth: 10),
+                //   padding: EdgeInsets.zero,
+                //   onPressed: () {
+                //     Navigator.pop(context);
+                //   },
+                // ),
+                // SizedBox(
+                //   width: 10,
+                // ),
                 Text(
                   FACILITIES,
                   style: TextStyle(fontSize: 22, fontWeight: FontWeight.w700),
@@ -78,11 +83,14 @@ class _FacilitiesScreenState extends State<FacilitiesScreen> {
           ),
         ],
       ),
+        )
     );
   }
 
   body() {
-    return StaggeredGridView.countBuilder(
+    return Directionality(
+        textDirection: TextDirection.rtl,
+        child : StaggeredGridView.countBuilder(
       crossAxisCount: 4,
       itemCount: list.length,
       padding: EdgeInsets.all(15),
@@ -162,7 +170,7 @@ class _FacilitiesScreenState extends State<FacilitiesScreen> {
       staggeredTileBuilder: (int index) => StaggeredTile.fit(2),
       mainAxisSpacing: 12.0,
       crossAxisSpacing: 12.0,
-    );
+    ));
   }
 
   fetchFacilitiesList() async {

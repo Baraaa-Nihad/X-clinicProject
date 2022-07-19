@@ -47,8 +47,10 @@ class _ChatListState extends State<ChatList> {
   }
 
   @override
-  Widget build(BuildContext context) {
-    return SafeArea(
+  Widget  build(BuildContext context) {
+    return  Directionality(
+        textDirection: TextDirection.rtl,
+        child : SafeArea(
       child: Scaffold(
           backgroundColor: LIGHT_GREY_SCREEN_BG,
           appBar: AppBar(
@@ -146,12 +148,14 @@ class _ChatListState extends State<ChatList> {
                       ),
               ),
             ],
-          )),
+          )),)
     );
   }
 
   header() {
-    return SafeArea(
+    return Directionality(
+        textDirection: TextDirection.rtl,
+        child : SafeArea(
       child: Container(
         height: 60,
         child: Column(
@@ -193,6 +197,7 @@ class _ChatListState extends State<ChatList> {
           ],
         ),
       ),
+        )
     );
   }
 

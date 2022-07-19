@@ -69,8 +69,10 @@ class _UpdateProfileScreenState extends State<UpdateProfileScreen> {
     );
   }
 
-  header() {
-    return SafeArea(
+  header()  {
+    return Directionality(
+      textDirection: TextDirection.rtl,
+      child : SafeArea(
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
@@ -105,11 +107,14 @@ class _UpdateProfileScreenState extends State<UpdateProfileScreen> {
           ),
         ],
       ),
+      )
     );
   }
 
   body() {
-    return Padding(
+    return Directionality(
+        textDirection: TextDirection.rtl,
+        child :  Padding(
       padding: const EdgeInsets.fromLTRB(20, 20, 20, 0),
       child: Column(
         children: [
@@ -460,11 +465,14 @@ class _UpdateProfileScreenState extends State<UpdateProfileScreen> {
           button(),
         ],
       ),
+        )
     );
   }
 
   button() {
-    return Row(
+    return Directionality(
+        textDirection: TextDirection.rtl,
+        child : Row(
       children: [
         Expanded(
           child: InkWell(
@@ -493,7 +501,7 @@ class _UpdateProfileScreenState extends State<UpdateProfileScreen> {
           ),
         )
       ],
-    );
+    ));
   }
 
   final picker = ImagePicker();
