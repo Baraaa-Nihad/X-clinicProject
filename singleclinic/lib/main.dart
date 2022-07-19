@@ -109,7 +109,9 @@ class _TabBarScreenState extends State<TabBarScreen>
 
   @override
   Widget build(BuildContext context) {
-    return SafeArea(
+    return  Directionality(
+        textDirection: TextDirection.rtl,
+        child : SafeArea(
       child: Scaffold(
         body: Stack(
           children: [
@@ -180,6 +182,7 @@ class _TabBarScreenState extends State<TabBarScreen>
           },
         ),
       ),
+        )
     );
   }
 }

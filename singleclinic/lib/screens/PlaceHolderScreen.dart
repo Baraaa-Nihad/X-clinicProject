@@ -11,7 +11,9 @@ class PlaceHolderScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
+    return Directionality(
+        textDirection: TextDirection.rtl,
+        child : Scaffold(
       backgroundColor: LIGHT_GREY_SCREEN_BG,
       body: Center(
         child: Column(
@@ -44,6 +46,7 @@ class PlaceHolderScreen extends StatelessWidget {
           ],
         ),
       ),
+    ),
     );
   }
 }
