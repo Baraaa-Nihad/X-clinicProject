@@ -40,6 +40,7 @@ void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
   notificationHelper.initialize();
+  
 
   await SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp]);
 
@@ -85,6 +86,7 @@ void main() async {
           fontFamily: "Avir",
         ),
       ),
+      // ignore: deprecated_member_use
       primaryColor: NAVY_BLUE, colorScheme: ColorScheme.fromSwatch().copyWith(secondary: LIME, primary: NAVY_BLUE, primaryVariant: NAVY_BLUE, secondaryVariant: LIME)
     ),
     localizationsDelegates: [

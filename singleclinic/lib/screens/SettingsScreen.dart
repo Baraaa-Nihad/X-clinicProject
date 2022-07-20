@@ -1,19 +1,13 @@
 import 'dart:io';
-
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:singleclinic/AllText.dart';
 import 'package:singleclinic/screens/AboutUs.dart';
-import 'package:singleclinic/screens/AppointmentScreen.dart';
 import 'package:singleclinic/screens/ContactUsScreen.dart';
-import 'package:singleclinic/screens/DepartmentScreen.dart';
-import 'package:singleclinic/screens/FacilitiesScreen.dart';
 import 'package:singleclinic/screens/GalleryScreen.dart';
 import 'package:singleclinic/screens/LoginScreen.dart';
-import 'package:singleclinic/screens/SubcriptionList.dart';
-import 'package:singleclinic/screens/SubscriptionPlansScreen.dart';
 import 'package:singleclinic/screens/TermAndConditions.dart';
 import 'package:singleclinic/screens/UpdateProfileScreen.dart';
 import '../main.dart';
