@@ -17,7 +17,8 @@ class _ForgetPasswordState extends State<ForgetPassword> {
 
   @override
   Widget build(BuildContext context) {
-    return SafeArea(
+    return   Directionality(
+        textDirection: TextDirection.rtl, child: SafeArea(
       child: Scaffold(
         appBar: AppBar(
           backgroundColor: WHITE,
@@ -26,6 +27,7 @@ class _ForgetPasswordState extends State<ForgetPassword> {
         ),
         body: body(),
       ),
+    )
     );
   }
 

@@ -56,7 +56,8 @@ class _DoctorDetailsState extends State<DoctorDetails> {
             ),
             color: WHITE,
           )
-        : SafeArea(
+        :  Directionality(
+        textDirection: TextDirection.rtl, child: SafeArea(
             child: Scaffold(
               backgroundColor: LIGHT_GREY_SCREEN_BG,
               appBar: AppBar(
@@ -66,6 +67,7 @@ class _DoctorDetailsState extends State<DoctorDetails> {
               ),
               body: body(),
             ),
+    )
           );
   }
 
@@ -375,14 +377,15 @@ class _DoctorDetailsState extends State<DoctorDetails> {
             shrinkWrap: true,
             physics: ClampingScrollPhysics(),
             gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                crossAxisCount: 2,
-                crossAxisSpacing: 10,
-                childAspectRatio: 3,
+                crossAxisCount: 3,
+                crossAxisSpacing: 5,
+                childAspectRatio: 2,
                 mainAxisSpacing: 5),
             itemCount: doctorDetail.data.timeTabledata.length,
             itemBuilder: (context, index) {
               return doctorDetail.data.timeTabledata[index].from != null
-                  ? Row(
+                  ?  Directionality(
+                  textDirection: TextDirection.rtl, child: Row(
                       children: [
                         Container(
                           height: 40,
@@ -417,7 +420,7 @@ class _DoctorDetailsState extends State<DoctorDetails> {
                             ),
                             Text(
                               doctorDetail.data.timeTabledata[index].from +
-                                  " to " +
+                                  " إلى : " +
                                   doctorDetail.data.timeTabledata[index].to,
                               style: TextStyle(
                                 color: LIGHT_GREY_TEXT,
@@ -427,7 +430,7 @@ class _DoctorDetailsState extends State<DoctorDetails> {
                           ],
                         )
                       ],
-                    )
+                    ))
                   : Container();
             },
           ),

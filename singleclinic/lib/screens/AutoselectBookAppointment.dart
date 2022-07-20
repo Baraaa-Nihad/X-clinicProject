@@ -80,7 +80,8 @@ class _AutoselectBookAppointmentState extends State<AutoselectBookAppointment> {
 
   @override
   Widget build(BuildContext context) {
-    return SafeArea(
+    return  Directionality(
+        textDirection: TextDirection.rtl, child: SafeArea(
       child: Scaffold(
         backgroundColor: LIGHT_GREY_SCREEN_BG,
         appBar: AppBar(
@@ -91,6 +92,7 @@ class _AutoselectBookAppointmentState extends State<AutoselectBookAppointment> {
         ),
         body: body(),
       ),
+    )
     );
   }
 
@@ -163,7 +165,7 @@ class _AutoselectBookAppointmentState extends State<AutoselectBookAppointment> {
                     child: TextField(
 
                       controller:
-                          TextEditingController(text:"Dr. "+ widget.doctorName ),
+                          TextEditingController(text: widget.doctorName ),
                       decoration: InputDecoration(
                           contentPadding: EdgeInsets.fromLTRB(0, 0, 0, 10),
                           isCollapsed: true),

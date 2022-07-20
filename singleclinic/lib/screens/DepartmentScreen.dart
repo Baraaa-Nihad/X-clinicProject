@@ -38,7 +38,8 @@ class _DepartmentScreenState extends State<DepartmentScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return SafeArea(
+    return   Directionality(
+        textDirection: TextDirection.rtl, child: SafeArea(
       child: Scaffold(
         backgroundColor: LIGHT_GREY,
         appBar: AppBar(
@@ -48,6 +49,7 @@ class _DepartmentScreenState extends State<DepartmentScreen> {
         ),
         body: body(),
       ),
+    )
     );
   }
 
@@ -60,18 +62,18 @@ class _DepartmentScreenState extends State<DepartmentScreen> {
             padding: const EdgeInsets.fromLTRB(15, 0, 15, 0),
             child: Row(
               children: [
-                IconButton(
-                  icon: Icon(
-                    Icons.arrow_back_ios,
-                    size: 18,
-                    color: BLACK,
-                  ),
-                  constraints: BoxConstraints(maxWidth: 30, minWidth: 10),
-                  padding: EdgeInsets.zero,
-                  onPressed: () {
-                    Navigator.pop(context);
-                  },
-                ),
+                // IconButton(
+                //   icon: Icon(
+                //     Icons.arrow_back_ios,
+                //     size: 18,
+                //     color: BLACK,
+                //   ),
+                //   constraints: BoxConstraints(maxWidth: 30, minWidth: 10),
+                //   padding: EdgeInsets.zero,
+                //   onPressed: () {
+                //     Navigator.pop(context);
+                //   },
+                // ),
                 SizedBox(
                   width: 10,
                 ),
@@ -130,7 +132,9 @@ class _DepartmentScreenState extends State<DepartmentScreen> {
                             ),
                             Expanded(
                               child: CachedNetworkImage(
-                                fit: BoxFit.cover,
+                                fit: BoxFit.fill,
+                                height: MediaQuery.of(context).size.height,
+                                width: MediaQuery.of(context).size.width,
                                 imageUrl:
                                     Uri.parse(list[index].image).toString(),
                                 progressIndicatorBuilder: (context, url,

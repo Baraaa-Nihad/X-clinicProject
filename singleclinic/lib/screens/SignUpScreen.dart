@@ -28,7 +28,8 @@ class _SignUpScreenState extends State<SignUpScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return SafeArea(
+    return   Directionality(
+        textDirection: TextDirection.rtl, child: SafeArea(
       child: Scaffold(
         backgroundColor: LIGHT_GREY_SCREEN_BG,
         appBar: AppBar(
@@ -37,7 +38,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
           elevation: 0,
         ),
         body: body(),
-      ),
+      ),)
     );
   }
 

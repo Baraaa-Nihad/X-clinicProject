@@ -93,18 +93,19 @@ class _FacilitiesScreenState extends State<FacilitiesScreen> {
         child : StaggeredGridView.countBuilder(
       crossAxisCount: 4,
       itemCount: list.length,
-      padding: EdgeInsets.all(15),
+      padding: EdgeInsets.all(10),
       itemBuilder: (BuildContext context, int index) => new Container(
         color: LIGHT_GREY,
-        height: index % 2 - 1 == 0 ? 120 : 220,
+        height: index % 2 - 1 == 0 ? 180: 200,
         child: Stack(
           children: [
             Align(
               alignment: Alignment.topCenter,
               child: CachedNetworkImage(
-                height: index % 2 - 1 == 0 ? 120 : 180,
-                width: 100,
-                fit: BoxFit.contain,
+
+                height: MediaQuery.of(context).size.height,
+                width: MediaQuery.of(context).size.width,
+                fit: BoxFit.fill,
                 imageUrl: index % 2 == 0 ? list[index].icon : list[index].icon,
                 progressIndicatorBuilder: (context, url, downloadProgress) =>
                     Container(

@@ -230,13 +230,13 @@ class _HomeScreenState extends State<HomeScreen> with WidgetsBindingObserver {
                           SizedBox(
                             height: 10,
                           ),
-                          Text(
-                            QUICKLY_CREATE_FILES,
-                            style: TextStyle(
-                              fontSize: 10,
-                              color: WHITE,
-                            ),
-                          ),
+                          // Text(
+                          //   QUICKLY_CREATE_FILES,
+                          //   style: TextStyle(
+                          //     fontSize: 10,
+                          //     color: WHITE,
+                          //   ),
+                          // ),
                           SizedBox(
                             height: 20,
                           ),
@@ -335,7 +335,9 @@ class _HomeScreenState extends State<HomeScreen> with WidgetsBindingObserver {
       String department,
       String aboutUs,
       int id}) {
-    return InkWell(
+    return  Directionality(
+        textDirection: TextDirection.rtl, child: SafeArea(
+        child: InkWell(
       onTap: () {
         Navigator.push(context,
             MaterialPageRoute(builder: (context) => DoctorDetails(id)));
@@ -428,6 +430,8 @@ class _HomeScreenState extends State<HomeScreen> with WidgetsBindingObserver {
         ),
         margin: EdgeInsets.fromLTRB(16, 6, 16, 6),
       ),
+    ),
+    )
     );
   }
 

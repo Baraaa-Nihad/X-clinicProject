@@ -69,7 +69,9 @@ class _DoctorListState extends State<DoctorList> {
   }
 
   header() {
-    return SafeArea(
+    return  Directionality(
+      textDirection: TextDirection.rtl, child:
+       SafeArea(
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
@@ -123,6 +125,7 @@ class _DoctorListState extends State<DoctorList> {
           ),
         ],
       ),
+       )
     );
   }
 
@@ -177,7 +180,8 @@ class _DoctorListState extends State<DoctorList> {
       String department,
       String aboutUs,
       int id}) {
-    return InkWell(
+    return  Directionality(
+        textDirection: TextDirection.rtl, child:InkWell(
       onTap: () {
         Navigator.push(context,
             MaterialPageRoute(builder: (context) => DoctorDetails(id)));
@@ -264,6 +268,7 @@ class _DoctorListState extends State<DoctorList> {
         ),
         margin: EdgeInsets.fromLTRB(16, 8, 16, 8),
       ),
+    )
     );
   }
 

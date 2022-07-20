@@ -21,7 +21,8 @@ class _TermAndConditionsState extends State<TermAndConditions> {
 
   @override
   Widget build(BuildContext context) {
-    return SafeArea(
+    return    Directionality(
+        textDirection: TextDirection.rtl, child: SafeArea(
       child: Scaffold(
           backgroundColor: LIGHT_GREY_SCREEN_BG,
           body: SafeArea(
@@ -66,6 +67,7 @@ class _TermAndConditionsState extends State<TermAndConditions> {
               ],
             ),
           )),
+    )
     );
   }
 

@@ -516,7 +516,7 @@ class _UpdateProfileScreenState extends State<UpdateProfileScreen> {
           path = File(pickedFile.path).path;
         });
       } else {
-        print('No image selected.');
+        print('لم يتم اختيار صورة');
       }
     });
   }

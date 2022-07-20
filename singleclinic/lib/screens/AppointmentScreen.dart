@@ -61,7 +61,8 @@ class _AppointmentScreenState extends State<AppointmentScreen>
 
   @override
   Widget build(BuildContext context) {
-    return SafeArea(
+    return  Directionality(
+        textDirection: TextDirection.rtl, child: SafeArea(
       child: Scaffold(
         backgroundColor: LIGHT_GREY_SCREEN_BG,
         appBar: AppBar(
@@ -161,11 +162,13 @@ class _AppointmentScreenState extends State<AppointmentScreen>
                 ],
               ),
       ),
+    )
     );
   }
 
   header() {
-    return SafeArea(
+    return  Directionality(
+        textDirection: TextDirection.rtl, child: SafeArea(
       child: Container(
         height: 80,
         child: Column(
@@ -190,13 +193,15 @@ class _AppointmentScreenState extends State<AppointmentScreen>
           ],
         ),
       ),
+    )
     );
   }
 
   upComingAppointmentDetails(int index) {
     return upcomingList.length == 0
         ? Container()
-        : Container(
+        :  Directionality(
+        textDirection: TextDirection.rtl, child: Container(
             padding: EdgeInsets.all(15),
             margin: EdgeInsets.fromLTRB(15, 15, 15, 2),
             decoration: BoxDecoration(
@@ -353,6 +358,7 @@ class _AppointmentScreenState extends State<AppointmentScreen>
                 ),
               ],
             ),
+    )
           );
   }
 

@@ -29,7 +29,8 @@ class _LoginScreenState extends State<LoginScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return SafeArea(
+    return   Directionality(
+        textDirection: TextDirection.rtl, child: SafeArea(
       child: Scaffold(
         backgroundColor: WHITE,
         appBar: AppBar(
@@ -40,6 +41,7 @@ class _LoginScreenState extends State<LoginScreen> {
         ),
         body: body(),
       ),
+    )
     );
   }
 

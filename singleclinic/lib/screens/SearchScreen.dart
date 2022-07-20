@@ -41,7 +41,8 @@ class _SearchScreenState extends State<SearchScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return SafeArea(
+    return  Directionality(
+        textDirection: TextDirection.rtl, child: SafeArea(
       child: Scaffold(
         backgroundColor: LIGHT_GREY_SCREEN_BG,
         appBar: AppBar(
@@ -122,11 +123,13 @@ class _SearchScreenState extends State<SearchScreen> {
                 ),
               ),
       ),
+    )
     );
   }
 
   header() {
-    return SafeArea(
+    return  Directionality(
+        textDirection: TextDirection.rtl, child: SafeArea(
       child: Container(
         height: 60,
         child: Column(
@@ -164,6 +167,7 @@ class _SearchScreenState extends State<SearchScreen> {
           ],
         ),
       ),
+    )
     );
   }
 

@@ -6,6 +6,8 @@ import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:singleclinic/screens/AppointmentScreen.dart';
 import 'package:singleclinic/screens/ChatList.dart';
+import 'package:singleclinic/screens/DepartmentScreen.dart';
+import 'package:singleclinic/screens/FacilitiesScreen.dart';
 import 'package:singleclinic/screens/HomeScreen.dart';
 import 'package:singleclinic/screens/SettingsScreen.dart';
 import 'dart:async';
@@ -118,7 +120,10 @@ class _TabBarScreenState extends State<TabBarScreen>
             HomeScreen(),
             currentTab > 0 ? ChatList() : Container(),
             currentTab > 1 ? AppointmentScreen() : Container(),
-            currentTab > 2 ? SettingsScreen() : Container(),
+            currentTab > 2 ? DepartmentScreen() : Container(),
+            currentTab > 3 ? FacilitiesScreen()  : Container(),
+            currentTab > 4 ? SettingsScreen()  : Container(),
+
           ],
         ),
         bottomNavigationBar: BottomNavigationBar(
@@ -159,9 +164,31 @@ class _TabBarScreenState extends State<TabBarScreen>
             BottomNavigationBarItem(
               icon: Image.asset(
                 currentTab == 3
+                    ? "assets/tabBar/de.png"
+                    : "assets/tabBar/de.png",
+                color: currentTab == 3 ? NAVY_BLUE : LIGHT_GREY_TEXT,
+                height: 23,
+                width: 23,
+              ),
+              label: "الأقسام",
+            ),
+            BottomNavigationBarItem(
+              icon: Image.asset(
+                currentTab == 4
+                    ? "assets/tabBar/tee.png"
+                    : "assets/tabBar/tee.png",
+                color: currentTab == 4 ? NAVY_BLUE : LIGHT_GREY_TEXT,
+                height: 23,
+                width: 23,
+              ),
+              label: "المنشورات",
+            ),
+            BottomNavigationBarItem(
+              icon: Image.asset(
+                currentTab == 5
                     ? "assets/tabBar/setting_active.png"
                     : "assets/tabBar/setting.png",
-                color: currentTab == 3 ? NAVY_BLUE : LIGHT_GREY_TEXT,
+                color: currentTab == 5? NAVY_BLUE : LIGHT_GREY_TEXT,
                 height: 23,
                 width: 23,
               ),
