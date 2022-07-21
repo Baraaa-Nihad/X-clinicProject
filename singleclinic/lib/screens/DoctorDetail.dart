@@ -56,19 +56,19 @@ class _DoctorDetailsState extends State<DoctorDetails> {
             ),
             color: WHITE,
           )
-        :  Directionality(
-        textDirection: TextDirection.rtl, child: SafeArea(
-            child: Scaffold(
-              backgroundColor: LIGHT_GREY_SCREEN_BG,
-              appBar: AppBar(
-                leading: Container(),
-                backgroundColor: WHITE,
-                flexibleSpace: header(),
+        : Directionality(
+            textDirection: TextDirection.rtl,
+            child: SafeArea(
+              child: Scaffold(
+                backgroundColor: LIGHT_GREY_SCREEN_BG,
+                appBar: AppBar(
+                  leading: Container(),
+                  backgroundColor: WHITE,
+                  flexibleSpace: header(),
+                ),
+                body: body(),
               ),
-              body: body(),
-            ),
-    )
-          );
+            ));
   }
 
   header() {
@@ -384,53 +384,54 @@ class _DoctorDetailsState extends State<DoctorDetails> {
             itemCount: doctorDetail.data.timeTabledata.length,
             itemBuilder: (context, index) {
               return doctorDetail.data.timeTabledata[index].from != null
-                  ?  Directionality(
-                  textDirection: TextDirection.rtl, child: Row(
-                      children: [
-                        Container(
-                          height: 40,
-                          width: 40,
-                          decoration: BoxDecoration(
-                            color: Colors.grey.shade300,
-                            borderRadius: BorderRadius.circular(5),
-                          ),
-                          child: Center(
-                            child: Image.asset(
-                                "assets/doctordetails/free-time.png"),
-                          ),
-                        ),
-                        SizedBox(
-                          width: 10,
-                        ),
-                        Column(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Text(
-                              weekDaysList[
-                                  doctorDetail.data.timeTabledata[index].day -
-                                      1],
-                              style: TextStyle(
-                                  color: NAVY_BLUE,
-                                  fontSize: 12,
-                                  fontWeight: FontWeight.w700),
+                  ? Directionality(
+                      textDirection: TextDirection.rtl,
+                      child: Row(
+                        children: [
+                          Container(
+                            height: 40,
+                            width: 35,
+                            decoration: BoxDecoration(
+                              color: Colors.grey.shade300,
+                              borderRadius: BorderRadius.circular(5),
                             ),
-                            SizedBox(
-                              height: 5,
+                            child: Center(
+                              child: Image.asset(
+                                  "assets/doctordetails/free-time.png"),
                             ),
-                            Text(
-                              doctorDetail.data.timeTabledata[index].from +
-                                  " إلى : " +
-                                  doctorDetail.data.timeTabledata[index].to,
-                              style: TextStyle(
-                                color: LIGHT_GREY_TEXT,
-                                fontSize: 9,
+                          ),
+                          SizedBox(
+                            width: 5,
+                          ),
+                          Column(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Text(
+                                weekDaysList[
+                                    doctorDetail.data.timeTabledata[index].day -
+                                        1],
+                                style: TextStyle(
+                                    color: NAVY_BLUE,
+                                    fontSize: 12,
+                                    fontWeight: FontWeight.w700),
                               ),
-                            ),
-                          ],
-                        )
-                      ],
-                    ))
+                              SizedBox(
+                                height: 5,
+                              ),
+                              Text(
+                                doctorDetail.data.timeTabledata[index].from +
+                                    " إلى " +
+                                    doctorDetail.data.timeTabledata[index].to,
+                                style: TextStyle(
+                                  color: LIGHT_GREY_TEXT,
+                                  fontSize: 9,
+                                ),
+                              ),
+                            ],
+                          )
+                        ],
+                      ))
                   : Container();
             },
           ),

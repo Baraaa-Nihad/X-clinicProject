@@ -38,19 +38,19 @@ class _DepartmentScreenState extends State<DepartmentScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return   Directionality(
-        textDirection: TextDirection.rtl, child: SafeArea(
-      child: Scaffold(
-        backgroundColor: LIGHT_GREY,
-        appBar: AppBar(
-          leading: Container(),
-          backgroundColor: WHITE,
-          flexibleSpace: header(),
-        ),
-        body: body(),
-      ),
-    )
-    );
+    return Directionality(
+        textDirection: TextDirection.rtl,
+        child: SafeArea(
+          child: Scaffold(
+            backgroundColor: LIGHT_GREY,
+            appBar: AppBar(
+              leading: Container(),
+              backgroundColor: WHITE,
+              flexibleSpace: header(),
+            ),
+            body: body(),
+          ),
+        ));
   }
 
   header() {
@@ -128,7 +128,7 @@ class _DepartmentScreenState extends State<DepartmentScreen> {
                         child: Column(
                           children: [
                             SizedBox(
-                              height: 10,
+                              height: 5,
                             ),
                             Expanded(
                               child: CachedNetworkImage(
@@ -150,7 +150,7 @@ class _DepartmentScreenState extends State<DepartmentScreen> {
                               ),
                             ),
                             SizedBox(
-                              height: 15,
+                              height: 8,
                             ),
                             Text(
                               list[index].name,
@@ -158,9 +158,11 @@ class _DepartmentScreenState extends State<DepartmentScreen> {
                                   color: NAVY_BLUE,
                                   fontSize: 12,
                                   fontWeight: FontWeight.w700),
+                              overflow: TextOverflow.ellipsis,
+                              maxLines: 1,
                             ),
                             SizedBox(
-                              height: 8,
+                              height: 5,
                             ),
                             Text(
                               list[index].description,
@@ -172,7 +174,7 @@ class _DepartmentScreenState extends State<DepartmentScreen> {
                               maxLines: 2,
                             ),
                             SizedBox(
-                              height: 15,
+                              height: 8,
                             ),
                             Row(
                               children: [

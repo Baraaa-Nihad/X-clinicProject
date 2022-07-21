@@ -89,7 +89,9 @@ class Data {
     if (json['time_tabledata'] != null) {
       timeTabledata = <TimeTabledata>[];
       json['time_tabledata'].forEach((v) {
+        if(v['from']!=null){
         timeTabledata.add(new TimeTabledata.fromJson(v));
+        }
       });
     }
   }
