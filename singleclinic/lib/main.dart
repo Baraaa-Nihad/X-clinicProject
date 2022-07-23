@@ -17,8 +17,8 @@ import 'notificationTesting/notificationHelper.dart';
 
 FirebaseMessaging firebaseMessaging = FirebaseMessaging.instance;
 //String SERVER_ADDRESS = "https://demo.freaktemplate.com/singleclinic";
- String SERVER_ADDRESS = "https://appx-a.com/X-clinic-Admin";
-MyNotificationHelper notificationHelper = MyNotificationHelper();
+ String SERVER_ADDRESS = "https://appx-p.co/X-clinic-Admin";
+  MyNotificationHelper notificationHelper = MyNotificationHelper();
  final String serverToken = "AAAAQYw5uf4:APA91bGhXd3YUn7SJrWIUJaXBskuWnbjWs1oGm0tcLFr3HJ79oqNGo-taJ8C1Av8jLfcTarCquzT5UJfhs5ubw8bnE3RihKeB8PRI7LbFW4WfE4ldq6V6csERjqTSNMr1dx0Nh1b_JbR";
 //final String serverToken = "AAAAO2Co7iU:APA91bHzp5j7Do_A_LAFUpwLzqNESEYUUC_At6nLZoB6yH1wmWFsfsvKjOplY9cYH-pJzpVfYTZl68oFkip9F-VlXqr4oB-NA9QuJ1ZMBLPLfXh_mn4taaQR7cXEtw1j2Ryqka2kAlqy";
 

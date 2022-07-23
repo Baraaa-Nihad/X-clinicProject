@@ -80,20 +80,20 @@ class _AutoselectBookAppointmentState extends State<AutoselectBookAppointment> {
 
   @override
   Widget build(BuildContext context) {
-    return  Directionality(
-        textDirection: TextDirection.rtl, child: SafeArea(
-      child: Scaffold(
-        backgroundColor: LIGHT_GREY_SCREEN_BG,
-        appBar: AppBar(
-          leading: Container(),
-          flexibleSpace: header(),
-          elevation: 0,
-          backgroundColor: WHITE,
-        ),
-        body: body(),
-      ),
-    )
-    );
+    return Directionality(
+        textDirection: TextDirection.rtl,
+        child: SafeArea(
+          child: Scaffold(
+            backgroundColor: LIGHT_GREY_SCREEN_BG,
+            appBar: AppBar(
+              leading: Container(),
+              flexibleSpace: header(),
+              elevation: 0,
+              backgroundColor: WHITE,
+            ),
+            body: body(),
+          ),
+        ));
   }
 
   header() {
@@ -161,11 +161,9 @@ class _AutoselectBookAppointmentState extends State<AutoselectBookAppointment> {
                     height: 25,
                   ),
                   IgnorePointer(
-
                     child: TextField(
-
                       controller:
-                          TextEditingController(text: widget.doctorName ),
+                          TextEditingController(text: widget.doctorName),
                       decoration: InputDecoration(
                           contentPadding: EdgeInsets.fromLTRB(0, 0, 0, 10),
                           isCollapsed: true),
@@ -195,9 +193,21 @@ class _AutoselectBookAppointmentState extends State<AutoselectBookAppointment> {
                             (index) {
                             return DropdownMenuItem(
                               value:
-                                  doctorsAndServices.data.services[index].name + index.toString(),
-                              child: Text(
-                                  doctorsAndServices.data.services[index].name),
+                                  doctorsAndServices.data.services[index].name +
+                                      index.toString(),
+                              child: Row(
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceBetween,
+                                children: [
+                                  
+                                  Text(
+                                    "${doctorsAndServices.data.services[index].expectedTime.toString()} دقيقة ",
+                                    textDirection: TextDirection.rtl,
+                                  ),
+                                  Text(doctorsAndServices
+                                      .data.services[index].name),
+                                ],
+                              ),
                               key: UniqueKey(),
                               onTap: () {
                                 setState(() {
@@ -213,9 +223,7 @@ class _AutoselectBookAppointmentState extends State<AutoselectBookAppointment> {
                         serviceValue = val.toString();
                       });
                     },
-
                   ),
-
                   SizedBox(
                     height: 50,
                   ),
@@ -292,7 +300,10 @@ class _AutoselectBookAppointmentState extends State<AutoselectBookAppointment> {
                   ),
                   Text(
                     "الأوقات المتاحة للحجز في هذا اليوم:",
-                    style: TextStyle(fontSize: 15, fontWeight: FontWeight.w600, color:Colors.green),
+                    style: TextStyle(
+                        fontSize: 15,
+                        fontWeight: FontWeight.w600,
+                        color: Colors.green),
                   ),
                   Divider(
                     color: Colors.green,
@@ -304,14 +315,10 @@ class _AutoselectBookAppointmentState extends State<AutoselectBookAppointment> {
                     TIME,
                     style: TextStyle(fontSize: 18, fontWeight: FontWeight.w700),
                   ),
-
-
                   InkWell(
                     onTap: () {
                       _selectTime(context);
                     },
-
-
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
@@ -338,14 +345,8 @@ class _AutoselectBookAppointmentState extends State<AutoselectBookAppointment> {
                     "مدة التأخير القصوى المتوقعة",
                     style: TextStyle(fontSize: 15, fontWeight: FontWeight.w700),
                   ),
-
-
                   InkWell(
-                    onTap: () {
-
-                    },
-
-
+                    onTap: () {},
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
@@ -353,13 +354,11 @@ class _AutoselectBookAppointmentState extends State<AutoselectBookAppointment> {
                           height: 5,
                         ),
                         TextField(
-
                           style: TextStyle(
                               fontSize: 15,
                               fontWeight: FontWeight.w500,
                               color: Colors.grey),
                         ),
-
                       ],
                     ),
                   ),
@@ -424,7 +423,10 @@ class _AutoselectBookAppointmentState extends State<AutoselectBookAppointment> {
                 child: Center(
                   child: Text(
                     ADD_APPOINTMENT,
-                    style: TextStyle(color: WHITE, fontWeight: FontWeight.w700, fontSize: 17),
+                    style: TextStyle(
+                        color: WHITE,
+                        fontWeight: FontWeight.w700,
+                        fontSize: 17),
                   ),
                 ),
               ),
@@ -478,7 +480,6 @@ class _AutoselectBookAppointmentState extends State<AutoselectBookAppointment> {
     if (picked != null) if ((DateTime.now().minute >= selectedTime.minute &&
         DateTime.now().hour >= selectedTime.hour &&
         DateTime.now().day == selectedDate.day)) {
-
       messageDialog('Alert', 'يجب أن يكون الوقت في المستقبل ');
     } else {
       setState(() {

@@ -32,11 +32,11 @@ class Data {
 
   Data(
       {this.id,
-        this.name,
-        this.description,
-        this.emergencyNo,
-        this.image,
-        this.service});
+      this.name,
+      this.description,
+      this.emergencyNo,
+      this.image,
+      this.service});
 
   Data.fromJson(Map<String, dynamic> json) {
     id = json['id'];
@@ -70,15 +70,17 @@ class Service {
   int id;
   String name;
   String price;
+  String expectedTime;
   String priceFor;
 
-  Service({this.id, this.name, this.price, this.priceFor});
+  Service({this.id, this.name, this.price, this.priceFor, this.expectedTime});
 
   Service.fromJson(Map<String, dynamic> json) {
     id = json['id'];
     name = json['name'];
     price = json['price'];
     priceFor = json['price_for'];
+    expectedTime = json['expected_time'];
   }
 
   Map<String, dynamic> toJson() {
@@ -87,6 +89,7 @@ class Service {
     data['name'] = this.name;
     data['price'] = this.price;
     data['price_for'] = this.priceFor;
+    
     return data;
   }
 }

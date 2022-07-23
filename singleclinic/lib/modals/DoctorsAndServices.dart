@@ -62,7 +62,7 @@ class Doctor {
   Doctor({this.userId, this.name});
 
   Doctor.fromJson(Map<String, dynamic> json) {
-    userId = json['user_id'];
+    userId = int.parse(json['user_id']);
     name = json['name'];
   }
 
@@ -77,18 +77,21 @@ class Doctor {
 class Services {
   int id;
   String name;
+  String expectedTime;
 
-  Services({this.id, this.name});
+  Services({this.id, this.name, this.expectedTime});
 
   Services.fromJson(Map<String, dynamic> json) {
     id = json['id'];
     name = json['name'];
+    expectedTime = json['expected_time'];
   }
 
   Map<String, dynamic> toJson() {
     final Map<String, dynamic> data = new Map<String, dynamic>();
     data['id'] = this.id;
     data['name'] = this.name;
+    data['expected_time'] = this.expectedTime;
     return data;
   }
 }

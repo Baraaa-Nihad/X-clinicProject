@@ -46,30 +46,30 @@ class Data {
 
   Data(
       {this.id,
-        this.userId,
-        this.departmentId,
-        this.name,
-        this.email,
-        this.password,
-        this.phoneNo,
-        this.workingHour,
-        this.aboutUs,
-        this.service,
-        this.image,
-        this.facebookId,
-        this.twitterId,
-        this.googleId,
-        this.instagramId,
-        this.createdAt,
-        this.updatedAt,
-        this.departmentName,
-        this.ratting,
-        this.timeTabledata});
+      this.userId,
+      this.departmentId,
+      this.name,
+      this.email,
+      this.password,
+      this.phoneNo,
+      this.workingHour,
+      this.aboutUs,
+      this.service,
+      this.image,
+      this.facebookId,
+      this.twitterId,
+      this.googleId,
+      this.instagramId,
+      this.createdAt,
+      this.updatedAt,
+      this.departmentName,
+      this.ratting,
+      this.timeTabledata});
 
   Data.fromJson(Map<String, dynamic> json) {
     id = json['id'];
-    userId = json['user_id'];
-    departmentId = json['department_id'];
+    userId = int.parse(json['user_id']);
+    departmentId = int.parse(json['department_id']);
     name = json['name'];
     email = json['email'];
     password = json['password'];
@@ -85,12 +85,13 @@ class Data {
     createdAt = json['created_at'];
     updatedAt = json['updated_at'];
     departmentName = json['department_name'];
-    ratting = double.parse(json['ratting'] == null ? "0" : json['ratting'].toString());
+    ratting = double.parse(
+        json['ratting'] == null ? "0" : json['ratting'].toString());
     if (json['time_tabledata'] != null) {
       timeTabledata = <TimeTabledata>[];
       json['time_tabledata'].forEach((v) {
-        if(v['from']!=null){
-        timeTabledata.add(new TimeTabledata.fromJson(v));
+        if (v['from'] != null) {
+          timeTabledata.add(new TimeTabledata.fromJson(v));
         }
       });
     }
@@ -136,17 +137,17 @@ class TimeTabledata {
 
   TimeTabledata(
       {this.id,
-        this.doctorId,
-        this.day,
-        this.from,
-        this.to,
-        this.createdAt,
-        this.updatedAt});
+      this.doctorId,
+      this.day,
+      this.from,
+      this.to,
+      this.createdAt,
+      this.updatedAt});
 
   TimeTabledata.fromJson(Map<String, dynamic> json) {
     id = json['id'];
-    doctorId = json['doctor_id'];
-    day = json['day'];
+    doctorId = int.parse(json['doctor_id']);
+    day = int.parse(json['day']);
     from = json['from'];
     to = json['to'];
     createdAt = json['created_at'];
