@@ -73,20 +73,20 @@ class _BookAppointmentState extends State<BookAppointment> {
 
   @override
   Widget build(BuildContext context) {
-    return  Directionality(
-        textDirection: TextDirection.rtl, child: SafeArea(
-      child: Scaffold(
-        backgroundColor: LIGHT_GREY_SCREEN_BG,
-        appBar: AppBar(
-          leading: Container(),
-          flexibleSpace: header(),
-          elevation: 0,
-          backgroundColor: WHITE,
-        ),
-        body: body(),
-      ),
-    )
-    );
+    return Directionality(
+        textDirection: TextDirection.rtl,
+        child: SafeArea(
+          child: Scaffold(
+            backgroundColor: LIGHT_GREY_SCREEN_BG,
+            appBar: AppBar(
+              leading: Container(),
+              flexibleSpace: header(),
+              elevation: 0,
+              backgroundColor: WHITE,
+            ),
+            body: body(),
+          ),
+        ));
   }
 
   header() {
@@ -244,7 +244,8 @@ class _BookAppointmentState extends State<BookAppointment> {
                                   (index) {
                                   return DropdownMenuItem(
                                     value: doctorsAndServices
-                                        .data.services[index].name + index.toString(),
+                                            .data.services[index].name +
+                                        index.toString(),
                                     child: Text(doctorsAndServices
                                         .data.services[index].name),
                                     key: UniqueKey(),
@@ -431,7 +432,10 @@ class _BookAppointmentState extends State<BookAppointment> {
                 child: Center(
                   child: Text(
                     ADD_APPOINTMENT,
-                    style: TextStyle(color: WHITE, fontWeight: FontWeight.w700, fontSize: 17),
+                    style: TextStyle(
+                        color: WHITE,
+                        fontWeight: FontWeight.w700,
+                        fontSize: 17),
                   ),
                 ),
               ),

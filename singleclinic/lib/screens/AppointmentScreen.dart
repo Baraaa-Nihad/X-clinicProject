@@ -346,7 +346,7 @@ class _AppointmentScreenState extends State<AppointmentScreen>
                   children: [
                     Expanded(
                       child: Text(
-                        upcomingList[index].messages,
+                        upcomingList[index].messages!=null?upcomingList[index].messages:"",
                         style: TextStyle(
                           fontSize: 11,
                         ),
@@ -483,7 +483,7 @@ class _AppointmentScreenState extends State<AppointmentScreen>
                             children: [
                               Expanded(
                                 child: Text(
-                                  pastList[index].serviceName,
+                                  pastList[index].serviceName!=null?pastList[index].serviceName:"",
                                   style: TextStyle(
                                       color: LIGHT_GREY_TEXT, fontSize: 10),
                                 ),
@@ -507,7 +507,7 @@ class _AppointmentScreenState extends State<AppointmentScreen>
                   children: [
                     Expanded(
                       child: Text(
-                        pastList[index].messages,
+                        pastList[index].messages!=null?pastList[index].messages:"-",
                         style: TextStyle(
                           fontSize: 11,
                         ),
@@ -523,6 +523,7 @@ class _AppointmentScreenState extends State<AppointmentScreen>
   }
 
   fetchUpcomingAppointments() async {
+     print("response.request.url");
     setState(() {
       upcomingList.clear();
       upcomingAppointments = null;
@@ -564,6 +565,7 @@ class _AppointmentScreenState extends State<AppointmentScreen>
   }
 
   fetchPastAppointments() async {
+     print("response.request.url");
     setState(() {
       pastList.clear();
       upcomingAppointments = null;

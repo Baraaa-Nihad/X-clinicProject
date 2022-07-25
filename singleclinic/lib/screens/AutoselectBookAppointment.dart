@@ -57,6 +57,7 @@ class _AutoselectBookAppointmentState extends State<AutoselectBookAppointment> {
   ];
 
   String message = "";
+  String max_delay_time = "";
 
   @override
   void initState() {
@@ -199,7 +200,6 @@ class _AutoselectBookAppointmentState extends State<AutoselectBookAppointment> {
                                 mainAxisAlignment:
                                     MainAxisAlignment.spaceBetween,
                                 children: [
-                                  
                                   Text(
                                     "${doctorsAndServices.data.services[index].expectedTime.toString()} دقيقة ",
                                     textDirection: TextDirection.rtl,
@@ -345,22 +345,27 @@ class _AutoselectBookAppointmentState extends State<AutoselectBookAppointment> {
                     "مدة التأخير القصوى المتوقعة",
                     style: TextStyle(fontSize: 15, fontWeight: FontWeight.w700),
                   ),
-                  InkWell(
-                    onTap: () {},
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        SizedBox(
-                          height: 5,
-                        ),
-                        TextField(
-                          style: TextStyle(
-                              fontSize: 15,
-                              fontWeight: FontWeight.w500,
-                              color: Colors.grey),
-                        ),
-                      ],
+                  TextField(
+                    style: TextStyle(color: Colors.grey, fontSize: 14),
+                    decoration: InputDecoration(
+                      border: UnderlineInputBorder(
+                        borderSide:
+                            BorderSide(color: Colors.grey.shade500, width: 0.5),
+                      ),
+                      focusedBorder: UnderlineInputBorder(
+                        borderSide:
+                            BorderSide(color: Colors.grey.shade500, width: 0.5),
+                      ),
+                      enabledBorder: UnderlineInputBorder(
+                        borderSide:
+                            BorderSide(color: Colors.grey.shade500, width: 0.5),
+                      ),
                     ),
+                    onChanged: (val) {
+                      setState(() {
+                        max_delay_time = val;
+                      });
+                    },
                   ),
                   SizedBox(
                     height: 15,
@@ -562,6 +567,7 @@ class _AutoselectBookAppointmentState extends State<AutoselectBookAppointment> {
         "time": _time,
         "user_id": userId.toString(),
         "messages": message,
+        "max_delay_time": max_delay_time
       });
 
       final jsonResponse = jsonDecode(response.body);

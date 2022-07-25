@@ -38,17 +38,17 @@ class Data {
 
   Data(
       {this.currentPage,
-        this.data,
-        this.firstPageUrl,
-        this.from,
-        this.lastPage,
-        this.lastPageUrl,
-        this.nextPageUrl,
-        this.path,
-        this.perPage,
-        this.prevPageUrl,
-        this.to,
-        this.total});
+      this.data,
+      this.firstPageUrl,
+      this.from,
+      this.lastPage,
+      this.lastPageUrl,
+      this.nextPageUrl,
+      this.path,
+      this.perPage,
+      this.prevPageUrl,
+      this.to,
+      this.total});
 
   Data.fromJson(Map<String, dynamic> json) {
     currentPage = json['current_page'];
@@ -108,23 +108,23 @@ class InnerData {
 
   InnerData(
       {this.userId,
-        this.departmentId,
-        this.id,
-        this.name,
-        this.date,
-        this.time,
-        this.phoneNo,
-        this.status,
-        this.doctorName,
-        this.messages,
-        this.serviceId,
-        this.departmentName,
-        this.image,
-        this.serviceName});
+      this.departmentId,
+      this.id,
+      this.name,
+      this.date,
+      this.time,
+      this.phoneNo,
+      this.status,
+      this.doctorName,
+      this.messages,
+      this.serviceId,
+      this.departmentName,
+      this.image,
+      this.serviceName});
 
   InnerData.fromJson(Map<String, dynamic> json) {
-    userId = json['user_id'];
-    departmentId = json['department_id'];
+    userId = int.parse(json['user_id']);
+    departmentId = int.parse(json['department_id']);
     id = json['id'];
     doctorName = json['doctor_name'];
     name = json['name'];
@@ -133,7 +133,7 @@ class InnerData {
     phoneNo = json['phone_no'];
     status = json['status'];
     messages = json['messages'];
-    serviceId = json['service_id'];
+    serviceId = int.parse(json['service_id']);
     departmentName = json['department_name'];
     image = json['image'];
     serviceName = json['service_name'];
