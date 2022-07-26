@@ -52,6 +52,7 @@ class _BookAppointmentState extends State<BookAppointment> {
   DepartmentsList departmentsList;
 
   String message = "";
+  String max_delay_time = "";
 
   @override
   void initState() {
@@ -369,6 +370,35 @@ class _BookAppointmentState extends State<BookAppointment> {
                             ],
                           ),
                         ),
+                         SizedBox(
+                          height: 15,
+                        ),
+                         Text(
+                    "مدة التأخير القصوى المتوقعة",
+                    style: TextStyle(fontSize: 15, fontWeight: FontWeight.w700),
+                  ),
+                  TextField(
+                    style: TextStyle(color: Colors.grey, fontSize: 14),
+                    decoration: InputDecoration(
+                      border: UnderlineInputBorder(
+                        borderSide:
+                            BorderSide(color: Colors.grey.shade500, width: 0.5),
+                      ),
+                      focusedBorder: UnderlineInputBorder(
+                        borderSide:
+                            BorderSide(color: Colors.grey.shade500, width: 0.5),
+                      ),
+                      enabledBorder: UnderlineInputBorder(
+                        borderSide:
+                            BorderSide(color: Colors.grey.shade500, width: 0.5),
+                      ),
+                    ),
+                    onChanged: (val) {
+                      setState(() {
+                        max_delay_time = val;
+                      });
+                    },
+                  ),
                         SizedBox(
                           height: 15,
                         ),
@@ -580,6 +610,7 @@ class _BookAppointmentState extends State<BookAppointment> {
         "time": _time,
         "user_id": userId.toString(),
         "messages": message,
+        "max_delay_time": max_delay_time
       });
 
       final jsonResponse = jsonDecode(response.body);

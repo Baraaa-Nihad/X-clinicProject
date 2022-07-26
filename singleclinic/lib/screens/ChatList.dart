@@ -27,6 +27,7 @@ class _ChatListState extends State<ChatList> {
 
   @override
   void initState() {
+    loadChatList();
     super.initState();
     SharedPreferences.getInstance().then((value) {
       setState(() {

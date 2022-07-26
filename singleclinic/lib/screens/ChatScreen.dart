@@ -117,8 +117,6 @@ class _ChatScreenState extends State<ChatScreen> with WidgetsBindingObserver{
 
   @override
   void initState() {
-
-    super.initState();
     WidgetsBinding.instance.addObserver(this);
     getCurrentTime();
     loadUserProfile();
@@ -161,7 +159,7 @@ class _ChatScreenState extends State<ChatScreen> with WidgetsBindingObserver{
       print('exception: $ex');
       print('stacktrace: $stacktrace');
     });
-
+super.initState();
   }
 
   getCurrentTime() async{
@@ -241,7 +239,6 @@ class _ChatScreenState extends State<ChatScreen> with WidgetsBindingObserver{
     dbRef.once().then((value) async {
       print("got ref");
       timeNow = value.value;
-      print("hhhh sendMessage " + timeNow);
 
       CollectionReference collectionReference = FirebaseFirestore.instance
           .collection("Chats")
