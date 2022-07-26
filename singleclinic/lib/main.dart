@@ -24,7 +24,7 @@ FirebaseMessaging firebaseMessaging = FirebaseMessaging.instance;
 
 const String TOKENIZATION_KEY = 'sandbox_v2fzhc6d_qpj7hhj994nbzy5q';
 const String CURRENCY_CODE = 'USD';
-const String DISPLAY_NAME = 'Example Company';
+const String DISPLAY_NAME = 'X-Clinic';
 
 Color LIME = Color(0xFF094D55);
 // Color LIME = Color.fromRGBO(231, 208, 69, 1);
