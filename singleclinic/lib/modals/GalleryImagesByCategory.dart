@@ -101,7 +101,7 @@ class InnerData {
 
   InnerData.fromJson(Map<String, dynamic> json) {
     id = json['id'];
-    albumId = json['album_id'];
+    albumId = int.parse(json['album_id']);
     image = json['image'];
     createdAt = json['created_at'];
     updatedAt = json['updated_at'];

@@ -442,8 +442,8 @@ class _ChatListState extends State<ChatList> {
                               ),
                             ),
                             Text(
-                              messageTiming(
-                                  DateTime.parse(time).toLocal() ?? "-"),
+                             time!=null? messageTiming(
+                                  DateTime.parse(time).toLocal() ?? "-"):"-",
                               style: TextStyle(
                                   fontSize: 12,
                                   color: isNewMessage
@@ -467,7 +467,7 @@ class _ChatListState extends State<ChatList> {
   }
 
   loadChatList() async {
-    ds = FirebaseDatabase.instance
+    ds =await FirebaseDatabase.instance
         .reference()
         .child(uid.toString())
         .onValue
@@ -477,7 +477,7 @@ class _ChatListState extends State<ChatList> {
         chatListDetailsPA.clear();
         print("testing : " + "data retrievd from firebase");
       });
-      try {
+      try { 
         Map<dynamic, dynamic>.from(event.snapshot.value['chatlist'])
             .forEach((key, values) {
           setState(() {

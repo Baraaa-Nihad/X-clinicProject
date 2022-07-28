@@ -1,5 +1,4 @@
 import 'dart:convert';
-
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart';
@@ -540,7 +539,7 @@ class _AppointmentScreenState extends State<AppointmentScreen>
       setState(() {
         upcomingAppointments = UpcomingAppointments.fromJson(jsonResponse);
         upcomingNextUrl = upcomingAppointments.data.nextPageUrl;
-        upcomingList.addAll(upcomingAppointments.data.data);
+        upcomingList.addAll(upcomingAppointments.data.data.reversed);
       });
     }
   }
@@ -579,7 +578,7 @@ class _AppointmentScreenState extends State<AppointmentScreen>
       setState(() {
         upcomingAppointments = UpcomingAppointments.fromJson(jsonResponse);
         pastNextUrl = upcomingAppointments.data.nextPageUrl;
-        pastList.addAll(upcomingAppointments.data.data);
+        pastList.addAll(upcomingAppointments.data.data.reversed);
         print(pastList.toString());
       });
     }
