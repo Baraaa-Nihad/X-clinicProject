@@ -603,6 +603,9 @@ class _BookAppointmentState extends State<BookAppointment> {
           await post(Uri.parse("$SERVER_ADDRESS/api/bookappointment"), body: {
         "department_id": departmentId.toString(),
         "service_id": serviceId.toString(),
+
+
+        
         "doctor_id": doctorId.toString(),
         "name": nameController.text,
         "phone_no": phoneController.text,

@@ -228,7 +228,7 @@ class _GalleryScreenState extends State<GalleryScreen>
     final response =
         await get(Uri.parse("$SERVER_ADDRESS/api/listofgallerycategory"));
     final jsonResponse = jsonDecode(response.body);
-
+    print(jsonResponse);
     if (response.statusCode == 200 && jsonResponse['status'] == 1) {
       setState(() {
         galleryCategory = GalleryCategory.fromJson(jsonResponse);
@@ -238,7 +238,8 @@ class _GalleryScreenState extends State<GalleryScreen>
             vsync: this);
         tabController.addListener(() {
           if (!tabController.indexIsChanging) {
-            fetchGalleryImagesByCategory(tabController.index);
+            fetchGalleryImagesByCategory(
+                galleryCategory.data.data[tabController.index-1].id);
           }
         });
       });
@@ -254,7 +255,8 @@ class _GalleryScreenState extends State<GalleryScreen>
     final response = await get(Uri.parse(
         "$SERVER_ADDRESS/api/listofimagebycategoryid?album_id=$category"));
     final jsonResponse = jsonDecode(response.body);
-
+    print(jsonResponse);
+    list = [];
     if (response.statusCode == 200 && jsonResponse['status'] == 1) {
       setState(() {
         galleryImagesByCategory =

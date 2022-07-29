@@ -483,7 +483,7 @@ class _HomeScreenState extends State<HomeScreen> with WidgetsBindingObserver {
     print("\n\nLifecycle state $state");
 
     if (state == AppLifecycleState.resumed) {
-      updateUserPresence();
+     await updateUserPresence();
     } else {
       if (timer != null) {
         timer.cancel();
