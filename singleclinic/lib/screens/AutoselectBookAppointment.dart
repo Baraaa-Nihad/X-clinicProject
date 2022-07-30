@@ -348,6 +348,7 @@ class _AutoselectBookAppointmentState extends State<AutoselectBookAppointment> {
                   TextField(
                     style: TextStyle(color: Colors.grey, fontSize: 14),
                     decoration: InputDecoration(
+                      hintText: " يجب ان لا تزيد عن 20 دقيقة",
                       border: UnderlineInputBorder(
                         borderSide:
                             BorderSide(color: Colors.grey.shade500, width: 0.5),
@@ -525,8 +526,11 @@ class _AutoselectBookAppointmentState extends State<AutoselectBookAppointment> {
   }
 
   bookAppointment() async {
-    if (serviceId == null || _time == "اختر الوقت") {
+    if (serviceId == null || _time == "اختر الوقت"|| max_delay_time=="") {
       messageDialog("Error", ENTER_ALL_FIELDS_TO_MAKE_APPOINTMENT);
+    } else if (int.parse(max_delay_time) > 20 ||
+        int.parse(max_delay_time) < 0) {
+      messageDialog("Error", "مدة التأخير القصوى يجب ان لا تتجاوز 20 دقيقة");
     } else {
       dialog();
 

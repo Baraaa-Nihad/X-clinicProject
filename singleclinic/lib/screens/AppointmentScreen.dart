@@ -60,305 +60,333 @@ class _AppointmentScreenState extends State<AppointmentScreen>
 
   @override
   Widget build(BuildContext context) {
-    return  Directionality(
-        textDirection: TextDirection.rtl, child: SafeArea(
-      child: Scaffold(
-        backgroundColor: LIGHT_GREY_SCREEN_BG,
-        appBar: AppBar(
-          leading: Container(),
-          flexibleSpace: header(),
-          backgroundColor: WHITE,
-          bottom: TabBar(
-            controller: tabController,
-            tabs: [
-              Text(UPCOMING),
-              Text(PAST),
-            ],
-            labelPadding: EdgeInsets.fromLTRB(20, 10, 20, 10),
-            labelColor: NAVY_BLUE,
-            labelStyle: TextStyle(
-              fontSize: 11,
-            ),
-            indicatorSize: TabBarIndicatorSize.tab,
-            indicatorWeight: 3,
-            indicatorColor: LIME,
-            indicatorPadding: EdgeInsets.fromLTRB(10, 0, 10, 0),
-            unselectedLabelColor: LIGHT_GREY_TEXT,
-          ),
-        ),
-        body: upcomingAppointments == null
-            ? Center(
-                child: CircularProgressIndicator(
-                  strokeWidth: 2,
-                ),
-              )
-            : TabBarView(
+    return Directionality(
+        textDirection: TextDirection.rtl,
+        child: SafeArea(
+          child: Scaffold(
+            backgroundColor: LIGHT_GREY_SCREEN_BG,
+            appBar: AppBar(
+              leading: Container(),
+              flexibleSpace: header(),
+              backgroundColor: WHITE,
+              bottom: TabBar(
                 controller: tabController,
-                children: [
-                  upcomingList.isEmpty
-                      ? Padding(
-                          padding: const EdgeInsets.all(32.0),
-                          child: PlaceHolderScreen(
-                            iconPath:
-                                "assets/placeholders/appointment_holder.png",
-                            message: NO_APPOINTMENT_FOUND,
-                            description:
-                                YOUR_UPCOMING_APPOINTMENTS_WILL_BE_DISPLAYED_HERE,
-                          ),
-                        )
-                      : SingleChildScrollView(
-                          controller: scrollController,
-                          child: Column(
-                            children: [
-                              ListView.builder(
+                tabs: [
+                  Text(UPCOMING),
+                  Text(PAST),
+                ],
+                labelPadding: EdgeInsets.fromLTRB(20, 10, 20, 10),
+                labelColor: NAVY_BLUE,
+                labelStyle: TextStyle(
+                  fontSize: 11,
+                ),
+                indicatorSize: TabBarIndicatorSize.tab,
+                indicatorWeight: 3,
+                indicatorColor: LIME,
+                indicatorPadding: EdgeInsets.fromLTRB(10, 0, 10, 0),
+                unselectedLabelColor: LIGHT_GREY_TEXT,
+              ),
+            ),
+            body: upcomingAppointments == null
+                ? Center(
+                    child: CircularProgressIndicator(
+                      strokeWidth: 2,
+                    ),
+                  )
+                : TabBarView(
+                    controller: tabController,
+                    children: [
+                      upcomingList.isEmpty
+                          ? Padding(
+                              padding: const EdgeInsets.all(32.0),
+                              child: PlaceHolderScreen(
+                                iconPath:
+                                    "assets/placeholders/appointment_holder.png",
+                                message: NO_APPOINTMENT_FOUND,
+                                description:
+                                    YOUR_UPCOMING_APPOINTMENTS_WILL_BE_DISPLAYED_HERE,
+                              ),
+                            )
+                          : SingleChildScrollView(
+                              controller: scrollController,
+                              child: Column(
+                                children: [
+                                  ListView.builder(
+                                    shrinkWrap: true,
+                                    physics: ClampingScrollPhysics(),
+                                    itemCount: upcomingList == null
+                                        ? 0
+                                        : upcomingList.length,
+                                    itemBuilder: (context, index) {
+                                      return upComingAppointmentDetails(index);
+                                    },
+                                  ),
+                                  upcomingNextUrl != "null"
+                                      ? Padding(
+                                          padding: const EdgeInsets.all(20.0),
+                                          child: CircularProgressIndicator(
+                                            strokeWidth: 2,
+                                          ),
+                                        )
+                                      : Container(),
+                                  SizedBox(
+                                    height: 20,
+                                  ),
+                                ],
+                              ),
+                            ),
+                      pastList.isEmpty
+                          ? Padding(
+                              padding: const EdgeInsets.all(32.0),
+                              child: PlaceHolderScreen(
+                                iconPath:
+                                    "assets/placeholders/appointment_holder.png",
+                                message: NO_APPOINTMENT_FOUND,
+                                description:
+                                    YOUR_PAST_APPOINTMENTS_WILL_BE_DISPLAYED_HERE,
+                              ),
+                            )
+                          : SingleChildScrollView(
+                              controller: scrollController2,
+                              child: ListView.builder(
                                 shrinkWrap: true,
                                 physics: ClampingScrollPhysics(),
-                                itemCount: upcomingList == null
-                                    ? 0
-                                    : upcomingList.length,
+                                itemCount:
+                                    pastList == null ? 0 : pastList.length,
                                 itemBuilder: (context, index) {
-                                  return upComingAppointmentDetails(index);
+                                  return pastList == null
+                                      ? Container()
+                                      : pastAppointmentDetails(index);
                                 },
                               ),
-                              upcomingNextUrl != "null"
-                                  ? Padding(
-                                      padding: const EdgeInsets.all(20.0),
-                                      child: CircularProgressIndicator(
-                                        strokeWidth: 2,
-                                      ),
-                                    )
-                                  : Container(),
-                              SizedBox(
-                                height: 20,
-                              ),
-                            ],
-                          ),
-                        ),
-                  pastList.isEmpty
-                      ? Padding(
-                          padding: const EdgeInsets.all(32.0),
-                          child: PlaceHolderScreen(
-                            iconPath:
-                                "assets/placeholders/appointment_holder.png",
-                            message: NO_APPOINTMENT_FOUND,
-                            description:
-                                YOUR_PAST_APPOINTMENTS_WILL_BE_DISPLAYED_HERE,
-                          ),
-                        )
-                      : SingleChildScrollView(
-                          controller: scrollController2,
-                          child: ListView.builder(
-                            shrinkWrap: true,
-                            physics: ClampingScrollPhysics(),
-                            itemCount: pastList == null ? 0 : pastList.length,
-                            itemBuilder: (context, index) {
-                              return pastList == null
-                                  ? Container()
-                                  : pastAppointmentDetails(index);
-                            },
-                          ),
-                        ),
-                ],
-              ),
-      ),
-    )
-    );
+                            ),
+                    ],
+                  ),
+          ),
+        ));
   }
 
   header() {
-    return  Directionality(
-        textDirection: TextDirection.rtl, child: SafeArea(
-      child: Container(
-        height: 80,
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Padding(
-              padding: const EdgeInsets.fromLTRB(15, 0, 15, 0),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Text(
-                    MY_APPOINTMENT,
-                    style: TextStyle(fontSize: 22, fontWeight: FontWeight.w700),
+    return Directionality(
+        textDirection: TextDirection.rtl,
+        child: SafeArea(
+          child: Container(
+            height: 80,
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Padding(
+                  padding: const EdgeInsets.fromLTRB(15, 0, 15, 0),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Text(
+                        MY_APPOINTMENT,
+                        style: TextStyle(
+                            fontSize: 22, fontWeight: FontWeight.w700),
+                      ),
+                    ],
                   ),
-                ],
-              ),
+                ),
+                Divider(
+                  color: LIGHT_GREY_TEXT,
+                  thickness: 0.2,
+                )
+              ],
             ),
-            Divider(
-              color: LIGHT_GREY_TEXT,
-              thickness: 0.2,
-            )
-          ],
-        ),
-      ),
-    )
-    );
+          ),
+        ));
   }
 
   upComingAppointmentDetails(int index) {
     return upcomingList.length == 0
         ? Container()
-        :  Directionality(
-        textDirection: TextDirection.rtl, child: Container(
-            padding: EdgeInsets.all(15),
-            margin: EdgeInsets.fromLTRB(15, 15, 15, 2),
-            decoration: BoxDecoration(
-              color: LIGHT_GREY,
-              borderRadius: BorderRadius.circular(10),
-            ),
-            child: Column(
-              mainAxisSize: MainAxisSize.min,
-              children: [
-                Row(
-                  children: [
-                    ClipRRect(
-                      borderRadius: BorderRadius.circular(30),
-                      child: CachedNetworkImage(
-                        height: 60,
-                        width: 60,
-                        fit: BoxFit.cover,
-                        imageUrl: upcomingList[index].image,
-                        progressIndicatorBuilder:
-                            (context, url, downloadProgress) => Container(
-                                height: 75,
-                                width: 75,
-                                child: Center(
-                                    child: Icon(
-                                  Icons.account_circle,
-                                  size: 35,
-                                ))),
-                        errorWidget: (context, url, error) => Container(
-                          height: 75,
-                          width: 75,
-                          child: Center(
-                            child: Icon(
-                              Icons.account_circle,
-                              size: 60,
-                              color: LIGHT_GREY_TEXT,
+        : Directionality(
+            textDirection: TextDirection.rtl,
+            child: Container(
+              padding: EdgeInsets.all(15),
+              margin: EdgeInsets.fromLTRB(15, 15, 15, 2),
+              decoration: BoxDecoration(
+                color: LIGHT_GREY,
+                borderRadius: BorderRadius.circular(10),
+              ),
+              child: Column(
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Text(
+                                  upcomingList[index].doctorName,
+                                  style: TextStyle(
+                                      fontSize: 16,
+                                      fontWeight: FontWeight.w800),
+                                ),
+                                Container(
+                                  height: 15,
+                                  width: 50,
+                                  decoration: BoxDecoration(
+                                    color: LIME,
+                                    borderRadius: BorderRadius.circular(5),
+                                  ),
+                                  child: Center(
+                                    child: Text(
+                                      upcomingList[index].status,
+                                      style: TextStyle(
+                                          color: WHITE,
+                                          fontSize: 8,
+                                          fontWeight: FontWeight.w700),
+                                    ),
+                                  ),
+                                )
+                              ],
+                            ),
+                  Row(
+                    children: [
+                      ClipRRect(
+                        borderRadius: BorderRadius.circular(30),
+                        child: CachedNetworkImage(
+                          height: 60,
+                          width: 60,
+                          fit: BoxFit.cover,
+                          imageUrl: upcomingList[index].image,
+                          progressIndicatorBuilder:
+                              (context, url, downloadProgress) => Container(
+                                  height: 75,
+                                  width: 75,
+                                  child: Center(
+                                      child: Icon(
+                                    Icons.account_circle,
+                                    size: 35,
+                                  ))),
+                          errorWidget: (context, url, error) => Container(
+                            height: 75,
+                            width: 75,
+                            child: Center(
+                              child: Icon(
+                                Icons.account_circle,
+                                size: 60,
+                                color: LIGHT_GREY_TEXT,
+                              ),
                             ),
                           ),
                         ),
                       ),
-                    ),
-                    SizedBox(
-                      width: 10,
-                    ),
-                    Expanded(
-                      child: Column(
-                        mainAxisSize: MainAxisSize.min,
-                        children: [
-                          Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              Text(
-                                upcomingList[index].doctorName,
-                                style: TextStyle(
-                                    fontSize: 16, fontWeight: FontWeight.w800),
-                              ),
-                              Container(
-                                height: 15,
-                                width: 50,
-                                decoration: BoxDecoration(
-                                  color: LIME,
-                                  borderRadius: BorderRadius.circular(5),
+                      SizedBox(
+                        width: 10,
+                      ),
+                      Expanded(
+                        child: Column(
+                          mainAxisSize: MainAxisSize.min,
+                          children: [
+                            
+                            SizedBox(
+                              height: 10,
+                            ),
+                            Row(
+                              children: [
+                                Image.asset(
+                                  "assets/subscriptionList/calender.png",
+                                  height: 15,
+                                  width: 15,
+                                  fit: BoxFit.fill,
                                 ),
-                                child: Center(
-                                  child: Text(
-                                    upcomingList[index].status,
-                                    style: TextStyle(
-                                        color: WHITE,
-                                        fontSize: 8,
-                                        fontWeight: FontWeight.w700),
+                                SizedBox(
+                                  width: 5,
+                                ),
+                                Text(
+                                  upcomingList[index].date,
+                                  style:
+                                      TextStyle(color: NAVY_BLUE, fontSize: 10),
+                                ),
+                                SizedBox(
+                                  width: 10,
+                                ),
+                                Image.asset(
+                                  "assets/subscriptionList/clock.png",
+                                  height: 15,
+                                  width: 15,
+                                  fit: BoxFit.fill,
+                                ),
+                                SizedBox(
+                                  width: 5,
+                                ),
+                                Text(
+                                  upcomingList[index].time,
+                                  style:
+                                      TextStyle(color: NAVY_BLUE, fontSize: 10),
+                                ),
+                              ],
+                            ),
+                            SizedBox(
+                              height: 5,
+                            ),
+                            Row(
+                              children: [
+                                Expanded(
+                               child: Column(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: [
+                                    Text(
+                                      pastList[index].serviceName != null
+                                          ? pastList[index].serviceName
+                                          : "",
+                                      style: TextStyle(
+                                          color: LIGHT_GREY_TEXT, fontSize: 10),
+                                    ),
+                                    Text(
+                                      pastList[index].departmentName,
+                                      style: TextStyle(
+                                          color: LIGHT_GREY_TEXT, fontSize: 10),
+                                    ),
+                                  ],
+                                ),
+                              ),
+                              TextButton(
+                                onPressed: () async {
+                                  messageDialog(
+                                      "تحذير", "هل انت متأكد من حذف الموعد ؟");
+                                },
+                                style: TextButton.styleFrom(
+                                    backgroundColor: Colors.red[900]),
+                                child: Text(
+                                  "حذف ",
+                                  style: TextStyle(
+                                    fontWeight: FontWeight.w500,
+                                    color: WHITE,
                                   ),
                                 ),
-                              )
-                            ],
-                          ),
-                          SizedBox(
-                            height: 10,
-                          ),
-                          Row(
-                            children: [
-                              Image.asset(
-                                "assets/subscriptionList/calender.png",
-                                height: 15,
-                                width: 15,
-                                fit: BoxFit.fill,
-                              ),
-                              SizedBox(
-                                width: 5,
-                              ),
-                              Text(
-                                upcomingList[index].date,
-                                style:
-                                    TextStyle(color: NAVY_BLUE, fontSize: 10),
-                              ),
-                              SizedBox(
-                                width: 10,
-                              ),
-                              Image.asset(
-                                "assets/subscriptionList/clock.png",
-                                height: 15,
-                                width: 15,
-                                fit: BoxFit.fill,
-                              ),
-                              SizedBox(
-                                width: 5,
-                              ),
-                              Text(
-                                upcomingList[index].time,
-                                style:
-                                    TextStyle(color: NAVY_BLUE, fontSize: 10),
-                              ),
-                            ],
-                          ),
-                          SizedBox(
-                            height: 5,
-                          ),
-                          Row(
-                            children: [
-                              Expanded(
-                                child: Text(
-                                  upcomingList[index].serviceName,
-                                  style: TextStyle(
-                                      color: LIGHT_GREY_TEXT, fontSize: 10),
-                                ),
-                              ),
-                              Text(
-                                upcomingList[index].departmentName,
-                                style: TextStyle(
-                                    color: LIGHT_GREY_TEXT, fontSize: 10),
                               ),
                             ],
                           ),
                         ],
                       ),
-                    ),
-                  ],
-                ),
-                SizedBox(
-                  height: 8,
-                ),
-                Row(
-                  children: [
-                    Expanded(
-                      child: Text(
-                        upcomingList[index].messages!=null?upcomingList[index].messages:"",
-                        style: TextStyle(
-                          fontSize: 11,
-                        ),
-                        maxLines: 2,
-                        overflow: TextOverflow.ellipsis,
                       ),
-                    ),
-                  ],
-                ),
-              ],
-            ),
-    )
-          );
+                    ],
+                  ),
+                  SizedBox(
+                    height: 8,
+                  ),
+                  Row(
+                    children: [
+                      Expanded(
+                        child: Text(
+                          upcomingList[index].messages != null
+                              ? upcomingList[index].messages
+                              : "",
+                          style: TextStyle(
+                            fontSize: 11,
+                          ),
+                          maxLines: 2,
+                          overflow: TextOverflow.ellipsis,
+                        ),
+                      ),
+                    ],
+                  ),
+                ],
+              ),
+            ));
   }
 
   pastAppointmentDetails(int index) {
@@ -372,8 +400,34 @@ class _AppointmentScreenState extends State<AppointmentScreen>
               borderRadius: BorderRadius.circular(10),
             ),
             child: Column(
+               crossAxisAlignment: CrossAxisAlignment.start,
               mainAxisSize: MainAxisSize.min,
               children: [
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      pastList[index].doctorName,
+                      style:
+                          TextStyle(fontSize: 16, fontWeight: FontWeight.w800),
+                    ),
+                    Container(
+                      height: 15,
+                      width: 50,
+                      decoration: BoxDecoration(
+                        color: LIME,
+                        borderRadius: BorderRadius.circular(5),
+                      ),
+                      child: Center(
+                        child: Text(
+                          pastList[index].status,
+                          style: TextStyle(color: WHITE, fontSize: 8),
+                        ),
+                      ),
+                    )
+                  ],
+                ),
                 Row(
                   children: [
                     ClipRRect(
@@ -412,31 +466,6 @@ class _AppointmentScreenState extends State<AppointmentScreen>
                       child: Column(
                         mainAxisSize: MainAxisSize.min,
                         children: [
-                          Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              Text(
-                                pastList[index].doctorName,
-                                style: TextStyle(
-                                    fontSize: 16, fontWeight: FontWeight.w800),
-                              ),
-                              Container(
-                                height: 15,
-                                width: 50,
-                                decoration: BoxDecoration(
-                                  color: LIME,
-                                  borderRadius: BorderRadius.circular(5),
-                                ),
-                                child: Center(
-                                  child: Text(
-                                    pastList[index].status,
-                                    style: TextStyle(color: WHITE, fontSize: 8),
-                                  ),
-                                ),
-                              )
-                            ],
-                          ),
                           SizedBox(
                             height: 10,
                           ),
@@ -479,19 +508,24 @@ class _AppointmentScreenState extends State<AppointmentScreen>
                             height: 5,
                           ),
                           Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [
-                              Expanded(
-                                child: Text(
-                                  pastList[index].serviceName!=null?pastList[index].serviceName:"",
-                                  style: TextStyle(
-                                      color: LIGHT_GREY_TEXT, fontSize: 10),
-                                ),
-                              ),
-                              Text(
-                                pastList[index].departmentName,
-                                style: TextStyle(
-                                    color: LIGHT_GREY_TEXT, fontSize: 10),
-                              ),
+                              
+                                    Text(
+                                      pastList[index].serviceName != null
+                                          ? pastList[index].serviceName
+                                          : "",
+                                      style: TextStyle(
+                                          color: LIGHT_GREY_TEXT, fontSize: 10),
+                                    ),
+                                    Text(
+                                      pastList[index].departmentName,
+                                      style: TextStyle(
+                                          color: LIGHT_GREY_TEXT, fontSize: 10),
+                                    ),
+                                 
+                              
+                           
                             ],
                           ),
                         ],
@@ -506,7 +540,9 @@ class _AppointmentScreenState extends State<AppointmentScreen>
                   children: [
                     Expanded(
                       child: Text(
-                        pastList[index].messages!=null?pastList[index].messages:"-",
+                        pastList[index].messages != null
+                            ? pastList[index].messages
+                            : "-",
                         style: TextStyle(
                           fontSize: 11,
                         ),
@@ -522,7 +558,7 @@ class _AppointmentScreenState extends State<AppointmentScreen>
   }
 
   fetchUpcomingAppointments() async {
-     print("response.request.url");
+    print("response.request.url");
     setState(() {
       upcomingList.clear();
       upcomingAppointments = null;
@@ -564,7 +600,7 @@ class _AppointmentScreenState extends State<AppointmentScreen>
   }
 
   fetchPastAppointments() async {
-     print("response.request.url");
+    print("response.request.url");
     setState(() {
       pastList.clear();
       upcomingAppointments = null;
@@ -584,4 +620,59 @@ class _AppointmentScreenState extends State<AppointmentScreen>
     }
   }
 
+  messageDialog(String s1, String s2) {
+    return showDialog(
+        context: context,
+        builder: (context) {
+          return Directionality(
+            textDirection:TextDirection.rtl,
+            child: AlertDialog(
+              title: Text(
+                s1,
+                style: TextStyle(
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
+              content: Column(
+                mainAxisSize: MainAxisSize.min,
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(
+                    s2,
+                    style: TextStyle(
+                      fontSize: 14,
+                    ),
+                  )
+                ],
+              ),
+              actions: [
+                TextButton(
+                  onPressed: () async {},
+                  style: TextButton.styleFrom(backgroundColor: Colors.red[800]),
+                  child: Text(
+                    YES,
+                    style: TextStyle(
+                      fontWeight: FontWeight.w500,
+                      color: WHITE,
+                    ),
+                  ),
+                ),
+                TextButton(
+                  onPressed: () async {
+                    Navigator.of(context).pop();
+                  },
+                  style: TextButton.styleFrom(backgroundColor: LIME),
+                  child: Text(
+                    "الغاء",
+                    style: TextStyle(
+                      fontWeight: FontWeight.w500,
+                      color: WHITE,
+                    ),
+                  ),
+                ),
+              ],
+            ),
+          );
+        });
+  }
 }
