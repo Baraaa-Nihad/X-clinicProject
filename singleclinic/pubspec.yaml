@@ -29,6 +29,7 @@ dependencies:
   scoped_model:
   cupertino_icons:
   cached_network_image:
+  fluttertoast: ^8.0.9
   email_validator:
   image_picker: 0.8.3
   http: 0.12.2
