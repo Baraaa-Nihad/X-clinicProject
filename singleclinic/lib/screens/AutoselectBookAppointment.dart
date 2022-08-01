@@ -5,6 +5,7 @@ import 'package:http/http.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:singleclinic/AllText.dart';
 import 'package:singleclinic/modals/DoctorsAndServices.dart';
+import 'package:singleclinic/modals/UpcomingAppointmrnts.dart';
 
 import '../main.dart';
 
@@ -25,6 +26,10 @@ class AutoselectBookAppointment extends StatefulWidget {
 class _AutoselectBookAppointmentState extends State<AutoselectBookAppointment> {
   String doctorValue;
   String serviceValue;
+
+  UpcomingAppointments doctorAppointments;
+  List<InnerData> doctorList = [];
+
   int doctorId;
   int serviceId;
   int departmentId;
@@ -62,11 +67,16 @@ class _AutoselectBookAppointmentState extends State<AutoselectBookAppointment> {
   @override
   void initState() {
     super.initState();
-    selectedFormattedDate = selectedDate.day.toString() +
-        " " +
-        monthsList[selectedDate.month] +
-        ", " +
-        selectedDate.year.toString();
+    doctorId = widget.doctorId;
+    selectedFormattedDate = selectedDate.year.toString() +
+        "-" +
+        (selectedDate.month.toString().length == 1
+            ? "0" + selectedDate.month.toString()
+            : selectedDate.month.toString()) +
+        "-" +
+        (selectedDate.day.toString().length == 1
+            ? "0" + selectedDate.day.toString()
+            : selectedDate.day.toString());
     _time = "اختر الوقت";
     SharedPreferences.getInstance().then((value) {
       setState(() {
@@ -76,6 +86,8 @@ class _AutoselectBookAppointmentState extends State<AutoselectBookAppointment> {
             TextEditingController(text: value.getString("phone_no"));
       });
     });
+
+    fetchDoctorAppointments(selectedFormattedDate);
     fetchDoctorsAndServices(widget.departmentId);
   }
 
@@ -299,11 +311,24 @@ class _AutoselectBookAppointmentState extends State<AutoselectBookAppointment> {
                     height: 20,
                   ),
                   Text(
-                    "الأوقات المتاحة للحجز في هذا اليوم:",
+                    "الأوقات المحجوزة:",
                     style: TextStyle(
                         fontSize: 15,
                         fontWeight: FontWeight.w600,
-                        color: Colors.green),
+                        color: Colors.red[800]),
+                  ),
+                  Container(
+                    height: 20,
+                    width: double.infinity,
+                    child: ListView.builder(
+                      shrinkWrap: true,
+                      scrollDirection: Axis.horizontal,
+                      physics: ClampingScrollPhysics(),
+                      itemCount: doctorList == null ? 0 : doctorList.length,
+                      itemBuilder: (context, index) {
+                        return timeDetails(index);
+                      },
+                    ),
                   ),
                   Divider(
                     color: Colors.green,
@@ -455,12 +480,17 @@ class _AutoselectBookAppointmentState extends State<AutoselectBookAppointment> {
       setState(() {
         selectedDate = picked;
         print(selectedDate.toString().substring(0, 10));
-        selectedFormattedDate = selectedDate.day.toString() +
-            " " +
-            monthsList[selectedDate.month] +
-            ", " +
-            selectedDate.year.toString();
+        selectedFormattedDate = selectedDate.year.toString() +
+            "-" +
+            (selectedDate.month.toString().length == 1
+                ? "0" + selectedDate.month.toString()
+                : selectedDate.month.toString()) +
+            "-" +
+            (selectedDate.day.toString().length == 1
+                ? "0" + selectedDate.day.toString()
+                : selectedDate.day.toString());
       });
+    fetchDoctorAppointments(selectedFormattedDate);
   }
 
   Future<Null> _selectTime(BuildContext context) async {
@@ -526,7 +556,7 @@ class _AutoselectBookAppointmentState extends State<AutoselectBookAppointment> {
   }
 
   bookAppointment() async {
-    if (serviceId == null || _time == "اختر الوقت"|| max_delay_time=="") {
+    if (serviceId == null || _time == "اختر الوقت" || max_delay_time == "") {
       messageDialog("Error", ENTER_ALL_FIELDS_TO_MAKE_APPOINTMENT);
     } else if (int.parse(max_delay_time) > 20 ||
         int.parse(max_delay_time) < 0) {
@@ -671,5 +701,79 @@ class _AutoselectBookAppointmentState extends State<AutoselectBookAppointment> {
             ],
           );
         });
+  }
+
+  getTime(String time, int fin) {
+    TimeOfDay _startTime = TimeOfDay(
+        hour: int.parse(time.split(":")[0]),
+        minute: int.parse(time.split(":")[1]));
+    var mm = _startTime.minute + fin;
+    var hh = _startTime.hourOfPeriod;
+    if (mm >= 60) {
+      return "${hh + 1}:${mm % 60} ${_startTime.period == DayPeriod.pm ? "P.M" : "A.M"}";
+    } else if (mm >= 120) {
+      return "${hh + 2}:${mm % 120} ${_startTime.period == DayPeriod.pm ? "P.M" : "A.M"}";
+    } else if (mm >= 180) {
+      return "${hh + 3}:${mm % 180} ${_startTime.period == DayPeriod.pm ? "P.M" : "A.M"}";
+    } else if (mm >= 240) {
+      return "${hh + 4}:${mm % 240} ${_startTime.period == DayPeriod.pm ? "P.M" : "A.M"}";
+    } else {
+      return "${hh}:${mm} ${_startTime.period == DayPeriod.pm ? "P.M" : "A.M"}";
+    }
+  }
+
+  timeDetails(int index) {
+    int finish = (doctorList[index].maxDelayTime!=null?int.parse(doctorList[index].maxDelayTime):0)+int.parse(doctorList[index].serviceTime);
+    var dd = getTime(doctorList[index].time, finish);
+    return Container(
+      margin: EdgeInsets.only(left: 5),
+      height: 15,
+      width: 95,
+      decoration: BoxDecoration(
+        color: Colors.red[800],
+        borderRadius: BorderRadius.circular(5),
+      ),
+      child: Center(
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Text(
+              getTime(doctorList[index].time, 0),
+              style: TextStyle(color: WHITE, fontSize: 8),
+            ),
+            Text(
+              " - ",
+              style: TextStyle(color: WHITE, fontSize: 12),
+            ),
+            Text(
+              dd,
+              style: TextStyle(color: WHITE, fontSize: 8),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+
+  fetchDoctorAppointments(String date) async {
+    setState(() {
+      doctorList.clear();
+      doctorAppointments = null;
+    });
+
+    final response = await get(Uri.parse(
+        "$SERVER_ADDRESS/api/getdoctorbookedappointment?user_id=$doctorId&&date=$date"));
+    final jsonResponse = jsonDecode(response.body);
+    if (response.statusCode == 200 && jsonResponse['status'] == 1) {
+      print(jsonResponse);
+      print(jsonResponse);
+      print(response.request.url);
+      print(doctorId);
+      print(date);
+      setState(() {
+        doctorAppointments = UpcomingAppointments.fromJson(jsonResponse);
+        doctorList.addAll(doctorAppointments.data.data);
+      });
+    }
   }
 }
