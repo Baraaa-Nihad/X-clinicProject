@@ -105,6 +105,8 @@ class InnerData {
   String doctorName;
   String image;
   String serviceName;
+  String serviceTime;
+  String maxDelayTime;
 
   InnerData(
       {this.userId,
@@ -120,7 +122,9 @@ class InnerData {
       this.serviceId,
       this.departmentName,
       this.image,
-      this.serviceName});
+      this.serviceName,
+      this.maxDelayTime,
+      this.serviceTime});
 
   InnerData.fromJson(Map<String, dynamic> json) {
     userId = int.parse(json['user_id']);
@@ -137,6 +141,8 @@ class InnerData {
     departmentName = json['department_name'];
     image = json['image'];
     serviceName = json['service_name'];
+    serviceTime = json['service_time'];
+    maxDelayTime = json['max_delay_time'];
   }
 
   Map<String, dynamic> toJson() {
@@ -154,6 +160,8 @@ class InnerData {
     data['department_name'] = this.departmentName;
     data['image'] = this.image;
     data['service_name'] = this.serviceName;
+    data['service_time'] = this.serviceTime;
+    data['max_delay_time'] = this.maxDelayTime;
     return data;
   }
 }

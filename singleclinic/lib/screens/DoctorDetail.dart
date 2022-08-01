@@ -99,7 +99,7 @@ class _DoctorDetailsState extends State<DoctorDetails> {
                 Text(
                   doctorDetail.data.name,
                   style: TextStyle(
-                      color: BLACK, fontSize: 22, fontWeight: FontWeight.w800),
+                      color: BLACK, fontSize: MediaQuery.of(context).size.width*0.05, fontWeight: FontWeight.w800),
                 ),
                 Expanded(
                   child: Row(
@@ -111,8 +111,8 @@ class _DoctorDetailsState extends State<DoctorDetails> {
                         },
                         child: Image.asset(
                           "assets/doctordetails/Phone.png",
-                          height: 40,
-                          width: 40,
+                          height: MediaQuery.of(context).size.width*0.09,
+                          width: MediaQuery.of(context).size.width*0.09,
                           fit: BoxFit.fill,
                         ),
                       ),
@@ -125,8 +125,9 @@ class _DoctorDetailsState extends State<DoctorDetails> {
                         },
                         child: Image.asset(
                           "assets/doctordetails/email.png",
-                          height: 40,
-                          width: 40,
+                          
+                          height: MediaQuery.of(context).size.width*0.09,
+                          width: MediaQuery.of(context).size.width*0.09,
                           fit: BoxFit.fill,
                         ),
                       ),
@@ -174,7 +175,7 @@ class _DoctorDetailsState extends State<DoctorDetails> {
                 child: ClipRRect(
                   borderRadius: BorderRadius.circular(15),
                   child: CachedNetworkImage(
-                    height: 90,
+                    height: 120,
                     width: 110,
                     fit: BoxFit.cover,
                     imageUrl: Uri.parse(doctorDetail.data.image).toString(),
@@ -197,7 +198,7 @@ class _DoctorDetailsState extends State<DoctorDetails> {
                 width: 15,
               ),
               Container(
-                height: 90,
+                height: 120,
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   crossAxisAlignment: CrossAxisAlignment.start,
@@ -210,6 +211,7 @@ class _DoctorDetailsState extends State<DoctorDetails> {
                           style: TextStyle(
                               fontWeight: FontWeight.w800, fontSize: 16),
                         ),
+                        
                         Text(
                           doctorDetail.data.departmentName,
                           style: TextStyle(color: NAVY_BLUE, fontSize: 10),
@@ -377,10 +379,10 @@ class _DoctorDetailsState extends State<DoctorDetails> {
             shrinkWrap: true,
             physics: ClampingScrollPhysics(),
             gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                crossAxisCount: 3,
+                crossAxisCount: 2,
                 crossAxisSpacing: 5,
                 childAspectRatio: 2,
-                mainAxisSpacing: 5),
+                mainAxisSpacing: 1),
             itemCount: doctorDetail.data.timeTabledata.length,
             itemBuilder: (context, index) {
               return doctorDetail.data.timeTabledata[index].from != null

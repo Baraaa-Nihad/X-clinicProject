@@ -214,34 +214,33 @@ class _AppointmentScreenState extends State<AppointmentScreen>
                 mainAxisSize: MainAxisSize.min,
                 children: [
                   Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                Text(
-                                  upcomingList[index].doctorName,
-                                  style: TextStyle(
-                                      fontSize: 16,
-                                      fontWeight: FontWeight.w800),
-                                ),
-                                Container(
-                                  height: 15,
-                                  width: 50,
-                                  decoration: BoxDecoration(
-                                    color: LIME,
-                                    borderRadius: BorderRadius.circular(5),
-                                  ),
-                                  child: Center(
-                                    child: Text(
-                                      upcomingList[index].status,
-                                      style: TextStyle(
-                                          color: WHITE,
-                                          fontSize: 8,
-                                          fontWeight: FontWeight.w700),
-                                    ),
-                                  ),
-                                )
-                              ],
-                            ),
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(
+                        upcomingList[index].doctorName,
+                        style: TextStyle(
+                            fontSize: 16, fontWeight: FontWeight.w800),
+                      ),
+                      Container(
+                        height: 15,
+                        width: 50,
+                        decoration: BoxDecoration(
+                          color: LIME,
+                          borderRadius: BorderRadius.circular(5),
+                        ),
+                        child: Center(
+                          child: Text(
+                            upcomingList[index].status,
+                            style: TextStyle(
+                                color: WHITE,
+                                fontSize: 8,
+                                fontWeight: FontWeight.w700),
+                          ),
+                        ),
+                      )
+                    ],
+                  ),
                   Row(
                     children: [
                       ClipRRect(
@@ -280,7 +279,6 @@ class _AppointmentScreenState extends State<AppointmentScreen>
                         child: Column(
                           mainAxisSize: MainAxisSize.min,
                           children: [
-                            
                             SizedBox(
                               height: 10,
                             ),
@@ -323,45 +321,57 @@ class _AppointmentScreenState extends State<AppointmentScreen>
                               height: 5,
                             ),
                             Row(
-                              children: [
-                                Expanded(
-                               child: Column(
-                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                  children: [
-                                    Text(
-                                      pastList[index].serviceName != null
-                                          ? pastList[index].serviceName
-                                          : "",
-                                      style: TextStyle(
-                                          color: LIGHT_GREY_TEXT, fontSize: 10),
+                              mainAxisAlignment:MainAxisAlignment.spaceBetween,
+                              children: [ 
+                                      Container(
+                                        height: 18,
+                                        padding:EdgeInsets.symmetric(horizontal: 5),
+                                        decoration: BoxDecoration(
+                                          color: Colors.green[800],
+                                          borderRadius:
+                                              BorderRadius.circular(5),
+                                        ),
+                                        child: Center(
+                                          child: Text(
+                                            upcomingList[index].serviceName != null
+                                                ? upcomingList[index].serviceName
+                                                : "",
+                                            style: TextStyle(
+                                                color: WHITE,
+                                                fontSize: 10,
+                                                fontWeight: FontWeight.w700),
+                                          ),
+                                        ),
+                                      ),
+                                      
+                                  
+                                
+                                Text(
+                                        upcomingList[index].departmentName,
+                                        style: TextStyle(
+                                            color: LIGHT_GREY_TEXT,
+                                            fontSize: 10),
+                                      ),
+                              /*  TextButton(
+                                  onPressed: () async {
+                                    messageDialog("تحذير",
+                                        "هل انت متأكد من حذف الموعد ؟");
+                                  },
+                                  style: TextButton.styleFrom(
+                                      backgroundColor: Colors.red[900],
+                                      padding: EdgeInsets.all(0)),
+                                  child: Text(
+                                    "حذف ",
+                                    style: TextStyle(
+                                      fontWeight: FontWeight.w500,
+                                      color: WHITE,
                                     ),
-                                    Text(
-                                      pastList[index].departmentName,
-                                      style: TextStyle(
-                                          color: LIGHT_GREY_TEXT, fontSize: 10),
-                                    ),
-                                  ],
-                                ),
-                              ),
-                              TextButton(
-                                onPressed: () async {
-                                  messageDialog(
-                                      "تحذير", "هل انت متأكد من حذف الموعد ؟");
-                                },
-                                style: TextButton.styleFrom(
-                                    backgroundColor: Colors.red[900]),
-                                child: Text(
-                                  "حذف ",
-                                  style: TextStyle(
-                                    fontWeight: FontWeight.w500,
-                                    color: WHITE,
                                   ),
-                                ),
-                              ),
-                            ],
-                          ),
-                        ],
-                      ),
+                                ),*/
+                              ],
+                            ),
+                          ],
+                        ),
                       ),
                     ],
                   ),
@@ -400,7 +410,7 @@ class _AppointmentScreenState extends State<AppointmentScreen>
               borderRadius: BorderRadius.circular(10),
             ),
             child: Column(
-               crossAxisAlignment: CrossAxisAlignment.start,
+              crossAxisAlignment: CrossAxisAlignment.start,
               mainAxisSize: MainAxisSize.min,
               children: [
                 Row(
@@ -510,22 +520,31 @@ class _AppointmentScreenState extends State<AppointmentScreen>
                           Row(
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [
-                              
-                                    Text(
-                                      pastList[index].serviceName != null
-                                          ? pastList[index].serviceName
-                                          : "",
-                                      style: TextStyle(
-                                          color: LIGHT_GREY_TEXT, fontSize: 10),
-                                    ),
-                                    Text(
-                                      pastList[index].departmentName,
-                                      style: TextStyle(
-                                          color: LIGHT_GREY_TEXT, fontSize: 10),
-                                    ),
-                                 
-                              
-                           
+                               Container(
+                                        height: 18,
+                                        padding:EdgeInsets.symmetric(horizontal: 5),
+                                        decoration: BoxDecoration(
+                                          color: Colors.green[800],
+                                          borderRadius:
+                                              BorderRadius.circular(5),
+                                        ),
+                                        child: Center(
+                                          child: Text(
+                                            pastList[index].serviceName != null
+                                                ? pastList[index].serviceName
+                                                : "",
+                                            style: TextStyle(
+                                                color: WHITE,
+                                                fontSize: 10,
+                                                fontWeight: FontWeight.w700),
+                                          ),
+                                        ),
+                                      ),
+                              Text(
+                                pastList[index].departmentName,
+                                style: TextStyle(
+                                    color: LIGHT_GREY_TEXT, fontSize: 10),
+                              ),
                             ],
                           ),
                         ],
@@ -625,7 +644,7 @@ class _AppointmentScreenState extends State<AppointmentScreen>
         context: context,
         builder: (context) {
           return Directionality(
-            textDirection:TextDirection.rtl,
+            textDirection: TextDirection.rtl,
             child: AlertDialog(
               title: Text(
                 s1,
