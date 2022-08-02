@@ -39,7 +39,7 @@ class Data {
   Data.fromJson(Map<String, dynamic> json) {
     name = json['name'];
     profilePic = json['profile_pic'];
-    userId = json['user_id'];
+    userId = int.parse(json['user_id']);
     ratting = json['ratting'];
     review = json['review'];
   }
