@@ -317,19 +317,29 @@ class _AutoselectBookAppointmentState extends State<AutoselectBookAppointment> {
                         fontWeight: FontWeight.w600,
                         color: Colors.red[800]),
                   ),
-                  Container(
-                    height: 20,
-                    width: double.infinity,
-                    child: ListView.builder(
-                      shrinkWrap: true,
-                      scrollDirection: Axis.horizontal,
-                      physics: ClampingScrollPhysics(),
-                      itemCount: doctorList == null ? 0 : doctorList.length,
-                      itemBuilder: (context, index) {
-                        return timeDetails(index);
-                      },
-                    ),
-                  ),
+                  doctorList.isEmpty
+                      ? Text(
+                          "لا توجد مواعيد محجوزة ",
+                          style: TextStyle(color: Colors.grey),
+                        )
+                      : Container(
+                          width: double.infinity,
+                          child: GridView.builder(
+                            gridDelegate:
+                                SliverGridDelegateWithFixedCrossAxisCount(
+                                    crossAxisCount: 3,
+                                    crossAxisSpacing: 1,
+                                    childAspectRatio: 5,
+                                    mainAxisSpacing: 5),
+                            shrinkWrap: true,
+                            physics: ClampingScrollPhysics(),
+                            itemCount:
+                                doctorList == null ? 0 : doctorList.length,
+                            itemBuilder: (context, index) {
+                              return timeDetails(index);
+                            },
+                          ),
+                        ),
                   Divider(
                     color: Colors.green,
                   ),
@@ -371,6 +381,7 @@ class _AutoselectBookAppointmentState extends State<AutoselectBookAppointment> {
                     style: TextStyle(fontSize: 15, fontWeight: FontWeight.w700),
                   ),
                   TextField(
+                    keyboardType: TextInputType.number,
                     style: TextStyle(color: Colors.grey, fontSize: 14),
                     decoration: InputDecoration(
                       hintText: " يجب ان لا تزيد عن 20 دقيقة",
@@ -389,7 +400,7 @@ class _AutoselectBookAppointmentState extends State<AutoselectBookAppointment> {
                     ),
                     onChanged: (val) {
                       setState(() {
-                        max_delay_time = val;
+                        max_delay_time = replaceArabicNumber(val);
                       });
                     },
                   ),
@@ -432,6 +443,17 @@ class _AutoselectBookAppointmentState extends State<AutoselectBookAppointment> {
         bottomButtons(),
       ],
     );
+  }
+
+  String replaceArabicNumber(String input) {
+    const english = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9'];
+    const arabic = ['٠', '١', '٢', '٣', '٤', '٥', '٦', '٧', '٨', '٩'];
+
+    for (int i = 0; i < english.length; i++) {
+      input = input.replaceAll(arabic[i], english[i]);
+    }
+    print("$input");
+    return input;
   }
 
   bottomButtons() {
@@ -494,41 +516,44 @@ class _AutoselectBookAppointmentState extends State<AutoselectBookAppointment> {
   }
 
   Future<Null> _selectTime(BuildContext context) async {
-    final TimeOfDay picked = await showTimePicker(
+    TimeOfDay picked = await showTimePicker(
       context: context,
       builder: (BuildContext context, Widget child) {
         return MediaQuery(
-          data: MediaQuery.of(context).copyWith(alwaysUse24HourFormat: false),
+          data: MediaQuery.of(context).copyWith(alwaysUse24HourFormat: true),
           child: child,
         );
       },
       initialTime: selectedTime,
     );
 
-    selectedTime = picked;
+    setState(() {
+      selectedTime = picked;
+    });
 
-    print(DateTime.now().minute);
-    print(selectedTime.minute);
-    print(DateTime.now().minute > selectedTime.minute);
-    print(DateTime.now().hour >= selectedTime.hour);
-    print(DateTime.now().day == selectedDate.day);
-
-    if (picked != null) if ((DateTime.now().minute >= selectedTime.minute &&
-        DateTime.now().hour >= selectedTime.hour &&
-        DateTime.now().day == selectedDate.day)) {
-      messageDialog('Alert', 'يجب أن يكون الوقت في المستقبل ');
+    if (picked != null) {
+      if (DateTime.now().minute >= selectedTime.minute &&
+          DateTime.now().hour >= selectedTime.hour &&
+          DateTime.now().day == selectedDate.day) {
+        messageDialog('Alert', 'يجب أن يكون الوقت في المستقبل ');
+        print(selectedTime);
+        print(DateTime.now().hour);
+      } else {
+        setState(() {
+          selectedTime = picked;
+          _hour = selectedTime.hour < 10
+              ? "0" + selectedTime.hour.toString()
+              : selectedTime.hour.toString();
+          _minute = selectedTime.minute < 10
+              ? "0" + selectedTime.minute.toString()
+              : selectedTime.minute.toString();
+          _time = _hour + ":" + _minute;
+          print(_time);
+        });
+      }
     } else {
       setState(() {
-        selectedTime = picked;
-        _hour = selectedTime.hour < 10
-            ? "0" + selectedTime.hour.toString()
-            : selectedTime.hour.toString();
-        _minute = selectedTime.minute < 10
-            ? "0" + selectedTime.minute.toString()
-            : selectedTime.minute.toString();
-        _time = _hour + ":" + _minute;
-
-        print(_time);
+        selectedTime = TimeOfDay.now();
       });
     }
   }
@@ -556,14 +581,21 @@ class _AutoselectBookAppointmentState extends State<AutoselectBookAppointment> {
   }
 
   bookAppointment() async {
+   int j = 0;
+    for (int i = 0; i < doctorList.length; i++) {
+      if (doctorList[i].time == _time) {
+        j = j + 1;
+      }
+    }
     if (serviceId == null || _time == "اختر الوقت" || max_delay_time == "") {
       messageDialog("Error", ENTER_ALL_FIELDS_TO_MAKE_APPOINTMENT);
     } else if (int.parse(max_delay_time) > 20 ||
         int.parse(max_delay_time) < 0) {
       messageDialog("Error", "مدة التأخير القصوى يجب ان لا تتجاوز 20 دقيقة");
-    } else {
+    } else if(j>0){
+      messageDialog("Error","لا يمكنك الحجز في هذا الزمن");
+    }else {
       dialog();
-
       print("department_id:" +
           departmentId.toString() +
           "\n" +
@@ -723,7 +755,10 @@ class _AutoselectBookAppointmentState extends State<AutoselectBookAppointment> {
   }
 
   timeDetails(int index) {
-    int finish = (doctorList[index].maxDelayTime!=null?int.parse(doctorList[index].maxDelayTime):0)+int.parse(doctorList[index].serviceTime);
+    int finish = (doctorList[index].maxDelayTime != null
+            ? int.parse(doctorList[index].maxDelayTime)
+            : 0) +
+        int.parse(doctorList[index].serviceTime);
     var dd = getTime(doctorList[index].time, finish);
     return Container(
       margin: EdgeInsets.only(left: 5),
