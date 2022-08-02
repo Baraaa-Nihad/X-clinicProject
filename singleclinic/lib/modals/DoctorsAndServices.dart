@@ -56,20 +56,23 @@ class Data {
 }
 
 class Doctor {
+  var id;
   int userId;
   String name;
 
-  Doctor({this.userId, this.name});
+  Doctor({this.userId, this.name, this.id});
 
   Doctor.fromJson(Map<String, dynamic> json) {
     userId = int.parse(json['user_id']);
     name = json['name'];
+    id = json['id'];
   }
 
   Map<String, dynamic> toJson() {
     final Map<String, dynamic> data = new Map<String, dynamic>();
     data['user_id'] = this.userId;
     data['name'] = this.name;
+    data['id'] = this.id;
     return data;
   }
 }
