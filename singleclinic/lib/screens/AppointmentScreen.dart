@@ -165,7 +165,114 @@ class _AppointmentScreenState extends State<AppointmentScreen>
           ),
         ));
   }
+timeDetails(int index) {
+    int finish = (upcomingList[index].maxDelayTime != null
+            ? int.parse(upcomingList[index].maxDelayTime)
+            : 0) +
+        int.parse(upcomingList[index].serviceTime);
+    var dd = getTime(upcomingList[index].time, finish);
+    return Container(
+      margin: EdgeInsets.only(left: 5),
+      height: 15,
+      width: 95,
+      decoration: BoxDecoration(
+       color: Colors.green,
+        borderRadius: BorderRadius.circular(5),
+      ),
+      child: Center(
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Text(
+              getTime(upcomingList[index].time, 0),
+              style: TextStyle(color: WHITE, fontSize: 8),
+            ),
+            Text(
+              " - ",
+              style: TextStyle(color: WHITE, fontSize: 12),
+            ),
+            Text(
+              dd,
+              style: TextStyle(color: WHITE, fontSize: 8),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+    getTime(String time, int fin) {
+    TimeOfDay _startTime = TimeOfDay(
+        hour: int.parse(time.split(":")[0]),
+        minute: int.parse(time.split(":")[1]));
+    var mm = _startTime.minute + fin;
+    var hh = _startTime.hourOfPeriod;
+    if (mm >= 60) {
+      return "${hh + 1}:${mm % 60} ${_startTime.period == DayPeriod.pm ? "P.M" : "A.M"}";
+    } else if (mm >= 120) {
+      return "${hh + 2}:${mm % 120} ${_startTime.period == DayPeriod.pm ? "P.M" : "A.M"}";
+    } else if (mm >= 180) {
+      return "${hh + 3}:${mm % 180} ${_startTime.period == DayPeriod.pm ? "P.M" : "A.M"}";
+    } else if (mm >= 240) {
+      return "${hh + 4}:${mm % 240} ${_startTime.period == DayPeriod.pm ? "P.M" : "A.M"}";
+    } else {
+      return "${hh}:${mm} ${_startTime.period == DayPeriod.pm ? "P.M" : "A.M"}";
+    }
+  }
 
+
+  timeDetails1(int index) {
+    int finish = (pastList[index].maxDelayTime != null
+            ? int.parse(pastList[index].maxDelayTime)
+            : 0) +
+        int.parse(pastList[index].serviceTime);
+    var dd = getTime(pastList[index].time, finish);
+    return Container(
+      margin: EdgeInsets.only(left: 5),
+      height: 15,
+      width: 95,
+      decoration: BoxDecoration(
+        color: Colors.green,
+        borderRadius: BorderRadius.circular(5),
+      ),
+      child: Center(
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Text(
+              getTime1(pastList[index].time, 0),
+              style: TextStyle(color: WHITE, fontSize: 8),
+            ),
+            Text(
+              " - ",
+              style: TextStyle(color: WHITE, fontSize: 12),
+            ),
+            Text(
+              dd,
+              style: TextStyle(color: WHITE, fontSize: 8),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+    getTime1(String time, int fin) {
+    TimeOfDay _startTime = TimeOfDay(
+        hour: int.parse(time.split(":")[0]),
+        minute: int.parse(time.split(":")[1]));
+    var mm = _startTime.minute + fin;
+    var hh = _startTime.hourOfPeriod;
+    if (mm >= 60) {
+      return "${hh + 1}:${mm % 60} ${_startTime.period == DayPeriod.pm ? "P.M" : "A.M"}";
+    } else if (mm >= 120) {
+      return "${hh + 2}:${mm % 120} ${_startTime.period == DayPeriod.pm ? "P.M" : "A.M"}";
+    } else if (mm >= 180) {
+      return "${hh + 3}:${mm % 180} ${_startTime.period == DayPeriod.pm ? "P.M" : "A.M"}";
+    } else if (mm >= 240) {
+      return "${hh + 4}:${mm % 240} ${_startTime.period == DayPeriod.pm ? "P.M" : "A.M"}";
+    } else {
+      return "${hh}:${mm} ${_startTime.period == DayPeriod.pm ? "P.M" : "A.M"}";
+    }
+  }
   header() {
     return Directionality(
         textDirection: TextDirection.rtl,
@@ -310,11 +417,8 @@ class _AppointmentScreenState extends State<AppointmentScreen>
                                 SizedBox(
                                   width: 5,
                                 ),
-                                Text(
-                                  upcomingList[index].time,
-                                  style:
-                                      TextStyle(color: NAVY_BLUE, fontSize: 10),
-                                ),
+                                 timeDetails(index),
+                                
                               ],
                             ),
                             SizedBox(
@@ -507,11 +611,7 @@ class _AppointmentScreenState extends State<AppointmentScreen>
                               SizedBox(
                                 width: 5,
                               ),
-                              Text(
-                                pastList[index].time,
-                                style:
-                                    TextStyle(color: NAVY_BLUE, fontSize: 10),
-                              ),
+                              timeDetails1(index),
                             ],
                           ),
                           SizedBox(
