@@ -46,158 +46,166 @@ class _ChatListState extends State<ChatList> {
   }
 
   @override
-  Widget  build(BuildContext context) {
-    return  Directionality(
+  Widget build(BuildContext context) {
+    return Directionality(
         textDirection: TextDirection.rtl,
-        child : SafeArea(
-      child: Scaffold(
-          backgroundColor: LIGHT_GREY_SCREEN_BG,
-          appBar: AppBar(
-            flexibleSpace: header(),
-            backgroundColor: WHITE,
-          ),
-          body: Column(
-            children: [
-              AnimatedContainer(
-                duration: Duration(milliseconds: 300),
-                curve: Curves.easeIn,
-                height: isSearchClicked ? 50 : 0,
-                margin: EdgeInsets.all(10),
-                child: isSearchClicked
-                    ? TextField(
-                        focusNode: focusNode,
-                        decoration: InputDecoration(
-                          filled: true,
-                          hintText: SEARCH_HERE_NAME,
-                        ),
-                        onChanged: (val) {
-                          setState(() {
-                            keyword = val;
-                          });
-                        },
-                        onSubmitted: (val) {},
-                      )
-                    : Container(),
+        child: SafeArea(
+          child: Scaffold(
+              backgroundColor: LIGHT_GREY_SCREEN_BG,
+              appBar: AppBar(
+                flexibleSpace: header(),
+                backgroundColor: WHITE,
               ),
-              Expanded(
-                child: chatListDetails.isEmpty
-                    ? PlaceHolderScreen(
-                        message: NO_CHATS,
-                        description: YOUR_CHATS_WILL_BE_DISPLAYED_HERE,
-                        iconPath: "assets/placeholders/message_holder.png",
-                      )
-                    : Column(
-                        mainAxisAlignment: MainAxisAlignment.start,
-                        children: [
-                          Expanded(
-                            child: Padding(
-                              padding: const EdgeInsets.fromLTRB(10, 0, 10, 0),
-                              child: ListView.builder(
-                                shrinkWrap: true,
-                                padding: EdgeInsets.zero,
-                                physics: ClampingScrollPhysics(),
-                                itemCount: chatListDetails.length,
-                                itemBuilder: (context, index) {
-                                  return StreamBuilder(
-                                    stream: FirebaseDatabase.instance
-                                        .reference()
-                                        .child(chatListDetails[index]
-                                            .userUid
-                                            .toString())
-                                        .onValue,
-                                    builder: (context,
-                                        AsyncSnapshot<Event> snapshot) {
-                                      if (snapshot.hasData) {
-                                        print("new stream" +
-                                            snapshot.data.snapshot.value['name']
-                                                .toString());
-                                        return messageCard(
-                                            isNewMessage: chatListDetails[index]
-                                                        .messageCount >
-                                                    0
-                                                ? true
-                                                : false,
-                                            name: snapshot
-                                                .data.snapshot.value['name']
-                                                .toString(),
-                                            message:
-                                                chatListDetails[index].message,
-                                            count: chatListDetails[index]
-                                                .messageCount,
-                                            image: SERVER_ADDRESS +
-                                                "/public/upload/" +
-                                                snapshot.data.snapshot
-                                                    .value['profile']
-                                                    .toString().replaceAll(SERVER_ADDRESS +
-                                                    "/public/upload/", ""),
-                                            time: chatListDetails[index].time,
-                                            type: chatListDetails[index].type,
-                                            uid: chatListDetails[index].userUid,
-                                            isSearching: isSearchClicked);
-                                      } else {
-                                        return Container();
-                                      }
-                                    },
-                                  );
-                                },
-                              ),
+              body: Column(
+                children: [
+                  AnimatedContainer(
+                    duration: Duration(milliseconds: 300),
+                    curve: Curves.easeIn,
+                    height: isSearchClicked ? 50 : 0,
+                    margin: EdgeInsets.all(10),
+                    child: isSearchClicked
+                        ? TextField(
+                            focusNode: focusNode,
+                            decoration: InputDecoration(
+                              filled: true,
+                              hintText: SEARCH_HERE_NAME,
                             ),
+                            onChanged: (val) {
+                              setState(() {
+                                keyword = val;
+                              });
+                            },
+                            onSubmitted: (val) {},
                           )
-                        ],
-                      ),
-              ),
-            ],
-          )),)
-    );
+                        : Container(),
+                  ),
+                  Expanded(
+                    child: chatListDetails.isEmpty
+                        ? PlaceHolderScreen(
+                            message: NO_CHATS,
+                            description: YOUR_CHATS_WILL_BE_DISPLAYED_HERE,
+                            iconPath: "assets/placeholders/message_holder.png",
+                          )
+                        : Column(
+                            mainAxisAlignment: MainAxisAlignment.start,
+                            children: [
+                              Expanded(
+                                child: Padding(
+                                  padding:
+                                      const EdgeInsets.fromLTRB(10, 0, 10, 0),
+                                  child: ListView.builder(
+                                    shrinkWrap: true,
+                                    padding: EdgeInsets.zero,
+                                    physics: ClampingScrollPhysics(),
+                                    itemCount: chatListDetails.length,
+                                    itemBuilder: (context, index) {
+                                      return StreamBuilder(
+                                        stream: FirebaseDatabase.instance
+                                            .reference()
+                                            .child(chatListDetails[index]
+                                                .userUid
+                                                .toString())
+                                            .onValue,
+                                        builder: (context,
+                                            AsyncSnapshot<Event> snapshot) {
+                                          if (snapshot.hasData) {
+                                            print("new stream" +
+                                                snapshot
+                                                    .data.snapshot.value['name']
+                                                    .toString());
+                                            return messageCard(
+                                                isNewMessage: chatListDetails[index]
+                                                            .messageCount >
+                                                        0
+                                                    ? true
+                                                    : false,
+                                                name: snapshot
+                                                    .data.snapshot.value['name']
+                                                    .toString(),
+                                                message: chatListDetails[index]
+                                                    .message,
+                                                count: chatListDetails[index]
+                                                    .messageCount,
+                                                image: SERVER_ADDRESS +
+                                                    "/public/upload/" +
+                                                    snapshot.data.snapshot
+                                                        .value['profile']
+                                                        .toString()
+                                                        .replaceAll(
+                                                            SERVER_ADDRESS +
+                                                                "/public/upload/",
+                                                            ""),
+                                                time:
+                                                    chatListDetails[index].time,
+                                                type:
+                                                    chatListDetails[index].type,
+                                                uid: chatListDetails[index]
+                                                    .userUid,
+                                                isSearching: isSearchClicked);
+                                          } else {
+                                            return Container();
+                                          }
+                                        },
+                                      );
+                                    },
+                                  ),
+                                ),
+                              )
+                            ],
+                          ),
+                  ),
+                ],
+              )),
+        ));
   }
 
   header() {
     return Directionality(
         textDirection: TextDirection.rtl,
-        child : SafeArea(
-      child: Container(
-        height: 60,
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Padding(
-              padding: const EdgeInsets.fromLTRB(15, 0, 15, 0),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Text(
-                    isSearchClicked ? SEARCH : CHAT,
-                    style: TextStyle(fontSize: 22, fontWeight: FontWeight.w700),
+        child: SafeArea(
+          child: Container(
+            height: 60,
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Padding(
+                  padding: const EdgeInsets.fromLTRB(15, 0, 15, 0),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Text(
+                        isSearchClicked ? SEARCH : CHAT,
+                        style: TextStyle(
+                            fontSize: 22, fontWeight: FontWeight.w700),
+                      ),
+                      IconButton(
+                        icon: isSearchClicked
+                            ? Icon(
+                                Icons.cancel_outlined,
+                                color: LIGHT_GREY_TEXT,
+                                size: 30,
+                              )
+                            : Image.asset(
+                                "assets/chatScreen/search.png",
+                                height: 25,
+                                width: 25,
+                              ),
+                        onPressed: () {
+                          setState(() {
+                            isSearchClicked = !isSearchClicked;
+                            if (isSearchClicked) {
+                              focusNode.requestFocus();
+                            }
+                          });
+                        },
+                      ),
+                    ],
                   ),
-                  IconButton(
-                    icon: isSearchClicked
-                        ? Icon(
-                            Icons.cancel_outlined,
-                            color: LIGHT_GREY_TEXT,
-                            size: 30,
-                          )
-                        : Image.asset(
-                            "assets/chatScreen/search.png",
-                            height: 25,
-                            width: 25,
-                          ),
-                    onPressed: () {
-                      setState(() {
-                        isSearchClicked = !isSearchClicked;
-                        if (isSearchClicked) {
-                          focusNode.requestFocus();
-                        }
-                      });
-                    },
-                  ),
-                ],
-              ),
+                ),
+              ],
             ),
-          ],
-        ),
-      ),
-        )
-    );
+          ),
+        ));
   }
 
   messageCard(
@@ -245,7 +253,9 @@ class _ChatListState extends State<ChatList> {
                                           child: Icon(
                                         Icons.account_circle,
                                         size: 50,
-                                        color: isNewMessage ? WHITE : LIGHT_GREY_TEXT,
+                                        color: isNewMessage
+                                            ? WHITE
+                                            : LIGHT_GREY_TEXT,
                                       ))),
                               errorWidget: (context, url, error) => Container(
                                 height: 75,
@@ -254,7 +264,8 @@ class _ChatListState extends State<ChatList> {
                                   child: Icon(
                                     Icons.account_circle,
                                     size: 50,
-                                    color: isNewMessage ? WHITE : LIGHT_GREY_TEXT,
+                                    color:
+                                        isNewMessage ? WHITE : LIGHT_GREY_TEXT,
                                   ),
                                 ),
                               ),
@@ -371,7 +382,8 @@ class _ChatListState extends State<ChatList> {
                                       child: Icon(
                                     Icons.account_circle,
                                     size: 50,
-                                    color: isNewMessage ? WHITE : LIGHT_GREY_TEXT,
+                                    color:
+                                        isNewMessage ? WHITE : LIGHT_GREY_TEXT,
                                   ))),
                           errorWidget: (context, url, error) => Container(
                             height: 75,
@@ -442,8 +454,10 @@ class _ChatListState extends State<ChatList> {
                               ),
                             ),
                             Text(
-                             time!=null? messageTiming(
-                                  DateTime.parse(time).toLocal() ?? "-"):"-",
+                              time != null
+                                  ? messageTiming(
+                                      DateTime.parse(time).toLocal() ?? "-")
+                                  : "-",
                               style: TextStyle(
                                   fontSize: 12,
                                   color: isNewMessage
@@ -467,7 +481,7 @@ class _ChatListState extends State<ChatList> {
   }
 
   loadChatList() async {
-    ds =await FirebaseDatabase.instance
+    ds = await FirebaseDatabase.instance
         .reference()
         .child(uid.toString())
         .onValue
@@ -477,7 +491,7 @@ class _ChatListState extends State<ChatList> {
         chatListDetailsPA.clear();
         print("testing : " + "data retrievd from firebase");
       });
-      try { 
+      try {
         Map<dynamic, dynamic>.from(event.snapshot.value['chatlist'])
             .forEach((key, values) {
           setState(() {
@@ -495,7 +509,9 @@ class _ChatListState extends State<ChatList> {
             }
           });
         });
-      } catch (e) {}
+      } catch (e) {
+        print(e.toString());
+      }
 
       if (chatListDetailsPA.length > 1) {
         chatListDetailsPA.sort((a, b) => b.time.compareTo(a.time));
@@ -505,10 +521,6 @@ class _ChatListState extends State<ChatList> {
         chatListDetails.clear();
         chatListDetails.addAll(chatListDetailsPA);
       });
-
-      for (int i = 0; i < chatListDetails.length; i++) {
-        print("testing : " + chatListDetails[i].toString());
-      }
     });
   }
 

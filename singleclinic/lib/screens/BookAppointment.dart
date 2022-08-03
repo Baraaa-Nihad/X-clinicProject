@@ -785,15 +785,15 @@ class _BookAppointmentState extends State<BookAppointment> {
     var mm = _startTime.minute + fin;
     var hh = _startTime.hourOfPeriod;
     if (mm >= 60) {
-      return "${hh + 1}:${mm % 60} ${_startTime.period == DayPeriod.pm ? "PM" : "AM"}";
+      return "${hh + 1}:${mm % 60}";
     } else if (mm >= 120) {
-      return "${hh + 2}:${mm % 120} ${_startTime.period == DayPeriod.pm ? "PM" : "AM"}";
+      return "${hh + 2}:${mm % 120}";
     } else if (mm >= 180) {
-      return "${hh + 3}:${mm % 180} ${_startTime.period == DayPeriod.pm ? "PM" : "AM"}";
+      return "${hh + 3}:${mm % 180}";
     } else if (mm >= 240) {
-      return "${hh + 4}:${mm % 240} ${_startTime.period == DayPeriod.pm ? "PM" : "AM"}";
+      return "${hh + 4}:${mm % 240}";
     } else {
-      return "${hh}:${mm} ${_startTime.period == DayPeriod.pm ? "PM" : "AM"}";
+      return "${hh}:${mm}";
     }
   }
 

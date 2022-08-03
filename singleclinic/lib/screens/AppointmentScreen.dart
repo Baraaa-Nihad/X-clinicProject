@@ -165,7 +165,8 @@ class _AppointmentScreenState extends State<AppointmentScreen>
           ),
         ));
   }
-timeDetails(int index) {
+
+  timeDetails(int index) {
     int finish = (upcomingList[index].maxDelayTime != null
             ? int.parse(upcomingList[index].maxDelayTime)
             : 0) +
@@ -174,9 +175,9 @@ timeDetails(int index) {
     return Container(
       margin: EdgeInsets.only(left: 5),
       height: 15,
-      width: 95,
+      width: 65,
       decoration: BoxDecoration(
-       color: Colors.green,
+        color: Colors.green,
         borderRadius: BorderRadius.circular(5),
       ),
       child: Center(
@@ -200,25 +201,25 @@ timeDetails(int index) {
       ),
     );
   }
-    getTime(String time, int fin) {
+
+  getTime(String time, int fin) {
     TimeOfDay _startTime = TimeOfDay(
         hour: int.parse(time.split(":")[0]),
         minute: int.parse(time.split(":")[1]));
     var mm = _startTime.minute + fin;
     var hh = _startTime.hourOfPeriod;
     if (mm >= 60) {
-      return "${hh + 1}:${mm % 60} ${_startTime.period == DayPeriod.pm ? "P.M" : "A.M"}";
+      return "${hh + 1}:${mm % 60}";
     } else if (mm >= 120) {
-      return "${hh + 2}:${mm % 120} ${_startTime.period == DayPeriod.pm ? "P.M" : "A.M"}";
+      return "${hh + 2}:${mm % 120}";
     } else if (mm >= 180) {
-      return "${hh + 3}:${mm % 180} ${_startTime.period == DayPeriod.pm ? "P.M" : "A.M"}";
+      return "${hh + 3}:${mm % 180}";
     } else if (mm >= 240) {
-      return "${hh + 4}:${mm % 240} ${_startTime.period == DayPeriod.pm ? "P.M" : "A.M"}";
+      return "${hh + 4}:${mm % 240}";
     } else {
-      return "${hh}:${mm} ${_startTime.period == DayPeriod.pm ? "P.M" : "A.M"}";
+      return "${hh}:${mm}";
     }
   }
-
 
   timeDetails1(int index) {
     int finish = (pastList[index].maxDelayTime != null
@@ -255,24 +256,26 @@ timeDetails(int index) {
       ),
     );
   }
-    getTime1(String time, int fin) {
+
+  getTime1(String time, int fin) {
     TimeOfDay _startTime = TimeOfDay(
         hour: int.parse(time.split(":")[0]),
         minute: int.parse(time.split(":")[1]));
     var mm = _startTime.minute + fin;
     var hh = _startTime.hourOfPeriod;
     if (mm >= 60) {
-      return "${hh + 1}:${mm % 60} ${_startTime.period == DayPeriod.pm ? "P.M" : "A.M"}";
+      return "${hh + 1}:${mm % 60}";
     } else if (mm >= 120) {
-      return "${hh + 2}:${mm % 120} ${_startTime.period == DayPeriod.pm ? "P.M" : "A.M"}";
+      return "${hh + 2}:${mm % 120}";
     } else if (mm >= 180) {
-      return "${hh + 3}:${mm % 180} ${_startTime.period == DayPeriod.pm ? "P.M" : "A.M"}";
+      return "${hh + 3}:${mm % 180}";
     } else if (mm >= 240) {
-      return "${hh + 4}:${mm % 240} ${_startTime.period == DayPeriod.pm ? "P.M" : "A.M"}";
+      return "${hh + 4}:${mm % 240}";
     } else {
-      return "${hh}:${mm} ${_startTime.period == DayPeriod.pm ? "P.M" : "A.M"}";
+      return "${hh}:${mm}";
     }
   }
+
   header() {
     return Directionality(
         textDirection: TextDirection.rtl,
@@ -390,73 +393,73 @@ timeDetails(int index) {
                               height: 10,
                             ),
                             Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               children: [
-                                Image.asset(
-                                  "assets/subscriptionList/calender.png",
-                                  height: 15,
-                                  width: 15,
-                                  fit: BoxFit.fill,
+                                Row(
+                                  children: [
+                                    Image.asset(
+                                      "assets/subscriptionList/calender.png",
+                                      height: 15,
+                                      width: 15,
+                                      fit: BoxFit.fill,
+                                    ),
+                                    SizedBox(
+                                      width: 5,
+                                    ),
+                                    Text(
+                                      upcomingList[index].date,
+                                      style: TextStyle(
+                                          color: NAVY_BLUE, fontSize: 10),
+                                    ),
+                                  ],
                                 ),
-                                SizedBox(
-                                  width: 5,
+                                Container(
+                                  height: 18,
+                                  padding: EdgeInsets.symmetric(horizontal: 5),
+                                  decoration: BoxDecoration(
+                                    color: Colors.green[800],
+                                    borderRadius: BorderRadius.circular(5),
+                                  ),
+                                  child: Center(
+                                    child: Text(
+                                      upcomingList[index].serviceName != null
+                                          ? upcomingList[index].serviceName
+                                          : "",
+                                      style: TextStyle(
+                                          color: WHITE,
+                                          fontSize: 10,
+                                          fontWeight: FontWeight.w700),
+                                    ),
+                                  ),
                                 ),
-                                Text(
-                                  upcomingList[index].date,
-                                  style:
-                                      TextStyle(color: NAVY_BLUE, fontSize: 10),
-                                ),
-                                SizedBox(
-                                  width: 10,
-                                ),
-                                Image.asset(
-                                  "assets/subscriptionList/clock.png",
-                                  height: 15,
-                                  width: 15,
-                                  fit: BoxFit.fill,
-                                ),
-                                SizedBox(
-                                  width: 5,
-                                ),
-                                 timeDetails(index),
-                                
                               ],
                             ),
                             SizedBox(
                               height: 5,
                             ),
                             Row(
-                              mainAxisAlignment:MainAxisAlignment.spaceBetween,
-                              children: [ 
-                                      Container(
-                                        height: 18,
-                                        padding:EdgeInsets.symmetric(horizontal: 5),
-                                        decoration: BoxDecoration(
-                                          color: Colors.green[800],
-                                          borderRadius:
-                                              BorderRadius.circular(5),
-                                        ),
-                                        child: Center(
-                                          child: Text(
-                                            upcomingList[index].serviceName != null
-                                                ? upcomingList[index].serviceName
-                                                : "",
-                                            style: TextStyle(
-                                                color: WHITE,
-                                                fontSize: 10,
-                                                fontWeight: FontWeight.w700),
-                                          ),
-                                        ),
-                                      ),
-                                      
-                                  
-                                
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: [
+                                Row(
+                                  children: [
+                                    Image.asset(
+                                      "assets/subscriptionList/clock.png",
+                                      height: 15,
+                                      width: 15,
+                                      fit: BoxFit.fill,
+                                    ),
+                                    SizedBox(
+                                      width: 5,
+                                    ),
+                                    timeDetails(index),
+                                  ],
+                                ),
                                 Text(
-                                        upcomingList[index].departmentName,
-                                        style: TextStyle(
-                                            color: LIGHT_GREY_TEXT,
-                                            fontSize: 10),
-                                      ),
-                              /*  TextButton(
+                                  upcomingList[index].departmentName,
+                                  style: TextStyle(
+                                      color: LIGHT_GREY_TEXT, fontSize: 10),
+                                ),
+                                /*  TextButton(
                                   onPressed: () async {
                                     messageDialog("تحذير",
                                         "هل انت متأكد من حذف الموعد ؟");
@@ -576,80 +579,101 @@ timeDetails(int index) {
                     SizedBox(
                       width: 10,
                     ),
-                    Expanded(
-                      child: Column(
-                        mainAxisSize: MainAxisSize.min,
-                        children: [
-                          SizedBox(
-                            height: 10,
-                          ),
-                          Row(
-                            children: [
-                              Image.asset(
-                                "assets/subscriptionList/calender.png",
-                                height: 15,
-                                width: 15,
-                                fit: BoxFit.fill,
-                              ),
-                              SizedBox(
-                                width: 5,
-                              ),
-                              Text(
-                                pastList[index].date,
-                                style:
-                                    TextStyle(color: NAVY_BLUE, fontSize: 10),
-                              ),
-                              SizedBox(
-                                width: 10,
-                              ),
-                              Image.asset(
-                                "assets/subscriptionList/clock.png",
-                                height: 15,
-                                width: 15,
-                                fit: BoxFit.fill,
-                              ),
-                              SizedBox(
-                                width: 5,
-                              ),
-                              timeDetails1(index),
-                            ],
-                          ),
-                          SizedBox(
-                            height: 5,
-                          ),
-                          Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            children: [
-                               Container(
-                                        height: 18,
-                                        padding:EdgeInsets.symmetric(horizontal: 5),
-                                        decoration: BoxDecoration(
-                                          color: Colors.green[800],
-                                          borderRadius:
-                                              BorderRadius.circular(5),
-                                        ),
-                                        child: Center(
-                                          child: Text(
-                                            pastList[index].serviceName != null
-                                                ? pastList[index].serviceName
-                                                : "",
-                                            style: TextStyle(
-                                                color: WHITE,
-                                                fontSize: 10,
-                                                fontWeight: FontWeight.w700),
-                                          ),
-                                        ),
-                                      ),
-                              Text(
-                                pastList[index].departmentName,
-                                style: TextStyle(
-                                    color: LIGHT_GREY_TEXT, fontSize: 10),
-                              ),
-                            ],
-                          ),
-                        ],
+                  Expanded(
+                        child: Column(
+                          mainAxisSize: MainAxisSize.min,
+                          children: [
+                            SizedBox(
+                              height: 10,
+                            ),
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: [
+                                Row(
+                                  children: [
+                                    Image.asset(
+                                      "assets/subscriptionList/calender.png",
+                                      height: 15,
+                                      width: 15,
+                                      fit: BoxFit.fill,
+                                    ),
+                                    SizedBox(
+                                      width: 5,
+                                    ),
+                                    Text(
+                                      pastList[index].date,
+                                      style: TextStyle(
+                                          color: NAVY_BLUE, fontSize: 10),
+                                    ),
+                                  ],
+                                ),
+                                Container(
+                                  height: 18,
+                                  padding: EdgeInsets.symmetric(horizontal: 5),
+                                  decoration: BoxDecoration(
+                                    color: Colors.green[800],
+                                    borderRadius: BorderRadius.circular(5),
+                                  ),
+                                  child: Center(
+                                    child: Text(
+                                      pastList[index].serviceName != null
+                                          ? pastList[index].serviceName
+                                          : "",
+                                      style: TextStyle(
+                                          color: WHITE,
+                                          fontSize: 10,
+                                          fontWeight: FontWeight.w700),
+                                    ),
+                                  ),
+                                ),
+                              ],
+                            ),
+                            SizedBox(
+                              height: 5,
+                            ),
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: [
+                                Row(
+                                  children: [
+                                    Image.asset(
+                                      "assets/subscriptionList/clock.png",
+                                      height: 15,
+                                      width: 15,
+                                      fit: BoxFit.fill,
+                                    ),
+                                    SizedBox(
+                                      width: 5,
+                                    ),
+                                    timeDetails(index),
+                                  ],
+                                ),
+                                Text(
+                                  pastList[index].departmentName,
+                                  style: TextStyle(
+                                      color: LIGHT_GREY_TEXT, fontSize: 10),
+                                ),
+                                /*  TextButton(
+                                  onPressed: () async {
+                                    messageDialog("تحذير",
+                                        "هل انت متأكد من حذف الموعد ؟");
+                                  },
+                                  style: TextButton.styleFrom(
+                                      backgroundColor: Colors.red[900],
+                                      padding: EdgeInsets.all(0)),
+                                  child: Text(
+                                    "حذف ",
+                                    style: TextStyle(
+                                      fontWeight: FontWeight.w500,
+                                      color: WHITE,
+                                    ),
+                                  ),
+                                ),*/
+                              ],
+                            ),
+                          ],
+                        ),
                       ),
-                    ),
                   ],
                 ),
                 SizedBox(
