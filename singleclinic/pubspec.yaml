@@ -93,7 +93,7 @@ dependency_overrides:
 flutter_icons:
   android: true
   ios: true
-  image_path: "assets/appicon.png"
+  image_path: "assets/aa.jpg"
 
 
 # For information on the generic Dart part of this file, see the
