@@ -99,7 +99,9 @@ class _DoctorDetailsState extends State<DoctorDetails> {
                 Text(
                   doctorDetail.data.name,
                   style: TextStyle(
-                      color: BLACK, fontSize: MediaQuery.of(context).size.width*0.05, fontWeight: FontWeight.w800),
+                      color: BLACK,
+                      fontSize: MediaQuery.of(context).size.width * 0.05,
+                      fontWeight: FontWeight.w800),
                 ),
                 Expanded(
                   child: Row(
@@ -111,8 +113,8 @@ class _DoctorDetailsState extends State<DoctorDetails> {
                         },
                         child: Image.asset(
                           "assets/doctordetails/Phone.png",
-                          height: MediaQuery.of(context).size.width*0.09,
-                          width: MediaQuery.of(context).size.width*0.09,
+                          height: MediaQuery.of(context).size.width * 0.09,
+                          width: MediaQuery.of(context).size.width * 0.09,
                           fit: BoxFit.fill,
                         ),
                       ),
@@ -125,9 +127,8 @@ class _DoctorDetailsState extends State<DoctorDetails> {
                         },
                         child: Image.asset(
                           "assets/doctordetails/email.png",
-                          
-                          height: MediaQuery.of(context).size.width*0.09,
-                          width: MediaQuery.of(context).size.width*0.09,
+                          height: MediaQuery.of(context).size.width * 0.09,
+                          width: MediaQuery.of(context).size.width * 0.09,
                           fit: BoxFit.fill,
                         ),
                       ),
@@ -211,7 +212,6 @@ class _DoctorDetailsState extends State<DoctorDetails> {
                           style: TextStyle(
                               fontWeight: FontWeight.w800, fontSize: 16),
                         ),
-                        
                         Text(
                           doctorDetail.data.departmentName,
                           style: TextStyle(color: NAVY_BLUE, fontSize: 10),
@@ -285,7 +285,7 @@ class _DoctorDetailsState extends State<DoctorDetails> {
                             height: 2,
                           ),
                           Text(
-                            "See all reviews",
+                            "رؤية كل التقييمات",
                             style:
                                 TextStyle(color: LIGHT_GREY_TEXT, fontSize: 10),
                           ),

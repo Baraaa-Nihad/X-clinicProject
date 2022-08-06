@@ -64,7 +64,7 @@ class _BookAppointmentState extends State<BookAppointment> {
   @override
   void initState() {
     super.initState();
-   selectedFormattedDate = selectedDate.year.toString() +
+    selectedFormattedDate = selectedDate.year.toString() +
         "-" +
         (selectedDate.month.toString().length == 1
             ? "0" + selectedDate.month.toString()
@@ -222,10 +222,9 @@ class _BookAppointmentState extends State<BookAppointment> {
                                       setState(() {
                                         doctorId = doctorsAndServices
                                             .data.doctor[index].userId;
-                                        
-                                      });
-                                      docId = doctorsAndServices
+                                        docId = doctorsAndServices
                                             .data.doctor[index].id;
+                                      });
                                     },
                                   );
                                 }),
@@ -233,10 +232,8 @@ class _BookAppointmentState extends State<BookAppointment> {
                             print(val);
                             setState(() {
                               doctorValue = val.toString();
-                              
                             });
-                            fetchDoctorAppointments(
-                                          selectedFormattedDate);
+                            fetchDoctorAppointments(selectedFormattedDate);
                           },
                         ),
                         SizedBox(
@@ -264,8 +261,18 @@ class _BookAppointmentState extends State<BookAppointment> {
                                     value: doctorsAndServices
                                             .data.services[index].name +
                                         index.toString(),
-                                    child: Text(doctorsAndServices
-                                        .data.services[index].name),
+                                    child: Row(
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.spaceBetween,
+                                      children: [
+                                        Text(
+                                          "${doctorsAndServices.data.services[index].expectedTime.toString()} دقيقة ",
+                                          textDirection: TextDirection.rtl,
+                                        ),
+                                        Text(doctorsAndServices
+                                            .data.services[index].name),
+                                      ],
+                                    ),
                                     key: UniqueKey(),
                                     onTap: () {
                                       setState(() {
@@ -633,14 +640,36 @@ class _BookAppointmentState extends State<BookAppointment> {
   }
 
   bookAppointment() async {
-    if (departmentId == null ||
-        serviceId == null ||
-        doctorId == null ||
-        _time == "Select Time") {
+    if (serviceId == null || _time == "اختر الوقت" || max_delay_time == "") {
       messageDialog("Error", ENTER_ALL_FIELDS_TO_MAKE_APPOINTMENT);
+    }
+    int j = 0;
+    for (int i = 0; i < doctorList.length; i++) {
+      int finish = (doctorList[i].maxDelayTime != null
+              ? int.parse(doctorList[i].maxDelayTime)
+              : 0) +
+          int.parse(doctorList[i].serviceTime);
+      var dd = getTime1(doctorList[i].time, finish);
+      TimeOfDay _timedb = TimeOfDay(
+          hour: int.parse(doctorList[i].time.split(":")[0]),
+          minute: int.parse(doctorList[i].time.split(":")[1]));
+      TimeOfDay _selectedtime = TimeOfDay(
+          hour: int.parse(_time.split(":")[0]),
+          minute: int.parse(_time.split(":")[1]));
+
+      if (_selectedtime.minute >= _timedb.minute &&
+          _selectedtime.hour >= _timedb.hour &&
+          _selectedtime.minute <= dd.minute &&
+          _selectedtime.hour <= dd.hour) {
+        j = j + 1;
+      }
+    }
+    if (int.parse(max_delay_time) > 20 || int.parse(max_delay_time) < 0) {
+      messageDialog("Error", "مدة التأخير القصوى يجب ان لا تتجاوز 20 دقيقة");
+    } else if (j > 0) {
+      messageDialog("Error", "لا يمكنك الحجز في هذا الزمن");
     } else {
       dialog();
-
       print("department_id:" +
           departmentId.toString() +
           "\n" +
@@ -859,7 +888,7 @@ class _BookAppointmentState extends State<BookAppointment> {
     });
 
     final response = await get(Uri.parse(
-        "$SERVER_ADDRESS/api/getdoctorbookedappointment?user_id=$docId&&date=$date"));
+        "$SERVER_ADDRESS/api/getdoctorbookedappointment?user_id=$doctorId&&date=$date"));
     final jsonResponse = jsonDecode(response.body);
     if (response.statusCode == 200 && jsonResponse['status'] == 1) {
       print(jsonResponse);

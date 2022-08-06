@@ -65,8 +65,8 @@ const String SEND = "ارسل";
 const String TREATMENTS = "الخدمات";
 const String VIEW_DETAIL = "عرض التفاصيل";
 const String WRITE_YOUR_MESSAGE = "... اكتب رسالتك  ";
-const String CHAT = "المحادثة";
-const String MY_APPOINTMENT = "مواعيدي";
+const String CHAT = "المحادثات";
+const String MY_APPOINTMENT = "المواعيد";
 const String UPCOMING = "المواعيد القادمة";
 const String PAST = "المواعيد الماضية";
 const String SUNDAY = "الاحد";
@@ -97,8 +97,7 @@ const String YOUR_QUERY_TOPIC = "موضوع الاستعلام الخاص بك";
 const String SUCCESSFUL = "ناجح";
 const String DOCTORS = "الأطباء";
 const String ADD_SUBSCRIPTION = "إضافة اشتراك";
-const String SUBSCRIPTION_ADDED_SUCCESSFULLY =
-    "تمت إضافة الاشتراك بنجاح";
+const String SUBSCRIPTION_ADDED_SUCCESSFULLY = "تمت إضافة الاشتراك بنجاح";
 const String ENTER_ALL_FIELDS_TO_MAKE_APPOINTMENT =
     "يجب عليك ادخال كل البيانات";
 const String PLEASE_WAIT_WHILE_MAKING_APPOINTMENT =
@@ -126,17 +125,14 @@ const String YOUR_PAST_APPOINTMENTS_WILL_BE_DISPLAYED_HERE =
     "ليس لديك أي موعد حتى الآن ؟ ابدأ بالتحدث مع الأطباء";
 const String NO_REVIEWS = "لا يوجد تقييمات";
 const String NO_CHATS = "لا يوجد محادثات";
-const String YOUR_CHATS_WILL_BE_DISPLAYED_HERE =
-    "ابدأ محادثتك مع الأطباء";
+const String YOUR_CHATS_WILL_BE_DISPLAYED_HERE = "ابدأ محادثتك مع الأطباء";
 const String DOCTOR_REVIEWS_WILL_BE_DISPLAYED_HERE =
     "سيتم عرض تقييمات الطبيب هنا";
 
 const String TAKE_A_PICTURE = "التقط صوره";
-const String TAKE_A_PICTURE_DESC =
-    "استخدم الكاميرا لالتقاط الصور أثناء التنقل";
+const String TAKE_A_PICTURE_DESC = "استخدم الكاميرا لالتقاط الصور أثناء التنقل";
 const String PICK_FROM_GALLERY = "اختر من المعرض";
-const String PICK_FROM_GALLERY_desc =
-    "حدد صورة من هاتفك مباشرة";
+const String PICK_FROM_GALLERY_desc = "حدد صورة من هاتفك مباشرة";
 const String CANCEL = "الغاء";
 const String SELECT_A_METHOD = "حدد طريقة";
 

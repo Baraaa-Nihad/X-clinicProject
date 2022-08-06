@@ -175,7 +175,7 @@ class _AppointmentScreenState extends State<AppointmentScreen>
     return Container(
       margin: EdgeInsets.only(left: 5),
       height: 15,
-      width: 65,
+      width: 95,
       decoration: BoxDecoration(
         color: Colors.green,
         borderRadius: BorderRadius.circular(5),
@@ -225,7 +225,9 @@ class _AppointmentScreenState extends State<AppointmentScreen>
     int finish = (pastList[index].maxDelayTime != null
             ? int.parse(pastList[index].maxDelayTime)
             : 0) +
-        int.parse(pastList[index].serviceTime);
+        (pastList[index].serviceTime != null
+            ? int.parse(pastList[index].serviceTime)
+            : 0);
     var dd = getTime(pastList[index].time, finish);
     return Container(
       margin: EdgeInsets.only(left: 5),
@@ -579,81 +581,81 @@ class _AppointmentScreenState extends State<AppointmentScreen>
                     SizedBox(
                       width: 10,
                     ),
-                  Expanded(
-                        child: Column(
-                          mainAxisSize: MainAxisSize.min,
-                          children: [
-                            SizedBox(
-                              height: 10,
-                            ),
-                            Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                              children: [
-                                Row(
-                                  children: [
-                                    Image.asset(
-                                      "assets/subscriptionList/calender.png",
-                                      height: 15,
-                                      width: 15,
-                                      fit: BoxFit.fill,
-                                    ),
-                                    SizedBox(
-                                      width: 5,
-                                    ),
-                                    Text(
-                                      pastList[index].date,
-                                      style: TextStyle(
-                                          color: NAVY_BLUE, fontSize: 10),
-                                    ),
-                                  ],
-                                ),
-                                Container(
-                                  height: 18,
-                                  padding: EdgeInsets.symmetric(horizontal: 5),
-                                  decoration: BoxDecoration(
-                                    color: Colors.green[800],
-                                    borderRadius: BorderRadius.circular(5),
+                    Expanded(
+                      child: Column(
+                        mainAxisSize: MainAxisSize.min,
+                        children: [
+                          SizedBox(
+                            height: 10,
+                          ),
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              Row(
+                                children: [
+                                  Image.asset(
+                                    "assets/subscriptionList/calender.png",
+                                    height: 15,
+                                    width: 15,
+                                    fit: BoxFit.fill,
                                   ),
-                                  child: Center(
-                                    child: Text(
-                                      pastList[index].serviceName != null
-                                          ? pastList[index].serviceName
-                                          : "",
-                                      style: TextStyle(
-                                          color: WHITE,
-                                          fontSize: 10,
-                                          fontWeight: FontWeight.w700),
-                                    ),
+                                  SizedBox(
+                                    width: 5,
+                                  ),
+                                  Text(
+                                    pastList[index].date,
+                                    style: TextStyle(
+                                        color: NAVY_BLUE, fontSize: 10),
+                                  ),
+                                ],
+                              ),
+                              Container(
+                                height: 18,
+                                padding: EdgeInsets.symmetric(horizontal: 5),
+                                decoration: BoxDecoration(
+                                  color: Colors.green[800],
+                                  borderRadius: BorderRadius.circular(5),
+                                ),
+                                child: Center(
+                                  child: Text(
+                                    pastList[index].serviceName != null
+                                        ? pastList[index].serviceName
+                                        : "",
+                                    style: TextStyle(
+                                        color: WHITE,
+                                        fontSize: 10,
+                                        fontWeight: FontWeight.w700),
                                   ),
                                 ),
-                              ],
-                            ),
-                            SizedBox(
-                              height: 5,
-                            ),
-                            Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                              children: [
-                                Row(
-                                  children: [
-                                    Image.asset(
-                                      "assets/subscriptionList/clock.png",
-                                      height: 15,
-                                      width: 15,
-                                      fit: BoxFit.fill,
-                                    ),
-                                    SizedBox(
-                                      width: 5,
-                                    ),
-                                    timeDetails(index),
-                                  ],
-                                ),
-                                Text(
-                                  pastList[index].departmentName,
-                                  style: TextStyle(
-                                      color: LIGHT_GREY_TEXT, fontSize: 10),
-                                ),
-                                /*  TextButton(
+                              ),
+                            ],
+                          ),
+                          SizedBox(
+                            height: 5,
+                          ),
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              Row(
+                                children: [
+                                  Image.asset(
+                                    "assets/subscriptionList/clock.png",
+                                    height: 15,
+                                    width: 15,
+                                    fit: BoxFit.fill,
+                                  ),
+                                  SizedBox(
+                                    width: 5,
+                                  ),
+                                  timeDetails1(index),
+                                ],
+                              ),
+                              Text(
+                                pastList[index].departmentName,
+                                style: TextStyle(
+                                    color: LIGHT_GREY_TEXT, fontSize: 10),
+                              ),
+                              /*  TextButton(
                                   onPressed: () async {
                                     messageDialog("تحذير",
                                         "هل انت متأكد من حذف الموعد ؟");
@@ -669,11 +671,11 @@ class _AppointmentScreenState extends State<AppointmentScreen>
                                     ),
                                   ),
                                 ),*/
-                              ],
-                            ),
-                          ],
-                        ),
+                            ],
+                          ),
+                        ],
                       ),
+                    ),
                   ],
                 ),
                 SizedBox(

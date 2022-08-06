@@ -25,7 +25,7 @@ class _SplashScreenState extends State<SplashScreen> {
     token = await FirebaseMessaging.instance.getToken();
     SharedPreferences.getInstance().then((value) async {
       if (value.getBool("isTokenExist") ?? false) {
-        Timer(Duration(seconds: 3), () {
+        Timer(Duration(seconds: 4), () {
           Navigator.pushReplacement(
             context,
             MaterialPageRoute(builder: (context) => TabBarScreen()),
@@ -42,7 +42,7 @@ class _SplashScreenState extends State<SplashScreen> {
 
         if (response.statusCode == 200 && jsonResponse['status'] == 1) {
           value.setBool("isTokenExist", true);
-          Timer(Duration(seconds: 3), () {
+          Timer(Duration(seconds: 4), () {
             Navigator.pushReplacement(
               context,
               MaterialPageRoute(builder: (context) => TabBarScreen()),
@@ -56,34 +56,35 @@ class _SplashScreenState extends State<SplashScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: NAVY_BLUE,
+      backgroundColor: SPLASHSCREENCOLOR,
       body: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
           Image.asset(
-            "assets/bb.jpg",
-            height: 180,
-            width: 180,
-            color: WHITE,
+            "assets/X-clinic.png",
+            height: 150,
+            width: 150,
           ),
+          SizedBox(height: 10),
           Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               Text(
-                "MANKIND",
+                "X-CLINIC APP",
                 style: TextStyle(
                     color: WHITE, fontSize: 35, fontWeight: FontWeight.w800),
               ),
             ],
           ),
+          SizedBox(height: 10),
           Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               Text(
-                "MEDICARE",
+                "The best choice for organizing clinics",
                 style: TextStyle(
                   color: WHITE,
-                  fontSize: 20,
+                  fontSize: 15,
                 ),
               ),
             ],

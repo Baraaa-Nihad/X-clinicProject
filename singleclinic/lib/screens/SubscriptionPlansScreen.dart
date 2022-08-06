@@ -318,7 +318,7 @@ class _SubscriptionPlansScreenState extends State<SubscriptionPlansScreen> {
       amount: price,
       paypalRequest: BraintreePayPalRequest(
           amount: "10",
-          currencyCode: "USD",
+          currencyCode: "شيكل",
           displayName: "name",
           billingAgreementDescription: "xyz"),
       cardEnabled: true,

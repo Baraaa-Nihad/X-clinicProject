@@ -579,8 +579,8 @@ class _AutoselectBookAppointmentState extends State<AutoselectBookAppointment> {
       });
     }
   }
-  
- getTime(String time, int fin) {
+
+  getTime(String time, int fin) {
     TimeOfDay _startTime = TimeOfDay(
         hour: int.parse(time.split(":")[0]),
         minute: int.parse(time.split(":")[1]));
@@ -606,53 +606,44 @@ class _AutoselectBookAppointmentState extends State<AutoselectBookAppointment> {
     var mm = _startTime.minute + fin;
     var hh = _startTime.hour;
     if (mm >= 60) {
-     return  TimeOfDay(
-        hour: hh + 1,
-        minute: mm % 60);
+      return TimeOfDay(hour: hh + 1, minute: mm % 60);
     } else if (mm >= 120) {
-       return  TimeOfDay(
-        hour: hh + 2,
-        minute: mm % 120);
+      return TimeOfDay(hour: hh + 2, minute: mm % 120);
     } else if (mm >= 180) {
-       return  TimeOfDay(
-        hour: hh + 3,
-        minute: mm % 180);
+      return TimeOfDay(hour: hh + 3, minute: mm % 180);
     } else if (mm >= 240) {
-       return  TimeOfDay(
-        hour: hh + 4,
-        minute: mm % 240);
+      return TimeOfDay(hour: hh + 4, minute: mm % 240);
     } else {
-      return  TimeOfDay(
-        hour: hh,
-        minute: mm);
+      return TimeOfDay(hour: hh, minute: mm);
     }
-
   }
 
   bookAppointment() async {
-    
+    if (serviceId == null || _time == "اختر الوقت" || max_delay_time == "") {
+      messageDialog("Error", ENTER_ALL_FIELDS_TO_MAKE_APPOINTMENT);
+    }
     int j = 0;
     for (int i = 0; i < doctorList.length; i++) {
       int finish = (doctorList[i].maxDelayTime != null
-            ? int.parse(doctorList[i].maxDelayTime)
-            : 0) +
-        int.parse(doctorList[i].serviceTime);
-        var dd = getTime1(doctorList[i].time, finish);
-       TimeOfDay _timedb = TimeOfDay(
-        hour: int.parse(doctorList[i].time.split(":")[0]),
-        minute: int.parse(doctorList[i].time.split(":")[1]));
-        TimeOfDay _selectedtime = TimeOfDay(
-        hour: int.parse(_time.split(":")[0]),
-        minute: int.parse(_time.split(":")[1]));
+              ? int.parse(doctorList[i].maxDelayTime)
+              : 0) +
+          int.parse(doctorList[i].serviceTime);
+      var dd = getTime1(doctorList[i].time, finish);
+      TimeOfDay _timedb = TimeOfDay(
+          hour: int.parse(doctorList[i].time.split(":")[0]),
+          minute: int.parse(doctorList[i].time.split(":")[1]));
+      TimeOfDay _selectedtime = TimeOfDay(
+          hour: int.parse(_time.split(":")[0]),
+          minute: int.parse(_time.split(":")[1]));
 
-      if (_selectedtime.minute >= _timedb.minute&&_selectedtime.hour >= _timedb.hour&&_selectedtime.minute <= dd.minute&&_selectedtime.hour <= dd.hour) {
+      if (_selectedtime.minute >= _timedb.minute &&
+          _selectedtime.hour >= _timedb.hour &&
+          _selectedtime.minute <= dd.minute &&
+          _selectedtime.hour <= dd.hour) {
         j = j + 1;
       }
     }
-    if (serviceId == null || _time == "اختر الوقت" || max_delay_time == "") {
-      messageDialog("Error", ENTER_ALL_FIELDS_TO_MAKE_APPOINTMENT);
-    } else if (int.parse(max_delay_time) > 20 ||
-        int.parse(max_delay_time) < 0) {
+    if (int.parse(max_delay_time) > 20 || int.parse(max_delay_time) < 0) {
       messageDialog("Error", "مدة التأخير القصوى يجب ان لا تتجاوز 20 دقيقة");
     } else if (j > 0) {
       messageDialog("Error", "لا يمكنك الحجز في هذا الزمن");
