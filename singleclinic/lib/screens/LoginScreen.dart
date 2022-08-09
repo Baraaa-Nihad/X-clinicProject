@@ -554,16 +554,13 @@ class _LoginScreenState extends State<LoginScreen> {
               ));
         }).catchError((e) {
           Navigator.pop(context);
-          errorDialog(e.toString());
         });
       }).catchError((e) {
         Navigator.pop(context);
-        errorDialog(e.toString());
       });
     } else {
       Navigator.pop(context);
       print("Error" + response.toString());
-      errorDialog(response.data['msg']);
     }
   }
 
@@ -574,7 +571,7 @@ class _LoginScreenState extends State<LoginScreen> {
       if (result is String) {
         errorDialog('${result}');
       } else if (result is Map) {
-        print(result);
+        
         setState(() {
           name = result['name'];
           email = result['email'] ?? "null";
