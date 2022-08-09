@@ -17,7 +17,7 @@ import 'notificationTesting/notificationHelper.dart';
 
 FirebaseMessaging firebaseMessaging = FirebaseMessaging.instance;
 
-String SERVER_ADDRESS = "http://x-clinic.appx-p.co";
+String SERVER_ADDRESS = "https://x-clinic.appx-p.co";
 MyNotificationHelper notificationHelper = MyNotificationHelper();
 final String serverToken =
     "AAAAQYw5uf4:APA91bGhXd3YUn7SJrWIUJaXBskuWnbjWs1oGm0tcLFr3HJ79oqNGo-taJ8C1Av8jLfcTarCquzT5UJfhs5ubw8bnE3RihKeB8PRI7LbFW4WfE4ldq6V6csERjqTSNMr1dx0Nh1b_JbR";
@@ -42,7 +42,6 @@ void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
   notificationHelper.initialize();
-
   await SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp]);
 
   runApp(MaterialApp(

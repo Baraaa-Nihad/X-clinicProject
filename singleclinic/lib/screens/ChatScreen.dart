@@ -1166,6 +1166,7 @@ class _ChatScreenState extends State<ChatScreen> with WidgetsBindingObserver {
       print("Message sent");
     });
 
+
     if (isFirstMessage) {
       DatabaseReference dbRef = FirebaseDatabase.instance
           .reference()
@@ -1505,6 +1506,7 @@ class _ChatScreenState extends State<ChatScreen> with WidgetsBindingObserver {
       Uint8List thumbNail) async { 
     await getExternalStorageDirectory().then((value) async {
       print(value);
+      
 
       File f2 = await File(value.path + '/0.$extension').create();
       f2.writeAsBytesSync(result);

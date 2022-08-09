@@ -520,7 +520,7 @@ class _AutoselectBookAppointmentState extends State<AutoselectBookAppointment> {
       context: context,
       builder: (BuildContext context, Widget child) {
         return MediaQuery(
-          data: MediaQuery.of(context).copyWith(alwaysUse24HourFormat: true),
+          data: MediaQuery.of(context).copyWith(alwaysUse24HourFormat: false),
           child: child,
         );
       },
@@ -587,15 +587,15 @@ class _AutoselectBookAppointmentState extends State<AutoselectBookAppointment> {
     var mm = _startTime.minute + fin;
     var hh = _startTime.hourOfPeriod;
     if (mm >= 60) {
-      return "${hh + 1}:${mm % 60}";
+      return "${(hh + 1) > 9 ? hh + 1 : "0" + (hh + 1).toString()}:${(mm % 60) > 9 ? mm % 60 : "0" + (mm % 60).toString()} ${_startTime.period == DayPeriod.pm ? "PM" : "AM"}";
     } else if (mm >= 120) {
-      return "${hh + 2}:${mm % 120}";
+      return "${(hh + 2) > 9 ? hh + 2 : "0" + (hh + 2).toString()}:${(mm % 120) > 9 ? mm % 120 : "0" + (mm % 120).toString()} ${_startTime.period == DayPeriod.pm ? "PM" : "AM"}";
     } else if (mm >= 180) {
-      return "${hh + 3}:${mm % 180}";
+      return "${(hh + 3) > 9 ? hh + 3 : "0" + (hh + 3).toString()}:${(mm % 180) > 9 ? mm % 180 : "0" + (mm % 180).toString()} ${_startTime.period == DayPeriod.pm ? "PM" : "AM"}";
     } else if (mm >= 240) {
-      return "${hh + 4}:${mm % 240}";
+      return "${(hh + 4) > 9 ? hh + 4 : "0" + (hh + 4).toString()}:${(mm % 240) > 9 ? mm % 240 : "0" + (mm % 240).toString()} ${_startTime.period == DayPeriod.pm ? "PM" : "AM"}";
     } else {
-      return "${hh}:${mm}";
+      return "${(hh) > 9 ? hh : "0" + (hh).toString()}:${(mm) > 9 ? mm : "0" + (mm).toString()} ${_startTime.period == DayPeriod.pm ? "PM" : "AM"}";
     }
   }
 
@@ -604,7 +604,7 @@ class _AutoselectBookAppointmentState extends State<AutoselectBookAppointment> {
         hour: int.parse(time.split(":")[0]),
         minute: int.parse(time.split(":")[1]));
     var mm = _startTime.minute + fin;
-    var hh = _startTime.hour;
+    var hh = _startTime.hourOfPeriod;
     if (mm >= 60) {
       return TimeOfDay(hour: hh + 1, minute: mm % 60);
     } else if (mm >= 120) {
@@ -632,14 +632,18 @@ class _AutoselectBookAppointmentState extends State<AutoselectBookAppointment> {
       TimeOfDay _timedb = TimeOfDay(
           hour: int.parse(doctorList[i].time.split(":")[0]),
           minute: int.parse(doctorList[i].time.split(":")[1]));
+
       TimeOfDay _selectedtime = TimeOfDay(
           hour: int.parse(_time.split(":")[0]),
           minute: int.parse(_time.split(":")[1]));
 
-      if (_selectedtime.minute >= _timedb.minute &&
-          _selectedtime.hour >= _timedb.hour &&
-          _selectedtime.minute <= dd.minute &&
-          _selectedtime.hour <= dd.hour) {
+      int startTimeInt =
+          (_timedb.hourOfPeriod * 60 + _timedb.minute) * 60;
+          int endTimeInt = (dd.hourOfPeriod * 60 + dd.minute) * 60;
+          int selectedTimeInt = (_selectedtime.hourOfPeriod * 60 + _selectedtime.minute) * 60;
+
+      if (selectedTimeInt >= startTimeInt &&
+          selectedTimeInt <= endTimeInt) {
         j = j + 1;
       }
     }
