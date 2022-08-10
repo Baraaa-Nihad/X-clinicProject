@@ -97,6 +97,8 @@ class InnerData {
   String name;
   String date;
   String time;
+  String startTime;
+  String endTime;
   String phoneNo;
   String status;
   String messages;
@@ -115,6 +117,8 @@ class InnerData {
       this.name,
       this.date,
       this.time,
+      this.startTime,
+      this.endTime,
       this.phoneNo,
       this.status,
       this.doctorName,
@@ -134,6 +138,8 @@ class InnerData {
     name = json['name'];
     date = json['date'];
     time = json['time'].toString();
+    startTime = json['start_time'].toString();
+    endTime = json['end_time'].toString();
     phoneNo = json['phone_no'];
     status = json['status'];
     messages = json['messages'];
@@ -153,6 +159,8 @@ class InnerData {
     data['name'] = this.name;
     data['date'] = this.date;
     data['time'] = this.time;
+    data['start_time'] = this.startTime;
+    data['end_time'] = this.endTime;
     data['phone_no'] = this.phoneNo;
     data['status'] = this.status;
     data['messages'] = this.messages;

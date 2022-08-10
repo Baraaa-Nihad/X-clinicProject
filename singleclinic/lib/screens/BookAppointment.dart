@@ -380,7 +380,7 @@ class _BookAppointmentState extends State<BookAppointment> {
                                 child: GridView.builder(
                                   gridDelegate:
                                       SliverGridDelegateWithFixedCrossAxisCount(
-                                          crossAxisCount: 3,
+                                          crossAxisCount: 2,
                                           crossAxisSpacing: 1,
                                           childAspectRatio: 5,
                                           mainAxisSpacing: 5),
@@ -437,27 +437,29 @@ class _BookAppointmentState extends State<BookAppointment> {
                               fontSize: 15, fontWeight: FontWeight.w700),
                         ),
                         TextField(
-                          style: TextStyle(color: Colors.grey, fontSize: 14),
-                          decoration: InputDecoration(
-                            border: UnderlineInputBorder(
-                              borderSide: BorderSide(
-                                  color: Colors.grey.shade500, width: 0.5),
-                            ),
-                            focusedBorder: UnderlineInputBorder(
-                              borderSide: BorderSide(
-                                  color: Colors.grey.shade500, width: 0.5),
-                            ),
-                            enabledBorder: UnderlineInputBorder(
-                              borderSide: BorderSide(
-                                  color: Colors.grey.shade500, width: 0.5),
-                            ),
-                          ),
-                          onChanged: (val) {
-                            setState(() {
-                              max_delay_time = val;
-                            });
-                          },
-                        ),
+                    keyboardType: TextInputType.number,
+                    style: TextStyle(color: Colors.grey, fontSize: 14),
+                    decoration: InputDecoration(
+                      hintText: " يجب ان لا تزيد عن 20 دقيقة",
+                      border: UnderlineInputBorder(
+                        borderSide:
+                            BorderSide(color: Colors.grey.shade500, width: 0.5),
+                      ),
+                      focusedBorder: UnderlineInputBorder(
+                        borderSide:
+                            BorderSide(color: Colors.grey.shade500, width: 0.5),
+                      ),
+                      enabledBorder: UnderlineInputBorder(
+                        borderSide:
+                            BorderSide(color: Colors.grey.shade500, width: 0.5),
+                      ),
+                    ),
+                    onChanged: (val) {
+                      setState(() {
+                        max_delay_time = replaceArabicNumber(val);
+                      });
+                    },
+                  ),
                         SizedBox(
                           height: 15,
                         ),
@@ -500,6 +502,18 @@ class _BookAppointmentState extends State<BookAppointment> {
             ],
           );
   }
+
+ String replaceArabicNumber(String input) {
+    const english = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9'];
+    const arabic = ['٠', '١', '٢', '٣', '٤', '٥', '٦', '٧', '٨', '٩'];
+
+    for (int i = 0; i < english.length; i++) {
+      input = input.replaceAll(arabic[i], english[i]);
+    }
+    print("$input");
+    return input;
+  }
+
 
   bottomButtons() {
     return Container(
@@ -831,36 +845,14 @@ getTime1(String time, int fin) {
         });
   }
 
-  getTime(String time, int fin) {
-    TimeOfDay _startTime = TimeOfDay(
-        hour: int.parse(time.split(":")[0]),
-        minute: int.parse(time.split(":")[1]));
-    var mm = _startTime.minute + fin;
-    var hh = _startTime.hourOfPeriod;
-      if (mm >= 60) {
-      return "${(hh + 1) > 9 ? hh + 1 : "0" + (hh + 1).toString()}:${(mm % 60) > 9 ? mm % 60 : "0" + (mm % 60).toString()} ${_startTime.period == DayPeriod.am && hh+1 >= 12 ?  "PM" : "AM"}";
-    } else if (mm >= 120) {
-      return "${(hh + 2) > 9 ? hh + 2 : "0" + (hh + 2).toString()}:${(mm % 120) > 9 ? mm % 120 : "0" + (mm % 120).toString()} ${_startTime.period == DayPeriod.am && hh+2 >= 12 ?  "PM" : "AM"}";
-    } else if (mm >= 180) {
-      return "${(hh + 3) > 9 ? hh + 3 : "0" + (hh + 3).toString()}:${(mm % 180) > 9 ? mm % 180 : "0" + (mm % 180).toString()} ${_startTime.period == DayPeriod.am && hh+3 >= 12 ?  "PM" : "AM"}";
-    } else if (mm >= 240) {
-      return "${(hh + 4) > 9 ? hh + 4 : "0" + (hh + 4).toString()}:${(mm % 240) > 9 ? mm % 240 : "0" + (mm % 240).toString()} ${_startTime.period == DayPeriod.am && hh+4 >= 12 ?  "PM" : "AM"}";
-    } else {
-      return "${(hh) > 9 ? hh : "0" + (hh).toString()}:${(mm) > 9 ? mm : "0" + (mm).toString()} ${_startTime.period == DayPeriod.am && hh >= 12 ?  "PM" : "AM"}";
-    }
-  }
-
+ 
  
   timeDetails(int index) {
-    int finish = (doctorList[index].maxDelayTime != null
-            ? int.parse(doctorList[index].maxDelayTime)
-            : 0) +
-        int.parse(doctorList[index].serviceTime);
-    var dd = getTime(doctorList[index].time, finish);
+   
     return Container(
       margin: EdgeInsets.only(left: 5),
       height: 15,
-      width: 95,
+      width: 110,
       decoration: BoxDecoration(
         color: Colors.red[800],
         borderRadius: BorderRadius.circular(5),
@@ -870,7 +862,7 @@ getTime1(String time, int fin) {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Text(
-              getTime(doctorList[index].time, 0),
+              doctorList[index].startTime,
               style: TextStyle(color: WHITE, fontSize: 8),
             ),
             Text(
@@ -878,7 +870,7 @@ getTime1(String time, int fin) {
               style: TextStyle(color: WHITE, fontSize: 12),
             ),
             Text(
-              dd,
+              doctorList[index].endTime,
               style: TextStyle(color: WHITE, fontSize: 8),
             ),
           ],
