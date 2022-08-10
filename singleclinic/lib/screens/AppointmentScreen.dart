@@ -166,119 +166,8 @@ class _AppointmentScreenState extends State<AppointmentScreen>
         ));
   }
 
-  timeDetails(int index) {
-    int finish = (upcomingList[index].maxDelayTime != null
-            ? int.parse(upcomingList[index].maxDelayTime)
-            : 0) +
-        int.parse(upcomingList[index].serviceTime);
-    var dd = getTime(upcomingList[index].time, finish);
-    return Container(
-      margin: EdgeInsets.only(left: 5),
-      height: 15,
-      width: 110,
-      decoration: BoxDecoration(
-        color: Colors.green,
-        borderRadius: BorderRadius.circular(5),
-      ),
-      child: Center(
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Text(
-              getTime(upcomingList[index].time, 0),
-              style: TextStyle(color: WHITE, fontSize: 8),
-            ),
-            Text(
-              " - ",
-              style: TextStyle(color: WHITE, fontSize: 12),
-            ),
-            Text(
-              dd,
-              style: TextStyle(color: WHITE, fontSize: 8),
-            ),
-          ],
-        ),
-      ),
-    );
-  }
 
-  getTime(String time, int fin) {
-    TimeOfDay _startTime = TimeOfDay(
-        hour: int.parse(time.split(":")[0]),
-        minute: int.parse(time.split(":")[1]));
-    var mm = _startTime.minute + fin;
-    var hh = _startTime.hourOfPeriod;
-     if (mm >= 60) {
-      return "${(hh + 1) > 9 ? hh + 1 : "0" + (hh + 1).toString()}:${(mm % 60) > 9 ? mm % 60 : "0" + (mm % 60).toString()} ${_startTime.period == DayPeriod.am && hh+1 >= 12 ?  "PM" : "AM"}";
-    } else if (mm >= 120) {
-      return "${(hh + 2) > 9 ? hh + 2 : "0" + (hh + 2).toString()}:${(mm % 120) > 9 ? mm % 120 : "0" + (mm % 120).toString()} ${_startTime.period == DayPeriod.am && hh+2 >= 12 ?  "PM" : "AM"}";
-    } else if (mm >= 180) {
-      return "${(hh + 3) > 9 ? hh + 3 : "0" + (hh + 3).toString()}:${(mm % 180) > 9 ? mm % 180 : "0" + (mm % 180).toString()} ${_startTime.period == DayPeriod.am && hh+3 >= 12 ?  "PM" : "AM"}";
-    } else if (mm >= 240) {
-      return "${(hh + 4) > 9 ? hh + 4 : "0" + (hh + 4).toString()}:${(mm % 240) > 9 ? mm % 240 : "0" + (mm % 240).toString()} ${_startTime.period == DayPeriod.am && hh+4 >= 12 ?  "PM" : "AM"}";
-    } else {
-      return "${(hh) > 9 ? hh : "0" + (hh).toString()}:${(mm) > 9 ? mm : "0" + (mm).toString()} ${_startTime.period == DayPeriod.am && hh >= 12 ?  "PM" : "AM"}";
-    }
-  }
-
-  timeDetails1(int index) {
-    int finish = (pastList[index].maxDelayTime != null
-            ? int.parse(pastList[index].maxDelayTime)
-            : 0) +
-        (pastList[index].serviceTime != null
-            ? int.parse(pastList[index].serviceTime)
-            : 0);
-    var dd = getTime(pastList[index].time, finish);
-    return Container(
-      margin: EdgeInsets.only(left: 5),
-      height: 15,
-      width: 110,
-      decoration: BoxDecoration(
-        color: Colors.green,
-        borderRadius: BorderRadius.circular(5),
-      ),
-      child: Center(
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Text(
-              getTime1(pastList[index].time, 0),
-              style: TextStyle(color: WHITE, fontSize: 8),
-            ),
-            Text(
-              " - ",
-              style: TextStyle(color: WHITE, fontSize: 12),
-            ),
-            Text(
-              dd,
-              style: TextStyle(color: WHITE, fontSize: 8),
-            ),
-          ],
-        ),
-      ),
-    );
-  }
-
-  getTime1(String time, int fin) {
-    TimeOfDay _startTime = TimeOfDay(
-        hour: int.parse(time.split(":")[0]),
-        minute: int.parse(time.split(":")[1]));
-    var mm = _startTime.minute + fin;
-    var hh = _startTime.hourOfPeriod;
-   
-     if (mm >= 60) {
-      return "${(hh + 1) > 9 ? hh + 1 : "0" + (hh + 1).toString()}:${(mm % 60) > 9 ? mm % 60 : "0" + (mm % 60).toString()} ${_startTime.period == DayPeriod.am && hh+1 >= 12 ?  "PM" : "AM"}";
-    } else if (mm >= 120) {
-      return "${(hh + 2) > 9 ? hh + 2 : "0" + (hh + 2).toString()}:${(mm % 120) > 9 ? mm % 120 : "0" + (mm % 120).toString()} ${_startTime.period == DayPeriod.am && hh+2 >= 12 ?  "PM" : "AM"}";
-    } else if (mm >= 180) {
-      return "${(hh + 3) > 9 ? hh + 3 : "0" + (hh + 3).toString()}:${(mm % 180) > 9 ? mm % 180 : "0" + (mm % 180).toString()} ${_startTime.period == DayPeriod.am && hh+3 >= 12 ?  "PM" : "AM"}";
-    } else if (mm >= 240) {
-      return "${(hh + 4) > 9 ? hh + 4 : "0" + (hh + 4).toString()}:${(mm % 240) > 9 ? mm % 240 : "0" + (mm % 240).toString()} ${_startTime.period == DayPeriod.am && hh+4 >= 12 ?  "PM" : "AM"}";
-    } else {
-      return "${(hh) > 9 ? hh : "0" + (hh).toString()}:${(mm) > 9 ? mm : "0" + (mm).toString()} ${_startTime.period == DayPeriod.am && hh >= 12 ?  "PM" : "AM"}";
-    }
-  }
-
+  
   header() {
     return Directionality(
         textDirection: TextDirection.rtl,
@@ -454,7 +343,38 @@ class _AppointmentScreenState extends State<AppointmentScreen>
                                     SizedBox(
                                       width: 5,
                                     ),
-                                    timeDetails(index),
+                                    Container(
+                                      margin: EdgeInsets.only(left: 5),
+                                      height: 15,
+                                      width: 110,
+                                      decoration: BoxDecoration(
+                                        color: Colors.green,
+                                        borderRadius: BorderRadius.circular(5),
+                                      ),
+                                      child: Center(
+                                        child: Row(
+                                          mainAxisAlignment:
+                                              MainAxisAlignment.center,
+                                          children: [
+                                            Text(
+                                                  upcomingList[index].startTime,
+                                              style: TextStyle(
+                                                  color: WHITE, fontSize: 8),
+                                            ),
+                                            Text(
+                                              " - ",
+                                              style: TextStyle(
+                                                  color: WHITE, fontSize: 12),
+                                            ),
+                                            Text(
+                                             upcomingList[index].endTime,
+                                              style: TextStyle(
+                                                  color: WHITE, fontSize: 8),
+                                            ),
+                                          ],
+                                        ),
+                                      ),
+                                    ),
                                   ],
                                 ),
                                 Text(
@@ -648,7 +568,38 @@ class _AppointmentScreenState extends State<AppointmentScreen>
                                   SizedBox(
                                     width: 5,
                                   ),
-                                  timeDetails1(index),
+                                  Container(
+                                      margin: EdgeInsets.only(left: 5),
+                                      height: 15,
+                                      width: 110,
+                                      decoration: BoxDecoration(
+                                        color: Colors.green,
+                                        borderRadius: BorderRadius.circular(5),
+                                      ),
+                                      child: Center(
+                                        child: Row(
+                                          mainAxisAlignment:
+                                              MainAxisAlignment.center,
+                                          children: [
+                                            Text(
+                                                  pastList[index].startTime,
+                                              style: TextStyle(
+                                                  color: WHITE, fontSize: 8),
+                                            ),
+                                            Text(
+                                              " - ",
+                                              style: TextStyle(
+                                                  color: WHITE, fontSize: 12),
+                                            ),
+                                            Text(
+                                             pastList[index].endTime,
+                                              style: TextStyle(
+                                                  color: WHITE, fontSize: 8),
+                                            ),
+                                          ],
+                                        ),
+                                      ),
+                                    ),
                                 ],
                               ),
                               Text(
@@ -656,22 +607,7 @@ class _AppointmentScreenState extends State<AppointmentScreen>
                                 style: TextStyle(
                                     color: LIGHT_GREY_TEXT, fontSize: 10),
                               ),
-                              /*  TextButton(
-                                  onPressed: () async {
-                                    messageDialog("تحذير",
-                                        "هل انت متأكد من حذف الموعد ؟");
-                                  },
-                                  style: TextButton.styleFrom(
-                                      backgroundColor: Colors.red[900],
-                                      padding: EdgeInsets.all(0)),
-                                  child: Text(
-                                    "حذف ",
-                                    style: TextStyle(
-                                      fontWeight: FontWeight.w500,
-                                      color: WHITE,
-                                    ),
-                                  ),
-                                ),*/
+                            
                             ],
                           ),
                         ],

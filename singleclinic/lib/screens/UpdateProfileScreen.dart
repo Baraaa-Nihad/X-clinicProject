@@ -565,7 +565,9 @@ class _UpdateProfileScreenState extends State<UpdateProfileScreen> {
       Navigator.pop(context);
       Navigator.pop(context, true);
     } else {
-      Navigator.pop(context);
+      Navigator.of(context).pop;
+         Navigator.pop(context);
+      Navigator.pop(context, true);
       print("Error" + response.toString());
       errorDialog(response.data['msg']);
     }
