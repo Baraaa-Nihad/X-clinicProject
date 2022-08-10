@@ -105,7 +105,8 @@ const String PLEASE_WAIT_WHILE_MAKING_APPOINTMENT =
 const String PLEASE_WAIT_WHILE_ADDING_REVIEW =
     "...يرجى الانتظار بينما يتم اضافة التقييم";
 const String PLEASE_WAIT_WHILE_UPDATING_PROFILE =
-    "...يرجى الانتظار بينما يتم اضافة التقييم";
+    "يرجى الإنتظار بينما يتم تحديث المعلومات ...";
+
 const String PLEASE_WAIT_FOR_A_WHILE = " ...يرجى الانتظار قليلا";
 const String PLEASE_WAIT_WHILE_PROCESSING_PAYMENT =
     "Please wait while processing payment...";

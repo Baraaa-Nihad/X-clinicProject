@@ -69,439 +69,439 @@ class _UpdateProfileScreenState extends State<UpdateProfileScreen> {
     );
   }
 
-  header()  {
+  header() {
     return Directionality(
-      textDirection: TextDirection.rtl,
-      child : SafeArea(
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          Padding(
-            padding: const EdgeInsets.fromLTRB(15, 0, 15, 0),
-            child: Row(
-              children: [
-                IconButton(
-                  icon: Icon(
-                    Icons.arrow_back_ios,
-                    size: 18,
-                    color: BLACK,
-                  ),
-                  constraints: BoxConstraints(maxWidth: 30, minWidth: 10),
-                  padding: EdgeInsets.zero,
-                  onPressed: () {
-                    Navigator.pop(context);
-                  },
+        textDirection: TextDirection.rtl,
+        child: SafeArea(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Padding(
+                padding: const EdgeInsets.fromLTRB(15, 0, 15, 0),
+                child: Row(
+                  children: [
+                    IconButton(
+                      icon: Icon(
+                        Icons.arrow_back_ios,
+                        size: 18,
+                        color: BLACK,
+                      ),
+                      constraints: BoxConstraints(maxWidth: 30, minWidth: 10),
+                      padding: EdgeInsets.zero,
+                      onPressed: () {
+                        Navigator.pop(context);
+                      },
+                    ),
+                    SizedBox(
+                      width: 10,
+                    ),
+                    Text(
+                      PROFILE_UPDATE,
+                      style: TextStyle(
+                          color: NAVY_BLUE,
+                          fontSize: 22,
+                          fontWeight: FontWeight.w700),
+                    ),
+                  ],
                 ),
-                SizedBox(
-                  width: 10,
-                ),
-                Text(
-                  PROFILE_UPDATE,
-                  style: TextStyle(
-                      color: NAVY_BLUE,
-                      fontSize: 22,
-                      fontWeight: FontWeight.w700),
-                ),
-              ],
-            ),
+              ),
+            ],
           ),
-        ],
-      ),
-      )
-    );
+        ));
   }
 
   body() {
     return Directionality(
         textDirection: TextDirection.rtl,
-        child :  Padding(
-      padding: const EdgeInsets.fromLTRB(20, 20, 20, 0),
-      child: Column(
-        children: [
-          Expanded(
-            child: SingleChildScrollView(
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
+        child: Padding(
+          padding: const EdgeInsets.fromLTRB(20, 20, 20, 0),
+          child: Column(
+            children: [
+              Expanded(
+                child: SingleChildScrollView(
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      Stack(
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
                         children: [
-                          ClipRRect(
-                            borderRadius: BorderRadius.circular(70),
-                            child: Container(
-                              height: 140,
-                              width: 140,
-                              child: path.isEmpty
-                                  ? CachedNetworkImage(
-                                      fit: BoxFit.cover,
-                                      imageUrl: Uri.parse(imageUrl).toString(),
-                                      progressIndicatorBuilder:
-                                          (context, url, downloadProgress) =>
+                          Stack(
+                            children: [
+                              ClipRRect(
+                                borderRadius: BorderRadius.circular(70),
+                                child: Container(
+                                  height: 140,
+                                  width: 140,
+                                  child: path.isEmpty
+                                      ? CachedNetworkImage(
+                                          fit: BoxFit.cover,
+                                          imageUrl:
+                                              Uri.parse(imageUrl).toString(),
+                                          progressIndicatorBuilder: (context,
+                                                  url, downloadProgress) =>
                                               Container(
                                                   child: Center(
                                                       child: Icon(
-                                        Icons.account_circle,
-                                        size: 140,
-                                        color: LIGHT_GREY_TEXT,
-                                      ))),
-                                      errorWidget: (context, url, error) =>
-                                          Container(
-                                        child: Center(
-                                          child: Icon(
                                             Icons.account_circle,
                                             size: 140,
                                             color: LIGHT_GREY_TEXT,
+                                          ))),
+                                          errorWidget: (context, url, error) =>
+                                              Container(
+                                            child: Center(
+                                              child: Icon(
+                                                Icons.account_circle,
+                                                size: 140,
+                                                color: LIGHT_GREY_TEXT,
+                                              ),
+                                            ),
                                           ),
+                                        )
+                                      : Image.file(
+                                          File(path),
+                                          height: 140,
+                                          width: 140,
+                                          fit: BoxFit.cover,
                                         ),
-                                      ),
-                                    )
-                                  : Image.file(
-                                      File(path),
-                                      height: 140,
-                                      width: 140,
-                                      fit: BoxFit.cover,
-                                    ),
-                            ),
-                          ),
-                          Container(
-                            height: 137,
-                            width: 137,
-                            child: InkWell(
-                              onTap: () {
-                                showSheet();
-                              },
-                              child: Align(
-                                alignment: Alignment.bottomRight,
-                                child: Image.asset(
-                                  "assets/loginregister/edit.png",
-                                  height: 35,
-                                  width: 35,
-                                  fit: BoxFit.fill,
                                 ),
                               ),
-                            ),
+                              Container(
+                                height: 137,
+                                width: 137,
+                                child: InkWell(
+                                  onTap: () {
+                                    showSheet();
+                                  },
+                                  child: Align(
+                                    alignment: Alignment.bottomRight,
+                                    child: Image.asset(
+                                      "assets/loginregister/edit.png",
+                                      height: 35,
+                                      width: 35,
+                                      fit: BoxFit.fill,
+                                    ),
+                                  ),
+                                ),
+                              ),
+                            ],
                           ),
                         ],
                       ),
+                      SizedBox(
+                        height: 20,
+                      ),
+                      Form(
+                        key: formKey,
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Text(
+                              NAME,
+                              style: TextStyle(
+                                  fontSize: 18, fontWeight: FontWeight.w700),
+                            ),
+                            TextFormField(
+                              controller: nameController,
+                              validator: (val) {
+                                if (val.isEmpty) {
+                                  return "Enter your name";
+                                }
+                                return null;
+                              },
+                              onSaved: (val) => name = val,
+                              style: TextStyle(
+                                color: LIGHT_GREY_TEXT,
+                              ),
+                              decoration: InputDecoration(
+                                isCollapsed: true,
+                                contentPadding: EdgeInsets.all(5),
+                                border: UnderlineInputBorder(
+                                    borderSide: BorderSide(
+                                  color: LIGHT_GREY_TEXT,
+                                  width: 0.5,
+                                )),
+                                focusedBorder: UnderlineInputBorder(
+                                    borderSide: BorderSide(
+                                  color: LIGHT_GREY_TEXT,
+                                  width: 0.5,
+                                )),
+                                enabledBorder: UnderlineInputBorder(
+                                    borderSide: BorderSide(
+                                  color: LIGHT_GREY_TEXT,
+                                  width: 0.5,
+                                )),
+                                disabledBorder: UnderlineInputBorder(
+                                    borderSide: BorderSide(
+                                  color: LIGHT_GREY_TEXT,
+                                  width: 0.5,
+                                )),
+                              ),
+                              onChanged: (val) {
+                                setState(() {
+                                  name = val;
+                                });
+                              },
+                            ),
+                            SizedBox(
+                              height: 25,
+                            ),
+                            Text(
+                              EMAIL_ADDRESS,
+                              style: TextStyle(
+                                  fontSize: 18, fontWeight: FontWeight.w700),
+                            ),
+                            IgnorePointer(
+                              ignoring: emailController.text != 'null',
+                              child: TextFormField(
+                                controller: emailController,
+                                validator: (val) {
+                                  if (val.isEmpty) {
+                                    return "Enter your email address";
+                                  } else if (!EmailValidator.validate(val)) {
+                                    return "Enter correct email";
+                                  }
+                                  return null;
+                                },
+                                onSaved: (val) => emailAddress = val,
+                                style: TextStyle(
+                                  color: LIGHT_GREY_TEXT,
+                                ),
+                                decoration: InputDecoration(
+                                  isCollapsed: true,
+                                  contentPadding: EdgeInsets.all(5),
+                                  border: UnderlineInputBorder(
+                                      borderSide: BorderSide(
+                                    color: LIGHT_GREY_TEXT,
+                                    width: 0.5,
+                                  )),
+                                  focusedBorder: UnderlineInputBorder(
+                                      borderSide: BorderSide(
+                                    color: LIGHT_GREY_TEXT,
+                                    width: 0.5,
+                                  )),
+                                  enabledBorder: UnderlineInputBorder(
+                                      borderSide: BorderSide(
+                                    color: LIGHT_GREY_TEXT,
+                                    width: 0.5,
+                                  )),
+                                  disabledBorder: UnderlineInputBorder(
+                                      borderSide: BorderSide(
+                                    color: LIGHT_GREY_TEXT,
+                                    width: 0.5,
+                                  )),
+                                ),
+                                onChanged: (val) {
+                                  setState(() {
+                                    emailAddress = val;
+                                  });
+                                },
+                              ),
+                            ),
+                            SizedBox(
+                              height: 25,
+                            ),
+                            Text(
+                              PHONE_NUMBER,
+                              style: TextStyle(
+                                  fontSize: 18, fontWeight: FontWeight.w700),
+                            ),
+                            TextFormField(
+                              controller: phoneController,
+                              validator: (val) {
+                                if (val.isEmpty) {
+                                  return "Enter your phone number";
+                                }
+                                return null;
+                              },
+                              keyboardType: TextInputType.phone,
+                              onSaved: (val) => phoneNumber = val,
+                              style: TextStyle(
+                                color: LIGHT_GREY_TEXT,
+                              ),
+                              decoration: InputDecoration(
+                                isCollapsed: true,
+                                contentPadding: EdgeInsets.all(5),
+                                border: UnderlineInputBorder(
+                                    borderSide: BorderSide(
+                                  color: LIGHT_GREY_TEXT,
+                                  width: 0.5,
+                                )),
+                                focusedBorder: UnderlineInputBorder(
+                                    borderSide: BorderSide(
+                                  color: LIGHT_GREY_TEXT,
+                                  width: 0.5,
+                                )),
+                                enabledBorder: UnderlineInputBorder(
+                                    borderSide: BorderSide(
+                                  color: LIGHT_GREY_TEXT,
+                                  width: 0.5,
+                                )),
+                                disabledBorder: UnderlineInputBorder(
+                                    borderSide: BorderSide(
+                                  color: LIGHT_GREY_TEXT,
+                                  width: 0.5,
+                                )),
+                              ),
+                              onChanged: (val) {
+                                setState(() {
+                                  phoneNumber = val;
+                                });
+                              },
+                            ),
+                            SizedBox(
+                              height: 25,
+                            ),
+                            Text(
+                              PASSWORD,
+                              style: TextStyle(
+                                  fontSize: 18, fontWeight: FontWeight.w700),
+                            ),
+                            TextFormField(
+                              controller: passController,
+                              obscureText: true,
+                              validator: (val) {
+                                if (val.isEmpty) {
+                                  return "Enter your password";
+                                }
+                                return null;
+                              },
+                              onSaved: (val) => password = val,
+                              style: TextStyle(
+                                color: LIGHT_GREY_TEXT,
+                              ),
+                              decoration: InputDecoration(
+                                isCollapsed: true,
+                                contentPadding: EdgeInsets.all(5),
+                                border: UnderlineInputBorder(
+                                    borderSide: BorderSide(
+                                  color: LIGHT_GREY_TEXT,
+                                  width: 0.5,
+                                )),
+                                focusedBorder: UnderlineInputBorder(
+                                    borderSide: BorderSide(
+                                  color: LIGHT_GREY_TEXT,
+                                  width: 0.5,
+                                )),
+                                enabledBorder: UnderlineInputBorder(
+                                    borderSide: BorderSide(
+                                  color: LIGHT_GREY_TEXT,
+                                  width: 0.5,
+                                )),
+                                disabledBorder: UnderlineInputBorder(
+                                    borderSide: BorderSide(
+                                  color: LIGHT_GREY_TEXT,
+                                  width: 0.5,
+                                )),
+                              ),
+                              onChanged: (val) {
+                                setState(() {
+                                  password = val;
+                                });
+                              },
+                            ),
+                            SizedBox(
+                              height: 25,
+                            ),
+                            Text(
+                              CONFIRM_PASSWORD,
+                              style: TextStyle(
+                                  fontSize: 18, fontWeight: FontWeight.w700),
+                            ),
+                            TextFormField(
+                              controller: confirmPassController,
+                              obscureText: true,
+                              validator: (val) {
+                                if (val.isEmpty) {
+                                  return "Enter your password";
+                                } else if (val != password) {
+                                  return "Password mismatch";
+                                }
+                                return null;
+                              },
+                              onSaved: (val) => confirmPassword = val,
+                              style: TextStyle(
+                                color: LIGHT_GREY_TEXT,
+                              ),
+                              decoration: InputDecoration(
+                                isCollapsed: true,
+                                contentPadding: EdgeInsets.all(5),
+                                border: UnderlineInputBorder(
+                                    borderSide: BorderSide(
+                                  color: LIGHT_GREY_TEXT,
+                                  width: 0.5,
+                                )),
+                                focusedBorder: UnderlineInputBorder(
+                                    borderSide: BorderSide(
+                                  color: LIGHT_GREY_TEXT,
+                                  width: 0.5,
+                                )),
+                                enabledBorder: UnderlineInputBorder(
+                                    borderSide: BorderSide(
+                                  color: LIGHT_GREY_TEXT,
+                                  width: 0.5,
+                                )),
+                                disabledBorder: UnderlineInputBorder(
+                                    borderSide: BorderSide(
+                                  color: LIGHT_GREY_TEXT,
+                                  width: 0.5,
+                                )),
+                              ),
+                              onChanged: (val) {
+                                setState(() {
+                                  confirmPassword = val;
+                                });
+                              },
+                            ),
+                          ],
+                        ),
+                      ),
+                      SizedBox(
+                        height: 20,
+                      ),
                     ],
                   ),
-                  SizedBox(
-                    height: 20,
-                  ),
-                  Form(
-                    key: formKey,
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Text(
-                          NAME,
-                          style: TextStyle(
-                              fontSize: 18, fontWeight: FontWeight.w700),
-                        ),
-                        TextFormField(
-                          controller: nameController,
-                          validator: (val) {
-                            if (val.isEmpty) {
-                              return "Enter your name";
-                            }
-                            return null;
-                          },
-                          onSaved: (val) => name = val,
-                          style: TextStyle(
-                            color: LIGHT_GREY_TEXT,
-                          ),
-                          decoration: InputDecoration(
-                            isCollapsed: true,
-                            contentPadding: EdgeInsets.all(5),
-                            border: UnderlineInputBorder(
-                                borderSide: BorderSide(
-                              color: LIGHT_GREY_TEXT,
-                              width: 0.5,
-                            )),
-                            focusedBorder: UnderlineInputBorder(
-                                borderSide: BorderSide(
-                              color: LIGHT_GREY_TEXT,
-                              width: 0.5,
-                            )),
-                            enabledBorder: UnderlineInputBorder(
-                                borderSide: BorderSide(
-                              color: LIGHT_GREY_TEXT,
-                              width: 0.5,
-                            )),
-                            disabledBorder: UnderlineInputBorder(
-                                borderSide: BorderSide(
-                              color: LIGHT_GREY_TEXT,
-                              width: 0.5,
-                            )),
-                          ),
-                          onChanged: (val) {
-                            setState(() {
-                              name = val;
-                            });
-                          },
-                        ),
-                        SizedBox(
-                          height: 25,
-                        ),
-                        Text(
-                          EMAIL_ADDRESS,
-                          style: TextStyle(
-                              fontSize: 18, fontWeight: FontWeight.w700),
-                        ),
-                        IgnorePointer(
-                          ignoring: emailController.text != 'null',
-                          child: TextFormField(
-                            controller: emailController,
-                            validator: (val) {
-                              if (val.isEmpty) {
-                                return "Enter your email address";
-                              } else if (!EmailValidator.validate(val)) {
-                                return "Enter correct email";
-                              }
-                              return null;
-                            },
-                            onSaved: (val) => emailAddress = val,
-                            style: TextStyle(
-                              color: LIGHT_GREY_TEXT,
-                            ),
-                            decoration: InputDecoration(
-                              isCollapsed: true,
-                              contentPadding: EdgeInsets.all(5),
-                              border: UnderlineInputBorder(
-                                  borderSide: BorderSide(
-                                color: LIGHT_GREY_TEXT,
-                                width: 0.5,
-                              )),
-                              focusedBorder: UnderlineInputBorder(
-                                  borderSide: BorderSide(
-                                color: LIGHT_GREY_TEXT,
-                                width: 0.5,
-                              )),
-                              enabledBorder: UnderlineInputBorder(
-                                  borderSide: BorderSide(
-                                color: LIGHT_GREY_TEXT,
-                                width: 0.5,
-                              )),
-                              disabledBorder: UnderlineInputBorder(
-                                  borderSide: BorderSide(
-                                color: LIGHT_GREY_TEXT,
-                                width: 0.5,
-                              )),
-                            ),
-                            onChanged: (val) {
-                              setState(() {
-                                emailAddress = val;
-                              });
-                            },
-                          ),
-                        ),
-                        SizedBox(
-                          height: 25,
-                        ),
-                        Text(
-                          PHONE_NUMBER,
-                          style: TextStyle(
-                              fontSize: 18, fontWeight: FontWeight.w700),
-                        ),
-                        TextFormField(
-                          controller: phoneController,
-                          validator: (val) {
-                            if (val.isEmpty) {
-                              return "Enter your phone number";
-                            }
-                            return null;
-                          },
-                          keyboardType: TextInputType.phone,
-                          onSaved: (val) => phoneNumber = val,
-                          style: TextStyle(
-                            color: LIGHT_GREY_TEXT,
-                          ),
-                          decoration: InputDecoration(
-                            isCollapsed: true,
-                            contentPadding: EdgeInsets.all(5),
-                            border: UnderlineInputBorder(
-                                borderSide: BorderSide(
-                              color: LIGHT_GREY_TEXT,
-                              width: 0.5,
-                            )),
-                            focusedBorder: UnderlineInputBorder(
-                                borderSide: BorderSide(
-                              color: LIGHT_GREY_TEXT,
-                              width: 0.5,
-                            )),
-                            enabledBorder: UnderlineInputBorder(
-                                borderSide: BorderSide(
-                              color: LIGHT_GREY_TEXT,
-                              width: 0.5,
-                            )),
-                            disabledBorder: UnderlineInputBorder(
-                                borderSide: BorderSide(
-                              color: LIGHT_GREY_TEXT,
-                              width: 0.5,
-                            )),
-                          ),
-                          onChanged: (val) {
-                            setState(() {
-                              phoneNumber = val;
-                            });
-                          },
-                        ),
-                        SizedBox(
-                          height: 25,
-                        ),
-                        Text(
-                          PASSWORD,
-                          style: TextStyle(
-                              fontSize: 18, fontWeight: FontWeight.w700),
-                        ),
-                        TextFormField(
-                          controller: passController,
-                          obscureText: true,
-                          validator: (val) {
-                            if (val.isEmpty) {
-                              return "Enter your password";
-                            }
-                            return null;
-                          },
-                          onSaved: (val) => password = val,
-                          style: TextStyle(
-                            color: LIGHT_GREY_TEXT,
-                          ),
-                          decoration: InputDecoration(
-                            isCollapsed: true,
-                            contentPadding: EdgeInsets.all(5),
-                            border: UnderlineInputBorder(
-                                borderSide: BorderSide(
-                              color: LIGHT_GREY_TEXT,
-                              width: 0.5,
-                            )),
-                            focusedBorder: UnderlineInputBorder(
-                                borderSide: BorderSide(
-                              color: LIGHT_GREY_TEXT,
-                              width: 0.5,
-                            )),
-                            enabledBorder: UnderlineInputBorder(
-                                borderSide: BorderSide(
-                              color: LIGHT_GREY_TEXT,
-                              width: 0.5,
-                            )),
-                            disabledBorder: UnderlineInputBorder(
-                                borderSide: BorderSide(
-                              color: LIGHT_GREY_TEXT,
-                              width: 0.5,
-                            )),
-                          ),
-                          onChanged: (val) {
-                            setState(() {
-                              password = val;
-                            });
-                          },
-                        ),
-                        SizedBox(
-                          height: 25,
-                        ),
-                        Text(
-                          CONFIRM_PASSWORD,
-                          style: TextStyle(
-                              fontSize: 18, fontWeight: FontWeight.w700),
-                        ),
-                        TextFormField(
-                          controller: confirmPassController,
-                          obscureText: true,
-                          validator: (val) {
-                            if (val.isEmpty) {
-                              return "Enter your password";
-                            } else if (val != password) {
-                              return "Password mismatch";
-                            }
-                            return null;
-                          },
-                          onSaved: (val) => confirmPassword = val,
-                          style: TextStyle(
-                            color: LIGHT_GREY_TEXT,
-                          ),
-                          decoration: InputDecoration(
-                            isCollapsed: true,
-                            contentPadding: EdgeInsets.all(5),
-                            border: UnderlineInputBorder(
-                                borderSide: BorderSide(
-                              color: LIGHT_GREY_TEXT,
-                              width: 0.5,
-                            )),
-                            focusedBorder: UnderlineInputBorder(
-                                borderSide: BorderSide(
-                              color: LIGHT_GREY_TEXT,
-                              width: 0.5,
-                            )),
-                            enabledBorder: UnderlineInputBorder(
-                                borderSide: BorderSide(
-                              color: LIGHT_GREY_TEXT,
-                              width: 0.5,
-                            )),
-                            disabledBorder: UnderlineInputBorder(
-                                borderSide: BorderSide(
-                              color: LIGHT_GREY_TEXT,
-                              width: 0.5,
-                            )),
-                          ),
-                          onChanged: (val) {
-                            setState(() {
-                              confirmPassword = val;
-                            });
-                          },
-                        ),
-                      ],
-                    ),
-                  ),
-                  SizedBox(
-                    height: 20,
-                  ),
-                ],
+                ),
               ),
-            ),
+              button(),
+            ],
           ),
-          button(),
-        ],
-      ),
-        )
-    );
+        ));
   }
 
   button() {
     return Directionality(
         textDirection: TextDirection.rtl,
-        child : Row(
-      children: [
-        Expanded(
-          child: InkWell(
-            onTap: () {
-              if (formKey.currentState.validate()) {
-                formKey.currentState.save();
-                updateProfile();
-              }
-            },
-            child: Container(
-              margin: EdgeInsets.fromLTRB(15, 5, 15, 15),
-              height: 50,
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(25),
-                color: LIME,
-              ),
-              child: Center(
-                child: Text(
-                  UPDATE,
-                  style: TextStyle(
-                      color: WHITE,
-                      fontWeight: FontWeight.w700, fontSize: 17),
+        child: Row(
+          children: [
+            Expanded(
+              child: InkWell(
+                onTap: () {
+                  if (formKey.currentState.validate()) {
+                    formKey.currentState.save();
+                    updateProfile();
+                  }
+                },
+                child: Container(
+                  margin: EdgeInsets.fromLTRB(15, 5, 15, 15),
+                  height: 50,
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(25),
+                    color: LIME,
+                  ),
+                  child: Center(
+                    child: Text(
+                      UPDATE,
+                      style: TextStyle(
+                          color: WHITE,
+                          fontWeight: FontWeight.w700,
+                          fontSize: 17),
+                    ),
+                  ),
                 ),
               ),
-            ),
-          ),
-        )
-      ],
-    ));
+            )
+          ],
+        ));
   }
 
   final picker = ImagePicker();
@@ -657,7 +657,7 @@ class _UpdateProfileScreenState extends State<UpdateProfileScreen> {
                 ),
                 onTap: () {
                   Navigator.pop(context);
-                  getImage(fromGallery: false);
+                  getImage(fromGallery: true);
                 },
               ),
               ListTile(
@@ -703,8 +703,9 @@ class _UpdateProfileScreenState extends State<UpdateProfileScreen> {
                           child: Text(
                             CANCEL,
                             style: TextStyle(
-                              color: WHITE,
-                                fontWeight: FontWeight.w700, fontSize: 17),
+                                color: WHITE,
+                                fontWeight: FontWeight.w700,
+                                fontSize: 17),
                           ),
                         ),
                       ),

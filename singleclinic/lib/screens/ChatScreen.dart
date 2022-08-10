@@ -621,16 +621,28 @@ class _ChatScreenState extends State<ChatScreen> with WidgetsBindingObserver {
                                             .toString());
 
                                     int daysDifference = DateTime.now()
-                                        .difference(DateTime.parse(snapshot.data.docs[index]['time']!=null?snapshot.data.docs[index]['time']:"2022-07-28 12:24:45.101440" +
-                                                "Z")
+                                        .difference(DateTime.parse(snapshot.data
+                                                        .docs[index]['time'] !=
+                                                    null
+                                                ? snapshot.data.docs[index]
+                                                    ['time']
+                                                : "2022-07-28 12:24:45.101440" +
+                                                    "Z")
                                             .toLocal())
                                         .inDays;
                                     int daysDifference2 = k >=
                                             snapshot.data.docs.length
                                         ? 3
                                         : DateTime.now()
-                                            .difference(DateTime.parse(snapshot.data.docs[index]['time']!=null?snapshot.data.docs[index]['time']:"2022-07-28 12:24:45.101440" +
-                                                    "Z")
+                                            .difference(DateTime.parse(snapshot
+                                                                .data
+                                                                .docs[index]
+                                                            ['time'] !=
+                                                        null
+                                                    ? snapshot.data.docs[index]
+                                                        ['time']
+                                                    : "2022-07-28 12:24:45.101440" +
+                                                        "Z")
                                                 .toLocal())
                                             .inDays;
                                     print(
@@ -728,41 +740,45 @@ class _ChatScreenState extends State<ChatScreen> with WidgetsBindingObserver {
                                                         ],
                                                       )
                                                     : Container(),
-                                        snapshot.data.docs[index]['uid'] == myUid
+                                        snapshot.data.docs[index]['uid'] ==
+                                                myUid
                                             ? myMessageCard(
                                                 msg: snapshot.data.docs[index]
                                                     ['msg'],
-                                                time: DateTime.parse(snapshot.data.docs[index]['time']!=null?snapshot.data.docs[index]['time']:"2022-07-28 12:24:45.101440" + "Z").toLocal().minute > 10
-                                                    ? DateTime.parse(snapshot.data.docs[index]['time']!=null?snapshot.data.docs[index]['time']:"2022-07-28 12:24:45.101440" + "Z").toLocal().hour.toString() +
+                                                time: DateTime.parse(snapshot.data.docs[index]['time'] != null ? snapshot.data.docs[index]['time'] : "2022-07-28 12:24:45.101440" + "Z")
+                                                            .toLocal()
+                                                            .minute >
+                                                        10
+                                                    ? DateTime.parse(snapshot.data.docs[index]['time'] != null ? snapshot.data.docs[index]['time'] : "2022-07-28 12:24:45.101440" + "Z")
+                                                            .toLocal()
+                                                            .hour
+                                                            .toString() +
                                                         ":" +
-                                                        DateTime.parse(snapshot.data.docs[index]['time']!=null?snapshot.data.docs[index]['time']:"2022-07-28 12:24:45.101440" + "Z")
+                                                        DateTime.parse(snapshot.data.docs[index]['time'] != null ? snapshot.data.docs[index]['time'] : "2022-07-28 12:24:45.101440" + "Z")
                                                             .toLocal()
                                                             .minute
                                                             .toString()
-                                                    : DateTime.parse(snapshot.data.docs[index]['time']!=null?snapshot.data.docs[index]['time']:"2022-07-28 12:24:45.101440" + "Z").toLocal().hour.toString() +
+                                                    : DateTime.parse(snapshot.data.docs[index]['time'] != null
+                                                                ? snapshot.data
+                                                                    .docs[index]['time']
+                                                                : "2022-07-28 12:24:45.101440" + "Z")
+                                                            .toLocal()
+                                                            .hour
+                                                            .toString() +
                                                         ":" +
                                                         "0" +
-                                                        DateTime.parse(snapshot.data.docs[index]['time']!=null?snapshot.data.docs[index]['time']:snapshot.data.docs[index]['time']!=null?snapshot.data.docs[index]['time']:"2022-07-28 12:24:45.101440" + "Z")
+                                                        DateTime.parse(snapshot.data.docs[index]['time'] != null
+                                                                ? snapshot.data.docs[index]['time']
+                                                                : snapshot.data.docs[index]['time'] != null
+                                                                    ? snapshot.data.docs[index]['time']
+                                                                    : "2022-07-28 12:24:45.101440" + "Z")
                                                             .toLocal()
                                                             .minute
                                                             .toString(),
                                                 image: imageLink,
                                                 snapshot: snapshot,
                                                 index: index)
-                                            : messageCard(
-                                                msg: snapshot.data.docs[index]
-                                                    ['msg'],
-                                                time: DateTime.parse(snapshot.data.docs[index]['time'] + "Z").toLocal().minute > 10
-                                                    ? DateTime.parse(snapshot.data.docs[index]['time'] + "Z").toLocal().hour.toString() +
-                                                        ":" +
-                                                        DateTime.parse(snapshot.data.docs[index]['time'] + "Z")
-                                                            .toLocal()
-                                                            .minute
-                                                            .toString()
-                                                    : DateTime.parse(snapshot.data.docs[index]['time'] + "Z").toLocal().hour.toString() + ":" + "0" + DateTime.parse(snapshot.data.docs[index]['time'] + "Z").toLocal().minute.toString(),
-                                                image: imageLink,
-                                                snapshot: snapshot,
-                                                index: index),
+                                            : messageCard(msg: snapshot.data.docs[index]['msg'], time: DateTime.parse(snapshot.data.docs[index]['time'] + "Z").toLocal().minute > 10 ? DateTime.parse(snapshot.data.docs[index]['time'] + "Z").toLocal().hour.toString() + ":" + DateTime.parse(snapshot.data.docs[index]['time'] + "Z").toLocal().minute.toString() : DateTime.parse(snapshot.data.docs[index]['time'] + "Z").toLocal().hour.toString() + ":" + "0" + DateTime.parse(snapshot.data.docs[index]['time'] + "Z").toLocal().minute.toString(), image: imageLink, snapshot: snapshot, index: index),
                                       ],
                                     );
                                   } else {
@@ -1166,7 +1182,6 @@ class _ChatScreenState extends State<ChatScreen> with WidgetsBindingObserver {
       print("Message sent");
     });
 
-
     if (isFirstMessage) {
       DatabaseReference dbRef = FirebaseDatabase.instance
           .reference()
@@ -1503,10 +1518,9 @@ class _ChatScreenState extends State<ChatScreen> with WidgetsBindingObserver {
   }
 
   uploadFileToServer(Uint8List result, String extension, String type,
-      Uint8List thumbNail) async { 
+      Uint8List thumbNail) async {
     await getExternalStorageDirectory().then((value) async {
       print(value);
-      
 
       File f2 = await File(value.path + '/0.$extension').create();
       f2.writeAsBytesSync(result);
@@ -1713,11 +1727,11 @@ class _ChatScreenState extends State<ChatScreen> with WidgetsBindingObserver {
               child: InkWell(
                 onTap: () {},
                 child: Container(
-                  decoration: BoxDecoration(color: LIGHT_GREY),
+                  decoration: BoxDecoration(color: Colors.red[300]),
                   child: Padding(
                     padding: const EdgeInsets.all(20.0),
                     child: Text(
-                      "Reject",
+                      "مرفوض",
                       style: TextStyle(fontWeight: FontWeight.w900),
                       textAlign: TextAlign.center,
                     ),
@@ -1729,14 +1743,13 @@ class _ChatScreenState extends State<ChatScreen> with WidgetsBindingObserver {
               child: InkWell(
                 onTap: () {
                   acceptChatRequest();
-                },
+                }, //Theme.of(context).primaryColor.withOpacity(0.8)
                 child: Container(
-                  decoration: BoxDecoration(
-                      color: Theme.of(context).primaryColor.withOpacity(0.8)),
+                  decoration: BoxDecoration(color: Colors.green[200]),
                   child: Padding(
                     padding: const EdgeInsets.all(20.0),
                     child: Text(
-                      "Accept",
+                      "تم قبوله",
                       style:
                           TextStyle(color: WHITE, fontWeight: FontWeight.w900),
                       textAlign: TextAlign.center,
@@ -1786,7 +1799,7 @@ class _ChatScreenState extends State<ChatScreen> with WidgetsBindingObserver {
                         borderRadius: BorderRadius.circular(30),
                         borderSide: BorderSide(color: Colors.transparent),
                       ),
-                      hintText: "Type a message here...",
+                      hintText: "اكتب رسالة هنا...",
                       filled: false,
                       hintStyle: TextStyle(fontSize: 15),
                       prefixIcon: Row(
@@ -1997,7 +2010,7 @@ class _ChatScreenState extends State<ChatScreen> with WidgetsBindingObserver {
             backgroundColor: Colors.white,
             elevation: 0,
             title: Text(
-              "Remove Message",
+              "حذف الرسالة",
               style: TextStyle(
                 color: Colors.black,
               ),
@@ -2007,7 +2020,7 @@ class _ChatScreenState extends State<ChatScreen> with WidgetsBindingObserver {
               mainAxisSize: MainAxisSize.min,
               children: [
                 Text(
-                  "Are you sure to remove this message ?",
+                  "هل انت متأكد من ازالة هذه الرسالة ؟",
                   style: TextStyle(fontSize: 13, color: Colors.red.shade800),
                 ),
                 SizedBox(
@@ -2028,7 +2041,7 @@ class _ChatScreenState extends State<ChatScreen> with WidgetsBindingObserver {
                           ),
                           child: Center(
                             child: Text(
-                              "Cancel",
+                              "الغاء",
                               style: TextStyle(
                                   fontSize: 15,
                                   color: Colors.black,
@@ -2059,7 +2072,7 @@ class _ChatScreenState extends State<ChatScreen> with WidgetsBindingObserver {
                           ),
                           child: Center(
                             child: Text(
-                              "Remove",
+                              "إزالة",
                               style: TextStyle(
                                   fontSize: 15,
                                   color: Colors.white,
