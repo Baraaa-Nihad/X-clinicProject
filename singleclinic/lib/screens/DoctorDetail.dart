@@ -422,9 +422,9 @@ class _DoctorDetailsState extends State<DoctorDetails> {
                                 height: 5,
                               ),
                               Text(
-                                doctorDetail.data.timeTabledata[index].from +
+                                getTime(doctorDetail.data.timeTabledata[index].from) +
                                     " إلى " +
-                                    doctorDetail.data.timeTabledata[index].to,
+                                    getTime(doctorDetail.data.timeTabledata[index].to),
                                 style: TextStyle(
                                   color: LIGHT_GREY_TEXT,
                                   fontSize: 9,
@@ -458,6 +458,16 @@ class _DoctorDetailsState extends State<DoctorDetails> {
         ],
       ),
     );
+  }
+
+   String getTime(String time) {
+    TimeOfDay _startTime = TimeOfDay(
+        hour: int.parse(time.split(":")[0]),
+        minute: int.parse(time.split(":")[1]));
+    
+  
+      return "${_startTime.hourOfPeriod}:${_startTime.minute} ${_startTime.period == DayPeriod.pm ? "PM" : "AM"}";
+    
   }
 
   bottomButtons() {

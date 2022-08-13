@@ -17,18 +17,18 @@ class _ForgetPasswordState extends State<ForgetPassword> {
 
   @override
   Widget build(BuildContext context) {
-    return   Directionality(
-        textDirection: TextDirection.rtl, child: SafeArea(
-      child: Scaffold(
-        appBar: AppBar(
-          backgroundColor: WHITE,
-          flexibleSpace: header(),
-          elevation: 0,
-        ),
-        body: body(),
-      ),
-    )
-    );
+    return Directionality(
+        textDirection: TextDirection.rtl,
+        child: SafeArea(
+          child: Scaffold(
+            appBar: AppBar(
+              backgroundColor: WHITE,
+              flexibleSpace: header(),
+              elevation: 0,
+            ),
+            body: body(),
+          ),
+        ));
   }
 
   body() {
@@ -185,8 +185,7 @@ class _ForgetPasswordState extends State<ForgetPassword> {
                 child: Text(
                   SEND,
                   style: TextStyle(
-                      color: WHITE,
-                      fontWeight: FontWeight.w700, fontSize: 17),
+                      color: WHITE, fontWeight: FontWeight.w700, fontSize: 17),
                 ),
               ),
             ),
@@ -196,31 +195,35 @@ class _ForgetPasswordState extends State<ForgetPassword> {
     );
   }
 
-  callApi() async{
-
+  callApi() async {
     processingDialog('Please wait while sending email');
 
-    var request = http.Request('GET', Uri.parse('$SERVER_ADDRESS/api/forgotpassword?email=${email}'));
-
+    var request = http.Request(
+        'GET', Uri.parse('$SERVER_ADDRESS/api/forgotpassword?email=${email}'));
 
     http.StreamedResponse response = await request.send();
 
     if (response.statusCode == 200) {
       final jsonResponse = jsonDecode(await response.stream.bytesToString());
-      Navigator.pop(context);
-      if(jsonResponse['status'] == 0){
+      
+      /*   if(jsonResponse['status'] == 0){
         errorDialog(jsonResponse['msg']);
       }else{
         messageDialog(SUCCESSFUL, jsonResponse['msg']);
+      }*/
+      if (jsonResponse['msg'] == 'Email Not Found') {
+        Navigator.pop(context);
+        messageDialog("خطأ", "الايميل غير موجود");
+      } else {
+        Navigator.pop(context);
+        messageDialog(
+            "حسنا", "سيتم ارسال رسالة بها كلمة السر الجديدة الى ايميلك ");
       }
-    }
-    else {
+    } else {
       print(response.reasonPhrase);
       errorDialog(response.reasonPhrase);
     }
-
   }
-
 
   errorDialog(message) {
     return showDialog(
@@ -326,5 +329,4 @@ class _ForgetPasswordState extends State<ForgetPassword> {
           );
         });
   }
-
 }

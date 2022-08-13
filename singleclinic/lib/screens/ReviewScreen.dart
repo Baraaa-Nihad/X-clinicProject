@@ -285,153 +285,155 @@ class _ReviewScreenState extends State<ReviewScreen> {
           Center(
               child: Container(
             margin: EdgeInsets.all(16),
-            padding: EdgeInsets.all(20),
+            padding: EdgeInsets.all(10),
             decoration: BoxDecoration(
               color: WHITE,
               borderRadius: BorderRadius.circular(10),
             ),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              mainAxisSize: MainAxisSize.min,
-              children: [
-                Text(
-                  Add_A_REVIEW,
-                  style: TextStyle(
-                    fontWeight: FontWeight.w800,
-                    fontSize: 20,
+            child: SingleChildScrollView(
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  Text(
+                    Add_A_REVIEW,
+                    style: TextStyle(
+                      fontWeight: FontWeight.w800,
+                      fontSize: 20,
+                    ),
                   ),
-                ),
-                SizedBox(
-                  height: 20,
-                ),
-                Text(
-                  YOUR_RATING,
-                  style: TextStyle(
-                    fontWeight: FontWeight.w700,
-                    fontSize: 18,
+                  SizedBox(
+                    height: 20,
                   ),
-                ),
-                SizedBox(
-                  height: 10,
-                ),
-                Row(
-                  children: [
-                    InkWell(
-                      onTap: () {
-                        setState(() {
-                          selectedRating = 1;
-                        });
-                      },
-                      child: Image.asset(
-                        selectedRating > 0
-                            ? "assets/doctordetails/star_active.png"
-                            : "assets/doctordetails/star_unactive.png",
-                        height: 20,
-                        width: 20,
-                      ),
+                  Text(
+                    YOUR_RATING,
+                    style: TextStyle(
+                      fontWeight: FontWeight.w700,
+                      fontSize: 18,
                     ),
-                    SizedBox(
-                      width: 8,
-                    ),
-                    InkWell(
-                      onTap: () {
-                        setState(() {
-                          selectedRating = 2;
-                        });
-                      },
-                      child: Image.asset(
-                        selectedRating > 1
-                            ? "assets/doctordetails/star_active.png"
-                            : "assets/doctordetails/star_unactive.png",
-                        height: 20,
-                        width: 20,
-                      ),
-                    ),
-                    SizedBox(
-                      width: 8,
-                    ),
-                    InkWell(
-                      onTap: () {
-                        setState(() {
-                          selectedRating = 3;
-                        });
-                      },
-                      child: Image.asset(
-                        selectedRating > 2
-                            ? "assets/doctordetails/star_active.png"
-                            : "assets/doctordetails/star_unactive.png",
-                        height: 20,
-                        width: 20,
-                      ),
-                    ),
-                    SizedBox(
-                      width: 8,
-                    ),
-                    InkWell(
-                      onTap: () {
-                        setState(() {
-                          selectedRating = 4;
-                        });
-                      },
-                      child: Image.asset(
-                        selectedRating > 3
-                            ? "assets/doctordetails/star_active.png"
-                            : "assets/doctordetails/star_unactive.png",
-                        height: 20,
-                        width: 20,
-                      ),
-                    ),
-                    SizedBox(
-                      width: 8,
-                    ),
-                    InkWell(
-                      onTap: () {
-                        setState(() {
-                          selectedRating = 5;
-                        });
-                      },
-                      child: Image.asset(
-                        selectedRating > 4
-                            ? "assets/doctordetails/star_active.png"
-                            : "assets/doctordetails/star_unactive.png",
-                        height: 20,
-                        width: 20,
-                      ),
-                    ),
-                  ],
-                ),
-                SizedBox(
-                  height: 20,
-                ),
-                Text(
-                  YOUR_REVIEW,
-                  style: TextStyle(fontWeight: FontWeight.w700, fontSize: 18),
-                ),
-                TextField(
-                  style: TextStyle(color: Colors.grey, fontSize: 14),
-                  decoration: InputDecoration(
-                    hintText: "ما رأيك في الطبيب ؟",
-                    contentPadding: EdgeInsets.zero,
-                    border: UnderlineInputBorder(
-                        borderSide: BorderSide(color: Colors.grey, width: 0.5)),
-                    focusedBorder: UnderlineInputBorder(
-                        borderSide: BorderSide(
-                            color: Colors.grey.shade500, width: 0.5)),
-                    enabledBorder: UnderlineInputBorder(
-                        borderSide: BorderSide(
-                            color: Colors.grey.shade500, width: 0.5)),
                   ),
-                  onChanged: (val) {
-                    setState(() {
-                      review = val;
-                    });
-                  },
-                ),
-                SizedBox(
-                  height: 15,
-                ),
-                bottomButtons(),
-              ],
+                  SizedBox(
+                    height: 10,
+                  ),
+                  Row(
+                    children: [
+                      InkWell(
+                        onTap: () {
+                          setState(() {
+                            selectedRating = 1;
+                          });
+                        },
+                        child: Image.asset(
+                          selectedRating > 0
+                              ? "assets/doctordetails/star_active.png"
+                              : "assets/doctordetails/star_unactive.png",
+                          height: 20,
+                          width: 20,
+                        ),
+                      ),
+                      SizedBox(
+                        width: 8,
+                      ),
+                      InkWell(
+                        onTap: () {
+                          setState(() {
+                            selectedRating = 2;
+                          });
+                        },
+                        child: Image.asset(
+                          selectedRating > 1
+                              ? "assets/doctordetails/star_active.png"
+                              : "assets/doctordetails/star_unactive.png",
+                          height: 20,
+                          width: 20,
+                        ),
+                      ),
+                      SizedBox(
+                        width: 8,
+                      ),
+                      InkWell(
+                        onTap: () {
+                          setState(() {
+                            selectedRating = 3;
+                          });
+                        },
+                        child: Image.asset(
+                          selectedRating > 2
+                              ? "assets/doctordetails/star_active.png"
+                              : "assets/doctordetails/star_unactive.png",
+                          height: 20,
+                          width: 20,
+                        ),
+                      ),
+                      SizedBox(
+                        width: 8,
+                      ),
+                      InkWell(
+                        onTap: () {
+                          setState(() {
+                            selectedRating = 4;
+                          });
+                        },
+                        child: Image.asset(
+                          selectedRating > 3
+                              ? "assets/doctordetails/star_active.png"
+                              : "assets/doctordetails/star_unactive.png",
+                          height: 20,
+                          width: 20,
+                        ),
+                      ),
+                      SizedBox(
+                        width: 8,
+                      ),
+                      InkWell(
+                        onTap: () {
+                          setState(() {
+                            selectedRating = 5;
+                          });
+                        },
+                        child: Image.asset(
+                          selectedRating > 4
+                              ? "assets/doctordetails/star_active.png"
+                              : "assets/doctordetails/star_unactive.png",
+                          height: 20,
+                          width: 20,
+                        ),
+                      ),
+                    ],
+                  ),
+                  SizedBox(
+                    height: 20,
+                  ),
+                  Text(
+                    YOUR_REVIEW,
+                    style: TextStyle(fontWeight: FontWeight.w700, fontSize: 18),
+                  ),
+                  TextField(
+                    style: TextStyle(color: Colors.grey, fontSize: 14),
+                    decoration: InputDecoration(
+                      hintText: "ما رأيك في الطبيب ؟",
+                      contentPadding: EdgeInsets.zero,
+                      border: UnderlineInputBorder(
+                          borderSide: BorderSide(color: Colors.grey, width: 0.5)),
+                      focusedBorder: UnderlineInputBorder(
+                          borderSide: BorderSide(
+                              color: Colors.grey.shade500, width: 0.5)),
+                      enabledBorder: UnderlineInputBorder(
+                          borderSide: BorderSide(
+                              color: Colors.grey.shade500, width: 0.5)),
+                    ),
+                    onChanged: (val) {
+                      setState(() {
+                        review = val;
+                      });
+                    },
+                  ),
+                  SizedBox(
+                    height: 15,
+                  ),
+                  bottomButtons(),
+                ],
+              ),
             ),
           )),
         ],

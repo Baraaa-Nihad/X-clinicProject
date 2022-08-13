@@ -262,16 +262,15 @@ class _BookAppointmentState extends State<BookAppointment> {
                                             .data.services[index].name +
                                         index.toString(),
                                     child: Row(
-                                      mainAxisAlignment:
-                                          MainAxisAlignment.spaceBetween,
                                       children: [
-                                        Text(
-                                          "${doctorsAndServices.data.services[index].expectedTime.toString()} دقيقة ",
-                                          textDirection: TextDirection.rtl,
-                                        ),
-                                        Text(doctorsAndServices
-                                            .data.services[index].name),
-                                      ],
+                                  
+                                  Text(doctorsAndServices
+                                      .data.services[index].name+ " - " ),
+                                      Text(
+                                    "${doctorsAndServices.data.services[index].expectedTime.toString()} دقيقة ",
+                                    textDirection: TextDirection.rtl,
+                                  ),
+                                ],
                                     ),
                                     key: UniqueKey(),
                                     onTap: () {
@@ -754,12 +753,12 @@ getTime1(String time, int fin) {
         print("Success");
         setState(() {
           Navigator.pop(context);
-          messageDialog("Successful", jsonResponse['msg']);
+          messageDialog("نجاح", jsonResponse['msg']);
           isAppointmentMadeSuccessfully = true;
         });
       } else {
         Navigator.pop(context);
-        messageDialog("Error", jsonResponse['msg']);
+        messageDialog("خطأ", jsonResponse['msg']);
       }
     }
   }
@@ -800,7 +799,7 @@ getTime1(String time, int fin) {
         builder: (context) {
           return AlertDialog(
             title: Text(
-              s1,
+              "",
               style: TextStyle(
                 fontWeight: FontWeight.bold,
               ),

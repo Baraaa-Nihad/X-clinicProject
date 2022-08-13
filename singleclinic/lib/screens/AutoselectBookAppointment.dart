@@ -209,15 +209,14 @@ class _AutoselectBookAppointmentState extends State<AutoselectBookAppointment> {
                                   doctorsAndServices.data.services[index].name +
                                       index.toString(),
                               child: Row(
-                                mainAxisAlignment:
-                                    MainAxisAlignment.spaceBetween,
                                 children: [
-                                  Text(
+                                  
+                                  Text(doctorsAndServices
+                                      .data.services[index].name+ " - " ),
+                                      Text(
                                     "${doctorsAndServices.data.services[index].expectedTime.toString()} دقيقة ",
                                     textDirection: TextDirection.rtl,
                                   ),
-                                  Text(doctorsAndServices
-                                      .data.services[index].name),
                                 ],
                               ),
                               key: UniqueKey(),
@@ -681,12 +680,12 @@ class _AutoselectBookAppointmentState extends State<AutoselectBookAppointment> {
         print("Success");
         setState(() {
           Navigator.pop(context);
-          messageDialog("Successful", jsonResponse['msg']);
+          messageDialog("نجاح", jsonResponse['msg']);
           isAppointmentMadeSuccessfully = true;
         });
       } else {
         Navigator.pop(context);
-        messageDialog("Error", jsonResponse['msg']);
+        messageDialog("خطأ", jsonResponse['msg']);
       }
     }
   }
@@ -727,7 +726,7 @@ class _AutoselectBookAppointmentState extends State<AutoselectBookAppointment> {
         builder: (context) {
           return AlertDialog(
             title: Text(
-              s1,
+              "",
               style: TextStyle(
                 fontWeight: FontWeight.bold,
               ),
