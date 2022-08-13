@@ -391,8 +391,8 @@ class _DoctorDetailsState extends State<DoctorDetails> {
                       child: Row(
                         children: [
                           Container(
-                            height: 40,
-                            width: 35,
+                            height:  MediaQuery.of(context).size.width*0.11,
+                            width: MediaQuery.of(context).size.width*0.1,
                             decoration: BoxDecoration(
                               color: Colors.grey.shade300,
                               borderRadius: BorderRadius.circular(5),
@@ -422,12 +422,15 @@ class _DoctorDetailsState extends State<DoctorDetails> {
                                 height: 5,
                               ),
                               Text(
+                                
                                 getTime(doctorDetail.data.timeTabledata[index].from) +
                                     " إلى " +
                                     getTime(doctorDetail.data.timeTabledata[index].to),
+                                    
                                 style: TextStyle(
                                   color: LIGHT_GREY_TEXT,
-                                  fontSize: 9,
+                                  fontSize: MediaQuery.of(context).size.width*0.025,
+                                overflow: TextOverflow.ellipsis,
                                 ),
                               ),
                             ],

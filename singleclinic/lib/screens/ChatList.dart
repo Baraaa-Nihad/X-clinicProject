@@ -81,11 +81,12 @@ class _ChatListState extends State<ChatList> {
                   ),
                   Expanded(
                     child: chatListDetails.isEmpty
-                        ? PlaceHolderScreen(
+                        ?Center(child: CircularProgressIndicator(),)
+                        /* PlaceHolderScreen(
                             message: NO_CHATS,
                             description: YOUR_CHATS_WILL_BE_DISPLAYED_HERE,
                             iconPath: "assets/placeholders/message_holder.png",
-                          )
+                          )*/
                         : Column(
                             mainAxisAlignment: MainAxisAlignment.start,
                             children: [

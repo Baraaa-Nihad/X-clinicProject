@@ -20,7 +20,7 @@ class _SubcriptionListState extends State<SubcriptionList> {
   bool isLoading = true;
 
   @override
-  void initState() {
+  void initState() { 
     super.initState();
     SharedPreferences.getInstance().then((value) {
       userId = value.getInt("id");

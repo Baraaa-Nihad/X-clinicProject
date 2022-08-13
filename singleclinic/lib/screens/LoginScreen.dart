@@ -296,6 +296,8 @@ class _LoginScreenState extends State<LoginScreen> {
                                 Expanded(
                                   child: Image.asset(
                                     "assets/loginregister/facebook_btn.png",
+                                    fit:BoxFit.cover,
+                                    
                                   ),
                                 ),
                               ],
@@ -341,6 +343,8 @@ class _LoginScreenState extends State<LoginScreen> {
                                 Expanded(
                                   child: Image.asset(
                                     "assets/loginregister/google_btn.png",
+                                    fit: BoxFit.cover,
+                                   
                                   ),
                                 ),
                               ],
