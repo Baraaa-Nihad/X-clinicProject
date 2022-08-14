@@ -16,6 +16,7 @@ class ChatList extends StatefulWidget {
 class _ChatListState extends State<ChatList> {
   String selectedValue = "All Chats";
   int selectedInt;
+  bool loading = false;
   List<ChatListDetails> chatListDetails = [];
   List<ChatListDetails> chatListSearch = [];
   List<ChatListDetails> chatListDetailsPA = [];
@@ -79,14 +80,19 @@ class _ChatListState extends State<ChatList> {
                           )
                         : Container(),
                   ),
+                  loading==true?Expanded(
+                    child: Center(
+                              child: CircularProgressIndicator(),
+                            ),
+                  ):
                   Expanded(
                     child: chatListDetails.isEmpty
-                        ?Center(child: CircularProgressIndicator(),)
-                        /* PlaceHolderScreen(
+                        ? 
+                         PlaceHolderScreen(
                             message: NO_CHATS,
                             description: YOUR_CHATS_WILL_BE_DISPLAYED_HERE,
                             iconPath: "assets/placeholders/message_holder.png",
-                          )*/
+                          )
                         : Column(
                             mainAxisAlignment: MainAxisAlignment.start,
                             children: [
@@ -482,6 +488,9 @@ class _ChatListState extends State<ChatList> {
   }
 
   loadChatList() async {
+    setState(() {
+      loading = true;
+    });
     ds = await FirebaseDatabase.instance
         .reference()
         .child(uid.toString())
@@ -510,6 +519,7 @@ class _ChatListState extends State<ChatList> {
             }
           });
         });
+
       } catch (e) {
         print(e.toString());
       }
@@ -521,6 +531,7 @@ class _ChatListState extends State<ChatList> {
         print("testing : " + "data added to chat list");
         chatListDetails.clear();
         chatListDetails.addAll(chatListDetailsPA);
+        loading = false;
       });
     });
   }
