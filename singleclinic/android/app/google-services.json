@@ -8,6 +8,35 @@
   "client": [
     {
       "client_info": {
+        "mobilesdk_app_id": "1:281525467646:android:19761f6d9f0b64f656a8af",
+        "android_client_info": {
+          "package_name": "com.XClinic.mainproject"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "281525467646-bdkdst34v6h65vquhse5k7n3p9fko3k9.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA1nWXn-9hkzCyqPyGVqGpFZfheQGwu29c"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "281525467646-bdkdst34v6h65vquhse5k7n3p9fko3k9.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
         "mobilesdk_app_id": "1:281525467646:android:30a74995e0cb12ad56a8af",
         "android_client_info": {
           "package_name": "com.doctorclicnic.userapp"

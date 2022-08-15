@@ -1,4 +1,4 @@
-package com.doctorclicnic.userapp;
+package com.XClinic.mainproject;
 
 import io.flutter.embedding.android.FlutterActivity;
 
