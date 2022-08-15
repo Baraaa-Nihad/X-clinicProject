@@ -57,7 +57,11 @@ class _ChatListState extends State<ChatList> {
                 flexibleSpace: header(),
                 backgroundColor: WHITE,
               ),
-              body: Column(
+              body: loading==true? Center(
+                    child: CircularProgressIndicator(
+                      strokeWidth: 2,
+                    ),
+                  ):Column(
                 children: [
                   AnimatedContainer(
                     duration: Duration(milliseconds: 300),
@@ -80,11 +84,6 @@ class _ChatListState extends State<ChatList> {
                           )
                         : Container(),
                   ),
-                  loading==true?Expanded(
-                    child: Center(
-                              child: CircularProgressIndicator(),
-                            ),
-                  ):
                   Expanded(
                     child: chatListDetails.isEmpty
                         ? 
@@ -531,8 +530,11 @@ class _ChatListState extends State<ChatList> {
         print("testing : " + "data added to chat list");
         chatListDetails.clear();
         chatListDetails.addAll(chatListDetailsPA);
-        loading = false;
+        
       });
+    });
+    setState(() {
+      loading = false;
     });
   }
 
