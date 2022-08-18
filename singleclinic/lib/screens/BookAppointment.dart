@@ -103,7 +103,8 @@ class _BookAppointmentState extends State<BookAppointment> {
   }
 
   header() {
-    return Container(
+    return SafeArea(
+        child: Container(
       decoration: BoxDecoration(
         color: FitnessAppTheme.white,
         borderRadius: const BorderRadius.only(
@@ -113,8 +114,8 @@ class _BookAppointmentState extends State<BookAppointment> {
             topRight: const Radius.circular(50.0)),
         boxShadow: <BoxShadow>[
           BoxShadow(
-              color: FitnessAppTheme.grey.withOpacity(0.2),
-              offset: const Offset(1.1, 1.1),
+              color: Color.fromARGB(255, 123, 137, 146).withOpacity(0.4),
+              offset: const Offset(1.9, 1.5),
               blurRadius: 10.0),
         ],
       ),
@@ -151,7 +152,7 @@ class _BookAppointmentState extends State<BookAppointment> {
           ),
         ],
       ),
-    );
+    ));
   }
 
   body() {
@@ -169,14 +170,13 @@ class _BookAppointmentState extends State<BookAppointment> {
                     decoration: BoxDecoration(
                       color: FitnessAppTheme.white,
                       borderRadius: const BorderRadius.only(
-                          topLeft: Radius.circular(50.0),
-                          bottomLeft: const Radius.circular(8.0),
-                          bottomRight: Radius.circular(8.0),
+                          topLeft: Radius.circular(0.0),
+                          bottomLeft: const Radius.circular(50.0),
+                          bottomRight: Radius.circular(0.0),
                           topRight: const Radius.circular(50.0)),
                       boxShadow: <BoxShadow>[
                         BoxShadow(
-                            color: Color.fromARGB(255, 0, 94, 156)
-                                .withOpacity(0.2),
+                            color: FitnessAppTheme.grey.withOpacity(0.2),
                             offset: const Offset(1.1, 1.1),
                             blurRadius: 10.0),
                       ],

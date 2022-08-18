@@ -57,111 +57,116 @@ class _ChatListState extends State<ChatList> {
                 flexibleSpace: header(),
                 backgroundColor: WHITE,
               ),
-              body: loading==true? Center(
-                    child: CircularProgressIndicator(
-                      strokeWidth: 2,
-                    ),
-                  ):Column(
-                children: [
-                  AnimatedContainer(
-                    duration: Duration(milliseconds: 300),
-                    curve: Curves.easeIn,
-                    height: isSearchClicked ? 50 : 0,
-                    margin: EdgeInsets.all(10),
-                    child: isSearchClicked
-                        ? TextField(
-                            focusNode: focusNode,
-                            decoration: InputDecoration(
-                              filled: true,
-                              hintText: SEARCH_HERE_NAME,
-                            ),
-                            onChanged: (val) {
-                              setState(() {
-                                keyword = val;
-                              });
-                            },
-                            onSubmitted: (val) {},
-                          )
-                        : Container(),
-                  ),
-                  Expanded(
-                    child: chatListDetails.isEmpty
-                        ? 
-                         PlaceHolderScreen(
-                            message: NO_CHATS,
-                            description: YOUR_CHATS_WILL_BE_DISPLAYED_HERE,
-                            iconPath: "assets/placeholders/message_holder.png",
-                          )
-                        : Column(
-                            mainAxisAlignment: MainAxisAlignment.start,
-                            children: [
-                              Expanded(
-                                child: Padding(
-                                  padding:
-                                      const EdgeInsets.fromLTRB(10, 0, 10, 0),
-                                  child: ListView.builder(
-                                    shrinkWrap: true,
-                                    padding: EdgeInsets.zero,
-                                    physics: ClampingScrollPhysics(),
-                                    itemCount: chatListDetails.length,
-                                    itemBuilder: (context, index) {
-                                      return StreamBuilder(
-                                        stream: FirebaseDatabase.instance
-                                            .reference()
-                                            .child(chatListDetails[index]
-                                                .userUid
-                                                .toString())
-                                            .onValue,
-                                        builder: (context,
-                                            AsyncSnapshot<Event> snapshot) {
-                                          if (snapshot.hasData) {
-                                            print("new stream" +
-                                                snapshot
-                                                    .data.snapshot.value['name']
-                                                    .toString());
-                                            return messageCard(
-                                                isNewMessage: chatListDetails[index]
-                                                            .messageCount >
-                                                        0
-                                                    ? true
-                                                    : false,
-                                                name: snapshot
-                                                    .data.snapshot.value['name']
-                                                    .toString(),
-                                                message: chatListDetails[index]
-                                                    .message,
-                                                count: chatListDetails[index]
-                                                    .messageCount,
-                                                image: SERVER_ADDRESS +
-                                                    "/public/upload/" +
-                                                    snapshot.data.snapshot
-                                                        .value['profile']
-                                                        .toString()
-                                                        .replaceAll(
-                                                            SERVER_ADDRESS +
-                                                                "/public/upload/",
-                                                            ""),
-                                                time:
-                                                    chatListDetails[index].time,
-                                                type:
-                                                    chatListDetails[index].type,
-                                                uid: chatListDetails[index]
-                                                    .userUid,
-                                                isSearching: isSearchClicked);
-                                          } else {
-                                            return Container();
-                                          }
-                                        },
-                                      );
-                                    },
+              body: loading == true
+                  ? Center(
+                      child: CircularProgressIndicator(
+                        strokeWidth: 2,
+                      ),
+                    )
+                  : Column(
+                      children: [
+                        AnimatedContainer(
+                          duration: Duration(milliseconds: 300),
+                          curve: Curves.easeIn,
+                          height: isSearchClicked ? 50 : 0,
+                          margin: EdgeInsets.all(10),
+                          child: isSearchClicked
+                              ? TextField(
+                                  focusNode: focusNode,
+                                  decoration: InputDecoration(
+                                    filled: true,
+                                    hintText: SEARCH_HERE_NAME,
                                   ),
+                                  onChanged: (val) {
+                                    setState(() {
+                                      keyword = val;
+                                    });
+                                  },
+                                  onSubmitted: (val) {},
+                                )
+                              : Container(),
+                        ),
+                        Expanded(
+                          child: chatListDetails.isEmpty
+                              ? PlaceHolderScreen(
+                                  message: NO_CHATS,
+                                  description:
+                                      YOUR_CHATS_WILL_BE_DISPLAYED_HERE,
+                                  iconPath:
+                                      "assets/placeholders/message_holder.png",
+                                )
+                              : Column(
+                                  mainAxisAlignment: MainAxisAlignment.start,
+                                  children: [
+                                    Expanded(
+                                      child: Padding(
+                                        padding: const EdgeInsets.fromLTRB(
+                                            10, 0, 10, 0),
+                                        child: ListView.builder(
+                                          shrinkWrap: true,
+                                          padding: EdgeInsets.zero,
+                                          physics: ClampingScrollPhysics(),
+                                          itemCount: chatListDetails.length,
+                                          itemBuilder: (context, index) {
+                                            return StreamBuilder(
+                                              stream: FirebaseDatabase.instance
+                                                  .reference()
+                                                  .child(chatListDetails[index]
+                                                      .userUid
+                                                      .toString())
+                                                  .onValue,
+                                              builder: (context,
+                                                  AsyncSnapshot<Event>
+                                                      snapshot) {
+                                                if (snapshot.hasData) {
+                                                  print("new stream" +
+                                                      snapshot.data.snapshot
+                                                          .value['name']
+                                                          .toString());
+                                                  return messageCard(
+                                                      isNewMessage:
+                                                          chatListDetails[index]
+                                                                      .messageCount >
+                                                                  0
+                                                              ? true
+                                                              : false,
+                                                      name:
+                                                          snapshot.data.snapshot
+                                                              .value['name']
+                                                              .toString(),
+                                                      message:
+                                                          chatListDetails[index]
+                                                              .message,
+                                                      count:
+                                                          chatListDetails[index]
+                                                              .messageCount,
+                                                      image: SERVER_ADDRESS +
+                                                          "/public/upload/" +
+                                                          snapshot.data.snapshot
+                                                              .value['profile']
+                                                              .toString()
+                                                              .replaceAll(
+                                                                  SERVER_ADDRESS +
+                                                                      "/public/upload/",
+                                                                  ""),
+                                                      time: chatListDetails[index].time,
+                                                      type: chatListDetails[index].type,
+                                                      uid: chatListDetails[index].userUid,
+                                                      isSearching: isSearchClicked);
+                                                } else {
+                                                  return Container();
+                                                }
+                                              },
+                                            );
+                                          },
+                                        ),
+                                      ),
+                                    )
+                                  ],
                                 ),
-                              )
-                            ],
-                          ),
-                  ),
-                ],
-              )),
+                        ),
+                      ],
+                    )),
         ));
   }
 
@@ -518,7 +523,6 @@ class _ChatListState extends State<ChatList> {
             }
           });
         });
-
       } catch (e) {
         print(e.toString());
       }
@@ -530,7 +534,6 @@ class _ChatListState extends State<ChatList> {
         print("testing : " + "data added to chat list");
         chatListDetails.clear();
         chatListDetails.addAll(chatListDetailsPA);
-        
       });
     });
     setState(() {

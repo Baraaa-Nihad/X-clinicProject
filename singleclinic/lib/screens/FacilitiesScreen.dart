@@ -28,150 +28,149 @@ class _FacilitiesScreenState extends State<FacilitiesScreen> {
   Widget build(BuildContext context) {
     return Directionality(
         textDirection: TextDirection.rtl,
-        child : SafeArea(
-      child: Scaffold(
-        backgroundColor: LIGHT_GREY_SCREEN_BG,
-        appBar: AppBar(
-          leading: Container(),
-          backgroundColor: WHITE,
-          flexibleSpace: header(),
-        ),
-        body: facilitiesClass == null
-            ? Center(
-                child: CircularProgressIndicator(
-                  strokeWidth: 2,
-                ),
-              )
-            : body(),
-      ),
-        )
-    );
+        child: SafeArea(
+          child: Scaffold(
+            backgroundColor: LIGHT_GREY_SCREEN_BG,
+            appBar: AppBar(
+              leading: Container(),
+              backgroundColor: WHITE,
+              flexibleSpace: header(),
+            ),
+            body: facilitiesClass == null
+                ? Center(
+                    child: CircularProgressIndicator(
+                      strokeWidth: 2,
+                    ),
+                  )
+                : body(),
+          ),
+        ));
   }
 
   header() {
     return Directionality(
         textDirection: TextDirection.rtl,
-        child : SafeArea(
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          Padding(
-            padding: const EdgeInsets.fromLTRB(15, 0, 15, 0),
-            child: Row(
-              children: [
-                // IconButton(
-                //   icon: Icon(
-                //     Icons.arrow_back_ios,
-                //     size: 18,
-                //     color: BLACK,
-                //   ),
-                //   constraints: BoxConstraints(maxWidth: 30, minWidth: 10),
-                //   padding: EdgeInsets.zero,
-                //   onPressed: () {
-                //     Navigator.pop(context);
-                //   },
-                // ),
-                // SizedBox(
-                //   width: 10,
-                // ),
-                Text(
-                  FACILITIES,
-                  style: TextStyle(fontSize: 22, fontWeight: FontWeight.w700),
+        child: SafeArea(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Padding(
+                padding: const EdgeInsets.fromLTRB(15, 0, 15, 0),
+                child: Row(
+                  children: [
+                    // IconButton(
+                    //   icon: Icon(
+                    //     Icons.arrow_back_ios,
+                    //     size: 18,
+                    //     color: BLACK,
+                    //   ),
+                    //   constraints: BoxConstraints(maxWidth: 30, minWidth: 10),
+                    //   padding: EdgeInsets.zero,
+                    //   onPressed: () {
+                    //     Navigator.pop(context);
+                    //   },
+                    // ),
+                    // SizedBox(
+                    //   width: 10,
+                    // ),
+                    Text(
+                      FACILITIES,
+                      style:
+                          TextStyle(fontSize: 22, fontWeight: FontWeight.w700),
+                    ),
+                  ],
                 ),
-              ],
-            ),
+              ),
+            ],
           ),
-        ],
-      ),
-        )
-    );
+        ));
   }
 
   body() {
     return Directionality(
         textDirection: TextDirection.rtl,
-        child : StaggeredGridView.countBuilder(
-      crossAxisCount: 4,
-      itemCount: list.length,
-      padding: EdgeInsets.all(10),
-      itemBuilder: (BuildContext context, int index) => new Container(
-        color: LIGHT_GREY,
-        height: index % 2 - 1 == 0 ? 180: 200,
-        child: Stack(
-          children: [
-            Align(
-              alignment: Alignment.topCenter,
-              child: CachedNetworkImage(
-
-                height: MediaQuery.of(context).size.height,
-                width: MediaQuery.of(context).size.width,
-                fit: BoxFit.fill,
-                imageUrl: index % 2 == 0 ? list[index].icon : list[index].icon,
-                progressIndicatorBuilder: (context, url, downloadProgress) =>
-                    Container(
-                        height: 75,
-                        width: 75,
-                        child: Center(child: Icon(Icons.image))),
-                errorWidget: (context, url, error) => Container(
-                  height: 75,
-                  width: 75,
-                  child: Center(
-                    child: Icon(Icons.broken_image_rounded),
+        child: StaggeredGridView.countBuilder(
+          crossAxisCount: 4,
+          itemCount: list.length,
+          padding: EdgeInsets.all(10),
+          itemBuilder: (BuildContext context, int index) => new Container(
+            color: LIGHT_GREY,
+            height: index % 2 - 1 == 0 ? 180 : 200,
+            child: Stack(
+              children: [
+                Align(
+                  alignment: Alignment.topCenter,
+                  child: CachedNetworkImage(
+                    height: MediaQuery.of(context).size.height,
+                    width: MediaQuery.of(context).size.width,
+                    fit: BoxFit.fill,
+                    imageUrl:
+                        index % 2 == 0 ? list[index].icon : list[index].icon,
+                    progressIndicatorBuilder:
+                        (context, url, downloadProgress) => Container(
+                            height: 75,
+                            width: 75,
+                            child: Center(child: Icon(Icons.image))),
+                    errorWidget: (context, url, error) => Container(
+                      height: 75,
+                      width: 75,
+                      child: Center(
+                        child: Icon(Icons.broken_image_rounded),
+                      ),
+                    ),
                   ),
                 ),
-              ),
+                Align(
+                  alignment: Alignment.bottomCenter,
+                  child: Container(
+                    padding: EdgeInsets.all(10),
+                    color: Colors.black.withOpacity(0.7),
+                    child: Column(
+                      mainAxisSize: MainAxisSize.min,
+                      children: [
+                        Row(
+                          children: [
+                            Expanded(
+                              child: Text(
+                                list[index].name,
+                                style: TextStyle(
+                                    color: WHITE,
+                                    fontSize: 15,
+                                    fontWeight: FontWeight.w700),
+                                overflow: TextOverflow.ellipsis,
+                              ),
+                            ),
+                          ],
+                        ),
+                        SizedBox(
+                          height: 5,
+                        ),
+                        Row(
+                          children: [
+                            Expanded(
+                              child: Text(
+                                list[index].description,
+                                style: TextStyle(
+                                    color: WHITE,
+                                    fontSize: 9,
+                                    fontWeight: FontWeight.w200),
+                                maxLines: 2,
+                                overflow: TextOverflow.ellipsis,
+                              ),
+                            ),
+                          ],
+                        )
+                      ],
+                    ),
+                  ),
+                )
+              ],
             ),
-            Align(
-              alignment: Alignment.bottomCenter,
-              child: Container(
-                padding: EdgeInsets.all(10),
-                color: Colors.black.withOpacity(0.7),
-                child: Column(
-                  mainAxisSize: MainAxisSize.min,
-                  children: [
-                    Row(
-                      children: [
-                        Expanded(
-                          child: Text(
-                            list[index].name,
-                            style: TextStyle(
-                                color: WHITE,
-                                fontSize: 15,
-                                fontWeight: FontWeight.w700),
-                            overflow: TextOverflow.ellipsis,
-                          ),
-                        ),
-                      ],
-                    ),
-                    SizedBox(
-                      height: 5,
-                    ),
-                    Row(
-                      children: [
-                        Expanded(
-                          child: Text(
-                            list[index].description,
-                            style: TextStyle(
-                                color: WHITE,
-                                fontSize: 9,
-                                fontWeight: FontWeight.w200),
-                            maxLines: 2,
-                            overflow: TextOverflow.ellipsis,
-                          ),
-                        ),
-                      ],
-                    )
-                  ],
-                ),
-              ),
-            )
-          ],
-        ),
-      ),
-      staggeredTileBuilder: (int index) => StaggeredTile.fit(2),
-      mainAxisSpacing: 12.0,
-      crossAxisSpacing: 12.0,
-    ));
+          ),
+          staggeredTileBuilder: (int index) => StaggeredTile.fit(2),
+          mainAxisSpacing: 12.0,
+          crossAxisSpacing: 12.0,
+        ));
   }
 
   fetchFacilitiesList() async {

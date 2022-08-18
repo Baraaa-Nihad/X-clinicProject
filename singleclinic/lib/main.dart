@@ -290,6 +290,7 @@ doesSendNotification(String userUid, bool doesSend) async {
         "\n\n");
   });
 }
+
 class HexColor extends Color {
   HexColor(final String hexColor) : super(_getColorFromHex(hexColor));
 
