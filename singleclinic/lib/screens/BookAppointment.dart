@@ -6,6 +6,7 @@ import 'package:shared_preferences/shared_preferences.dart';
 import 'package:singleclinic/AllText.dart';
 import 'package:singleclinic/modals/DepartmentsList.dart';
 import 'package:singleclinic/modals/DoctorsAndServices.dart';
+import 'package:singleclinic/screens/FitnessAppTheme.dart';
 
 import '../main.dart';
 import '../modals/UpcomingAppointmrnts.dart';
@@ -94,7 +95,7 @@ class _BookAppointmentState extends State<BookAppointment> {
               leading: Container(),
               flexibleSpace: header(),
               elevation: 0,
-              backgroundColor: WHITE,
+              backgroundColor: Colors.white24,
             ),
             body: body(),
           ),
@@ -102,7 +103,21 @@ class _BookAppointmentState extends State<BookAppointment> {
   }
 
   header() {
-    return SafeArea(
+    return Container(
+      decoration: BoxDecoration(
+        color: FitnessAppTheme.white,
+        borderRadius: const BorderRadius.only(
+            topLeft: Radius.circular(0.0),
+            bottomLeft: const Radius.circular(50.0),
+            bottomRight: Radius.circular(0.0),
+            topRight: const Radius.circular(50.0)),
+        boxShadow: <BoxShadow>[
+          BoxShadow(
+              color: FitnessAppTheme.grey.withOpacity(0.2),
+              offset: const Offset(1.1, 1.1),
+              blurRadius: 10.0),
+        ],
+      ),
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
@@ -151,6 +166,21 @@ class _BookAppointmentState extends State<BookAppointment> {
               Expanded(
                 child: SingleChildScrollView(
                   child: Container(
+                    decoration: BoxDecoration(
+                      color: FitnessAppTheme.white,
+                      borderRadius: const BorderRadius.only(
+                          topLeft: Radius.circular(50.0),
+                          bottomLeft: const Radius.circular(8.0),
+                          bottomRight: Radius.circular(8.0),
+                          topRight: const Radius.circular(50.0)),
+                      boxShadow: <BoxShadow>[
+                        BoxShadow(
+                            color: Color.fromARGB(255, 0, 94, 156)
+                                .withOpacity(0.2),
+                            offset: const Offset(1.1, 1.1),
+                            blurRadius: 10.0),
+                      ],
+                    ),
                     padding: EdgeInsets.fromLTRB(20, 12, 20, 0),
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
@@ -263,14 +293,14 @@ class _BookAppointmentState extends State<BookAppointment> {
                                         index.toString(),
                                     child: Row(
                                       children: [
-                                  
-                                  Text(doctorsAndServices
-                                      .data.services[index].name+ " - " ),
-                                      Text(
-                                    "${doctorsAndServices.data.services[index].expectedTime.toString()} دقيقة ",
-                                    textDirection: TextDirection.rtl,
-                                  ),
-                                ],
+                                        Text(doctorsAndServices
+                                                .data.services[index].name +
+                                            " - "),
+                                        Text(
+                                          "${doctorsAndServices.data.services[index].expectedTime.toString()} دقيقة ",
+                                          textDirection: TextDirection.rtl,
+                                        ),
+                                      ],
                                     ),
                                     key: UniqueKey(),
                                     onTap: () {
@@ -289,12 +319,28 @@ class _BookAppointmentState extends State<BookAppointment> {
                           },
                         ),
                         SizedBox(
-                          height: 15,
+                          height: 50,
                         ),
-                        Text(
-                          NAME,
-                          style: TextStyle(
-                              fontSize: 18, fontWeight: FontWeight.w700),
+                        Row(
+                          children: [
+                            Container(
+                              height: 25,
+                              width: 3,
+                              decoration: BoxDecoration(
+                                color: HexColor('#87A0E5'),
+                                borderRadius: const BorderRadius.all(
+                                    const Radius.circular(4.0)),
+                              ),
+                            ),
+                            SizedBox(
+                              width: 5,
+                            ),
+                            Text(
+                              NAME,
+                              style: TextStyle(
+                                  fontSize: 18, fontWeight: FontWeight.w700),
+                            ),
+                          ],
                         ),
                         SizedBox(
                           height: 5,
@@ -312,10 +358,26 @@ class _BookAppointmentState extends State<BookAppointment> {
                         SizedBox(
                           height: 15,
                         ),
-                        Text(
-                          PHONE_NUMBER,
-                          style: TextStyle(
-                              fontSize: 18, fontWeight: FontWeight.w700),
+                        Row(
+                          children: [
+                            Container(
+                              height: 25,
+                              width: 3,
+                              decoration: BoxDecoration(
+                                color: HexColor('#87A0E5'),
+                                borderRadius: const BorderRadius.all(
+                                    const Radius.circular(4.0)),
+                              ),
+                            ),
+                            SizedBox(
+                              width: 5,
+                            ),
+                            Text(
+                              PHONE_NUMBER,
+                              style: TextStyle(
+                                  fontSize: 18, fontWeight: FontWeight.w700),
+                            ),
+                          ],
                         ),
                         SizedBox(
                           height: 5,
@@ -334,10 +396,26 @@ class _BookAppointmentState extends State<BookAppointment> {
                         SizedBox(
                           height: 15,
                         ),
-                        Text(
-                          DATE,
-                          style: TextStyle(
-                              fontSize: 18, fontWeight: FontWeight.w700),
+                        Row(
+                          children: [
+                            Container(
+                              height: 25,
+                              width: 3,
+                              decoration: BoxDecoration(
+                                color: HexColor('#87A0E5'),
+                                borderRadius: const BorderRadius.all(
+                                    const Radius.circular(4.0)),
+                              ),
+                            ),
+                            SizedBox(
+                              width: 5,
+                            ),
+                            Text(
+                              DATE,
+                              style: TextStyle(
+                                  fontSize: 18, fontWeight: FontWeight.w700),
+                            ),
+                          ],
                         ),
                         InkWell(
                           onTap: () {
@@ -362,47 +440,108 @@ class _BookAppointmentState extends State<BookAppointment> {
                             ],
                           ),
                         ),
-                        Text(
-                          "الأوقات المحجوزة:",
-                          style: TextStyle(
-                              fontSize: 15,
-                              fontWeight: FontWeight.w600,
-                              color: Colors.red[800]),
+                        SizedBox(
+                          height: 10,
                         ),
-                        doctorList.isEmpty
-                            ? Text(
-                                "لا توجد مواعيد محجوزة ",
-                                style: TextStyle(color: Colors.grey),
-                              )
-                            : Container(
-                                width: double.infinity,
-                                child: GridView.builder(
-                                  gridDelegate:
-                                      SliverGridDelegateWithFixedCrossAxisCount(
-                                          crossAxisCount: 2,
-                                          crossAxisSpacing: 1,
-                                          childAspectRatio: 5,
-                                          mainAxisSpacing: 5),
-                                  shrinkWrap: true,
-                                  physics: ClampingScrollPhysics(),
-                                  itemCount: doctorList == null
-                                      ? 0
-                                      : doctorList.length,
-                                  itemBuilder: (context, index) {
-                                    return timeDetails(index);
-                                  },
-                                ),
+                        Container(
+                          decoration: BoxDecoration(
+                            color: FitnessAppTheme.white,
+                            borderRadius: const BorderRadius.only(
+                                topLeft: Radius.circular(8.0),
+                                bottomLeft: const Radius.circular(8.0),
+                                bottomRight: Radius.circular(8.0),
+                                topRight: const Radius.circular(8.0)),
+                            boxShadow: <BoxShadow>[
+                              BoxShadow(
+                                  color: FitnessAppTheme.grey.withOpacity(0.2),
+                                  offset: const Offset(1.1, 1.1),
+                                  blurRadius: 10.0),
+                            ],
+                          ),
+                          child: Column(
+                            children: [
+                              Row(
+                                children: [
+                                  Container(
+                                    height: 25,
+                                    width: 3,
+                                    decoration: BoxDecoration(
+                                      color: Colors.red,
+                                      borderRadius: const BorderRadius.all(
+                                          const Radius.circular(4.0)),
+                                    ),
+                                  ),
+                                  SizedBox(
+                                    width: 5,
+                                  ),
+                                  Icon(Icons.notifications,
+                                      size: 30,
+                                      color: Color.fromARGB(221, 182, 43, 43)),
+                                  Text(
+                                    "الأوقات المحجوزة:",
+                                    style: TextStyle(
+                                        fontSize: 18,
+                                        fontWeight: FontWeight.w600,
+                                        color: Color.fromARGB(255, 7, 3, 3)),
+                                  ),
+                                ],
                               ),
-                        Divider(
-                          color: Colors.green,
+                              SizedBox(
+                                height: 8,
+                              ),
+                              doctorList.isEmpty
+                                  ? Text(
+                                      "لا توجد مواعيد محجوزة ",
+                                      style: TextStyle(color: Colors.grey),
+                                    )
+                                  : Container(
+                                      width: double.infinity,
+                                      child: GridView.builder(
+                                        gridDelegate:
+                                            SliverGridDelegateWithFixedCrossAxisCount(
+                                                crossAxisCount: 2,
+                                                crossAxisSpacing: 1,
+                                                childAspectRatio: 5,
+                                                mainAxisSpacing: 5),
+                                        shrinkWrap: true,
+                                        physics: ClampingScrollPhysics(),
+                                        itemCount: doctorList == null
+                                            ? 0
+                                            : doctorList.length,
+                                        itemBuilder: (context, index) {
+                                          return timeDetails(index);
+                                        },
+                                      ),
+                                    ),
+                              SizedBox(
+                                height: 8,
+                              ),
+                            ],
+                          ),
                         ),
                         SizedBox(
                           height: 15,
                         ),
-                        Text(
-                          TIME,
-                          style: TextStyle(
-                              fontSize: 18, fontWeight: FontWeight.w700),
+                        Row(
+                          children: [
+                            Container(
+                              height: 25,
+                              width: 3,
+                              decoration: BoxDecoration(
+                                color: HexColor('#87A0E5'),
+                                borderRadius: const BorderRadius.all(
+                                    const Radius.circular(4.0)),
+                              ),
+                            ),
+                            SizedBox(
+                              width: 5,
+                            ),
+                            Text(
+                              TIME,
+                              style: TextStyle(
+                                  fontSize: 18, fontWeight: FontWeight.w700),
+                            ),
+                          ],
                         ),
                         InkWell(
                           onTap: () {
@@ -430,68 +569,110 @@ class _BookAppointmentState extends State<BookAppointment> {
                         SizedBox(
                           height: 15,
                         ),
-                        Text(
-                          "مدة التأخير القصوى المتوقعة",
-                          style: TextStyle(
-                              fontSize: 15, fontWeight: FontWeight.w700),
+                        Row(
+                          children: [
+                            Container(
+                              height: 25,
+                              width: 3,
+                              decoration: BoxDecoration(
+                                color: HexColor('#87A0E5'),
+                                borderRadius: const BorderRadius.all(
+                                    const Radius.circular(4.0)),
+                              ),
+                            ),
+                            SizedBox(
+                              width: 5,
+                            ),
+                            Text(
+                              "مدة التأخير القصوى المتوقعة",
+                              style: TextStyle(
+                                  fontSize: 15, fontWeight: FontWeight.w700),
+                            ),
+                          ],
                         ),
                         TextField(
-                    keyboardType: TextInputType.number,
-                    style: TextStyle(color: Colors.grey, fontSize: 14),
-                    decoration: InputDecoration(
-                      hintText: " يجب ان لا تزيد عن 20 دقيقة",
-                      border: UnderlineInputBorder(
-                        borderSide:
-                            BorderSide(color: Colors.grey.shade500, width: 0.5),
-                      ),
-                      focusedBorder: UnderlineInputBorder(
-                        borderSide:
-                            BorderSide(color: Colors.grey.shade500, width: 0.5),
-                      ),
-                      enabledBorder: UnderlineInputBorder(
-                        borderSide:
-                            BorderSide(color: Colors.grey.shade500, width: 0.5),
-                      ),
-                    ),
-                    onChanged: (val) {
-                      setState(() {
-                        max_delay_time = replaceArabicNumber(val);
-                      });
-                    },
-                  ),
-                        SizedBox(
-                          height: 15,
-                        ),
-                        Text(
-                          MESSAGE,
-                          style: TextStyle(
-                              fontSize: 18, fontWeight: FontWeight.w700),
-                        ),
-                        TextField(
-                          maxLines: 3,
-                          minLines: 1,
-                          style:
-                              TextStyle(color: LIGHT_GREY_TEXT, fontSize: 14),
+                          keyboardType: TextInputType.number,
+                          style: TextStyle(color: Colors.grey, fontSize: 14),
                           decoration: InputDecoration(
+                            hintText: " يجب ان لا تزيد عن 20 دقيقة",
                             border: UnderlineInputBorder(
                               borderSide: BorderSide(
-                                  color: LIGHT_GREY_TEXT, width: 0.5),
+                                  color: Colors.grey.shade500, width: 0.5),
                             ),
                             focusedBorder: UnderlineInputBorder(
                               borderSide: BorderSide(
-                                  color: LIGHT_GREY_TEXT, width: 0.5),
+                                  color: Colors.grey.shade500, width: 0.5),
                             ),
                             enabledBorder: UnderlineInputBorder(
                               borderSide: BorderSide(
-                                  color: LIGHT_GREY_TEXT, width: 0.5),
+                                  color: Colors.grey.shade500, width: 0.5),
                             ),
                           ),
                           onChanged: (val) {
                             setState(() {
-                              message = val;
+                              max_delay_time = replaceArabicNumber(val);
                             });
                           },
                         ),
+                        SizedBox(
+                          height: 15,
+                        ),
+                        Container(
+                          decoration: BoxDecoration(
+                            color: FitnessAppTheme.white,
+                            borderRadius: const BorderRadius.only(
+                                topLeft: Radius.circular(5.0),
+                                bottomLeft: const Radius.circular(5.0),
+                                bottomRight: Radius.circular(5.0),
+                                topRight: const Radius.circular(5.0)),
+                            boxShadow: <BoxShadow>[
+                              BoxShadow(
+                                  color: FitnessAppTheme.grey.withOpacity(0.2),
+                                  offset: const Offset(1.1, 1.1),
+                                  blurRadius: 10.0),
+                            ],
+                          ),
+                          child: Column(
+                            children: [
+                              Text(
+                                "ملاحظة",
+                                style: TextStyle(
+                                    color: HexColor('#87A0E5'),
+                                    fontSize: 18,
+                                    fontWeight: FontWeight.w700),
+                              ),
+                              TextField(
+                                maxLines: 3,
+                                minLines: 1,
+                                style: TextStyle(
+                                    color: LIGHT_GREY_TEXT, fontSize: 14),
+                                decoration: InputDecoration(
+                                  hintText: "اذا لديك ملاحظة , أكتبها هنا ...",
+                                  border: UnderlineInputBorder(
+                                    borderSide: BorderSide(
+                                        color: LIGHT_GREY_TEXT, width: 0.5),
+                                  ),
+                                  focusedBorder: UnderlineInputBorder(
+                                    borderSide: BorderSide(
+                                        color: LIGHT_GREY_TEXT, width: 0.5),
+                                  ),
+                                  enabledBorder: UnderlineInputBorder(
+                                    borderSide: BorderSide(
+                                        color: LIGHT_GREY_TEXT, width: 0.5),
+                                  ),
+                                ),
+                                onChanged: (val) {
+                                  setState(() {
+                                    message = val;
+                                  });
+                                },
+                              ),
+                            ],
+                          ),
+                        ),
+                        SizedBox(
+                          height: 10,
+                        )
                       ],
                     ),
                   ),
@@ -502,7 +683,7 @@ class _BookAppointmentState extends State<BookAppointment> {
           );
   }
 
- String replaceArabicNumber(String input) {
+  String replaceArabicNumber(String input) {
     const english = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9'];
     const arabic = ['٠', '١', '٢', '٣', '٤', '٥', '٦', '٧', '٨', '٩'];
 
@@ -512,7 +693,6 @@ class _BookAppointmentState extends State<BookAppointment> {
     print("$input");
     return input;
   }
-
 
   bottomButtons() {
     return Container(
@@ -652,7 +832,7 @@ class _BookAppointmentState extends State<BookAppointment> {
     }
   }
 
-getTime1(String time, int fin) {
+  getTime1(String time, int fin) {
     TimeOfDay _startTime = TimeOfDay(
         hour: int.parse(time.split(":")[0]),
         minute: int.parse(time.split(":")[1]));
@@ -690,16 +870,16 @@ getTime1(String time, int fin) {
           hour: int.parse(_time.split(":")[0]),
           minute: int.parse(_time.split(":")[1]));
 
-          if(_timedb.period==_selectedtime.period){
-             int startTimeInt =(_timedb.hourOfPeriod * 60 + _timedb.minute) * 60;
-          int endTimeInt = (dd.hourOfPeriod * 60 + dd.minute) * 60;
-          int selectedTimeInt = (_selectedtime.hourOfPeriod * 60 + _selectedtime.minute) * 60;
+      if (_timedb.period == _selectedtime.period) {
+        int startTimeInt = (_timedb.hourOfPeriod * 60 + _timedb.minute) * 60;
+        int endTimeInt = (dd.hourOfPeriod * 60 + dd.minute) * 60;
+        int selectedTimeInt =
+            (_selectedtime.hourOfPeriod * 60 + _selectedtime.minute) * 60;
 
-      if (selectedTimeInt >= startTimeInt &&
-          selectedTimeInt <= endTimeInt) {
-        j = j + 1;
+        if (selectedTimeInt >= startTimeInt && selectedTimeInt <= endTimeInt) {
+          j = j + 1;
+        }
       }
-          }
     }
     if (int.parse(max_delay_time) > 20 || int.parse(max_delay_time) < 0) {
       messageDialog("Error", "مدة التأخير القصوى يجب ان لا تتجاوز 20 دقيقة");
@@ -844,10 +1024,7 @@ getTime1(String time, int fin) {
         });
   }
 
- 
- 
   timeDetails(int index) {
-   
     return Container(
       margin: EdgeInsets.only(left: 5),
       height: 15,

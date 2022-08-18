@@ -278,7 +278,6 @@ class _AppleLoginState extends State<AppleLogin> {
 Future myBackgroundMessageHandler(RemoteMessage event) async {
   await Firebase.initializeApp();
   HomeScreen().createState();
-  print("\n\nbackground: " + event.toString());
 
   notificationHelper.showMessagingNotification(data: event.data);
 }
@@ -291,3 +290,15 @@ doesSendNotification(String userUid, bool doesSend) async {
         "\n\n");
   });
 }
+class HexColor extends Color {
+  HexColor(final String hexColor) : super(_getColorFromHex(hexColor));
+
+  static int _getColorFromHex(String hexColor) {
+    hexColor = hexColor.toUpperCase().replaceAll('#', '');
+    if (hexColor.length == 6) {
+      hexColor = 'FF' + hexColor;
+    }
+    return int.parse(hexColor, radix: 16);
+  }
+}
+//   backgroundColor: HexColor('#5C5EDD').withOpacity(0.5),

@@ -25,7 +25,7 @@ class _SplashScreenState extends State<SplashScreen> {
     token = await FirebaseMessaging.instance.getToken();
     SharedPreferences.getInstance().then((value) async {
       if (value.getBool("isTokenExist") ?? false) {
-        Timer(Duration(seconds: 4), () {
+        Timer(Duration(seconds: 2), () {
           Navigator.pushReplacement(
             context,
             MaterialPageRoute(builder: (context) => TabBarScreen()),
@@ -42,7 +42,7 @@ class _SplashScreenState extends State<SplashScreen> {
 
         if (response.statusCode == 200 && jsonResponse['status'] == 1) {
           value.setBool("isTokenExist", true);
-          Timer(Duration(seconds: 4), () {
+          Timer(Duration(seconds: 2), () {
             Navigator.pushReplacement(
               context,
               MaterialPageRoute(builder: (context) => TabBarScreen()),
