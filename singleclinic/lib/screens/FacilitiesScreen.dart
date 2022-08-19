@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 import 'package:http/http.dart';
 import 'package:singleclinic/modals/FacilitiesClass.dart';
+import 'package:singleclinic/screens/GalleryScreen.dart';
 
 import '../AllText.dart';
 import '../main.dart';
@@ -78,6 +79,22 @@ class _FacilitiesScreenState extends State<FacilitiesScreen> {
                       style:
                           TextStyle(fontSize: 22, fontWeight: FontWeight.w700),
                     ),
+                    // SizedBox(
+                    //   width: 10,
+                    // ),
+
+                    // IconButton(
+                    //     icon: Icon(
+                    //       Icons.photo_library_outlined,
+                    //       size: 25,
+                    //       color: HexColor('#87A0E5'),
+                    //     ),
+                    //     onPressed: () {
+                    //       Navigator.push(
+                    //           context,
+                    //           MaterialPageRoute(
+                    //               builder: (context) => GalleryScreen()));
+                    //     })
                   ],
                 ),
               ),
@@ -135,8 +152,9 @@ class _FacilitiesScreenState extends State<FacilitiesScreen> {
                                 list[index].name,
                                 style: TextStyle(
                                     color: WHITE,
-                                    fontSize: 15,
+                                    fontSize: 12,
                                     fontWeight: FontWeight.w700),
+                                maxLines: 2,
                                 overflow: TextOverflow.ellipsis,
                               ),
                             ),

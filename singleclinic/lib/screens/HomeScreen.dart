@@ -15,6 +15,7 @@ import 'package:singleclinic/screens/BookAppointment.dart';
 import 'package:singleclinic/screens/ChatScreen.dart';
 import 'package:singleclinic/screens/DoctorDetail.dart';
 import 'package:singleclinic/screens/DoctorList.dart';
+import 'package:singleclinic/screens/FitnessAppTheme.dart';
 import 'package:singleclinic/screens/LoginScreen.dart';
 import 'package:singleclinic/screens/SearchScreen.dart';
 
@@ -122,6 +123,7 @@ class _HomeScreenState extends State<HomeScreen> with WidgetsBindingObserver {
           backgroundColor: WHITE,
           flexibleSpace: header(),
         ),
+        
         body: body(),
       ),
     );
@@ -220,16 +222,32 @@ class _HomeScreenState extends State<HomeScreen> with WidgetsBindingObserver {
                                 height: 20,
                               ),
                               Container(
-                                width: isLoggedIn ? 120 : 130,
+                                padding: EdgeInsets.only(left: 5, right: 10),
+                                decoration: BoxDecoration(
+                                  color: FitnessAppTheme.white,
+                                  borderRadius: const BorderRadius.only(
+                                      topLeft: Radius.circular(0.0),
+                                      bottomLeft: const Radius.circular(50.0),
+                                      bottomRight: Radius.circular(0.0),
+                                      topRight: const Radius.circular(50.0)),
+                                  boxShadow: <BoxShadow>[
+                                    BoxShadow(
+                                        color: FitnessAppTheme.grey
+                                            .withOpacity(0.2),
+                                        offset: const Offset(1.1, 1.1),
+                                        blurRadius: 10.0),
+                                  ],
+                                ),
+                                width: isLoggedIn ? 130 : 210,
                                 height: 28,
                                 child: Stack(
                                   children: [
-                                    Image.asset(
-                                      "assets/homescreen/bookappointment.png",
-                                      width: isLoggedIn ? 125 : 135,
-                                      height: 28,
-                                      fit: BoxFit.fill,
-                                    ),
+                                    // Image.asset(
+                                    //   "assets/homescreen/bookappointment.png",
+                                    //   width: isLoggedIn ? 125 : 135,
+                                    //   height: 28,
+                                    //   fit: BoxFit.fill,
+                                    // ),
                                     Center(
                                       child: Text(
                                         isLoggedIn

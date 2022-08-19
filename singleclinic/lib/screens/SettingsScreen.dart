@@ -38,8 +38,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
     //     MY_SUBCRIPTIONS,
     //     [MY_SUBCRIPTIONS, APPOINTMENT_HISTORY, SUBSCRIPTION_PLANS],
     //     [SubcriptionList(), AppointmentScreen(), SubscriptionPlansScreen()]));
-    list.add(OptionsList(MORE, [GALLERY],
-        [GalleryScreen()]));
+    list.add(OptionsList(MORE, [GALLERY], [GalleryScreen()]));
     list.add(OptionsList(
         CONTACT_DETAILS,
         [TERM_AND_CONDITION, ABOUT_US, CONTACT_US],
@@ -249,14 +248,10 @@ class _SettingsScreenState extends State<SettingsScreen> {
             SizedBox(
               height: 20,
             ),
-
             Divider(
               color: LIGHT_GREY_TEXT,
               height: 10,
             ),
-
-
-
             ListView.builder(
               shrinkWrap: true,
               physics: ClampingScrollPhysics(),
@@ -272,28 +267,44 @@ class _SettingsScreenState extends State<SettingsScreen> {
                   child: Column(
                     children: [
                       SizedBox(
-                        height: 6,
+                        height: 10,
                       ),
                       Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
-                          Text(
-                            list[index].options[i].toString(),
-                            style: TextStyle(
-                                fontSize: 17,
-                                color: LIGHT_GREY_TEXT,
-                                fontWeight: FontWeight.w500),
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.start,
+                            children: [
+                              Container(
+                                height: 25,
+                                width: 3,
+                                decoration: BoxDecoration(
+                                  color: HexColor('#87A0E5'),
+                                  borderRadius: const BorderRadius.all(
+                                      const Radius.circular(4.0)),
+                                ),
+                              ),
+                              SizedBox(
+                                width: 20,
+                              ),
+                              Text(
+                                list[index].options[i].toString(),
+                                style: TextStyle(
+                                    fontSize: 17,
+                                    color: LIGHT_GREY_TEXT,
+                                    fontWeight: FontWeight.w800),
+                              ),
+                            ],
                           ),
                           Icon(
                             Icons.arrow_forward_ios,
                             color: LIGHT_GREY_TEXT,
                             size: 15,
-                          )
-
+                          ),
                         ],
                       ),
                       SizedBox(
-                        height: 12,
+                        height: 25,
                       ),
                     ],
                   ),

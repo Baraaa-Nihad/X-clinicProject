@@ -297,8 +297,13 @@ class _BookAppointmentState extends State<BookAppointment> {
                                                 .data.services[index].name +
                                             " - "),
                                         Text(
-                                          "${doctorsAndServices.data.services[index].expectedTime.toString()} دقيقة ",
+                                          "${doctorsAndServices.data.services[index].expectedTime.toString()} دقيقة / جلسة",
                                           textDirection: TextDirection.rtl,
+                                          style: TextStyle(
+                                              fontSize: 15,
+                                              fontWeight: FontWeight.w500,
+                                              color: Color.fromARGB(
+                                                  255, 43, 75, 145)),
                                         ),
                                       ],
                                     ),

@@ -176,7 +176,8 @@ class _DepartmentDetailsScreenState extends State<DepartmentDetailsScreen> {
                                         shrinkWrap: true,
                                         physics: ClampingScrollPhysics(),
                                         itemBuilder: (context, index) {
-                                          return Column(
+                                          return Expanded(
+                                              child: Column(
                                             children: [
                                               SizedBox(
                                                 height: 10,
@@ -200,6 +201,14 @@ class _DepartmentDetailsScreenState extends State<DepartmentDetailsScreen> {
                                                         fontSize: 16,
                                                         fontWeight:
                                                             FontWeight.w700),
+                                                  ),
+                                                  Text(
+                                                    "${departmentDetails.data.service[index].priceFor}",
+                                                    style: TextStyle(
+                                                        color: NAVY_BLUE,
+                                                        fontSize: 16,
+                                                        fontWeight:
+                                                            FontWeight.w700),
                                                   )
                                                 ],
                                               ),
@@ -211,7 +220,7 @@ class _DepartmentDetailsScreenState extends State<DepartmentDetailsScreen> {
                                                 height: 20,
                                               ),
                                             ],
-                                          );
+                                          ));
                                         },
                                       )
                                     ],
