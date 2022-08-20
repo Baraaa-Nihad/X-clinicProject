@@ -94,6 +94,8 @@ flutter_icons:
   android: true
   ios: true
   image_path: "assets/X-clinic.png"
+  adaptive_icon_background: "#ffffff"
+  adaptive_icon_foreground: "assets/X-clinic-foreground.png"
 
 
 # For information on the generic Dart part of this file, see the

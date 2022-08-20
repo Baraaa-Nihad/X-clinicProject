@@ -39,10 +39,9 @@ class _SettingsScreenState extends State<SettingsScreen> {
     //     [MY_SUBCRIPTIONS, APPOINTMENT_HISTORY, SUBSCRIPTION_PLANS],
     //     [SubcriptionList(), AppointmentScreen(), SubscriptionPlansScreen()]));
     list.add(OptionsList(MORE, [GALLERY], [GalleryScreen()]));
-    list.add(OptionsList(
-        CONTACT_DETAILS,
-        [TERM_AND_CONDITION, ABOUT_US, CONTACT_US],
-        [TermAndConditions(), AboutUs(), ContactUsScreen()]));
+    list.add(OptionsList(CONTACT_DETAILS, [ABOUT_US, CONTACT_US],
+        [AboutUs(), ContactUsScreen()]));
+    //TERM_AND_CONDITION, TermAndConditions(),
   }
 
   @override
