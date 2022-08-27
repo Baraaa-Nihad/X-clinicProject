@@ -10,18 +10,18 @@
 
     <application
         tools:replace="android:label"
-        android:label="X Clinic"
+        android:label="X-Clinic"
         android:icon="@mipmap/ic_launcher"
-        >
+        android:exported="true">
         <activity
-            android:name="io.flutter.embedding.android.FlutterActivity" android:exported="true"
+            android:name="io.flutter.embedding.android.FlutterActivity"
             android:launchMode="singleTop"
             android:theme="@style/LaunchTheme"
             android:configChanges="orientation|keyboardHidden|keyboard|screenSize|smallestScreenSize|locale|layoutDirection|fontScale|screenLayout|density|uiMode"
             android:hardwareAccelerated="true"
             android:windowSoftInputMode="adjustResize"
+            android:exported="true"
             >
-            
             <!-- Specifies an Android theme to apply to this Activity as soon as
                  the Android process has started. This theme is visible to the user
                  while the Flutter UI initializes. After that, this theme continues
@@ -39,12 +39,6 @@
               android:name="io.flutter.embedding.android.SplashScreenDrawable"
               android:resource="@drawable/launch_background"
               />
-              <!-- <service android:name="com.XClinic.mainproject.backgroundService"
-               android:exported="false">
-           <intent-filter>
-               <action android:name="com.XClinic.mainproject.START_BACKGROUND" />
-           </intent-filter>
-               </service> -->
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
                 <category android:name="android.intent.category.LAUNCHER"/>
@@ -52,7 +46,9 @@
         </activity>
 
         <activity android:name="com.braintreepayments.api.BraintreeBrowserSwitchActivity"
-            android:launchMode="singleTask"  android:exported="true">
+            android:launchMode="singleTask"
+            android:exported="true"
+            >
             <intent-filter>
                 <action android:name="android.intent.action.VIEW" />
                 <category android:name="android.intent.category.DEFAULT" />
@@ -69,7 +65,8 @@
                 "keyboard|keyboardHidden|screenLayout|screenSize|orientation"
             android:label="@string/app_name" />
         <activity
-            android:name="com.facebook.CustomTabActivity"  android:exported="true">
+            android:name="com.facebook.CustomTabActivity"
+            android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.VIEW" />
                 <category android:name="android.intent.category.DEFAULT" />
@@ -81,7 +78,7 @@
         <activity
             android:name="com.yalantis.ucrop.UCropActivity"
             android:screenOrientation="portrait"
-            android:theme="@style/Theme.AppCompat.Light.NoActionBar"  android:exported="true" />
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar"/>
 
 
         <meta-data android:name="com.google.android.gms.wallet.api.enabled" android:value="true"/>

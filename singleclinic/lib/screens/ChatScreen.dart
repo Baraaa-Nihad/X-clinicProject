@@ -1749,7 +1749,7 @@ class _ChatScreenState extends State<ChatScreen> with WidgetsBindingObserver {
                   child: Padding(
                     padding: const EdgeInsets.all(20.0),
                     child: Text(
-                      "تم قبوله",
+     "قبول",
                       style:
                           TextStyle(color: WHITE, fontWeight: FontWeight.w900),
                       textAlign: TextAlign.center,

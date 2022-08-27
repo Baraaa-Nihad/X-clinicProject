@@ -6,7 +6,7 @@ import 'package:flutter/material.dart';
 import 'package:http/http.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:singleclinic/main.dart';
-
+import 'package:google_fonts/google_fonts.dart';
 class SplashScreen extends StatefulWidget {
   @override
   _SplashScreenState createState() => _SplashScreenState();
@@ -25,7 +25,7 @@ class _SplashScreenState extends State<SplashScreen> {
     token = await FirebaseMessaging.instance.getToken();
     SharedPreferences.getInstance().then((value) async {
       if (value.getBool("isTokenExist") ?? false) {
-        Timer(Duration(seconds: 2), () {
+        Timer(Duration(seconds: 3), () {
           Navigator.pushReplacement(
             context,
             MaterialPageRoute(builder: (context) => TabBarScreen()),
@@ -42,7 +42,7 @@ class _SplashScreenState extends State<SplashScreen> {
 
         if (response.statusCode == 200 && jsonResponse['status'] == 1) {
           value.setBool("isTokenExist", true);
-          Timer(Duration(seconds: 2), () {
+          Timer(Duration(seconds: 3), () {
             Navigator.pushReplacement(
               context,
               MaterialPageRoute(builder: (context) => TabBarScreen()),
@@ -70,9 +70,10 @@ class _SplashScreenState extends State<SplashScreen> {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               Text(
-                "X-CLINIC APP",
-                style: TextStyle(
-                    color: WHITE, fontSize: 35, fontWeight: FontWeight.w800),
+                "X-CLINIC",
+                  style:GoogleFonts.cairo(
+                    textStyle: TextStyle(color: LIME, letterSpacing: .5,fontSize: 25)
+                  )
               ),
             ],
           ),
@@ -81,12 +82,12 @@ class _SplashScreenState extends State<SplashScreen> {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               Text(
-                "The best choice for organizing clinics",
-                style: TextStyle(
-                  color: WHITE,
-                  fontSize: 15,
-                ),
-              ),
+              "Your Best Choice",
+              style:GoogleFonts.cairo(
+                  textStyle: TextStyle(color: BLACK, letterSpacing: .5,fontSize: 15)
+              )
+          ),
+
             ],
           )
         ],

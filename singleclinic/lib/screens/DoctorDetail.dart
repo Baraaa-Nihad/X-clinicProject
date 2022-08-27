@@ -11,7 +11,7 @@ import 'package:singleclinic/screens/ChatScreen.dart';
 import 'package:singleclinic/screens/LoginScreen.dart';
 import 'package:singleclinic/screens/ReviewScreen.dart';
 import 'package:url_launcher/url_launcher.dart';
-
+import 'package:google_fonts/google_fonts.dart';
 import '../main.dart';
 
 class DoctorDetails extends StatefulWidget {
@@ -98,10 +98,12 @@ class _DoctorDetailsState extends State<DoctorDetails> {
                 ),
                 Text(
                   doctorDetail.data.name,
-                  style: TextStyle(
-                      color: BLACK,
-                      fontSize: MediaQuery.of(context).size.width * 0.05,
-                      fontWeight: FontWeight.w800),
+                  style:GoogleFonts.cairo(
+                    textStyle: TextStyle(
+                        color: BLACK,
+                        fontSize: MediaQuery.of(context).size.width * 0.05,
+                        fontWeight: FontWeight.w600),),
+
                 ),
                 Expanded(
                   child: Row(
@@ -209,12 +211,16 @@ class _DoctorDetailsState extends State<DoctorDetails> {
                       children: [
                         Text(
                           doctorDetail.data.name,
-                          style: TextStyle(
-                              fontWeight: FontWeight.w800, fontSize: 16),
+                          style:GoogleFonts.cairo(
+                            textStyle: TextStyle(
+                                fontWeight: FontWeight.w700, fontSize: 13),),
+
                         ),
                         Text(
                           doctorDetail.data.departmentName,
-                          style: TextStyle(color: NAVY_BLUE, fontSize: 10),
+                          style:GoogleFonts.cairo(
+                            textStyle: TextStyle(color: NAVY_BLUE, fontSize: 10),),
+
                         ),
                       ],
                     ),
@@ -286,8 +292,10 @@ class _DoctorDetailsState extends State<DoctorDetails> {
                           ),
                           Text(
                             "رؤية كل التقييمات",
-                            style:
-                                TextStyle(color: LIGHT_GREY_TEXT, fontSize: 10),
+                            style:GoogleFonts.cairo(
+                              textStyle:  TextStyle(color: LIGHT_GREY_TEXT, fontSize: 10,fontWeight: FontWeight.w600),),
+
+
                           ),
                         ],
                       ),
@@ -355,7 +363,9 @@ class _DoctorDetailsState extends State<DoctorDetails> {
           ),
           Text(
             doctorDetail.data.aboutUs,
-            style: TextStyle(color: LIGHT_GREY_TEXT, fontSize: 11),
+            style:GoogleFonts.cairo(
+              textStyle: TextStyle(color: LIGHT_GREY_TEXT, fontSize: 11),),
+
             textAlign: TextAlign.justify,
           ),
         ],
@@ -371,10 +381,30 @@ class _DoctorDetailsState extends State<DoctorDetails> {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Text(
-            WORKING_TIME,
-            style: TextStyle(fontWeight: FontWeight.w700, fontSize: 19),
+          Row(children: [
+            Container(
+              height: 25,
+              width: 3,
+              decoration: BoxDecoration(
+                color: LIME,
+                borderRadius: const BorderRadius.all(
+                    const Radius.circular(4.0)),
+              ),
+            ),
+            SizedBox(width: 5,),
+            Text(
+              "أوقات العمل",
+              style:GoogleFonts.cairo(
+                textStyle: TextStyle(fontWeight: FontWeight.w700, fontSize: 16),),
+
+            ),
+          ],),
+
+          Divider(
+            color: LIGHT_GREY_TEXT,
+            height: 10,
           ),
+
           GridView.builder(
             shrinkWrap: true,
             physics: ClampingScrollPhysics(),
@@ -413,10 +443,12 @@ class _DoctorDetailsState extends State<DoctorDetails> {
                                 weekDaysList[
                                     doctorDetail.data.timeTabledata[index].day -
                                         1],
-                                style: TextStyle(
-                                    color: NAVY_BLUE,
-                                    fontSize: 12,
-                                    fontWeight: FontWeight.w700),
+                                style:GoogleFonts.cairo(
+                                  textStyle: TextStyle(
+                                      color: NAVY_BLUE,
+                                      fontSize: 12,
+                                      fontWeight: FontWeight.w700),),
+
                               ),
                               SizedBox(
                                 height: 5,
@@ -426,13 +458,16 @@ class _DoctorDetailsState extends State<DoctorDetails> {
                                 getTime(doctorDetail.data.timeTabledata[index].from) +
                                     " إلى " +
                                     getTime(doctorDetail.data.timeTabledata[index].to),
-                                    
-                                style: TextStyle(
-                                  color: LIGHT_GREY_TEXT,
-                                  fontSize: MediaQuery.of(context).size.width*0.025,
-                                overflow: TextOverflow.ellipsis,
-                                ),
-                              ),
+              style:GoogleFonts.cairo(
+              textStyle: TextStyle(
+              color: LIGHT_GREY_TEXT,
+              fontSize: MediaQuery.of(context).size.width*0.025,
+              overflow: TextOverflow.ellipsis,
+              ),),
+
+              ),
+
+
                             ],
                           )
                         ],
@@ -440,23 +475,48 @@ class _DoctorDetailsState extends State<DoctorDetails> {
                   : Container();
             },
           ),
-          SizedBox(
-            height: 15,
+          Divider(
+            color: LIGHT_GREY_TEXT,
+            height: 10,
           ),
-          Text(
-            SERVICES,
-            style: TextStyle(fontWeight: FontWeight.w700, fontSize: 19),
-          ),
+          Row(children: [
+            Container(
+              height: 25,
+              width: 3,
+              decoration: BoxDecoration(
+                color: LIME,
+                borderRadius: const BorderRadius.all(
+                    const Radius.circular(4.0)),
+              ),
+            ),
+            SizedBox(height: 5,width: 5,),
+            Text(
+              SERVICES,
+              style:GoogleFonts.cairo(
+                textStyle: TextStyle(fontWeight: FontWeight.w700, fontSize: 16),),
+
+
+
+            ),
+          ],),
+
+
+
           SizedBox(
             height: 5,
           ),
           Text(
             doctorDetail.data.service,
-            style: TextStyle(fontSize: 13, color: LIGHT_GREY_TEXT),
+            style:GoogleFonts.cairo(
+              textStyle: TextStyle(fontSize: 13, color: LIGHT_GREY_TEXT),fontWeight: FontWeight.w600),
+
+
+
             textAlign: TextAlign.justify,
           ),
-          SizedBox(
-            height: 100,
+          Divider(
+            color: LIGHT_GREY_TEXT,
+            height: 10,
           ),
         ],
       ),
@@ -529,10 +589,14 @@ class _DoctorDetailsState extends State<DoctorDetails> {
                 child: Center(
                   child: Text(
                     isLoggedIn ? BOOK_APPOINTMENT : LOGIN_TO_BOOK_APPOINTMENT,
-                    style: TextStyle(
-                        fontWeight: FontWeight.w700,
-                        fontSize: 17,
-                        color: WHITE),
+                    style:GoogleFonts.cairo(
+                      textStyle: TextStyle(
+                          fontWeight: FontWeight.w700,
+                          fontSize: 15,
+                          color: WHITE),),
+
+
+
                   ),
                 ),
               ),

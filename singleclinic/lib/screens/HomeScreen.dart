@@ -2,7 +2,7 @@ import 'dart:async';
 import 'dart:convert';
 
 import 'package:cached_network_image/cached_network_image.dart';
-
+import 'package:google_fonts/google_fonts.dart';
 import 'package:firebase_database/firebase_database.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';
@@ -18,7 +18,7 @@ import 'package:singleclinic/screens/DoctorList.dart';
 import 'package:singleclinic/screens/FitnessAppTheme.dart';
 import 'package:singleclinic/screens/LoginScreen.dart';
 import 'package:singleclinic/screens/SearchScreen.dart';
-
+import 'package:google_fonts/google_fonts.dart';
 class HomeScreen extends StatefulWidget {
   @override
   _HomeScreenState createState() => _HomeScreenState();
@@ -143,11 +143,13 @@ class _HomeScreenState extends State<HomeScreen> with WidgetsBindingObserver {
                   children: [
                     Text(
                       HOME,
-                      style: TextStyle(
-                          color: BLACK,
-                          fontSize: 25,
-                          fontWeight: FontWeight.w800),
-                    ),
+                      style:GoogleFonts.cairo(
+                        textStyle: TextStyle(
+                            color: BLACK,
+                            fontSize: 17,
+                            fontWeight: FontWeight.w600),
+
+                      ),),
                     // InkWell(
                     //   onTap: () {
                     //     Navigator.push(
@@ -253,11 +255,9 @@ class _HomeScreenState extends State<HomeScreen> with WidgetsBindingObserver {
                                         isLoggedIn
                                             ? "احجز موعدك الان.."
                                             : LOGIN_TO_BOOK_APPOINTMENT,
-                                        style: TextStyle(
-                                            fontSize: 15,
-                                            color: LIME,
-                                            fontWeight: FontWeight.w700),
-                                      ),
+                                         style:GoogleFonts.cairo(
+                                textStyle: TextStyle(letterSpacing: .3,fontSize: 15,color:LIME)
+                              ),)
                                     ),
                                   ],
                                 ),
@@ -276,12 +276,11 @@ class _HomeScreenState extends State<HomeScreen> with WidgetsBindingObserver {
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     Text(
+
                       DOCTOR_LIST,
-                      style: TextStyle(
-                          color: BLACK,
-                          fontSize: 17,
-                          fontWeight: FontWeight.w700),
-                    ),
+                      style:GoogleFonts.cairo(
+                          textStyle: TextStyle(letterSpacing: .3,fontSize: 17,fontWeight:FontWeight.w700)
+                      ),),
                     InkWell(
                       onTap: () {
                         Navigator.push(
@@ -291,11 +290,10 @@ class _HomeScreenState extends State<HomeScreen> with WidgetsBindingObserver {
                       },
                       child: Text(
                         SEE_ALL,
-                        style: TextStyle(
-                            color: NAVY_BLUE,
-                            fontSize: 13,
-                            fontWeight: FontWeight.w700),
-                      ),
+
+                        style:GoogleFonts.cairo(
+                            textStyle: TextStyle(letterSpacing: .3,color: LIME)
+                        ),)
                     ),
                   ],
                 ),
@@ -379,11 +377,13 @@ class _HomeScreenState extends State<HomeScreen> with WidgetsBindingObserver {
                       children: [
                         Text(
                           name,
-                          style: TextStyle(
+                      style:GoogleFonts.cairo(
+                          textStyle: TextStyle(
                               color: BLACK,
-                              fontSize: 17,
-                              fontWeight: FontWeight.w800),
-                        ),
+                              fontSize: 12,
+                              fontWeight: FontWeight.w500),
+
+                      ),),
                         SizedBox(
                           height: 5,
                         ),
@@ -396,11 +396,15 @@ class _HomeScreenState extends State<HomeScreen> with WidgetsBindingObserver {
                             padding: const EdgeInsets.fromLTRB(5, 3, 5, 3),
                             child: Text(
                               department,
-                              style: TextStyle(
-                                  color: WHITE,
-                                  fontSize: 10,
-                                  fontWeight: FontWeight.w700),
-                            ),
+                              style:GoogleFonts.cairo(
+                                textStyle: TextStyle(
+                                    color: WHITE,
+                                    fontSize: 10,
+                                    fontWeight: FontWeight.w700),
+
+
+                              ),),
+
                           ),
                         ),
                         SizedBox(
@@ -411,12 +415,16 @@ class _HomeScreenState extends State<HomeScreen> with WidgetsBindingObserver {
                             Expanded(
                               child: Text(
                                 aboutUs,
-                                maxLines: 2,
+                                maxLines: 4,
                                 overflow: TextOverflow.ellipsis,
-                                style: TextStyle(
-                                  color: LIGHT_GREY_TEXT,
-                                  fontSize: 10,
-                                ),
+                          style:GoogleFonts.cairo(
+                            textStyle: TextStyle(
+                              color: LIGHT_GREY_TEXT,
+                              fontSize: 10,
+
+
+                          ),),
+
                               ),
                             ),
                           ],

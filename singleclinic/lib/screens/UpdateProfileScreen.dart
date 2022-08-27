@@ -8,7 +8,7 @@ import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:singleclinic/AllText.dart';
-
+import 'package:google_fonts/google_fonts.dart';
 import '../main.dart';
 
 class UpdateProfileScreen extends StatefulWidget {
@@ -97,10 +97,14 @@ class _UpdateProfileScreenState extends State<UpdateProfileScreen> {
                     ),
                     Text(
                       PROFILE_UPDATE,
-                      style: TextStyle(
-                          color: NAVY_BLUE,
-                          fontSize: 22,
-                          fontWeight: FontWeight.w700),
+                      style:GoogleFonts.cairo(
+                        textStyle: TextStyle(
+                            color: NAVY_BLUE,
+                            fontSize: 17,
+                            fontWeight: FontWeight.w600),
+
+                      ),
+
                     ),
                   ],
                 ),
@@ -197,20 +201,28 @@ class _UpdateProfileScreenState extends State<UpdateProfileScreen> {
                           children: [
                             Text(
                               NAME,
-                              style: TextStyle(
-                                  fontSize: 18, fontWeight: FontWeight.w700),
-                            ),
+                          style:GoogleFonts.cairo(
+                            textStyle:  TextStyle(
+                                fontSize: 15, fontWeight: FontWeight.w700),
+
+
+                          ),),
+
                             TextFormField(
                               controller: nameController,
                               validator: (val) {
                                 if (val.isEmpty) {
-                                  return "Enter your name";
+                                  return "ادخل اسمك";
                                 }
                                 return null;
                               },
                               onSaved: (val) => name = val,
-                              style: TextStyle(
-                                color: LIGHT_GREY_TEXT,
+                              style:GoogleFonts.cairo(
+                                textStyle:  TextStyle(
+                                  color: LIGHT_GREY_TEXT,
+
+                              ),
+
                               ),
                               decoration: InputDecoration(
                                 isCollapsed: true,
@@ -247,8 +259,12 @@ class _UpdateProfileScreenState extends State<UpdateProfileScreen> {
                             ),
                             Text(
                               EMAIL_ADDRESS,
-                              style: TextStyle(
-                                  fontSize: 18, fontWeight: FontWeight.w700),
+                              style:GoogleFonts.cairo(
+                                textStyle: TextStyle(
+                                    fontSize: 15, fontWeight: FontWeight.w700),
+
+                              ),
+
                             ),
                             IgnorePointer(
                               ignoring: emailController.text != 'null',
@@ -256,16 +272,19 @@ class _UpdateProfileScreenState extends State<UpdateProfileScreen> {
                                 controller: emailController,
                                 validator: (val) {
                                   if (val.isEmpty) {
-                                    return "Enter your email address";
+                                    return "أدخل البريد الالكتروني الخاص بك";
                                   } else if (!EmailValidator.validate(val)) {
-                                    return "Enter correct email";
+                                    return "أدخل ايميل صحيح";
                                   }
                                   return null;
                                 },
                                 onSaved: (val) => emailAddress = val,
-                                style: TextStyle(
-                                  color: LIGHT_GREY_TEXT,
-                                ),
+
+                                style:GoogleFonts.cairo(
+                                    textStyle:  TextStyle(
+                                      color: LIGHT_GREY_TEXT,
+
+                                    ),),
                                 decoration: InputDecoration(
                                   isCollapsed: true,
                                   contentPadding: EdgeInsets.all(5),
@@ -302,22 +321,24 @@ class _UpdateProfileScreenState extends State<UpdateProfileScreen> {
                             ),
                             Text(
                               PHONE_NUMBER,
-                              style: TextStyle(
-                                  fontSize: 18, fontWeight: FontWeight.w700),
+                              style:GoogleFonts.cairo(
+                                textStyle: TextStyle(
+                                    fontSize: 15, fontWeight: FontWeight.w700),
+                              )
                             ),
                             TextFormField(
                               controller: phoneController,
                               validator: (val) {
                                 if (val.isEmpty) {
-                                  return "Enter your phone number";
+                                  return "ادخل رقم هاتفك";
                                 }
                                 return null;
                               },
                               keyboardType: TextInputType.phone,
                               onSaved: (val) => phoneNumber = val,
-                              style: TextStyle(
-                                color: LIGHT_GREY_TEXT,
-                              ),
+                              style:GoogleFonts.cairo(
+                                textStyle: TextStyle(
+                                    fontSize: 15, fontWeight: FontWeight.w300),),
                               decoration: InputDecoration(
                                 isCollapsed: true,
                                 contentPadding: EdgeInsets.all(5),
@@ -353,22 +374,25 @@ class _UpdateProfileScreenState extends State<UpdateProfileScreen> {
                             ),
                             Text(
                               PASSWORD,
-                              style: TextStyle(
-                                  fontSize: 18, fontWeight: FontWeight.w700),
+                              style:GoogleFonts.cairo(
+                                textStyle: TextStyle(
+                                    fontSize: 15, fontWeight: FontWeight.w700),),
                             ),
                             TextFormField(
                               controller: passController,
                               obscureText: true,
                               validator: (val) {
                                 if (val.isEmpty) {
-                                  return "Enter your password";
+                                  return "ادخل كلمة السر";
                                 }
                                 return null;
                               },
                               onSaved: (val) => password = val,
-                              style: TextStyle(
-                                color: LIGHT_GREY_TEXT,
-                              ),
+                              style:GoogleFonts.cairo(
+                                textStyle:  TextStyle(
+                                  color: LIGHT_GREY_TEXT,
+
+                                ),),
                               decoration: InputDecoration(
                                 isCollapsed: true,
                                 contentPadding: EdgeInsets.all(5),
@@ -404,24 +428,26 @@ class _UpdateProfileScreenState extends State<UpdateProfileScreen> {
                             ),
                             Text(
                               CONFIRM_PASSWORD,
-                              style: TextStyle(
-                                  fontSize: 18, fontWeight: FontWeight.w700),
-                            ),
+                              style:GoogleFonts.cairo(
+                                textStyle: TextStyle(
+                                    fontSize: 15, fontWeight: FontWeight.w700),),),
                             TextFormField(
                               controller: confirmPassController,
                               obscureText: true,
                               validator: (val) {
                                 if (val.isEmpty) {
-                                  return "Enter your password";
+                                  return "ادخل كلمة السر";
                                 } else if (val != password) {
-                                  return "Password mismatch";
+                                  return "كلمة السر غير متطابقة";
                                 }
                                 return null;
                               },
                               onSaved: (val) => confirmPassword = val,
-                              style: TextStyle(
-                                color: LIGHT_GREY_TEXT,
-                              ),
+                              style:GoogleFonts.cairo(
+                                textStyle:  TextStyle(
+                                  color: LIGHT_GREY_TEXT,
+
+                                ),),
                               decoration: InputDecoration(
                                 isCollapsed: true,
                                 contentPadding: EdgeInsets.all(5),
@@ -491,10 +517,9 @@ class _UpdateProfileScreenState extends State<UpdateProfileScreen> {
                   child: Center(
                     child: Text(
                       UPDATE,
-                      style: TextStyle(
-                          color: WHITE,
-                          fontWeight: FontWeight.w700,
-                          fontSize: 17),
+                      style:GoogleFonts.cairo(
+                        textStyle:  TextStyle(
+                            fontSize: 17, fontWeight: FontWeight.w700,color: WHITE),),
                     ),
                   ),
                 ),

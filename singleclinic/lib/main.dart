@@ -27,12 +27,12 @@ const String TOKENIZATION_KEY = 'sandbox_v2fzhc6d_qpj7hhj994nbzy5q';
 const String CURRENCY_CODE = 'شيكل';
 const String DISPLAY_NAME = 'X-Clinic';
 
-Color LIME = Color(0xFF094D55);
+Color LIME = Colors.pink[900];
 // Color LIME = Color.fromRGBO(231, 208, 69, 1);
 Color WHITE = Colors.white;
 Color BLACK = Colors.black;
-Color NAVY_BLUE = Color.fromARGB(255, 4, 69, 77);
-Color SPLASHSCREENCOLOR = HexColor('#87A0E5');
+Color NAVY_BLUE = Colors.grey[700];
+Color SPLASHSCREENCOLOR =  Colors.grey[200];
 Color LIGHT_GREY = Color.fromRGBO(230, 230, 230, 1);
 Color LIGHT_GREY_SCREEN_BG = Color.fromRGBO(240, 240, 240, 1);
 Color LIGHT_GREY_TEXT = Colors.grey.shade700;
@@ -50,7 +50,7 @@ void main() async {
     theme: ThemeData(
         textTheme: TextTheme(
           headline1: TextStyle(
-            fontFamily: "Cairo",
+            fontFamily: "Avir",
           ),
           headline2: TextStyle(
             fontFamily: "Avir",
@@ -140,9 +140,9 @@ class _TabBarScreenState extends State<TabBarScreen>
                     currentTab == 0
                         ? "assets/tabBar/home_active.png"
                         : "assets/tabBar/home.png",
-                    color: currentTab == 0 ? NAVY_BLUE : LIGHT_GREY_TEXT,
-                    height: 23,
-                    width: 23,
+                    color: currentTab == 0 ? LIME : LIGHT_GREY_TEXT,
+                    height: 25,
+                    width: 25,
                   ),
                   label: "الصفحة الرئيسية",
                 ),
@@ -151,19 +151,19 @@ class _TabBarScreenState extends State<TabBarScreen>
                       currentTab == 1
                           ? "assets/tabBar/chat_active.png"
                           : "assets/tabBar/chat.png",
-                      color: currentTab == 1 ? NAVY_BLUE : LIGHT_GREY_TEXT,
-                      height: 23,
-                      width: 23,
+                      color: currentTab == 1 ? LIME : LIGHT_GREY_TEXT,
+                      height: 25,
+                      width: 25,
                     ),
-                    label: "المحادثات"),
+                    label: "المحادثات",),
                 BottomNavigationBarItem(
                     icon: Image.asset(
                       currentTab == 2
                           ? "assets/tabBar/appointment_active.png"
                           : "assets/tabBar/appointment.png",
-                      color: currentTab == 2 ? NAVY_BLUE : LIGHT_GREY_TEXT,
-                      height: 23,
-                      width: 23,
+                      color: currentTab == 2 ? LIME : LIGHT_GREY_TEXT,
+                      height: 25,
+                      width: 25,
                     ),
                     label: "المواعيد"),
                 BottomNavigationBarItem(
@@ -171,9 +171,9 @@ class _TabBarScreenState extends State<TabBarScreen>
                     currentTab == 3
                         ? "assets/tabBar/de.png"
                         : "assets/tabBar/de.png",
-                    color: currentTab == 3 ? NAVY_BLUE : LIGHT_GREY_TEXT,
-                    height: 23,
-                    width: 23,
+                    color: currentTab == 3 ? LIME : LIGHT_GREY_TEXT,
+                    height: 25,
+                    width: 25,
                   ),
                   label: "الأقسام",
                 ),
@@ -182,9 +182,9 @@ class _TabBarScreenState extends State<TabBarScreen>
                     currentTab == 4
                         ? "assets/tabBar/tee.png"
                         : "assets/tabBar/tee.png",
-                    color: currentTab == 4 ? NAVY_BLUE : LIGHT_GREY_TEXT,
-                    height: 23,
-                    width: 23,
+                    color: currentTab == 4 ? LIME : LIGHT_GREY_TEXT,
+                    height: 25,
+                    width: 25,
                   ),
                   label: "المنشورات",
                 ),
@@ -193,11 +193,12 @@ class _TabBarScreenState extends State<TabBarScreen>
                     currentTab == 5
                         ? "assets/tabBar/setting_active.png"
                         : "assets/tabBar/setting.png",
-                    color: currentTab == 5 ? NAVY_BLUE : LIGHT_GREY_TEXT,
-                    height: 23,
-                    width: 23,
+                    color: currentTab == 5 ? LIME : LIGHT_GREY_TEXT,
+                    height: 25,
+                    width: 25,
                   ),
-                  label: "الاعدادات",
+                  label: "الاعدادات" ,
+
                 ),
               ],
               type: BottomNavigationBarType.fixed,

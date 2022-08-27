@@ -5,7 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:singleclinic/main.dart';
 import 'package:http/http.dart' as http;
 import '../AllText.dart';
-
+import 'package:google_fonts/google_fonts.dart';
 class ForgetPassword extends StatefulWidget {
   @override
   _ForgetPasswordState createState() => _ForgetPasswordState();
@@ -36,11 +36,12 @@ class _ForgetPasswordState extends State<ForgetPassword> {
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
+
           SizedBox(
             height: 40,
           ),
           Image.asset(
-            "assets/loginregister/forgetIcon.png",
+            "assets/X-clinic.png",
             height: 170,
             width: 170,
           ),
@@ -52,8 +53,9 @@ class _ForgetPasswordState extends State<ForgetPassword> {
               Expanded(
                 child: Text(
                   ENTER_THE_EMAIL_ADDRESS_ASSOCIATED_WITH_YOUR_ACCOUNT,
-                  style: TextStyle(
-                    fontSize: 20,
+                  style:GoogleFonts.cairo(
+                    textStyle:TextStyle(
+                      fontSize: 15, fontWeight: FontWeight.w700, color: BLACK,),
                   ),
                   textAlign: TextAlign.center,
                 ),
@@ -68,7 +70,10 @@ class _ForgetPasswordState extends State<ForgetPassword> {
               Expanded(
                 child: Text(
                   WE_WILL_EMAIL_YOU_A_LINK_TO_RESET_YOUR_PASSWORD,
-                  style: TextStyle(fontSize: 16, color: LIGHT_GREY_TEXT),
+                  style:GoogleFonts.cairo(
+                    textStyle:TextStyle(
+                      fontSize: 14, fontWeight: FontWeight.w500, color: LIGHT_GREY_TEXT,),
+                  ),
                   textAlign: TextAlign.center,
                 ),
               )
@@ -150,10 +155,11 @@ class _ForgetPasswordState extends State<ForgetPassword> {
                 ),
                 Text(
                   FORGET_PASSWORD,
-                  style: TextStyle(
-                      color: NAVY_BLUE,
-                      fontSize: 22,
-                      fontWeight: FontWeight.w700),
+                  style:GoogleFonts.cairo(
+                    textStyle:TextStyle(
+                      fontSize: 16, fontWeight: FontWeight.w700, color: NAVY_BLUE,),
+                  ),
+
                 ),
               ],
             ),
@@ -184,8 +190,11 @@ class _ForgetPasswordState extends State<ForgetPassword> {
               child: Center(
                 child: Text(
                   SEND,
-                  style: TextStyle(
-                      color: WHITE, fontWeight: FontWeight.w700, fontSize: 17),
+                  style:GoogleFonts.cairo(
+                    textStyle:TextStyle(
+                      fontSize: 15, fontWeight: FontWeight.w700, color: WHITE,),
+                  ),
+
                 ),
               ),
             ),
@@ -275,7 +284,11 @@ class _ForgetPasswordState extends State<ForgetPassword> {
                 Expanded(
                   child: Text(
                     message,
-                    style: TextStyle(color: LIGHT_GREY_TEXT, fontSize: 14),
+                    style:GoogleFonts.cairo(
+                      textStyle:TextStyle(
+                        fontSize: 15, fontWeight: FontWeight.w700, color: LIGHT_GREY_TEXT,),
+                    ),
+
                   ),
                 )
               ],
@@ -292,8 +305,9 @@ class _ForgetPasswordState extends State<ForgetPassword> {
           return AlertDialog(
             title: Text(
               s1,
-              style: TextStyle(
-                fontWeight: FontWeight.bold,
+              style:GoogleFonts.cairo(
+                textStyle:TextStyle(
+                  fontSize: 15, fontWeight: FontWeight.w700, color: LIGHT_GREY_TEXT,),
               ),
             ),
             content: Column(
@@ -302,8 +316,9 @@ class _ForgetPasswordState extends State<ForgetPassword> {
               children: [
                 Text(
                   s2,
-                  style: TextStyle(
-                    fontSize: 14,
+                  style:GoogleFonts.cairo(
+                    textStyle:TextStyle(
+                      fontSize: 15, fontWeight: FontWeight.w700, color: LIGHT_GREY_TEXT,),
                   ),
                 )
               ],
@@ -319,9 +334,9 @@ class _ForgetPasswordState extends State<ForgetPassword> {
                 ),
                 child: Text(
                   OK,
-                  style: TextStyle(
-                    fontWeight: FontWeight.w500,
-                    color: BLACK,
+                  style:GoogleFonts.cairo(
+                    textStyle:TextStyle(
+                      fontSize: 15, fontWeight: FontWeight.w700, color: LIGHT_GREY_TEXT,),
                   ),
                 ),
               ),

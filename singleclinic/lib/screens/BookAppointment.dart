@@ -10,7 +10,7 @@ import 'package:singleclinic/screens/FitnessAppTheme.dart';
 
 import '../main.dart';
 import '../modals/UpcomingAppointmrnts.dart';
-
+import 'package:google_fonts/google_fonts.dart';
 class BookAppointment extends StatefulWidget {
   @override
   _BookAppointmentState createState() => _BookAppointmentState();
@@ -142,11 +142,13 @@ class _BookAppointmentState extends State<BookAppointment> {
                 ),
                 Text(
                   APPOINTMENT_NOW,
-                  style: TextStyle(
-                      color: NAVY_BLUE,
-                      fontSize: 22,
-                      fontWeight: FontWeight.w700),
-                ),
+                  style:GoogleFonts.cairo(
+                    textStyle: TextStyle(
+                        color: NAVY_BLUE,
+                        fontSize: 16,
+                        fontWeight: FontWeight.w700),
+
+                  ),),
               ],
             ),
           ),
@@ -188,7 +190,12 @@ class _BookAppointmentState extends State<BookAppointment> {
                         DropdownButton(
                           isExpanded: true,
                           hint: Text(
-                            SELECT_DEPARTMENT,
+                            SELECT_DEPARTMENT, style:GoogleFonts.cairo(
+    textStyle:  TextStyle(
+    fontSize: 15,
+    fontWeight: FontWeight.w500,
+    color:BLACK),
+    ),
                           ),
                           value: departmentValue,
                           items: List.generate(departmentsList.data.length,
@@ -196,8 +203,14 @@ class _BookAppointmentState extends State<BookAppointment> {
                             return DropdownMenuItem(
                               value: departmentsList.data[index].name,
                               child: Text(
-                                departmentsList.data[index].name.toString(),
-                                style: TextStyle(fontSize: 14),
+                               "- "+ departmentsList.data[index].name.toString(),
+                                style:GoogleFonts.cairo(
+                              textStyle:  TextStyle(
+                              fontSize: 16,
+                                  fontWeight: FontWeight.w600,
+                                  color: Colors.black),
+
+                            ),
                               ),
                               onTap: () {
                                 setState(() {
@@ -229,7 +242,12 @@ class _BookAppointmentState extends State<BookAppointment> {
                           hint: Text(
                             isLoadingDoctorAndServices
                                 ? LOADING
-                                : SELECT_DOCTOR,
+                                : SELECT_DOCTOR, style:GoogleFonts.cairo(
+    textStyle:  TextStyle(
+    fontSize: 15,
+    fontWeight: FontWeight.w500,
+    color:BLACK),
+    ),
                           ),
                           value: doctorValue,
                           icon: Image.asset(
@@ -274,7 +292,12 @@ class _BookAppointmentState extends State<BookAppointment> {
                           hint: Text(
                             isLoadingDoctorAndServices
                                 ? LOADING
-                                : SELECT_SERVICES,
+                                : SELECT_SERVICES, style:GoogleFonts.cairo(
+    textStyle:  TextStyle(
+    fontSize: 15,
+    fontWeight: FontWeight.w500,
+    color:BLACK),
+    ),
                           ),
                           icon: Image.asset(
                             "assets/bookappointment/down-arrow.png",
@@ -295,15 +318,22 @@ class _BookAppointmentState extends State<BookAppointment> {
                                       children: [
                                         Text(doctorsAndServices
                                                 .data.services[index].name +
-                                            " - "),
+                                            " - ", style:GoogleFonts.cairo(
+                                      textStyle:  TextStyle(
+                                          fontSize: 16,
+                                          fontWeight: FontWeight.w600,
+                                          color:BLACK),
+                                    ),
+                                    ),
                                         Text(
                                           "${doctorsAndServices.data.services[index].expectedTime.toString()} دقيقة / جلسة",
                                           textDirection: TextDirection.rtl,
-                                          style: TextStyle(
-                                              fontSize: 15,
-                                              fontWeight: FontWeight.w500,
-                                              color: Color.fromARGB(
-                                                  255, 43, 75, 145)),
+                                          style:GoogleFonts.cairo(
+                                            textStyle:  TextStyle(
+                                                fontSize: 16,
+                                                fontWeight: FontWeight.w600,
+                                                color:NAVY_BLUE),
+                                        ),
                                         ),
                                       ],
                                     ),
@@ -332,7 +362,7 @@ class _BookAppointmentState extends State<BookAppointment> {
                               height: 25,
                               width: 3,
                               decoration: BoxDecoration(
-                                color: HexColor('#87A0E5'),
+                                color: LIME,
                                 borderRadius: const BorderRadius.all(
                                     const Radius.circular(4.0)),
                               ),
@@ -342,8 +372,13 @@ class _BookAppointmentState extends State<BookAppointment> {
                             ),
                             Text(
                               NAME,
-                              style: TextStyle(
-                                  fontSize: 18, fontWeight: FontWeight.w700),
+                              style:GoogleFonts.cairo(
+                                textStyle: TextStyle(
+                                    color: BLACK,
+                                    fontSize: 15,
+                                    fontWeight: FontWeight.w600),
+
+                              ),
                             ),
                           ],
                         ),
@@ -355,10 +390,15 @@ class _BookAppointmentState extends State<BookAppointment> {
                           decoration: InputDecoration(
                               contentPadding: EdgeInsets.fromLTRB(0, 0, 0, 10),
                               isCollapsed: true),
-                          style: TextStyle(
-                              fontSize: 15,
-                              fontWeight: FontWeight.w500,
-                              color: LIGHT_GREY_TEXT),
+                          style:GoogleFonts.cairo(
+                            textStyle:  TextStyle(
+                                fontSize: 15,
+                                fontWeight: FontWeight.w500,
+                                color: Colors.grey),
+
+                          ),
+
+
                         ),
                         SizedBox(
                           height: 15,
@@ -369,7 +409,7 @@ class _BookAppointmentState extends State<BookAppointment> {
                               height: 25,
                               width: 3,
                               decoration: BoxDecoration(
-                                color: HexColor('#87A0E5'),
+                                color:LIME,
                                 borderRadius: const BorderRadius.all(
                                     const Radius.circular(4.0)),
                               ),
@@ -379,11 +419,17 @@ class _BookAppointmentState extends State<BookAppointment> {
                             ),
                             Text(
                               PHONE_NUMBER,
-                              style: TextStyle(
-                                  fontSize: 18, fontWeight: FontWeight.w700),
-                            ),
+                              style:GoogleFonts.cairo(
+                                textStyle: TextStyle(
+                                    color: BLACK,
+                                    fontSize: 15,
+                                    fontWeight: FontWeight.w600),
+
+                              ),),
+
                           ],
                         ),
+
                         SizedBox(
                           height: 5,
                         ),
@@ -393,10 +439,13 @@ class _BookAppointmentState extends State<BookAppointment> {
                           decoration: InputDecoration(
                               contentPadding: EdgeInsets.fromLTRB(0, 0, 0, 10),
                               isCollapsed: true),
-                          style: TextStyle(
-                              fontSize: 15,
-                              fontWeight: FontWeight.w500,
-                              color: LIGHT_GREY_TEXT),
+                          style:GoogleFonts.cairo(
+                            textStyle:  TextStyle(
+                                fontSize: 15,
+                                fontWeight: FontWeight.w500,
+                                color: Colors.grey),
+
+                          ),
                         ),
                         SizedBox(
                           height: 15,
@@ -407,7 +456,7 @@ class _BookAppointmentState extends State<BookAppointment> {
                               height: 25,
                               width: 3,
                               decoration: BoxDecoration(
-                                color: HexColor('#87A0E5'),
+                                color: LIME,
                                 borderRadius: const BorderRadius.all(
                                     const Radius.circular(4.0)),
                               ),
@@ -417,9 +466,13 @@ class _BookAppointmentState extends State<BookAppointment> {
                             ),
                             Text(
                               DATE,
-                              style: TextStyle(
-                                  fontSize: 18, fontWeight: FontWeight.w700),
-                            ),
+                              style:GoogleFonts.cairo(
+                                textStyle: TextStyle(
+                                    color: BLACK,
+                                    fontSize: 15,
+                                    fontWeight: FontWeight.w600),
+
+                              ),),
                           ],
                         ),
                         InkWell(
@@ -433,20 +486,22 @@ class _BookAppointmentState extends State<BookAppointment> {
                                 height: 5,
                               ),
                               Text(
-                                selectedFormattedDate.toString(),
-                                style: TextStyle(
-                                    fontSize: 15,
-                                    fontWeight: FontWeight.w500,
-                                    color: LIGHT_GREY_TEXT),
-                              ),
+                                selectedFormattedDate,
+                                style:GoogleFonts.cairo(
+                                  textStyle:  TextStyle(
+                                      fontSize: 15,
+                                      fontWeight: FontWeight.w500,
+                                      color: Colors.grey),
+
+                                ),),
                               Divider(
-                                color: LIGHT_GREY_TEXT,
+                                color: Colors.grey,
                               ),
                             ],
                           ),
                         ),
                         SizedBox(
-                          height: 10,
+                          height: 20,
                         ),
                         Container(
                           decoration: BoxDecoration(
@@ -484,11 +539,13 @@ class _BookAppointmentState extends State<BookAppointment> {
                                       color: Color.fromARGB(221, 182, 43, 43)),
                                   Text(
                                     "الأوقات المحجوزة:",
-                                    style: TextStyle(
-                                        fontSize: 18,
-                                        fontWeight: FontWeight.w600,
-                                        color: Color.fromARGB(255, 7, 3, 3)),
-                                  ),
+                                    style:GoogleFonts.cairo(
+                                      textStyle: TextStyle(
+                                          color: BLACK,
+                                          fontSize: 17,
+                                          fontWeight: FontWeight.w600),
+
+                                    ),),
                                 ],
                               ),
                               SizedBox(
@@ -496,34 +553,44 @@ class _BookAppointmentState extends State<BookAppointment> {
                               ),
                               doctorList.isEmpty
                                   ? Text(
-                                      "لا توجد مواعيد محجوزة ",
-                                      style: TextStyle(color: Colors.grey),
-                                    )
+                                "لا توجد مواعيد محجوزة ",
+                                style:GoogleFonts.cairo(
+                                  textStyle:  TextStyle(
+                                      fontSize: 15,
+                                      fontWeight: FontWeight.w500,
+                                      color: Colors.grey),
+
+                                ),
+
+                              )
                                   : Container(
-                                      width: double.infinity,
-                                      child: GridView.builder(
-                                        gridDelegate:
-                                            SliverGridDelegateWithFixedCrossAxisCount(
-                                                crossAxisCount: 2,
-                                                crossAxisSpacing: 1,
-                                                childAspectRatio: 5,
-                                                mainAxisSpacing: 5),
-                                        shrinkWrap: true,
-                                        physics: ClampingScrollPhysics(),
-                                        itemCount: doctorList == null
-                                            ? 0
-                                            : doctorList.length,
-                                        itemBuilder: (context, index) {
-                                          return timeDetails(index);
-                                        },
-                                      ),
-                                    ),
+                                width: double.infinity,
+                                child: GridView.builder(
+                                  gridDelegate:
+                                  SliverGridDelegateWithFixedCrossAxisCount(
+                                      crossAxisCount: 2,
+                                      crossAxisSpacing: 1,
+                                      childAspectRatio: 5,
+                                      mainAxisSpacing: 5),
+                                  shrinkWrap: true,
+                                  physics: ClampingScrollPhysics(),
+                                  itemCount: doctorList == null
+                                      ? 0
+                                      : doctorList.length,
+                                  itemBuilder: (context, index) {
+                                    return timeDetails(index);
+                                  },
+                                ),
+                              ),
                               SizedBox(
                                 height: 8,
                               ),
                             ],
                           ),
                         ),
+                        // Divider(
+                        //   color: Color.fromARGB(255, 0, 0, 0),
+                        // ),
                         SizedBox(
                           height: 15,
                         ),
@@ -533,7 +600,7 @@ class _BookAppointmentState extends State<BookAppointment> {
                               height: 25,
                               width: 3,
                               decoration: BoxDecoration(
-                                color: HexColor('#87A0E5'),
+                                color: LIME,
                                 borderRadius: const BorderRadius.all(
                                     const Radius.circular(4.0)),
                               ),
@@ -543,9 +610,14 @@ class _BookAppointmentState extends State<BookAppointment> {
                             ),
                             Text(
                               TIME,
-                              style: TextStyle(
-                                  fontSize: 18, fontWeight: FontWeight.w700),
-                            ),
+                              style:GoogleFonts.cairo(
+                                textStyle: TextStyle(
+                                    color: BLACK,
+                                    fontSize: 15,
+                                    fontWeight: FontWeight.w600),
+
+                              ),),
+
                           ],
                         ),
                         InkWell(
@@ -560,13 +632,16 @@ class _BookAppointmentState extends State<BookAppointment> {
                               ),
                               Text(
                                 _time,
-                                style: TextStyle(
-                                    fontSize: 15,
-                                    fontWeight: FontWeight.w500,
-                                    color: LIGHT_GREY_TEXT),
+                                style:GoogleFonts.cairo(
+                                  textStyle:  TextStyle(
+                                      fontSize: 15,
+                                      fontWeight: FontWeight.w500,
+                                      color: Colors.grey),
+
+                                ),
                               ),
                               Divider(
-                                color: LIGHT_GREY_TEXT,
+                                color: Colors.grey,
                               ),
                             ],
                           ),
@@ -580,7 +655,7 @@ class _BookAppointmentState extends State<BookAppointment> {
                               height: 25,
                               width: 3,
                               decoration: BoxDecoration(
-                                color: HexColor('#87A0E5'),
+                                color: LIME,
                                 borderRadius: const BorderRadius.all(
                                     const Radius.circular(4.0)),
                               ),
@@ -589,30 +664,43 @@ class _BookAppointmentState extends State<BookAppointment> {
                               width: 5,
                             ),
                             Text(
-                              "مدة التأخير القصوى المتوقعة",
-                              style: TextStyle(
-                                  fontSize: 15, fontWeight: FontWeight.w700),
-                            ),
+                              "مدة التأخير القصوى المتوقعة :",
+                              style:GoogleFonts.cairo(
+                                textStyle: TextStyle(
+                                    color: BLACK,
+                                    fontSize: 15,
+                                    fontWeight: FontWeight.w600),
+
+                              ),),
+
                           ],
                         ),
+
                         TextField(
                           keyboardType: TextInputType.number,
-                          style: TextStyle(color: Colors.grey, fontSize: 14),
+                          style:GoogleFonts.cairo(
+                            textStyle:  TextStyle(
+                                fontSize: 15,
+                                fontWeight: FontWeight.w500,
+                                color: Colors.grey),
+
+                          ),
                           decoration: InputDecoration(
                             hintText: " يجب ان لا تزيد عن 20 دقيقة",
                             border: UnderlineInputBorder(
-                              borderSide: BorderSide(
-                                  color: Colors.grey.shade500, width: 0.5),
+                              borderSide:
+                              BorderSide(color: Colors.grey.shade500, width: 0.5),
                             ),
                             focusedBorder: UnderlineInputBorder(
-                              borderSide: BorderSide(
-                                  color: Colors.grey.shade500, width: 0.5),
+                              borderSide:
+                              BorderSide(color: Colors.grey.shade500, width: 0.5),
                             ),
                             enabledBorder: UnderlineInputBorder(
-                              borderSide: BorderSide(
-                                  color: Colors.grey.shade500, width: 0.5),
+                              borderSide:
+                              BorderSide(color: Colors.grey.shade500, width: 0.5),
                             ),
                           ),
+
                           onChanged: (val) {
                             setState(() {
                               max_delay_time = replaceArabicNumber(val);
@@ -641,18 +729,27 @@ class _BookAppointmentState extends State<BookAppointment> {
                             children: [
                               Text(
                                 "ملاحظة",
-                                style: TextStyle(
-                                    color: HexColor('#87A0E5'),
-                                    fontSize: 18,
-                                    fontWeight: FontWeight.w700),
+                                style:GoogleFonts.cairo(
+                                  textStyle:  TextStyle(
+                                      fontSize: 15,
+                                      fontWeight: FontWeight.w700,
+                                      color: LIME),
+
+                                ),
                               ),
                               TextField(
                                 maxLines: 3,
                                 minLines: 1,
-                                style: TextStyle(
-                                    color: LIGHT_GREY_TEXT, fontSize: 14),
+
+                                style:GoogleFonts.cairo(
+                                  textStyle:  TextStyle(
+                                      fontSize: 15,
+                                      fontWeight: FontWeight.w500,
+                                      color: Colors.grey),
+
+                                ),
                                 decoration: InputDecoration(
-                                  hintText: "اذا لديك ملاحظة , أكتبها هنا ...",
+                                  hintText: " لديك ملاحظة؟ أُكتُبها هنا ...",
                                   border: UnderlineInputBorder(
                                     borderSide: BorderSide(
                                         color: LIGHT_GREY_TEXT, width: 0.5),
@@ -685,7 +782,7 @@ class _BookAppointmentState extends State<BookAppointment> {
               ),
               bottomButtons(),
             ],
-          );
+    );
   }
 
   String replaceArabicNumber(String input) {
@@ -719,11 +816,14 @@ class _BookAppointmentState extends State<BookAppointment> {
                 child: Center(
                   child: Text(
                     ADD_APPOINTMENT,
-                    style: TextStyle(
-                        color: WHITE,
-                        fontWeight: FontWeight.w700,
-                        fontSize: 17),
-                  ),
+                    style:GoogleFonts.cairo(
+                      textStyle: TextStyle(
+                          color: WHITE,
+                          fontSize: 16,
+                          fontWeight: FontWeight.w700),
+
+                    ),),
+
                 ),
               ),
             ),
@@ -967,7 +1067,14 @@ class _BookAppointmentState extends State<BookAppointment> {
                   Expanded(
                     child: Text(
                       PLEASE_WAIT_WHILE_MAKING_APPOINTMENT,
-                      style: TextStyle(fontSize: 12),
+                      style:GoogleFonts.cairo(
+                        textStyle:  TextStyle(
+                            fontSize: 12,
+                            fontWeight: FontWeight.w500,
+                            color: Colors.black),
+
+                      ),
+
                     ),
                   )
                 ],
@@ -985,9 +1092,14 @@ class _BookAppointmentState extends State<BookAppointment> {
           return AlertDialog(
             title: Text(
               "",
-              style: TextStyle(
-                fontWeight: FontWeight.bold,
-              ),
+              style: GoogleFonts.cairo(
+            textStyle:  TextStyle(
+            fontSize: 15,
+                fontWeight: FontWeight.w500,
+                color: Colors.grey),
+
+          ),
+
             ),
             content: Column(
               mainAxisSize: MainAxisSize.min,
@@ -995,9 +1107,14 @@ class _BookAppointmentState extends State<BookAppointment> {
               children: [
                 Text(
                   s2,
-                  style: TextStyle(
-                    fontSize: 14,
-                  ),
+                  style:GoogleFonts.cairo(
+            textStyle:  TextStyle(
+            fontSize: 12,
+                fontWeight: FontWeight.w500,
+                color: Colors.grey),
+
+          ),
+
                 )
               ],
             ),
@@ -1018,10 +1135,14 @@ class _BookAppointmentState extends State<BookAppointment> {
                 style: TextButton.styleFrom(backgroundColor: LIME),
                 child: Text(
                   OK,
-                  style: TextStyle(
-                    fontWeight: FontWeight.w500,
-                    color: WHITE,
-                  ),
+
+          style:GoogleFonts.cairo(
+          textStyle:  TextStyle(
+          fontSize: 15,
+          fontWeight: FontWeight.w500,
+          color: WHITE),
+
+          )
                 ),
               ),
             ],

@@ -8,7 +8,7 @@ import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:singleclinic/AllText.dart';
-
+import 'package:google_fonts/google_fonts.dart';
 import '../main.dart';
 
 class SignUpScreen extends StatefulWidget {
@@ -68,10 +68,12 @@ class _SignUpScreenState extends State<SignUpScreen> {
                 ),
                 Text(
                   CREATE_AN_ACCOUNT,
-                  style: TextStyle(
-                      color: NAVY_BLUE,
-                      fontSize: 22,
-                      fontWeight: FontWeight.w700),
+                  style:GoogleFonts.cairo(
+                    textStyle:TextStyle(
+                        color: NAVY_BLUE,
+                        fontSize: 16,
+                        fontWeight: FontWeight.w700),
+                  ),
                 ),
               ],
             ),
@@ -147,20 +149,29 @@ class _SignUpScreenState extends State<SignUpScreen> {
                       children: [
                         Text(
                           NAME,
-                          style: TextStyle(
-                              fontSize: 18, fontWeight: FontWeight.w700),
+                          style:GoogleFonts.cairo(
+                            textStyle:TextStyle(
+                                color: BLACK,
+                                fontSize: 15,
+                                fontWeight: FontWeight.bold),
+                          ),
                         ),
                         TextFormField(
                           validator: (val) {
                             if (val.isEmpty) {
-                              return "Enter your name";
+                              return "أدخل إسمك";
                             }
                             return null;
                           },
                           onSaved: (val) => name = val,
-                          style: TextStyle(
-                            color: LIGHT_GREY_TEXT,
+                          style:GoogleFonts.cairo(
+                            textStyle:TextStyle(
+                                color: LIGHT_GREY_TEXT,
+                                fontSize: 15,
+                                fontWeight: FontWeight.bold),
                           ),
+
+
                           decoration: InputDecoration(
                             isCollapsed: true,
                             contentPadding: EdgeInsets.all(5),
@@ -196,22 +207,27 @@ class _SignUpScreenState extends State<SignUpScreen> {
                         ),
                         Text(
                           EMAIL_ADDRESS,
-                          style: TextStyle(
-                              fontSize: 18, fontWeight: FontWeight.w700),
+                          style:GoogleFonts.cairo(
+                            textStyle:TextStyle(
+                                fontSize: 15, fontWeight: FontWeight.w700),
+                          ),
                         ),
+
                         TextFormField(
                           validator: (val) {
                             if (val.isEmpty) {
-                              return "Enter your email address";
+                              return "أدخل البريد الالكتروني";
                             } else if (!EmailValidator.validate(val)) {
-                              return "Enter correct email";
+                              return "ادخل ايميل صحيح";
                             }
                             return null;
                           },
                           onSaved: (val) => emailAddress = val,
-                          style: TextStyle(
-                            color: LIGHT_GREY_TEXT,
+                          style:GoogleFonts.cairo(
+                            textStyle:TextStyle(
+                                fontSize: 15, fontWeight: FontWeight.w700,color: LIGHT_GREY_TEXT,),
                           ),
+
                           decoration: InputDecoration(
                             isCollapsed: true,
                             contentPadding: EdgeInsets.all(5),
@@ -247,21 +263,28 @@ class _SignUpScreenState extends State<SignUpScreen> {
                         ),
                         Text(
                           PHONE_NUMBER,
-                          style: TextStyle(
-                              fontSize: 18, fontWeight: FontWeight.w700),
+                          style:GoogleFonts.cairo(
+                            textStyle:TextStyle(
+                                color: BLACK,
+                                fontSize: 14,
+                                fontWeight: FontWeight.w700),
+                          ),
                         ),
+
                         TextFormField(
                           validator: (val) {
                             if (val.isEmpty) {
-                              return "Enter your phone number";
+                              return "أدخل رقم الهاتف";
                             }
                             return null;
                           },
                           keyboardType: TextInputType.phone,
                           onSaved: (val) => phoneNumber = val,
-                          style: TextStyle(
-                            color: LIGHT_GREY_TEXT,
+                          style:GoogleFonts.cairo(
+                            textStyle:TextStyle(
+                                fontSize: 15, fontWeight: FontWeight.w700, color: LIGHT_GREY_TEXT,),
                           ),
+
                           decoration: InputDecoration(
                             isCollapsed: true,
                             contentPadding: EdgeInsets.all(5),
@@ -297,21 +320,25 @@ class _SignUpScreenState extends State<SignUpScreen> {
                         ),
                         Text(
                           PASSWORD,
-                          style: TextStyle(
-                              fontSize: 18, fontWeight: FontWeight.w700),
+                          style:GoogleFonts.cairo(
+                            textStyle:TextStyle(
+                              fontSize: 15, fontWeight: FontWeight.w700, color: BLACK,),
+                          ),
                         ),
                         TextFormField(
                           obscureText: true,
                           validator: (val) {
                             if (val.isEmpty) {
-                              return "Enter your password";
+                              return "أدخل كلمة السر";
                             }
                             return null;
                           },
                           onSaved: (val) => password = val,
-                          style: TextStyle(
-                            color: LIGHT_GREY_TEXT,
+                          style:GoogleFonts.cairo(
+                            textStyle:TextStyle(
+                              fontSize: 15, fontWeight: FontWeight.w700, color: LIGHT_GREY_TEXT,),
                           ),
+
                           decoration: InputDecoration(
                             isCollapsed: true,
                             contentPadding: EdgeInsets.all(5),
@@ -347,22 +374,24 @@ class _SignUpScreenState extends State<SignUpScreen> {
                         ),
                         Text(
                           CONFIRM_PASSWORD,
-                          style: TextStyle(
-                              fontSize: 18, fontWeight: FontWeight.w700),
-                        ),
+                          style:GoogleFonts.cairo(
+                            textStyle:TextStyle(
+                              fontSize: 15, fontWeight: FontWeight.w700, color: BLACK,),
+                          ),),
                         TextFormField(
                           obscureText: true,
                           validator: (val) {
                             if (val.isEmpty) {
-                              return "Enter your password";
+                              return "أدخل كلمة السر";
                             } else if (val != password) {
-                              return "Password mismatch";
+                              return "كلمة السر خاطئة";
                             }
                             return null;
                           },
                           onSaved: (val) => confirmPassword = val,
-                          style: TextStyle(
-                            color: LIGHT_GREY_TEXT,
+                          style:GoogleFonts.cairo(
+                            textStyle:TextStyle(
+                              fontSize: 15, fontWeight: FontWeight.w700, color: LIGHT_GREY_TEXT,),
                           ),
                           decoration: InputDecoration(
                             isCollapsed: true,
@@ -431,9 +460,12 @@ class _SignUpScreenState extends State<SignUpScreen> {
               child: Center(
                 child: Text(
                   REGISTER,
-                  style: TextStyle(
-                      color: WHITE,
-                      fontWeight: FontWeight.w700, fontSize: 17),
+                  style:GoogleFonts.cairo(
+                    textStyle:TextStyle(
+                        color: WHITE,
+                        fontWeight: FontWeight.w700, fontSize: 17),
+                  ),
+
                 ),
               ),
             ),

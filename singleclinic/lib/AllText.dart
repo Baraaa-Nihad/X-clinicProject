@@ -25,17 +25,17 @@ const String YOUR_REVIEW = "مراجعاتك";
 const String SUBMIT = "ارسل";
 const String LOGIN = "تسجيل الدخول";
 const String EMAIL_ADDRESS = "البريد الالكتروني";
-const String PASSWORD = "الرقم السري";
-const String FORGET_PASSWORD = "هل نسيت الرقم السري ؟";
+const String PASSWORD = "كلمة السر";
+const String FORGET_PASSWORD = "هل نسيت كلمة السر ؟";
 const String OR = "او";
 const String BOOKAPPOINTMENT = "احجز موعد";
 const String CONTINUE_WITH_FACEBOOK = "تسجيل الدخول عبر الفيسبوك ";
 const String CONTINUE_WITH_GOOGLE = "تسجيل الدخول عبر جوجل ";
 const String CONTINUE_WITH_APPLE_ID = "تسجيل الدخول عبر Apple Id ";
-const String CREATE_AN_ACCOUNT = "انشئ حساب";
+const String CREATE_AN_ACCOUNT = "إنشاء حساب";
 const String CONFIRM_PASSWORD = "تأكيد كلمة السر";
-const String REGISTER = "تسجيل";
-const String IMAGE_NOT_SELECTED = "! لم تحدد الصورة ";
+const String REGISTER = "تسجيل" ;
+const String IMAGE_NOT_SELECTED = "! لم يتم تحديد الصورة ";
 const String LOADING = "... جار التحميل ";
 const String PLEASE_WAIT_WHILE_CREATING_ACCOUNT =
     "يرجى الانتظار أثناء إنشاء الحساب";
@@ -51,7 +51,7 @@ const String GALLERY = "الصور";
 const String CONTACT_DETAILS = "تفاصيل الإتصال";
 const String TERM_AND_CONDITION = "الشروط و الأحكام";
 const String ABOUT_US = "معلومات عنا";
-const String CONTACT_US = "للإستعلام";
+const String CONTACT_US = "تواصل معنا";
 const String MORE = "المزيد";
 const String ALL = "الكل";
 const String HTML = "Html";
@@ -87,14 +87,14 @@ const String SUBSCRIPTION = "الإشتراك";
 const String PRICING = "التسعير";
 const String LOG_OUT = "تسجيل الخروج";
 const String SEARCH = "بحث";
-const String SEARCH_HERE_DOCTOR_NAME = " ابحث هنا عن اسم الطبيب...";
-const String SEARCH_HERE_NAME = " ابحث هنا عن الاسم...";
+const String SEARCH_HERE_DOCTOR_NAME = "... ابحث هنا عن اسم الطبيب";
+const String SEARCH_HERE_NAME = "أدخل اسم الطبيب ...";
 const String PROFILE = "الملف الشخصي";
-const String LOGIN_TO_BOOK_APPOINTMENT = "سجل الدخول حتى تحجز موعدك ..";
+const String LOGIN_TO_BOOK_APPOINTMENT = "سجل الدخول لتحجز موعدك";
 const String LOGIN_TO_ADD_SUBSCRIPTION = "تسجيل الدخول لإضافة الاشتراك";
-const String ARE_YOU_SURE_TO_LOG_OUT = "هل أنت متأكد من تسجيل الخروج";
+const String ARE_YOU_SURE_TO_LOG_OUT = "هل أنت متأكد من تسجيل الخروج ؟";
 const String YOUR_QUERY_TOPIC = "موضوع الاستعلام الخاص بك";
-const String SUCCESSFUL = "ناجح";
+const String SUCCESSFUL = "تم بنجاح";
 const String DOCTORS = "الأطباء";
 const String ADD_SUBSCRIPTION = "إضافة اشتراك";
 const String SUBSCRIPTION_ADDED_SUCCESSFULLY = "تمت إضافة الاشتراك بنجاح";
@@ -121,12 +121,12 @@ const String YOUR_SUBSCRIPTIONS_WILL_BE_DISPLAYED_HERE =
     "Your subscriptions will be displayed here";
 const String NO_APPOINTMENT_FOUND = "لا يوجد مواعيد";
 const String YOUR_UPCOMING_APPOINTMENTS_WILL_BE_DISPLAYED_HERE =
-    "ليس لديك أي موعد حتى الآن ؟ ابدأ بالتحدث مع الأطباء";
+    "ليس لديك موعد الآن ؟ ابدأ بالتواصل مع الاطباء";
 const String YOUR_PAST_APPOINTMENTS_WILL_BE_DISPLAYED_HERE =
-    "ليس لديك أي موعد حتى الآن ؟ ابدأ بالتحدث مع الأطباء";
+    "ليس لديك أي مواعيد ماضية";
 const String NO_REVIEWS = "لا يوجد تقييمات";
 const String NO_CHATS = "لا يوجد محادثات";
-const String YOUR_CHATS_WILL_BE_DISPLAYED_HERE = "ابدأ محادثتك مع الأطباء";
+const String YOUR_CHATS_WILL_BE_DISPLAYED_HERE = "محادثاتك سوف تظهر هنا";
 const String DOCTOR_REVIEWS_WILL_BE_DISPLAYED_HERE =
     "سيتم عرض تقييمات الطبيب هنا";
 

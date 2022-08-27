@@ -5,7 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:http/http.dart';
 import 'package:singleclinic/modals/DoctorsByDepartmentClass.dart';
 import 'package:singleclinic/screens/DoctorDetail.dart';
-
+import 'package:google_fonts/google_fonts.dart';
 import '../AllText.dart';
 import '../main.dart';
 
@@ -84,8 +84,16 @@ class _DoctorsCategoryScreenState extends State<DoctorsCategoryScreen>
                     width: 10,
                   ),
                   Text(
-                    DOCTORS,
-                    style: TextStyle(fontSize: 22, fontWeight: FontWeight.w700),
+                    "أطباء القسم",
+                    style:GoogleFonts.cairo(
+                      textStyle: TextStyle(
+                          color: Colors.black,
+                          fontSize: 17,
+                          fontWeight:
+                          FontWeight.w700),
+
+
+                    ),
                   ),
                 ],
               ),
@@ -173,9 +181,14 @@ class _DoctorsCategoryScreenState extends State<DoctorsCategoryScreen>
                                       Expanded(
                                         child: Text(
                                           list[index].name,
-                                          style: TextStyle(
-                                              fontSize: 16,
-                                              fontWeight: FontWeight.w700),
+                                          style:GoogleFonts.cairo(
+                                            textStyle: TextStyle(
+                                                fontSize: 14,
+                                                fontWeight: FontWeight.w600),
+
+
+                                          ),
+
                                           overflow: TextOverflow.ellipsis,
                                         ),
                                       ),
@@ -186,11 +199,16 @@ class _DoctorsCategoryScreenState extends State<DoctorsCategoryScreen>
                                       Expanded(
                                         child: Text(
                                           list[index].aboutUs,
-                                          style: TextStyle(
-                                            fontSize: 10,
-                                            color: LIGHT_GREY_TEXT,
-                                            fontWeight: FontWeight.w300,
+                                          style:GoogleFonts.cairo(
+                                            textStyle: TextStyle(
+                                              fontSize: 10,
+                                              color: LIGHT_GREY_TEXT,
+                                              fontWeight: FontWeight.w300,
+                                            ),
+
+
                                           ),
+
                                           overflow: TextOverflow.ellipsis,
                                           maxLines: 3,
                                         ),

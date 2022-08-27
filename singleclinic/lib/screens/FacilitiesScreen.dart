@@ -6,7 +6,7 @@ import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 import 'package:http/http.dart';
 import 'package:singleclinic/modals/FacilitiesClass.dart';
 import 'package:singleclinic/screens/GalleryScreen.dart';
-
+import 'package:google_fonts/google_fonts.dart';
 import '../AllText.dart';
 import '../main.dart';
 
@@ -76,9 +76,12 @@ class _FacilitiesScreenState extends State<FacilitiesScreen> {
                     // ),
                     Text(
                       FACILITIES,
-                      style:
-                          TextStyle(fontSize: 22, fontWeight: FontWeight.w700),
+                      style:GoogleFonts.cairo(
+                        textStyle:   TextStyle(fontSize: 17, fontWeight: FontWeight.w600),
+
+
                     ),
+                    )
                     // SizedBox(
                     //   width: 10,
                     // ),
@@ -110,7 +113,7 @@ class _FacilitiesScreenState extends State<FacilitiesScreen> {
           crossAxisCount: 4,
           itemCount: list.length,
           padding: EdgeInsets.all(10),
-          itemBuilder: (BuildContext context, int index) => new Container(
+          itemBuilder: (BuildContext context, int index) => new  Container(
             color: LIGHT_GREY,
             height: index % 2 - 1 == 0 ? 180 : 200,
             child: Stack(
@@ -141,7 +144,7 @@ class _FacilitiesScreenState extends State<FacilitiesScreen> {
                   alignment: Alignment.bottomCenter,
                   child: Container(
                     padding: EdgeInsets.all(10),
-                    color: Colors.black.withOpacity(0.7),
+                    color: Colors.black.withOpacity(0.2),
                     child: Column(
                       mainAxisSize: MainAxisSize.min,
                       children: [
@@ -150,29 +153,37 @@ class _FacilitiesScreenState extends State<FacilitiesScreen> {
                             Expanded(
                               child: Text(
                                 list[index].name,
-                                style: TextStyle(
-                                    color: WHITE,
-                                    fontSize: 12,
-                                    fontWeight: FontWeight.w700),
+                                style:GoogleFonts.cairo(
+                                  textStyle:  TextStyle(
+                                      color: WHITE,
+                                      fontSize: 10,
+                                      fontWeight: FontWeight.w800),
+                                ),
                                 maxLines: 2,
                                 overflow: TextOverflow.ellipsis,
                               ),
                             ),
                           ],
                         ),
-                        SizedBox(
-                          height: 5,
+                        Divider(
+                          height: 3,
+                          color: WHITE,
+                          thickness: 0.5,
                         ),
                         Row(
                           children: [
                             Expanded(
                               child: Text(
                                 list[index].description,
-                                style: TextStyle(
-                                    color: WHITE,
-                                    fontSize: 9,
-                                    fontWeight: FontWeight.w200),
-                                maxLines: 2,
+                                style:GoogleFonts.cairo(
+                                  textStyle:    TextStyle(
+                                      color: BLACK,
+                                      fontSize: 9,
+                                      fontWeight: FontWeight.w400),
+
+                                ),
+
+                                maxLines: 6,
                                 overflow: TextOverflow.ellipsis,
                               ),
                             ),

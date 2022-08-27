@@ -7,7 +7,7 @@ import 'package:singleclinic/AllText.dart';
 import 'package:singleclinic/main.dart';
 import 'package:singleclinic/modals/DepartmentDetails.dart';
 import 'package:url_launcher/url_launcher.dart';
-
+import 'package:google_fonts/google_fonts.dart';
 import 'DoctorsCategoryScreen.dart';
 
 class DepartmentDetailsScreen extends StatefulWidget {
@@ -102,10 +102,13 @@ class _DepartmentDetailsScreenState extends State<DepartmentDetailsScreen> {
                                     children: [
                                       Text(
                                         departmentDetails.data.name,
-                                        style: TextStyle(
-                                            fontSize: 20,
-                                            fontWeight: FontWeight.w700),
-                                      ),
+                                        style:GoogleFonts.cairo(
+                                          textStyle: TextStyle(
+                                              color: BLACK,
+                                              fontSize: 20,
+                                              fontWeight: FontWeight.w700),
+
+                                        ),),
                                       InkWell(
                                         borderRadius: BorderRadius.circular(20),
                                         onTap: () {
@@ -124,6 +127,7 @@ class _DepartmentDetailsScreenState extends State<DepartmentDetailsScreen> {
                                             padding: const EdgeInsets.all(8.0),
                                             child: Image.asset(
                                               "assets/departmentDetails/phone.png",
+                                              color: LIME,
                                               height: 25,
                                               width: 25,
                                             ),
@@ -138,8 +142,13 @@ class _DepartmentDetailsScreenState extends State<DepartmentDetailsScreen> {
                                       const EdgeInsets.fromLTRB(15, 5, 15, 15),
                                   child: Text(
                                     departmentDetails.data.description,
-                                    style: TextStyle(
-                                        fontSize: 14.5, color: LIGHT_GREY_TEXT),
+                                    style:GoogleFonts.cairo(
+                                      textStyle: TextStyle(
+                                          fontSize: 14.5, color: LIGHT_GREY_TEXT),
+
+
+
+                                    ),
                                     textAlign: TextAlign.justify,
                                   ),
                                 ),
@@ -150,21 +159,25 @@ class _DepartmentDetailsScreenState extends State<DepartmentDetailsScreen> {
                                     children: [
                                       Row(
                                         children: [
-                                          Image.asset(
-                                            "assets/departmentDetails/treatment.png",
-                                            height: 35,
-                                            width: 35,
-                                            fit: BoxFit.fill,
-                                          ),
+                                          // Image.asset(
+                                          //   "assets/departmentDetails/treatment.png",
+                                          //   height: 35,
+                                          //   width: 35,
+                                          //
+                                          //   fit: BoxFit.fill,
+                                          // ),
                                           SizedBox(
-                                            width: 15,
+                                            width: 5,
                                           ),
                                           Text(
                                             TREATMENTS,
-                                            style: TextStyle(
-                                                fontSize: 20,
-                                                fontWeight: FontWeight.w700),
-                                          ),
+                                            style:GoogleFonts.cairo(
+                                              textStyle: TextStyle(
+                                                  color: BLACK,
+                                                  fontSize: 20,
+                                                  fontWeight: FontWeight.w700),
+
+                                            ),),
                                         ],
                                       ),
                                       SizedBox(
@@ -187,33 +200,60 @@ class _DepartmentDetailsScreenState extends State<DepartmentDetailsScreen> {
                                                     MainAxisAlignment
                                                         .spaceBetween,
                                                 children: [
-                                                  Text(
-                                                    departmentDetails.data
-                                                        .service[index].name,
-                                                    style: TextStyle(
-                                                        color: LIGHT_GREY_TEXT,
-                                                        fontSize: 15),
-                                                  ),
+                                                  Row(children: [
+                                                    Container(
+                                                      height: 25,
+                                                      width: 3,
+                                                      decoration: BoxDecoration(
+                                                        color: LIME,
+                                                        borderRadius: const BorderRadius.all(
+                                                            const Radius.circular(4.0)),
+                                                      ),
+                                                    ),
+                                                    SizedBox(width: 5,),
+                                                    Text(
+                                                      departmentDetails.data
+                                                          .service[index].name,
+                                                      style:GoogleFonts.cairo(
+                                                        textStyle:  TextStyle(
+                                                            fontSize: 14.5, color: LIGHT_GREY_TEXT),
+
+                                                      ),),
+
+                                                  ],),
+
+
+
+
+
+
                                                   Text(
                                                     "${departmentDetails.data.service[index].price} $CURRENCY",
-                                                    style: TextStyle(
-                                                        color: NAVY_BLUE,
-                                                        fontSize: 16,
-                                                        fontWeight:
-                                                            FontWeight.w700),
-                                                  ),
+                                                    style:GoogleFonts.cairo(
+                                                  textStyle: TextStyle(
+                                                      color: NAVY_BLUE,
+                                                      fontSize: 14,
+                                                      fontWeight:
+                                                      FontWeight.w700),
+
+
+                                          ),),
                                                   Text(
                                                     "${departmentDetails.data.service[index].priceFor}",
-                                                    style: TextStyle(
-                                                        color: NAVY_BLUE,
-                                                        fontSize: 16,
-                                                        fontWeight:
-                                                            FontWeight.w700),
-                                                  )
+                                                    style:GoogleFonts.cairo(
+                                                      textStyle: TextStyle(
+                                                          color: NAVY_BLUE,
+                                                          fontSize: 14,
+                                                          fontWeight:
+                                                          FontWeight.w700),
+
+
+                                                    ),),
                                                 ],
                                               ),
+
                                               SizedBox(
-                                                height: 5,
+                                                height: 10,
                                               ),
                                               Divider(
                                                 color: LIGHT_GREY_TEXT,
@@ -251,6 +291,7 @@ class _DepartmentDetailsScreenState extends State<DepartmentDetailsScreen> {
                                         child: Image.asset(
                                           "assets/departmentDetails/emergency_btn.png",
                                           height: 60,
+                                          color: LIME,
                                         ),
                                       ),
                                     ],
@@ -258,10 +299,15 @@ class _DepartmentDetailsScreenState extends State<DepartmentDetailsScreen> {
                                   Center(
                                     child: Text(
                                       "كل الأطباء",
-                                      style: TextStyle(
-                                          color: WHITE,
-                                          fontWeight: FontWeight.w700,
-                                          fontSize: 18),
+                                      style:GoogleFonts.cairo(
+                                        textStyle: TextStyle(
+                                            color: WHITE,
+                                            fontSize: 16,
+                                            fontWeight:
+                                            FontWeight.w600),
+
+
+                                      ),
                                     ),
                                   ),
                                 ],

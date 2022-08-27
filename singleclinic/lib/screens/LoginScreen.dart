@@ -11,6 +11,7 @@ import 'package:singleclinic/screens/SignUpScreen.dart';
 import 'package:singleclinic/services/AuthService.dart';
 import '../AllText.dart';
 import '../main.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 class LoginScreen extends StatefulWidget {
   @override
@@ -52,15 +53,24 @@ class _LoginScreenState extends State<LoginScreen> {
           Padding(
             padding: const EdgeInsets.fromLTRB(15, 0, 15, 0),
             child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              mainAxisAlignment: MainAxisAlignment.start,
               children: [
+                Image.asset(
+                  "assets/X-clinic.png",
+                  height: 40,
+                  width: 40,
+                ),
+                SizedBox(width: 5,),
                 Text(
                   LOGIN,
-                  style: TextStyle(
-                      color: NAVY_BLUE,
-                      fontSize: 22,
-                      fontWeight: FontWeight.w700),
+                   style:GoogleFonts.cairo(
+                  textStyle:  TextStyle(
+                      fontSize: 16,
+                      fontWeight: FontWeight.w700,
+                      color:BLACK),
                 ),
+                ),
+
               ],
             ),
           ),
@@ -84,23 +94,30 @@ class _LoginScreenState extends State<LoginScreen> {
               ),
               Text(
                 EMAIL_ADDRESS,
-                style: TextStyle(
-                  fontSize: 19,
-                  fontWeight: FontWeight.w700,
+                style:GoogleFonts.cairo(
+                  textStyle:  TextStyle(
+                      fontSize: 15,
+                      fontWeight: FontWeight.w700,
+                      color:BLACK),
                 ),
               ),
+
               TextFormField(
                 validator: (val) {
                   if (!EmailValidator.validate(email)) {
-                    return "Enter correct email";
+                    return "أدخل بريد الكتروني صالح";
                   }
                   return null;
                 },
                 onSaved: (val) => email = val,
-                style: TextStyle(
-                    color: LIGHT_GREY_TEXT,
-                    fontSize: 14,
-                    fontWeight: FontWeight.w700),
+                style:GoogleFonts.cairo(
+                  textStyle:  TextStyle(
+                      fontSize: 14,
+                      fontWeight: FontWeight.w500,
+                      color:LIGHT_GREY_TEXT),
+                ),
+
+
                 decoration: InputDecoration(
                   contentPadding: EdgeInsets.fromLTRB(0, 5, 0, 5),
                   isCollapsed: true,
@@ -125,20 +142,30 @@ class _LoginScreenState extends State<LoginScreen> {
               ),
               Text(
                 PASSWORD,
-                style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+                style:GoogleFonts.cairo(
+                  textStyle:  TextStyle(
+                      fontSize: 15,
+                      fontWeight: FontWeight.w700,
+                      color:BLACK),
+                ),
               ),
               TextFormField(
                 validator: (val) {
                   if (val.isEmpty) {
-                    return "Enter your password";
+                    return "أدخل كلمة المرور";
                   }
                   return null;
                 },
                 onSaved: (val) => password = val,
-                style: TextStyle(
-                    color: LIGHT_GREY_TEXT,
-                    fontSize: 14,
-                    fontWeight: FontWeight.bold),
+                style:GoogleFonts.cairo(
+                  textStyle:  TextStyle(
+                      fontSize: 14,
+                      fontWeight: FontWeight.w500,
+                      color:BLACK),
+                ),
+
+
+
                 obscureText: true,
                 decoration: InputDecoration(
                   contentPadding: EdgeInsets.fromLTRB(0, 5, 0, 5),
@@ -173,10 +200,14 @@ class _LoginScreenState extends State<LoginScreen> {
                   alignment: Alignment.centerRight,
                   child: Text(
                     FORGET_PASSWORD,
-                    style: TextStyle(
-                        color: NAVY_BLUE,
-                        fontSize: 12,
-                        fontWeight: FontWeight.bold),
+                    style:GoogleFonts.cairo(
+                      textStyle:  TextStyle(
+                          fontSize: 12,
+                          fontWeight: FontWeight.w800,
+                          color:NAVY_BLUE),
+                    ),
+
+
                   ),
                 ),
               ),
@@ -203,10 +234,14 @@ class _LoginScreenState extends State<LoginScreen> {
                         child: Center(
                           child: Text(
                             LOGIN,
-                            style: TextStyle(
-                                color: WHITE,
-                                fontWeight: FontWeight.w700,
-                                fontSize: 17),
+                            style:GoogleFonts.cairo(
+                              textStyle:  TextStyle(
+                                  color: WHITE,
+                                  fontWeight: FontWeight.w700,
+                                  fontSize: 17),
+
+                          ),
+
                           ),
                         ),
                       ),
@@ -222,7 +257,11 @@ class _LoginScreenState extends State<LoginScreen> {
                 children: [
                   Text(
                     "ليس لديك حساب ؟",
-                    style: TextStyle(color: LIGHT_GREY_TEXT, fontSize: 12),
+                style:GoogleFonts.cairo(
+                  textStyle: TextStyle(color: LIGHT_GREY_TEXT, fontSize: 12)
+                ),
+
+
                   ),
                   InkWell(
                     onTap: () {
@@ -231,12 +270,14 @@ class _LoginScreenState extends State<LoginScreen> {
                         MaterialPageRoute(builder: (context) => SignUpScreen()),
                       );
                     },
+
                     child: Text(
-                      REGISTER,
-                      style: TextStyle(
-                          color: NAVY_BLUE,
-                          fontSize: 13,
-                          fontWeight: FontWeight.w800),
+                      " تسجيل حساب جديد",
+                      style:GoogleFonts.cairo(
+                          textStyle: TextStyle(color: NAVY_BLUE, fontSize: 14,fontWeight: FontWeight.bold)
+                      ),
+
+
                     ),
                   ),
                 ],
@@ -255,12 +296,18 @@ class _LoginScreenState extends State<LoginScreen> {
                     width: 5,
                   ),
                   Text(
-                    OR,
-                    style: TextStyle(
-                        color: LIGHT_GREY_TEXT,
-                        fontWeight: FontWeight.bold,
-                        fontSize: 17),
+                    "أو",
+                    style:GoogleFonts.cairo(
+                        textStyle: TextStyle(
+                            color: LIGHT_GREY_TEXT,
+                            fontWeight: FontWeight.bold,
+                            fontSize: 17),
+                    ),
+
+
                   ),
+
+
                   SizedBox(
                     width: 5,
                   ),
@@ -305,11 +352,16 @@ class _LoginScreenState extends State<LoginScreen> {
                             Center(
                               child: Text(
                                 CONTINUE_WITH_FACEBOOK,
-                                style: TextStyle(
-                                    color: WHITE,
-                                    fontSize: 16,
-                                    fontWeight: FontWeight.bold),
-                              ),
+                                style:GoogleFonts.cairo(
+                                    textStyle:TextStyle(
+                                        color: WHITE,
+                                        fontSize: 15,
+                                        fontWeight: FontWeight.bold),
+                                ),
+                                ),
+
+
+
                             ),
                           ],
                         ),
@@ -352,10 +404,12 @@ class _LoginScreenState extends State<LoginScreen> {
                             Center(
                               child: Text(
                                 CONTINUE_WITH_GOOGLE,
-                                style: TextStyle(
-                                    color: WHITE,
-                                    fontSize: 16,
-                                    fontWeight: FontWeight.bold),
+                                style:GoogleFonts.cairo(
+                                  textStyle:TextStyle(
+                                      color: WHITE,
+                                      fontSize: 15,
+                                      fontWeight: FontWeight.bold),
+                                ),
                               ),
                             ),
                           ],
@@ -390,6 +444,8 @@ class _LoginScreenState extends State<LoginScreen> {
                                     ),
                                   ],
                                 ),
+
+
                                 Center(
                                   child: Text(
                                     CONTINUE_WITH_APPLE_ID,
@@ -399,10 +455,16 @@ class _LoginScreenState extends State<LoginScreen> {
                                         fontWeight: FontWeight.bold),
                                   ),
                                 ),
+
+
                               ],
                             ),
                           ),
-                        )
+                        ),
+
+
+
+
                       ],
                     )
                   : Container(),
@@ -583,10 +645,10 @@ class _LoginScreenState extends State<LoginScreen> {
         });
         loginIntoAccount(3);
       } else {
-        errorDialog('Something went wrong with the login process');
+        errorDialog('حدث خطأ ما اثناء تسجيل الدخول');
       }
     } else {
-      errorDialog('Something went wrong with the login process');
+      errorDialog('حدث خطأ ما اثناء تسجيل الدخول');
     }
   }
 

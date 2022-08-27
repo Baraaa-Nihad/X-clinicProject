@@ -3,7 +3,7 @@ import 'package:flutter/services.dart';
 import 'package:flutter_html/flutter_html.dart';
 import '../AllText.dart';
 import '../main.dart';
-
+import 'package:google_fonts/google_fonts.dart';
 class AboutUs extends StatefulWidget {
   @override
   _AboutUsState createState() => _AboutUsState();
@@ -58,10 +58,12 @@ class _AboutUsState extends State<AboutUs> {
                           ),
                           Text(
                             ABOUT_US,
-                            style: TextStyle(
-                                color: BLACK,
-                                fontWeight: FontWeight.bold,
-                                fontSize: 23),
+                            style:GoogleFonts.cairo(
+                              textStyle:   TextStyle(
+                                  color: BLACK,
+                                  fontWeight: FontWeight.w700,
+                                  fontSize: 16),),
+
                           ),
                         ],
                       ),

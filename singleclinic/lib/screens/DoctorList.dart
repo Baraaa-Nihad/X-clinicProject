@@ -7,7 +7,7 @@ import 'package:shared_preferences/shared_preferences.dart';
 import 'package:singleclinic/modals/DoctorsList.dart';
 import 'package:singleclinic/screens/DoctorDetail.dart';
 import 'package:singleclinic/screens/SearchScreen.dart';
-
+import 'package:google_fonts/google_fonts.dart';
 import '../AllText.dart';
 import '../main.dart';
 
@@ -100,11 +100,9 @@ class _DoctorListState extends State<DoctorList> {
                         ),
                         Text(
                           DOCTOR_LIST,
-                          style: TextStyle(
-                              color: BLACK,
-                              fontSize: 25,
-                              fontWeight: FontWeight.w800),
-                        ),
+                          style:GoogleFonts.cairo(
+                              textStyle: TextStyle(letterSpacing: .3,fontSize: 17, fontWeight:FontWeight.w600)
+                          ),)
                       ],
                     ),
                     // InkWell(
@@ -176,98 +174,116 @@ class _DoctorListState extends State<DoctorList> {
 
   doctorDetailTile(
       {String imageUrl,
-      String name,
-      String department,
-      String aboutUs,
-      int id}) {
+        String name,
+        String department,
+        String aboutUs,
+        int id}) {
     return Directionality(
         textDirection: TextDirection.rtl,
-        child: InkWell(
-          onTap: () {
-            Navigator.push(context,
-                MaterialPageRoute(builder: (context) => DoctorDetails(id)));
-          },
-          child: Container(
-            decoration: BoxDecoration(
-                color: LIGHT_GREY, borderRadius: BorderRadius.circular(10)),
-            child: Row(
-              children: [
-                Padding(
-                  padding: const EdgeInsets.all(10.0),
-                  child: ClipRRect(
-                    borderRadius: BorderRadius.circular(10),
-                    child: CachedNetworkImage(
-                      height: 75,
-                      width: 75,
-                      fit: BoxFit.cover,
-                      imageUrl: Uri.parse(imageUrl).toString(),
-                      progressIndicatorBuilder:
-                          (context, url, downloadProgress) => Container(
-                              height: 75,
-                              width: 75,
-                              child: Center(child: Icon(Icons.image))),
-                      errorWidget: (context, url, error) => Container(
-                        height: 75,
-                        width: 75,
-                        child: Center(
-                          child: Icon(Icons.broken_image_rounded),
+        child: SafeArea(
+          child: InkWell(
+            onTap: () {
+              Navigator.push(context,
+                  MaterialPageRoute(builder: (context) => DoctorDetails(id)));
+            },
+            child: Container(
+              decoration: BoxDecoration(
+                  color: LIGHT_GREY, borderRadius: BorderRadius.circular(10)),
+              child: Row(
+                children: [
+                  Padding(
+                    padding: const EdgeInsets.all(10.0),
+                    child: ClipRRect(
+                      borderRadius: BorderRadius.circular(10),
+                      child: CachedNetworkImage(
+                        height: 72,
+                        width: 72,
+                        fit: BoxFit.cover,
+                        imageUrl: Uri.parse(imageUrl).toString(),
+                        progressIndicatorBuilder:
+                            (context, url, downloadProgress) => Container(
+                            height: 75,
+                            width: 75,
+                            child: Center(child: Icon(Icons.image))),
+                        errorWidget: (context, url, error) => Container(
+                          height: 75,
+                          width: 75,
+                          child: Center(
+                            child: Icon(Icons.broken_image_rounded),
+                          ),
                         ),
                       ),
                     ),
                   ),
-                ),
-                Expanded(
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      Text(
-                        name,
-                        style: TextStyle(
-                            color: BLACK,
-                            fontSize: 17,
-                            fontWeight: FontWeight.w800),
-                      ),
-                      SizedBox(
-                        height: 5,
-                      ),
-                      Container(
-                        color: LIME,
-                        child: Padding(
-                          padding: const EdgeInsets.fromLTRB(5, 3, 5, 3),
-                          child: Text(
-                            department,
-                            style: TextStyle(color: WHITE, fontSize: 10),
+                  Expanded(
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Text(
+                          name,
+                          style:GoogleFonts.cairo(
+                            textStyle: TextStyle(
+                                color: BLACK,
+                                fontSize: 12,
+                                fontWeight: FontWeight.w500),
+
+                          ),),
+                        SizedBox(
+                          height: 5,
+                        ),
+                        Container(
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(3),
+                            color: LIME,
+                          ),
+                          child: Padding(
+                            padding: const EdgeInsets.fromLTRB(5, 3, 5, 3),
+                            child: Text(
+                              department,
+                              style:GoogleFonts.cairo(
+                                textStyle: TextStyle(
+                                    color: WHITE,
+                                    fontSize: 10,
+                                    fontWeight: FontWeight.w700),
+
+
+                              ),),
+
                           ),
                         ),
-                      ),
-                      SizedBox(
-                        height: 5,
-                      ),
-                      Row(
-                        children: [
-                          Expanded(
-                            child: Text(
-                              aboutUs,
-                              maxLines: 2,
-                              overflow: TextOverflow.ellipsis,
-                              style: TextStyle(
-                                color: LIGHT_GREY_TEXT,
-                                fontSize: 10,
+                        SizedBox(
+                          height: 5,
+                        ),
+                        Row(
+                          children: [
+                            Expanded(
+                              child: Text(
+                                aboutUs,
+                                maxLines: 4,
+                                overflow: TextOverflow.ellipsis,
+                                style:GoogleFonts.cairo(
+                                  textStyle: TextStyle(
+                                    color: LIGHT_GREY_TEXT,
+                                    fontSize: 10,
+
+
+                                  ),),
+
                               ),
                             ),
-                          ),
-                        ],
-                      ),
-                    ],
+                          ],
+                        ),
+                      ],
+                    ),
                   ),
-                ),
-                SizedBox(
-                  width: 16,
-                )
-              ],
+                  SizedBox(
+                    width: 16,
+                  )
+                ],
+              ),
+              margin: EdgeInsets.fromLTRB(16, 6, 16, 6),
             ),
-            margin: EdgeInsets.fromLTRB(16, 8, 16, 8),
           ),
         ));
   }

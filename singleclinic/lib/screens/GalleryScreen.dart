@@ -9,7 +9,7 @@ import 'package:singleclinic/main.dart';
 import 'package:singleclinic/modals/GalleryCategory.dart';
 import 'package:singleclinic/modals/GalleryImagesByCategory.dart';
 import 'package:singleclinic/modals/GalleryImagesByCategory.dart' as images;
-
+import 'package:google_fonts/google_fonts.dart';
 class GalleryScreen extends StatefulWidget {
   @override
   _GalleryScreenState createState() => _GalleryScreenState();
@@ -82,16 +82,20 @@ class _GalleryScreenState extends State<GalleryScreen>
                   tabs: List.generate(galleryCategory.data.data.length + 1,
                       (index) {
                     if (index == 0) {
-                      return Text("All");
+                      return Text("كل الصور");
                     } else {
                       return Text(galleryCategory.data.data[index - 1].name);
                     }
                   }),
                   labelPadding: EdgeInsets.fromLTRB(20, 10, 20, 10),
                   labelColor: NAVY_BLUE,
-                  labelStyle: TextStyle(
-                    fontSize: 11,
-                  ),
+                  labelStyle:GoogleFonts.cairo(
+                textStyle:  TextStyle(
+                fontSize: 15,
+                    fontWeight: FontWeight.w500,
+                    color: Colors.grey),
+
+              ),
                   indicatorSize: TabBarIndicatorSize.tab,
                   indicatorWeight: 3,
                   indicatorColor: LIME,
@@ -136,7 +140,14 @@ class _GalleryScreenState extends State<GalleryScreen>
                   ),
                   Text(
                     GALLERY,
-                    style: TextStyle(fontSize: 22, fontWeight: FontWeight.w700),
+                    style:GoogleFonts.cairo(
+                      textStyle: TextStyle(
+                          color: BLACK,
+                          fontSize: 16,
+                          fontWeight: FontWeight.w700),
+
+                    ),
+
                   ),
                 ],
               ),

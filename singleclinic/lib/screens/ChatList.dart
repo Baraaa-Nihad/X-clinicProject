@@ -7,6 +7,7 @@ import '../AllText.dart';
 import '../main.dart';
 import 'ChatScreen.dart';
 import 'PlaceHolderScreen.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 class ChatList extends StatefulWidget {
   @override
@@ -65,6 +66,7 @@ class _ChatListState extends State<ChatList> {
                     )
                   : Column(
                       children: [
+
                         AnimatedContainer(
                           duration: Duration(milliseconds: 300),
                           curve: Curves.easeIn,
@@ -186,30 +188,33 @@ class _ChatListState extends State<ChatList> {
                     children: [
                       Text(
                         isSearchClicked ? SEARCH : CHAT,
-                        style: TextStyle(
-                            fontSize: 22, fontWeight: FontWeight.w700),
-                      ),
-                      IconButton(
-                        icon: isSearchClicked
-                            ? Icon(
-                                Icons.cancel_outlined,
-                                color: LIGHT_GREY_TEXT,
-                                size: 30,
-                              )
-                            : Image.asset(
-                                "assets/chatScreen/search.png",
-                                height: 25,
-                                width: 25,
-                              ),
-                        onPressed: () {
-                          setState(() {
-                            isSearchClicked = !isSearchClicked;
-                            if (isSearchClicked) {
-                              focusNode.requestFocus();
-                            }
-                          });
-                        },
-                      ),
+                        style:GoogleFonts.cairo(
+                          textStyle: TextStyle(
+                              color: BLACK,
+                              fontSize: 17,
+                              fontWeight: FontWeight.w600),
+
+                        ),),
+                      // IconButton(
+                      //   icon: isSearchClicked
+                      //       ? Icon(
+                      //           Icons.cancel_outlined,
+                      //           color: LIGHT_GREY_TEXT,
+                      //           size: 30,
+                      //         )
+                      //       : Image.asset(
+                      //           "assets/chatScreen/search.png",
+                      //           height: 25,
+                      //           width: 25,
+                      //         ),
+                      //   onPressed: () {
+                      //     setState(() {
+                      //       isSearchClicked = !isSearchClicked;
+                      //       if (isSearchClicked) {
+                      //         focusNode.requestFocus();
+                      //       }});
+                      //   },
+                      // ),
                     ],
                   ),
                 ),
@@ -328,11 +333,15 @@ class _ChatListState extends State<ChatList> {
                                 Expanded(
                                   child: Text(
                                     name,
-                                    style: TextStyle(
-                                        fontSize: 14,
-                                        fontWeight: isNewMessage
-                                            ? FontWeight.w800
-                                            : FontWeight.w700),
+
+     style:GoogleFonts.cairo(
+    textStyle: TextStyle(
+    color: BLACK,
+    fontSize: 17,
+    fontWeight: FontWeight.w600),
+
+    ),
+
                                     overflow: TextOverflow.ellipsis,
                                   ),
                                 ),

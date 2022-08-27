@@ -5,7 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:http/http.dart';
 import 'package:singleclinic/modals/DepartmentsClass.dart';
 import 'package:singleclinic/screens/DepartmentDetailsScreen.dart';
-
+import 'package:google_fonts/google_fonts.dart';
 import '../AllText.dart';
 import '../main.dart';
 
@@ -79,7 +79,13 @@ class _DepartmentScreenState extends State<DepartmentScreen> {
                 ),
                 Text(
                   DEPARTMENTS,
-                  style: TextStyle(fontSize: 22, fontWeight: FontWeight.w700),
+                  style:GoogleFonts.cairo(
+                    textStyle: TextStyle(
+                        color: BLACK,
+                        fontSize: 17,
+                        fontWeight: FontWeight.w600),
+
+                  ),
                 ),
               ],
             ),
@@ -154,10 +160,14 @@ class _DepartmentScreenState extends State<DepartmentScreen> {
                             ),
                             Text(
                               list[index].name,
-                              style: TextStyle(
-                                  color: NAVY_BLUE,
-                                  fontSize: 12,
-                                  fontWeight: FontWeight.w700),
+                              style:GoogleFonts.cairo(
+                                textStyle: TextStyle(
+                                    color: NAVY_BLUE,
+                                    fontSize: 12,
+                                    fontWeight: FontWeight.w700),
+
+                              ),
+
                               overflow: TextOverflow.ellipsis,
                               maxLines: 1,
                             ),
@@ -166,10 +176,13 @@ class _DepartmentScreenState extends State<DepartmentScreen> {
                             ),
                             Text(
                               list[index].description,
-                              style: TextStyle(
-                                  color: LIGHT_GREY_TEXT,
-                                  fontSize: 11,
-                                  fontWeight: FontWeight.w300),
+                              style:GoogleFonts.cairo(
+                                textStyle: TextStyle(
+                                    color: LIGHT_GREY_TEXT,
+                                    fontSize: 11,
+                                    fontWeight: FontWeight.w300),
+                              ),
+
                               overflow: TextOverflow.ellipsis,
                               maxLines: 2,
                             ),
@@ -188,10 +201,14 @@ class _DepartmentScreenState extends State<DepartmentScreen> {
                                     child: Center(
                                       child: Text(
                                         VIEW_DETAIL,
-                                        style: TextStyle(
-                                            fontSize: 12,
-                                            color: WHITE,
-                                            fontWeight: FontWeight.w700),
+                                        style:GoogleFonts.cairo(
+                                          textStyle: TextStyle(
+                                              fontSize: 12,
+                                              color: WHITE,
+                                              fontWeight: FontWeight.w700),
+
+
+                                        ),
                                       ),
                                     ),
                                   ),

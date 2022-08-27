@@ -2,7 +2,7 @@ import 'package:dio/dio.dart';
 import 'package:email_validator/email_validator.dart';
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-
+import 'package:google_fonts/google_fonts.dart';
 import '../AllText.dart';
 import '../main.dart';
 
@@ -72,8 +72,10 @@ class _ContactUsScreenState extends State<ContactUsScreen> {
                 ),
                 Text(
                   CONTACT_US,
-                  style: TextStyle(
-                      color: BLACK, fontSize: 22, fontWeight: FontWeight.w700),
+                  style:GoogleFonts.cairo(
+                    textStyle:  TextStyle(
+                        color: BLACK, fontSize: 16, fontWeight: FontWeight.w700),),
+
                 ),
               ],
             ),
@@ -103,21 +105,25 @@ class _ContactUsScreenState extends State<ContactUsScreen> {
                       children: [
                         Text(
                           NAME,
-                          style: TextStyle(
-                              fontSize: 18, fontWeight: FontWeight.w700),
+                          style:GoogleFonts.cairo(
+                            textStyle: TextStyle(
+                                fontSize: 15, fontWeight: FontWeight.w700),)
+
                         ),
                         TextFormField(
                           controller: nameController,
                           validator: (val) {
                             if (val.isEmpty) {
-                              return "Enter your name";
+                              return "ادخل اسمك";
                             }
                             return null;
                           },
                           onSaved: (val) => name = val,
-                          style: TextStyle(
-                            color: LIGHT_GREY_TEXT,
-                          ),
+                          style:GoogleFonts.cairo(
+                            textStyle: TextStyle(
+                              color: LIGHT_GREY_TEXT,
+                            ),),
+
                           decoration: InputDecoration(
                             isCollapsed: true,
                             contentPadding: EdgeInsets.fromLTRB(0, 5, 0, 5),
@@ -153,23 +159,25 @@ class _ContactUsScreenState extends State<ContactUsScreen> {
                         ),
                         Text(
                           EMAIL_ADDRESS,
-                          style: TextStyle(
-                              fontSize: 18, fontWeight: FontWeight.w700),
-                        ),
+                          style:GoogleFonts.cairo(
+                            textStyle: TextStyle(
+                                fontSize: 15, fontWeight: FontWeight.w700),),),
                         TextFormField(
                           controller: emailController,
                           validator: (val) {
                             if (val.isEmpty) {
-                              return "Enter your email address";
+                              return "ادخل البريد الالكتروني الخاص بك";
                             } else if (!EmailValidator.validate(val)) {
-                              return "Enter correct email";
+                              return "ادخل ايميل صحيح";
                             }
                             return null;
                           },
                           onSaved: (val) => emailAddress = val,
-                          style: TextStyle(
-                            color: LIGHT_GREY_TEXT,
-                          ),
+                          style:GoogleFonts.cairo(
+                            textStyle: TextStyle(
+                                color: LIGHT_GREY_TEXT,),),
+
+
                           decoration: InputDecoration(
                             isCollapsed: true,
                             contentPadding: EdgeInsets.fromLTRB(0, 5, 0, 5),
@@ -205,9 +213,9 @@ class _ContactUsScreenState extends State<ContactUsScreen> {
                         ),
                         Text(
                           PHONE_NUMBER,
-                          style: TextStyle(
-                              fontSize: 18, fontWeight: FontWeight.w700),
-                        ),
+                          style:GoogleFonts.cairo(
+                            textStyle: TextStyle(
+                                fontSize: 15, fontWeight: FontWeight.w700),),),
                         TextFormField(
                           controller: phoneController,
                           validator: (val) {
@@ -218,9 +226,9 @@ class _ContactUsScreenState extends State<ContactUsScreen> {
                           },
                           keyboardType: TextInputType.phone,
                           onSaved: (val) => phoneNumber = val,
-                          style: TextStyle(
-                            color: LIGHT_GREY_TEXT,
-                          ),
+                          style:GoogleFonts.cairo(
+                            textStyle: TextStyle(
+                              color: LIGHT_GREY_TEXT,),),
                           decoration: InputDecoration(
                             isCollapsed: true,
                             contentPadding: EdgeInsets.fromLTRB(0, 5, 0, 5),
@@ -256,20 +264,20 @@ class _ContactUsScreenState extends State<ContactUsScreen> {
                         ),
                         Text(
                           YOUR_QUERY_TOPIC,
-                          style: TextStyle(
-                              fontSize: 18, fontWeight: FontWeight.w700),
-                        ),
+                          style:GoogleFonts.cairo(
+                            textStyle: TextStyle(
+                                fontSize: 15, fontWeight: FontWeight.w700),),),
                         TextFormField(
                           validator: (val) {
                             if (val.isEmpty) {
-                              return "Enter query topic";
+                              return "ادخل موضوع الاستعلام الخاص بك";
                             }
                             return null;
                           },
                           onSaved: (val) => querytopic = val,
-                          style: TextStyle(
-                            color: LIGHT_GREY_TEXT,
-                          ),
+                          style:GoogleFonts.cairo(
+                            textStyle: TextStyle(
+                              color: LIGHT_GREY_TEXT,),),
                           decoration: InputDecoration(
                             isCollapsed: true,
                             contentPadding: EdgeInsets.fromLTRB(0, 5, 0, 5),
@@ -305,9 +313,9 @@ class _ContactUsScreenState extends State<ContactUsScreen> {
                         ),
                         Text(
                           MESSAGE,
-                          style: TextStyle(
-                              fontSize: 18, fontWeight: FontWeight.w700),
-                        ),
+                          style:GoogleFonts.cairo(
+                            textStyle: TextStyle(
+                                fontSize: 15, fontWeight: FontWeight.w700),),),
                         TextFormField(
                           validator: (val) {
                             if (val.isEmpty) {
@@ -318,8 +326,9 @@ class _ContactUsScreenState extends State<ContactUsScreen> {
                           maxLines: 4,
                           minLines: 1,
                           onSaved: (val) => Message = val,
-                          style:
-                              TextStyle(color: LIGHT_GREY_TEXT, fontSize: 14),
+                          style:GoogleFonts.cairo(
+                            textStyle: TextStyle(
+                              color: LIGHT_GREY_TEXT,),),
                           decoration: InputDecoration(
                             isCollapsed: true,
                             contentPadding: EdgeInsets.fromLTRB(0, 5, 0, 5),
@@ -387,9 +396,14 @@ class _ContactUsScreenState extends State<ContactUsScreen> {
               child: Center(
                 child: Text(
                   SUBMIT,
-                  style: TextStyle(
+                  style:GoogleFonts.cairo(
+                  textStyle:  TextStyle(
                       color: WHITE, fontWeight: FontWeight.w700, fontSize: 17),
-                ),
+                  ),
+
+    ),
+
+
               ),
             ),
           ),

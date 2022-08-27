@@ -11,7 +11,7 @@ import 'package:singleclinic/screens/LoginScreen.dart';
 import 'package:singleclinic/screens/TermAndConditions.dart';
 import 'package:singleclinic/screens/UpdateProfileScreen.dart';
 import '../main.dart';
-
+import 'package:google_fonts/google_fonts.dart';
 class SettingsScreen extends StatefulWidget {
   @override
   _SettingsScreenState createState() => _SettingsScreenState();
@@ -70,8 +70,14 @@ class _SettingsScreenState extends State<SettingsScreen> {
               children: [
                 Text(
                   SETTING,
-                  style: TextStyle(
-                      color: BLACK, fontSize: 22, fontWeight: FontWeight.w700),
+              style:GoogleFonts.cairo(
+                textStyle: TextStyle(
+                    color: BLACK,
+                    fontSize: 17,
+                    fontWeight: FontWeight.w600),
+
+              ),
+
                 ),
               ],
             ),
@@ -104,74 +110,97 @@ class _SettingsScreenState extends State<SettingsScreen> {
       child: Row(
         mainAxisAlignment: MainAxisAlignment.start,
         children: [
-          Stack(
-            children: [
-              ClipRRect(
-                borderRadius: BorderRadius.circular(70),
-                child: Container(
-                  height: 110,
-                  width: 110,
-                  child: CachedNetworkImage(
-                    fit: BoxFit.cover,
-                    imageUrl: imageUrl ?? " ",
-                    progressIndicatorBuilder:
-                        (context, url, downloadProgress) => Container(
-                            child: Center(
-                                child: Icon(
-                      Icons.account_circle,
-                      size: 110,
-                      color: LIGHT_GREY_TEXT,
-                    ))),
-                    errorWidget: (context, url, error) => Container(
-                      child: Center(
-                        child: Icon(
-                          Icons.account_circle,
-                          size: 110,
-                          color: LIGHT_GREY_TEXT,
+          Column(children: [
+            Stack(
+              children: [
+                ClipRRect(
+                  borderRadius: BorderRadius.circular(70),
+                  child: Container(
+                    height: 110,
+                    width: 110,
+                    child: CachedNetworkImage(
+                      fit: BoxFit.cover,
+                      imageUrl: imageUrl ?? " ",
+                      progressIndicatorBuilder:
+                          (context, url, downloadProgress) => Container(
+                          child: Center(
+                              child: Icon(
+                                Icons.account_circle,
+                                size: 110,
+                                color: LIGHT_GREY_TEXT,
+                              ))),
+                      errorWidget: (context, url, error) => Container(
+                        child: Center(
+                          child: Icon(
+                            Icons.account_circle,
+                            size: 110,
+                            color: LIGHT_GREY_TEXT,
+                          ),
                         ),
                       ),
                     ),
                   ),
                 ),
-              ),
-              Container(
-                height: 110,
-                width: 110,
-                child: InkWell(
-                  onTap: () {
-                    getImage();
-                  },
-                  child: Align(
-                    alignment: Alignment.bottomRight,
-                    child: InkWell(
-                      onTap: () async {
-                        bool check = await Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                                builder: (context) => UpdateProfileScreen()));
-                        if (check) {
-                          await SharedPreferences.getInstance().then((value) {
-                            setState(() {
-                              imageUrl = value.getString("profile_pic");
-                              name = value.getString("name");
+                Container(
+                  height: 110,
+                  width: 110,
+                  child: InkWell(
+                    onTap: () {
+                      getImage();
+                    },
+                    child: Align(
+                      alignment: Alignment.bottomRight,
+                      child: InkWell(
+                        onTap: () async {
+                          bool check = await Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => UpdateProfileScreen()));
+                          if (check) {
+                            await SharedPreferences.getInstance().then((value) {
+                              setState(() {
+                                imageUrl = value.getString("profile_pic");
+                                name = value.getString("name");
+                              });
                             });
-                          });
-                        }
-                      },
-                      child: name != null
-                          ? Image.asset(
-                              "assets/loginregister/edit.png",
-                              height: 35,
-                              width: 35,
-                              fit: BoxFit.fill,
-                            )
-                          : Container(),
+                          }
+                        },
+                        child: name != null
+                            ? Image.asset(
+                          "assets/loginregister/edit.png",
+                          height: 35,
+                          width: 35,
+                          fit: BoxFit.fill,
+
+                        )
+                            : Container(),
+                      ),
                     ),
                   ),
                 ),
-              ),
-            ],
-          ),
+              ],
+            ),
+            SizedBox(height: 10,width: 5,),
+            InkWell(
+              onTap: () {
+                messageDialog(ALERT, ARE_YOU_SURE_TO_LOG_OUT);
+              },
+              child: Text(
+                name == null ? PROFILE : LOG_OUT,
+                style:GoogleFonts.cairo(
+                  textStyle: TextStyle(
+                      color: name == null ? LIGHT_GREY_TEXT : BLACK,
+                      fontSize: 12,
+                      fontWeight: FontWeight.w700,
+                      decoration: name == null
+                          ? TextDecoration.none
+                          : TextDecoration.underline),
+
+                ),),
+
+            ),
+          ],),
+
           SizedBox(
             width: 15,
           ),
@@ -179,12 +208,16 @@ class _SettingsScreenState extends State<SettingsScreen> {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Text(
-                name != null ? name.toUpperCase() : "Sign In",
-                style: TextStyle(
-                    color: NAVY_BLUE,
-                    fontSize: 13,
-                    fontWeight: FontWeight.w700),
-              ),
+                name != null ? name.toUpperCase() : "تسجيل الدخول",
+    style:GoogleFonts.cairo(
+    textStyle: TextStyle(
+    color: LIME,
+    fontSize: 13,
+    fontWeight: FontWeight.w600),
+
+    ),),
+
+
               SizedBox(
                 height: 2,
               ),
@@ -192,21 +225,25 @@ class _SettingsScreenState extends State<SettingsScreen> {
                   ? Container()
                   : Row(
                       children: [
+
+                        Text(
+                          email,
+    style:GoogleFonts.cairo(
+    textStyle: TextStyle(
+    color: LIGHT_GREY_TEXT,
+    fontSize: 12,
+    fontWeight: FontWeight.w700),
+
+    ),),
+                        SizedBox(
+                          width: 5,
+                        ),
                         Icon(
                           Icons.email_outlined,
                           color: LIGHT_GREY_TEXT,
                           size: 12,
                         ),
-                        SizedBox(
-                          width: 5,
-                        ),
-                        Text(
-                          email,
-                          style: TextStyle(
-                              color: LIGHT_GREY_TEXT,
-                              fontSize: 12,
-                              fontWeight: FontWeight.w700),
-                        ),
+
                       ],
                     ),
               name == null
@@ -214,21 +251,8 @@ class _SettingsScreenState extends State<SettingsScreen> {
                   : SizedBox(
                       height: 8,
                     ),
-              InkWell(
-                onTap: () {
-                  messageDialog(ALERT, ARE_YOU_SURE_TO_LOG_OUT);
-                },
-                child: Text(
-                  name == null ? PROFILE : LOG_OUT,
-                  style: TextStyle(
-                      color: name == null ? LIGHT_GREY_TEXT : BLACK,
-                      fontSize: 11,
-                      fontWeight: FontWeight.w700,
-                      decoration: name == null
-                          ? TextDecoration.none
-                          : TextDecoration.underline),
-                ),
-              ),
+
+
             ],
           )
         ],
@@ -278,7 +302,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
                                 height: 25,
                                 width: 3,
                                 decoration: BoxDecoration(
-                                  color: HexColor('#87A0E5'),
+                                  color: LIME,
                                   borderRadius: const BorderRadius.all(
                                       const Radius.circular(4.0)),
                                 ),
@@ -288,10 +312,15 @@ class _SettingsScreenState extends State<SettingsScreen> {
                               ),
                               Text(
                                 list[index].options[i].toString(),
-                                style: TextStyle(
-                                    fontSize: 17,
-                                    color: LIGHT_GREY_TEXT,
-                                    fontWeight: FontWeight.w800),
+                                style:GoogleFonts.cairo(
+                                  textStyle: TextStyle(
+                                      fontSize: 15,
+                                      color: LIGHT_GREY_TEXT,
+                                      fontWeight: FontWeight.w500),
+
+                                ),
+
+
                               ),
                             ],
                           ),

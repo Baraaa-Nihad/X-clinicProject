@@ -7,6 +7,8 @@ import 'package:singleclinic/modals/UpcomingAppointmrnts.dart';
 import 'package:singleclinic/screens/PlaceHolderScreen.dart';
 import '../AllText.dart';
 import '../main.dart';
+import 'package:google_fonts/google_fonts.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 class AppointmentScreen extends StatefulWidget {
   @override
@@ -72,8 +74,20 @@ class _AppointmentScreenState extends State<AppointmentScreen>
               bottom: TabBar(
                 controller: tabController,
                 tabs: [
-                  Text(UPCOMING),
-                  Text(PAST),
+                  Text(UPCOMING, style:GoogleFonts.cairo(
+                textStyle: TextStyle(
+                    color: BLACK,
+                    fontSize: 10,
+                    fontWeight: FontWeight.w500),
+
+              ),),
+                  Text(PAST, style:GoogleFonts.cairo(
+                    textStyle: TextStyle(
+                        color: BLACK,
+                        fontSize: 10,
+                        fontWeight: FontWeight.w500),
+
+                  ),),
                 ],
                 labelPadding: EdgeInsets.fromLTRB(20, 10, 20, 10),
                 labelColor: NAVY_BLUE,
@@ -142,6 +156,7 @@ class _AppointmentScreenState extends State<AppointmentScreen>
                                 iconPath:
                                     "assets/placeholders/appointment_holder.png",
                                 message: NO_APPOINTMENT_FOUND,
+
                                 description:
                                     YOUR_PAST_APPOINTMENTS_WILL_BE_DISPLAYED_HERE,
                               ),
@@ -184,9 +199,13 @@ class _AppointmentScreenState extends State<AppointmentScreen>
                     children: [
                       Text(
                         MY_APPOINTMENT,
-                        style: TextStyle(
-                            fontSize: 22, fontWeight: FontWeight.w700),
-                      ),
+                        style:GoogleFonts.cairo(
+                          textStyle: TextStyle(
+                              color: BLACK,
+                              fontSize: 17,
+                              fontWeight: FontWeight.w600),
+
+                        ),),
                     ],
                   ),
                 ),
@@ -625,9 +644,13 @@ class _AppointmentScreenState extends State<AppointmentScreen>
                         pastList[index].messages != null
                             ? pastList[index].messages
                             : "-",
-                        style: TextStyle(
-                          fontSize: 11,
-                        ),
+                  style:GoogleFonts.cairo(
+                    textStyle: TextStyle(
+                        color: BLACK,
+                        fontSize: 11,
+                        fontWeight: FontWeight.w500),
+
+                  ),
                         maxLines: 2,
                         overflow: TextOverflow.ellipsis,
                       ),
