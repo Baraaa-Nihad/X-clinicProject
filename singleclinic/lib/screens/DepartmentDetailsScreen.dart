@@ -189,47 +189,57 @@ class _DepartmentDetailsScreenState extends State<DepartmentDetailsScreen> {
                                         shrinkWrap: true,
                                         physics: ClampingScrollPhysics(),
                                         itemBuilder: (context, index) {
-                                          return Expanded(
-                                              child: Column(
+                                          return Column(
                                             children: [
-                                              SizedBox(
-                                                height: 10,
-                                              ),
-                                              Row(
-                                                mainAxisAlignment:
-                                                    MainAxisAlignment
-                                                        .spaceBetween,
-                                                children: [
-                                                  Row(children: [
-                                                    Container(
-                                                      height: 25,
-                                                      width: 3,
-                                                      decoration: BoxDecoration(
-                                                        color: LIME,
-                                                        borderRadius: const BorderRadius.all(
-                                                            const Radius.circular(4.0)),
-                                                      ),
-                                                    ),
-                                                    SizedBox(width: 5,),
-                                                    Text(
-                                                      departmentDetails.data
-                                                          .service[index].name,
-                                                      style:GoogleFonts.cairo(
-                                                        textStyle:  TextStyle(
-                                                            fontSize: 14.5, color: LIGHT_GREY_TEXT),
+                                          SizedBox(
+                                            height: 10,
+                                          ),
+                                          Row(
+                                            mainAxisAlignment:
+                                                MainAxisAlignment
+                                                    .spaceBetween,
+                                            children: [
+                                              Row(children: [
+                                                Container(
+                                                  height: 25,
+                                                  width: 3,
+                                                  decoration: BoxDecoration(
+                                                    color: LIME,
+                                                    borderRadius: const BorderRadius.all(
+                                                        const Radius.circular(4.0)),
+                                                  ),
+                                                ),
+                                                SizedBox(width: 5,),
+                                                Text(
+                                                  departmentDetails.data
+                                                      .service[index].name,
+                                                  style:GoogleFonts.cairo(
+                                                    textStyle:  TextStyle(
+                                                        fontSize: 14.5, color: LIGHT_GREY_TEXT),
 
-                                                      ),),
+                                                  ),),
 
-                                                  ],),
-
-
+                                              ],),
 
 
 
 
-                                                  Text(
-                                                    "${departmentDetails.data.service[index].price} $CURRENCY",
-                                                    style:GoogleFonts.cairo(
+
+
+                                              Text(
+                                                "${departmentDetails.data.service[index].price} $CURRENCY",
+                                                style:GoogleFonts.cairo(
+                                              textStyle: TextStyle(
+                                                  color: NAVY_BLUE,
+                                                  fontSize: 14,
+                                                  fontWeight:
+                                                  FontWeight.w700),
+
+
+                                          ),),
+                                              Text(
+                                                "${departmentDetails.data.service[index].priceFor}",
+                                                style:GoogleFonts.cairo(
                                                   textStyle: TextStyle(
                                                       color: NAVY_BLUE,
                                                       fontSize: 14,
@@ -237,30 +247,19 @@ class _DepartmentDetailsScreenState extends State<DepartmentDetailsScreen> {
                                                       FontWeight.w700),
 
 
-                                          ),),
-                                                  Text(
-                                                    "${departmentDetails.data.service[index].priceFor}",
-                                                    style:GoogleFonts.cairo(
-                                                      textStyle: TextStyle(
-                                                          color: NAVY_BLUE,
-                                                          fontSize: 14,
-                                                          fontWeight:
-                                                          FontWeight.w700),
-
-
-                                                    ),),
-                                                ],
-                                              ),
-
-                                              SizedBox(
-                                                height: 10,
-                                              ),
-                                              Divider(
-                                                color: LIGHT_GREY_TEXT,
-                                                height: 20,
-                                              ),
+                                                ),),
                                             ],
-                                          ));
+                                          ),
+
+                                          SizedBox(
+                                            height: 10,
+                                          ),
+                                          Divider(
+                                            color: LIGHT_GREY_TEXT,
+                                            height: 20,
+                                          ),
+                                            ],
+                                          );
                                         },
                                       )
                                     ],

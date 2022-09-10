@@ -82,7 +82,7 @@ class _SplashScreenState extends State<SplashScreen> {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               Text(
-              "Your Best Choice",
+              "خيارك الأول ",
               style:GoogleFonts.cairo(
                   textStyle: TextStyle(color: BLACK, letterSpacing: .5,fontSize: 15)
               )

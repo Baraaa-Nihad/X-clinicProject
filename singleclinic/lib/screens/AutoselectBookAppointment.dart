@@ -79,7 +79,7 @@ class _AutoselectBookAppointmentState extends State<AutoselectBookAppointment> {
         (selectedDate.day.toString().length == 1
             ? "0" + selectedDate.day.toString()
             : selectedDate.day.toString());
-    _time = "اختر الوقت";
+    _time = "اختر الوقت في وقت غير محجوز";
     SharedPreferences.getInstance().then((value) {
       setState(() {
         userId = value.getInt("id");

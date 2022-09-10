@@ -321,55 +321,55 @@ class _LoginScreenState extends State<LoginScreen> {
               SizedBox(
                 height: 20,
               ),
-              Row(
-                children: [
-                  Expanded(
-                    child: InkWell(
-                      borderRadius: BorderRadius.circular(50),
-                      onTap: () {
-                        facebookLogin();
-                      },
-                      child: Container(
-                        margin: EdgeInsets.fromLTRB(15, 5, 15, 5),
-                        height: 50,
-                        decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(25),
-                          color: NAVY_BLUE.withOpacity(0.7),
-                        ),
-                        child: Stack(
-                          children: [
-                            Row(
-                              children: [
-                                Expanded(
-                                  child: Image.asset(
-                                    "assets/loginregister/facebook_btn.png",
-                                    fit:BoxFit.cover,
+              // Row(
+              //   children: [
+                  // Expanded(
+                  //   child: InkWell(
+                  //     borderRadius: BorderRadius.circular(50),
+                  //     onTap: () {
+                  //       facebookLogin();
+                  //     },
+                  //     child: Container(
+                  //       margin: EdgeInsets.fromLTRB(15, 5, 15, 5),
+                  //       height: 50,
+                  //       decoration: BoxDecoration(
+                  //         borderRadius: BorderRadius.circular(25),
+                  //         color: NAVY_BLUE.withOpacity(0.7),
+                  //       ),
+                  //       child: Stack(
+                  //         children: [
+                  //           Row(
+                  //             children: [
+                  //               Expanded(
+                  //                 child: Image.asset(
+                  //                   "assets/loginregister/facebook_btn.png",
+                  //                   fit:BoxFit.cover,
                                     
-                                  ),
-                                ),
-                              ],
-                            ),
-                            Center(
-                              child: Text(
-                                CONTINUE_WITH_FACEBOOK,
-                                style:GoogleFonts.cairo(
-                                    textStyle:TextStyle(
-                                        color: WHITE,
-                                        fontSize: 15,
-                                        fontWeight: FontWeight.bold),
-                                ),
-                                ),
+                  //                 ),
+                  //               ),
+                  //             ],
+                  //           ),
+                  //           Center(
+                  //             child: Text(
+                  //               CONTINUE_WITH_FACEBOOK,
+                  //               style:GoogleFonts.cairo(
+                  //                   textStyle:TextStyle(
+                  //                       color: WHITE,
+                  //                       fontSize: 15,
+                  //                       fontWeight: FontWeight.bold),
+                  //               ),
+                  //               ),
 
 
 
-                            ),
-                          ],
-                        ),
-                      ),
-                    ),
-                  )
-                ],
-              ),
+                  //           ),
+                  //         ],
+                  //       ),
+                  //     ),
+                  //   ),
+                  // )
+              //   ],
+              // ),
               SizedBox(
                 height: 20,
               ),

@@ -487,7 +487,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
           path = File(pickedFile.path).path;
         });
       } else {
-        print('No image selected.');
+        print('لم يتم اختيار صورة !');
       }
     });
   }
@@ -509,8 +509,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
         "device_type": "1",
         "image": await MultipartFile.fromFile(path, filename: "upload.jpg"),
       });
-      response =
-          await dio.post(SERVER_ADDRESS + "/api/userregister", data: formData);
+      response = await dio.post(SERVER_ADDRESS + "/api/userregister", data: formData);
       if (response.statusCode == 200 && response.data['status'] == 1) {
         print(response.toString());
 

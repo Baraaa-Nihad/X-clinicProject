@@ -12,6 +12,8 @@ import 'package:singleclinic/screens/TermAndConditions.dart';
 import 'package:singleclinic/screens/UpdateProfileScreen.dart';
 import '../main.dart';
 import 'package:google_fonts/google_fonts.dart';
+
+import 'FitnessAppTheme.dart';
 class SettingsScreen extends StatefulWidget {
   @override
   _SettingsScreenState createState() => _SettingsScreenState();
@@ -166,11 +168,33 @@ class _SettingsScreenState extends State<SettingsScreen> {
                           }
                         },
                         child: name != null
-                            ? Image.asset(
-                          "assets/loginregister/edit.png",
-                          height: 35,
-                          width: 35,
-                          fit: BoxFit.fill,
+                            ?  Container(
+                            padding: EdgeInsets.all(5),
+                            decoration: BoxDecoration(
+                              color: FitnessAppTheme.white,
+                              borderRadius: const BorderRadius.only(
+                                  topLeft: Radius.circular(55.0),
+                                  bottomLeft: const Radius.circular(50.0),
+                                  bottomRight: Radius.circular(55.0),
+                                  topRight: const Radius.circular(50.0)),
+                              boxShadow: <BoxShadow>[
+                                BoxShadow(
+                                    color: FitnessAppTheme.grey
+                                        .withOpacity(0.2),
+                                    offset: const Offset(1.1, 1.1),
+                                    blurRadius: 10.0),
+                              ],
+                            ),  child:  Icon(
+                          Icons.mode_edit_outlined,
+                          color: LIME,
+                          size: 30.0,
+                          semanticLabel: "Edit Profile",
+
+                        ),
+
+
+
+
 
                         )
                             : Container(),

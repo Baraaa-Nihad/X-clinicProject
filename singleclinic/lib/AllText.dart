@@ -36,11 +36,11 @@ const String CREATE_AN_ACCOUNT = "إنشاء حساب";
 const String CONFIRM_PASSWORD = "تأكيد كلمة السر";
 const String REGISTER = "تسجيل" ;
 const String IMAGE_NOT_SELECTED = "! لم يتم تحديد الصورة ";
-const String LOADING = "... جار التحميل ";
+const String LOADING = "جار التحميل ...";
 const String PLEASE_WAIT_WHILE_CREATING_ACCOUNT =
-    "يرجى الانتظار أثناء إنشاء الحساب";
+     " انتظر لحظة من فضلك";
 const String PLEASE_WAIT_WHILE_LOGGING_INTO_ACCOUNT =
-    "يرجى الانتظار أثناء تسجيل الدخول إلى الحساب";
+    "انتظر لحظة من فضلك بينما يتم تسجيل الدخول";
 const String MY_SUBCRIPTIONS = "اشتراكاتي";
 const String SETTING = "الإعدادات";
 const String APPOINTMENT_HISTORY = "المواعيد الخاصة بي";

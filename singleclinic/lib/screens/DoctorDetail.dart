@@ -244,6 +244,7 @@ class _DoctorDetailsState extends State<DoctorDetails> {
                                     : "assets/doctordetails/star_unactive.png",
                                 height: 12,
                                 width: 12,
+                                color: LIME,
                               ),
                               SizedBox(
                                 width: 5,
@@ -254,6 +255,7 @@ class _DoctorDetailsState extends State<DoctorDetails> {
                                     : "assets/doctordetails/star_unactive.png",
                                 height: 12,
                                 width: 12,
+                                color: LIME,
                               ),
                               SizedBox(
                                 width: 5,
@@ -264,6 +266,7 @@ class _DoctorDetailsState extends State<DoctorDetails> {
                                     : "assets/doctordetails/star_unactive.png",
                                 height: 12,
                                 width: 12,
+                                color: LIME,
                               ),
                               SizedBox(
                                 width: 5,
@@ -274,6 +277,7 @@ class _DoctorDetailsState extends State<DoctorDetails> {
                                     : "assets/doctordetails/star_unactive.png",
                                 height: 12,
                                 width: 12,
+                                color: LIME,
                               ),
                               SizedBox(
                                 width: 5,
@@ -284,6 +288,7 @@ class _DoctorDetailsState extends State<DoctorDetails> {
                                     : "assets/doctordetails/star_unactive.png",
                                 height: 12,
                                 width: 12,
+                                color: LIME,
                               ),
                             ],
                           ),
@@ -560,7 +565,12 @@ class _DoctorDetailsState extends State<DoctorDetails> {
                       borderRadius: BorderRadius.circular(25),
                       color: LIME,
                     ),
-                    child: Image.asset("assets/doctordetails/review.png"),
+                    child:   Icon(
+                      Icons.chat_outlined,
+                      color: Colors.white,
+                      size: 24.0,
+                      semanticLabel: 'Chat',
+                    ),
                   ),
                 )
               : Container(),
